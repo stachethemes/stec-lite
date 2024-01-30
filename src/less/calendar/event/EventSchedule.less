@@ -1,0 +1,83 @@
+.stec-event-schedule {
+
+    .stec-event-schedule-item {
+        width     : 100%;
+        box-sizing: border-box;
+
+        &:not(:last-child) {
+            margin-bottom : 20px;
+            padding-bottom: 20px;
+        }
+
+
+        &.stec-event-schedule-item-completed {
+            .stec-event-schedule-item-overview-content {
+                opacity: 0.5;
+            }
+
+            .stec-thumbnail {
+                background-color: #fff !important;
+
+                i {
+                    color: @color-green;
+                }
+            }
+        }
+
+        .stec-event-schedule-item-overview {
+
+            .noselect;
+            .flexbox(space-between, center);
+
+
+            .stec-event-schedule-item-overview-content {
+                margin-left: 10px;
+
+                .stec-event-schedule-item-title {
+                    font-size  : 16px;
+                    color      : var(--stec-ec-title-secondary-color);
+                    font-weight: bold;
+                    float      : left;
+                }
+
+                .stec-event-schedule-item-date {
+                    font-size : 12px;
+                    color     : var(--stec-ec-text-color);
+                    margin-top: 5px;
+                    float     : left;
+                    clear     : both;
+
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .stec-event-schedule-item-details {
+            box-sizing  : border-box;
+            width       : 100%;
+            font-size   : 16px;
+            color       : var(--stec-ec-text-color);
+            line-height : 1.5;
+            margin-top  : 10px;
+            padding-left: 62px;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        }
+    }
+
+    .stec-event-schedule-toggle-button {
+        i {
+            color: var(--stec-ec-button-toggle-color);
+        }
+
+        &:hover {
+            i {
+                color: var(--stec-ec-button-toggle-color-hover);
+            }
+        }
+    }
+}

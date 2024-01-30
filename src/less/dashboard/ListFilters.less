@@ -1,0 +1,221 @@
+.stec-manage-list-filterss {
+    width        : 100%;
+    float        : left;
+    box-sizing   : border-box;
+    margin-bottom: 10px;
+    position     : relative;
+    z-index      : 10;
+    .flexbox(space-between, flex-start);
+
+    >.stec-input-text-wrapper {
+        width: 100%;
+    }
+}
+
+.stec-manage-list-filterss-buttons {
+    >stec-div {
+        margin-bottom: 5px;
+    }
+}
+
+.stec-manage-list-filterss-control-buttons {
+    line-height: 44px;
+}
+
+.stec-manage-list-filterss-apply {
+    margin-left: 6px;
+    cursor     : pointer;
+    font-size  : 14px;
+
+    i {
+        font-size   : 14px;
+        margin-right: 6px;
+    }
+
+    color:#454850;
+
+    &:hover {
+        color: @color-blue;
+    }
+}
+
+.stec-manage-list-filterss-clear {
+    margin-left: 10px;
+    cursor     : pointer;
+    font-size  : 14px;
+
+    i {
+        font-size   : 14px;
+        margin-right: 6px;
+    }
+
+    color:#454850;
+
+    &:hover {
+        color: @color-red;
+    }
+}
+
+.stec-manage-list-filters {
+    .box(42px);
+    z-index      : 0;
+    position     : relative;
+    display      : inline-block;
+    line-height  : 42px;
+    text-align   : center;
+    border-radius: 3px;
+    border       : 1px solid rgba(0, 0, 0, 0.1);
+    cursor       : pointer;
+    margin-right : 4px;
+
+    >i {
+        color      : #454850;
+        font-size  : 16px;
+        line-height: 42px;
+    }
+
+    &.active {
+        z-index: 1;
+    }
+
+    &.active,
+    &:hover {
+        >i {
+            color: @color-blue;
+        }
+    }
+
+    &.has-active-items {
+        border-color    : @color-blue;
+        background-color: @color-blue;
+
+        >i {
+            color: #fff;
+        }
+    }
+
+
+}
+
+.stec-manage-list-filters-dropdown {
+    position        : absolute;
+    top             : 48px;
+    left            : 0;
+    width           : 250px;
+    max-height      : 400px;
+    background-color: #fff;
+    border-radius   : 3px;
+    border          : 1px solid rgba(0, 0, 0, 0.1);
+
+    &:before {
+        content: '';
+        .box(16px);
+        background-color: @color-blue;
+        position        : absolute;
+        top             : -8px;
+        left            : 12px;
+        transform       : rotate(45deg);
+        z-index         : 0;
+    }
+
+    .stec-datepicker {
+        .stec-field-title {
+            text-align: left;
+        }
+
+        box-sizing: border-box;
+        padding   : 10px;
+        width     : 100%;
+        float     : left;
+    }
+}
+
+.stec-manage-list-filters-dropdown-wrap {
+    max-height: 326px;
+    .miniScrollBar(#e3e3e3);
+    overflow: auto;
+    float   : left;
+}
+
+.stec-manage-list-filters-dropdown-label {
+    background-color       : @color-blue;
+    width                  : 100%;
+    float                  : left;
+    border-top-left-radius : 3px;
+    border-top-right-radius: 3px;
+    font-size              : 14px;
+    color                  : #fff;
+    text-align             : left;
+    padding                : 12px;
+    box-sizing             : border-box;
+}
+
+.stec-manage-list-filters-dropdown-item {
+    .flexbox(flex-start, flex-start);
+    width     : 100%;
+    float     : left;
+    padding   : 12px 12px 12px 10px;
+    box-sizing: border-box;
+
+    >i {
+        margin-right: 6px;
+
+        &.fa-square-check {
+            &.is-active-filter {
+                color: @color-blue;
+            }
+        }
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    >span,
+    >stec-span,
+    >i {
+        color     : #454850;
+        font-size : 14px;
+        text-align: left;
+    }
+
+}
+
+// this will position the terms search input to the right of top controls
+.stec-manage-list-filterss-orders,
+.stec-manage-list-filterss-taxonomies {
+    position : absolute;
+    right    : 20px;
+    width    : 100%;
+    max-width: 400px;
+}
+
+.mobile {
+
+    // reset the position of the search input
+    .stec-manage-list-filterss-orders,
+    .stec-manage-list-filterss-taxonomies {
+        right    : 0;
+        max-width: 100%;
+    }
+
+    .stec-manage-list-filterss {
+        display : block;
+        position: relative;
+
+        .stec-input-text-wrapper {
+            position: absolute;
+            top     : 0;
+        }
+    }
+
+    .stec-manage-list-filterss-buttons {
+        margin-top: 54px;
+    }
+
+    .stec-manage-list-filterss-clear,
+    .stec-manage-list-filterss-apply {
+        margin-top   : 10px;
+        margin-bottom: 20px;
+    }
+}

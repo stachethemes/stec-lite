@@ -1,0 +1,61 @@
+@import '@Stec/LESS/helpers.less';
+@import '@Stec/LESS/variables.less';
+@import '@Stec/LESS/web-components/all.less';
+@import '@Stec/LESS/common-components/FieldTitle.less';
+@import '@Stec/LESS/common-components/FieldDescription.less';
+@import '@Stec/LESS/common-components/InputText.less';
+@import '@Stec/LESS/common-components/InputSelect.less';
+@import '@Stec/LESS/common-components/Spacer.less';
+@import '@Stec/LESS/common-components/QtySelector.less';
+@import '@Stec/LESS/common-components/DatePicker.less';
+@import '@Stec/LESS/common-components/InputCheckbox.less';
+@import '@Stec/LESS/common-components/SectionCollapseContent.less';
+@import '@Stec/LESS/common-components/InputTextarea.less';
+
+.stec-widget-stec-admin {
+    position     : relative;
+    z-index      : 0;
+    padding      : 20px;
+    box-sizing   : border-box;
+    border-radius: 3px;
+    border       : 1px solid #efefef;
+    max-width    : 840px;
+    margin       : 0 auto;
+    font-family  : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.stec-widget-stec-admin-preview-label {
+    font-size      : 18px;
+    font-weight    : bold;
+    color          : #454850;
+    display        : flex;
+    align-items    : center;
+    justify-content: flex-start;
+
+    img {
+        width        : 42px;
+        height       : 42px;
+        border-radius: 3px;
+        margin-right : 10px;
+    }
+
+}
+
+.stec-widget-stec-admin {
+    &:not(.is-selected) {
+        border: 1px solid #454850;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &.is-selected {
+        .stec-widget-stec-admin-preview-label {
+            margin-bottom : 20px;
+            padding-bottom: 20px;
+            border-bottom : 1px solid #efefef;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+:root {
+    --stec-content-tab-font-size      : 14px;
+}
+
+.stec-content-tabs {
+
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    overflow             : hidden;
+
+    .stec-content-tab {
+        display         : block;
+        float           : left;
+        text-align      : center;
+        width           : 100%;
+        cursor          : pointer;
+        padding         : 20px 0;
+        margin          : 0;
+        border          : 1px solid rgba(0, 0, 0, 0);
+        border-bottom   : 1px solid rgba(0, 0, 0, 0.1);
+        background-color: var(--stec-ec-tab-menu-bg);
+        .noselect;
+
+        stec-span,
+        span {
+            color      : var(--stec-ec-tab-menu-color);
+            font-size  : var(--stec-content-tab-font-size);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        i {
+            color    : var(--stec-ec-tab-menu-color);
+            display  : none;
+            font-size: var(--stec-content-tab-font-size);
+        }
+
+        &.active {
+            background-color   : var(--stec-ec-tab-menu-bg-active);
+            border-bottom-color: rgba(0, 0, 0, 0);
+
+            &:first-child {
+                border-left-color: rgba(0, 0, 0, 0);
+            }
+
+            &:last-child {
+                border-right-color: rgba(0, 0, 0, 0);
+            }
+
+            &:not(:first-child) {
+                border-left-color: rgba(0, 0, 0, 0.1);
+            }
+
+            &:not(:last-child) {
+                border-right-color: rgba(0, 0, 0, 0.1);
+            }
+
+            i,
+            stec-span,
+            span {
+                color: var(--stec-ec-tab-menu-color-active);
+            }
+
+        }
+
+    }
+}
+
+.stec-content-tabs-content {
+    box-sizing      : border-box;
+    width           : 100%;
+}
+
+.mobile {
+    .stec-content-tabs {
+        .stec-content-tab {
+
+            stec-span,
+            span {
+                display: none;
+            }
+
+            i {
+                display: block;
+            }
+        }
+    }
+}

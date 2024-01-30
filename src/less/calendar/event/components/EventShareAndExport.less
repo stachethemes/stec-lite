@@ -1,0 +1,31 @@
+.stec-event-share-and-export {
+    .flexbox(space-between, center);
+
+    .stec-event-export {
+        a:not(:first-child) {
+            margin-left: 5px;
+        }
+    }
+}
+
+.tablet,
+.mobile {
+    .stec-event-share-and-export {
+        display: block;
+
+        .stec-share {
+            width     : 100%;
+            text-align: center;
+        }
+
+        .stec-event-export {
+            width          : 100%;
+            text-align     : center;
+            margin-top     : 15px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+
+        }
+    }
+}

@@ -1,0 +1,109 @@
+body .stec-button {
+    .noselect;
+    cursor          : pointer;
+    padding         : 12px 15px;
+    border-radius   : var(--stec-corner-smoothing);
+    background-color: var(--stec-ec-button-bg);
+    color           : var(--stec-ec-button-color);
+    text-align      : center;
+    font-size       : 14px;
+    box-sizing      : border-box;
+    display         : inline-block;
+    line-height     : 1;
+    white-space     : nowrap;
+    text-decoration : none;
+
+
+    .transitionColors();
+
+    i {
+        margin-right: 8px;
+    }
+
+    &:hover {
+        color           : var(--stec-ec-button-color-hover);
+        background-color: var(--stec-ec-button-bg-hover);
+    }
+
+    &.stec-button-disabled {
+        cursor          : not-allowed !important;
+        background-color: #caccd1 !important;
+
+        color: #6e7277 !important;
+
+        a,
+        i,
+        span,
+        stec-span {
+            color: #6e7277 !important;
+        }
+    }
+
+    &.green {
+        background-color: @color-green;
+
+        &:hover {
+            background-color: @color-green + 30%;
+        }
+    }
+
+    &.yellow {
+        background-color: @color-yellow;
+
+        &:hover {
+            background-color: @color-yellow + 30%;
+        }
+    }
+
+    &.red {
+        background-color: @color-red;
+
+        &:hover {
+            background-color: @color-red + 30%;
+        }
+    }
+
+    &.blue {
+        background-color: @color-blue;
+
+        &:hover {
+            background-color: @color-blue + 30%;
+        }
+    }
+
+    &.gray {
+        background-color: @color-gray;
+
+
+        &:hover {
+            background-color: @color-gray - 30%;
+        }
+    }
+
+    &.stcolor {
+        background-color: #202020;
+
+        &:hover {
+            background-color: #202020 + 30%;
+        }
+    }
+
+    &.small {
+        padding  : 8px 12px;
+        font-size: 12px;
+
+    }
+}
+
+.wp-admin,
+.stec-dashboard {
+    .stec-button {
+        background-color: #454850;
+        color           : #fff;
+
+        &:hover {
+            color           : #fff;
+            background-color: #f15e6e;
+        }
+    }
+}

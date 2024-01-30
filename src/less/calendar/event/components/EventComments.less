@@ -1,0 +1,220 @@
+.stec-event-comments {
+    min-height: 114px;
+
+    .stec-event-comments-preloader {
+        text-align               : center;
+        animation-name           : stec-event-comments-preloader;
+        animation-fill-mode      : forwards;
+        animation-play-state     : running;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+        animation-duration       : 0.3s;
+        animation-delay          : 0.3s;
+        opacity                  : 0;
+
+        stec-span,
+        span {
+            display: block;
+            color  : var(--stec-ec-text-color);
+        }
+
+        .stec-event-comments-preloader-icon {
+            font-size                : 50px;
+            line-height              : 1;
+            animation-name           : stec-event-comments-preloader-icon;
+            animation-fill-mode      : forwards;
+            animation-play-state     : running;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-duration       : 1s;
+            .box(50px);
+            margin: 0 auto;
+            color : #1877f2;
+        }
+
+        .stec-event-comments-preloader-text {
+            font-size  : 12px;
+            margin-top : 10px;
+            font-weight: bold;
+        }
+    }
+
+    .stec-pagination {
+
+        text-align: right;
+
+        span,
+        stec-span {
+
+            &:not(:hover):not(.active) {
+                background-color: #ccc;
+            }
+
+            &.active,
+            &:hover {
+                background-color: @color-blue;
+            }
+
+        }
+    }
+
+}
+
+.stec-comment {
+    box-sizing: border-box;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    &:not(:first-child) {
+        margin-top : 15px;
+        padding-top: 15px;
+        border-top : 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+
+}
+
+.stec-comment-top {
+    width          : 100%;
+    justify-content: space-between
+}
+
+.stec-comment-avatar {
+    min-width: 32px;
+}
+
+.stec-comment-avatar img {
+    border-radius: 50%;
+    width        : 24px;
+}
+
+.stec-comment-author {
+    font-size  : 16px;
+    color      : var(--stec-ec-title-secondary-color);
+    font-weight: bold;
+    line-height: 1;
+}
+
+.stec-comment-date {
+    font-size  : 12px;
+    color      : var(--stec-ec-text-color);
+    font-weight: normal;
+    line-height: 1;
+    margin-left: 5px;
+}
+
+.stec-comment-content {
+    font-size   : 14px;
+    line-height : 1.6;
+    color       : var(--stec-ec-text-color);
+    padding-left: 32px;
+}
+
+.stec-comment-form-reply-button {
+    font-size   : 24px;
+    color       : #ccc;
+    cursor      : pointer;
+    margin-right: 10px;
+    .transitionColors();
+
+    &.active,
+    &:hover {
+        color: @color-blue;
+    }
+}
+
+.stec-comment-form {
+
+    position: relative;
+
+    img {
+        .box(24px);
+        border-radius: 50%;
+        margin-right : 10px;
+    }
+
+    .stec-input-text-wrapper {
+        width    : 100%;
+        max-width: 100%;
+
+        input {
+            padding-right: 60px;
+        }
+    }
+
+    &:not(:first-child) {
+        &:last-child {
+            margin-top: 20px;
+        }
+    }
+
+    .stec-comment-form-submit-button {
+        position : absolute;
+        font-size: 24px;
+        right    : 10px;
+        color    : #ccc;
+        cursor   : pointer;
+        .transitionColors();
+
+        &:hover {
+            color: @color-blue;
+        }
+    }
+}
+
+.stec-event-comments-empty {
+    text-align: center;
+    box-sizing: border-box;
+    overflow  : hidden;
+
+    .stec-event-comments-empty-icon {
+        font-size : 50px;
+        color     : @color-red;
+        text-align: center;
+    }
+
+    .stec-event-comments-empty-big {
+        margin-top : 20px;
+        font-size  : 16px;
+        font-weight: bold;
+        color      : #454850;
+        width      : 100%;
+        float      : left;
+    }
+
+    .stec-event-comments-empty-small {
+        font-size  : 12px;
+        font-weight: bold;
+        color      : var(--stec-ec-text-color);
+        width      : 100%;
+        float      : left;
+        margin-top : 10px;
+    }
+
+}
+
+@keyframes stec-event-comments-preloader {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes stec-event-comments-preloader-icon {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

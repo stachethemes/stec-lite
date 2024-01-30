@@ -1,0 +1,108 @@
+.stec-side-navigation {
+    width           : 100%;
+    max-width       : 200px;
+    background-color: #202020;
+    position        : sticky;
+    top             : 0;
+    border-radius   : var(--stec-corner-smoothing);
+    z-index         : 1000;
+
+    .stec-side-navigation-item {
+        display         : inline-block;
+        background-color: #202020;
+        padding         : 16px 10px;
+        box-sizing      : border-box;
+        color           : #fff;
+        font-size       : 14px;
+        font-weight     : bold;
+        width           : 100%;
+        white-space     : nowrap;
+
+        &:first-child {
+            border-top-left-radius : var(--stec-corner-smoothing);
+            border-top-right-radius: var(--stec-corner-smoothing);
+        }
+
+        &:last-child {
+            border-bottom-left-radius : var(--stec-corner-smoothing);
+            border-bottom-right-radius: var(--stec-corner-smoothing);
+        }
+
+        i {
+            margin-right: 10px;
+            width       : 30px;
+            text-align  : center;
+        }
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: @color-blue;
+        }
+
+        &.active {
+            background-color: @color-blue;
+        }
+    }
+
+    .stec-input-text-wrapper {
+        border-radius: 0;
+        width        : 100%;
+
+        input {
+
+            &[type="text"] {
+                background-color: #555555 !important;
+                color           : #fff;
+            }
+
+            color                     : #fff;
+            border-top-left-radius    : var(--stec-corner-smoothing) !important;
+            border-top-right-radius   : var(--stec-corner-smoothing) !important;
+            border-bottom-left-radius : 0 !important;
+            border-bottom-right-radius: 0 !important;
+
+            &::placeholder {
+                color: #ccc;
+            }
+        }
+    }
+}
+
+
+.mobile {
+    .stec-side-navigation {
+
+        max-width: 50px;
+
+        .stec-side-navigation-item {
+            padding   : 16px 0;
+            width     : 50px;
+            text-align: center;
+
+            i {
+                margin: 0;
+            }
+
+            span,
+            stec-span {
+                display: none;
+            }
+        }
+
+        .stec-input-text-wrapper {
+
+            &:focus-within,
+            &:active,
+            &:target,
+            &:focus {
+                width     : 300px !important;
+                transition: width 0.4s @easeOutExpo;
+
+                input {
+                    border-bottom-right-radius: var(--stec-corner-smoothing) !important;
+                }
+            }
+        }
+    }
+}

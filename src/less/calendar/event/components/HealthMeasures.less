@@ -1,0 +1,73 @@
+.stec-event-health-measures {
+    @blue           : #0093d0;
+    width           : 100%;
+    display         : inline-block;
+    background-color: @blue;
+    padding         : 20px;
+    box-sizing      : border-box;
+    border-radius   : var(--stec-corner-smoothing);
+
+    .stec-event-health-measures-top {
+
+        .flexbox(flex-start, center);
+        width: 100%;
+
+        .stec-event-health-measures-icon {
+            color       : #ffffff;
+            font-size   : 30px;
+            margin-right: 10px;
+        }
+
+        .stec-event-health-measures-title {
+            font-size  : 20px;
+            color      : #ffffff;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+    }
+
+
+    .stec-event-health-measures-measure {
+        .inlineFlexbox(flex-start, flex-start);
+        width      : 100%;
+        margin-top : 20px;
+        color      : #ffffff;
+        font-size  : 16px;
+        line-height: 1.5;
+
+        i {
+            min-width   : 30px;
+            text-align  : center;
+            font-size   : 18px;
+            color       : #ffffff;
+            margin-right: 10px;
+        }
+
+        span,
+        stec-span {
+            line-height: 1.5;
+        }
+    }
+}
+
+.mobile {
+    .stec-event-health-measures {
+        .stec-event-health-measures-top {
+            display: block;
+
+            .stec-event-health-measures-icon {
+                width     : 100%;
+                display   : inline-block;
+                font-size : 50px;
+                text-align: center;
+            }
+
+            .stec-event-health-measures-title {
+                width     : 100%;
+                display   : inline-block;
+                text-align: center;
+                margin    : 20px auto;
+            }
+        }
+    }
+}

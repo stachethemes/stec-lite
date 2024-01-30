@@ -1,0 +1,36 @@
+.stec-top {
+    width        : 100%;
+    margin-bottom: 5px;
+    position     : relative;
+    z-index      : 100;
+    float        : left;
+
+    .stec-top-flex {
+        position: relative;
+        z-index : 100;
+        .flexbox(space-between);
+    }
+}
+
+.stec-top-menu-datepicker-mobile {
+    position             : relative;
+    z-index              : 99;
+    margin-top           : 5px;
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+    >.stec-top-menu-button:last-child,
+    >.stec-top-menu-button:first-child {
+        min-width: 60px !important;
+    }
+
+    >.stec-top-menu-button:first-child {
+        margin-left: 0;
+    }
+
+    &.stec-top-menu-datepicker-mobile-no-datepicker {
+        .stec-top-menu-button {
+            width: 100%;
+        }
+    }
+}

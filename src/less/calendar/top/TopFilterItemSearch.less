@@ -1,0 +1,58 @@
+.stec-top-filter {
+
+    .stec-top-filter-item-search {
+        display: none;
+    }
+
+    &.active {
+
+        .stec-top-filter-item-search {
+            display: block;
+
+            &:last-child {
+                .stec-top-search-menu-input-wrapper {
+                    border-bottom-left-radius : var(--stec-corner-smoothing);
+                    border-bottom-right-radius: var(--stec-corner-smoothing);
+                }
+            }
+
+            .stec-top-search-menu-input-wrapper {
+                border-radius   : 0;
+                background-color: var(--stec-top-menu-bg-active-secondary);
+                position        : relative;
+                z-index         : 0;
+                overflow        : hidden;
+
+                // darken filter search
+                &:after {
+                    content         : '';
+                    position        : absolute;
+                    width           : 100%;
+                    height          : 100%;
+                    left            : 0;
+                    top             : 0;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    z-index         : -1;
+                }
+
+                stec-span,
+                span {
+                    color: var(--stec-top-menu-color-active);
+                }
+
+                .stec-top-menu-search-input {
+
+                    padding: 0;
+
+                    &::placeholder {
+                        color: var(--stec-top-menu-color-active);
+                    }
+
+                    color: var(--stec-top-menu-color-active);
+                }
+
+            }
+        }
+    }
+
+}

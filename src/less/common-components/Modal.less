@@ -1,0 +1,78 @@
+.stec-modal-is-open {
+    overflow: hidden !important;
+}
+
+.stec-modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position  : fixed;
+    width     : 100%;
+    height    : 100%;
+    left      : 0;
+    top       : 0;
+    overflow  : auto;
+    z-index   : 100000;
+    .miniScrollBar(#202020);
+    backdrop-filter: blur(5px);
+}
+
+.stec-modal-close {
+    position: fixed;
+    top     : 7px;
+    right   : 7px;
+    .box(50px);
+    background-color: #202020;
+    font-size       : 16px;
+    color           : #fff;
+    cursor          : pointer;
+    text-align      : center;
+    line-height     : 50px;
+    border-radius   : var(--stec-corner-smoothing);
+    z-index         : 100;
+
+    &:hover {
+        background-color: @color-red;
+    }
+}
+
+.stec-modal {
+    font-family      : var(--stec-font-general);
+    position         : absolute;
+    margin-left      : auto;
+    margin-right     : auto;
+    left             : 0;
+    right            : 0;
+    top              : 0;
+    border-radius    : var(--stec-corner-smoothing);
+    width            : ~'calc(100% - 20px)';
+    max-width        : 960px;
+    outline          : none;
+    margin-top       : 100px;
+    // padding-bottom: 100px;
+}
+
+.stec-modal-content {
+    animation-name           : stec-modal-content-animation;
+    animation-duration       : 0.5s;
+    animation-timing-function: @easeOutExpo;
+    animation-fill-mode      : forwards;
+    animation-iteration-count: 1;
+    transform-origin         : top center;
+}
+
+.stec-modal-after-content {
+    height  : 100px;
+    width   : 100%;
+    overflow: hidden;
+}
+
+@keyframes stec-modal-content-animation {
+    0% {
+        opacity  : 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: scale(1);
+    }
+}

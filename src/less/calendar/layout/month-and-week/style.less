@@ -1,0 +1,17 @@
+@import '@Stec/LESS/helpers.less';
+@import '@Stec/LESS/variables.less';
+@import './CalendarWeekLabels.less';
+@import './CalendarWeekDayLabel.less';
+@import './CalendarCell.less';
+@import './CalendarCellEvent.less';
+@import './CalendarCellEvents.less';
+@import './EventTooltip.less';
+@import '@Stec/LESS/calendar/common/EventCounterSmall.less';
+
+.stec-layout-week,
+.stec-layout-month {
+    width                : ~'calc(100% + 1px)';
+    display              : grid;
+    grid-gap             : 1px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}

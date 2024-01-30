@@ -1,0 +1,44 @@
+.stec-top-menu-button {
+    .noselect;
+    background-color: var(--stec-top-menu-bg);
+    color           : var(--stec-top-menu-color);
+    font-size       : var(--stec-top-font-size);
+    height          : 38px;
+    line-height     : 38px;
+    min-width       : 46px;
+    text-align      : center;
+    padding         : 0 15px;
+    cursor          : pointer;
+    margin-left     : 1px;
+    box-sizing      : border-box;
+    white-space     : nowrap;
+
+    &.active,
+    &:hover {
+        background-color: var(--stec-top-menu-bg-active-primary);
+        color           : var(--stec-top-menu-color-active);
+    }
+
+    i {}
+
+    &:first-child {
+        border-top-left-radius   : var(--stec-corner-smoothing);
+        border-bottom-left-radius: var(--stec-corner-smoothing);
+    }
+
+    &:last-child {
+        border-top-right-radius   : var(--stec-corner-smoothing);
+        border-bottom-right-radius: var(--stec-corner-smoothing);
+    }
+
+}
+
+.mobile {
+    .stec-top-menu-button {
+        min-width  : 42px;
+        text-align : center;
+        padding    : 0 12px;
+        height     : 42px;
+        line-height: 42px;
+    }
+}

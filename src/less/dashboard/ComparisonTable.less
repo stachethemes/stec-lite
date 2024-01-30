@@ -1,0 +1,153 @@
+.stec-comparison-table {
+    background-color: #fff;
+    padding         : 20px;
+    box-sizing      : border-box;
+    border-radius   : 3px;
+
+    &-header {
+
+        display              : grid;
+        grid-template-columns: 1fr 150px 150px;
+        gap                  : 10px;
+        margin-bottom        : 20px;
+        padding-bottom       : 20px;
+        border-bottom        : 1px solid rgba(0, 0, 0, .1);
+
+        &-title {
+            font-size  : 18px;
+            font-weight: bold;
+            color      : #454850;
+        }
+
+        &-item {
+            text-align : center;
+            font-size  : 20px;
+            font-weight: bold;
+
+            span,
+            stec-span {
+                &:first-child {
+                }
+
+                &:last-child {
+                    color      : @color-red;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    &-body {
+
+        &-item {
+
+            display              : grid;
+            grid-template-columns: 1fr 150px 150px;
+            gap                  : 10px;
+
+            margin-bottom : 20px;
+            padding-bottom: 20px;
+            border-bottom : 1px solid rgba(0, 0, 0, .1);
+
+            &-title {
+                font-size    : 20px;
+                font-weight  : bold;
+                margin-bottom: 10px;
+                color        : #454850;
+            }
+
+            &-desc {
+                p {
+                    font-size  : 16px;
+                    font-weight: normal;
+                    line-height: 1.6;
+                    margin     : 0;
+                    padding    : 0;
+                    color      : #545454;
+                }
+            }
+
+            &-value {
+                text-align: center;
+                .flexbox(center, center);
+
+                i {
+                    font-size: 24px;
+                }
+
+                .fa-check {
+                    color: @color-green;
+                }
+
+                .fa-times {
+                    color: @color-red;
+                }
+            }
+        }
+
+
+    }
+
+    &-footer {
+        display              : grid;
+        grid-template-columns: 1fr 150px 150px;
+        gap                  : 10px;
+
+        &-item {
+            text-align: center;
+        }
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .stec-comparison-table {
+
+        &-header {
+
+            grid-template-columns: 1fr 100px 50px;
+
+            &-title {
+                font-size: 16px;
+            }
+
+            &-item {
+                font-size: 16px;
+            }
+
+        }
+
+        &-body {
+
+            &-item {
+
+                grid-template-columns: 1fr 50px 50px;
+
+                &-title {
+                    font-size: 16px;
+                }
+
+                &-desc {
+                    p {
+                        font-size: 14px;
+                    }
+                }
+
+                &-value {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+        }
+
+        &-footer {
+            .stec-button-disabled {
+                display: none;
+            }
+        }
+
+    }
+}

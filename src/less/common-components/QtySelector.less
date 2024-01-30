@@ -1,0 +1,47 @@
+.stec-qty-selector {
+    display   : inline-block;
+    position  : relative;
+    width     : 100%;
+    max-width : 400px;
+    min-width : 75px;
+    max-height: 42px;
+
+    i {
+        width      : 38px;
+        height     : 42px;
+        line-height: 42px;
+        position   : absolute;
+        font-size  : 12px;
+        top        : 0;
+        cursor     : pointer;
+        color      : #525252;
+        text-align : center;
+
+        .noselect;
+
+        &:first-child {
+            left: 0;
+        }
+
+        &:last-child {
+            right: 0;
+        }
+
+        &:hover {
+            color: @color-red;
+        }
+    }
+
+    input[type="text"] {
+        box-sizing      : border-box;
+        width           : 100%;
+        padding         : 0 30px;
+        height          : 42px;
+        border          : 1px solid rgba(0, 0, 0, 0.07) !important;
+        background-color: #f8f8f8 !important;
+        border-radius   : var(--stec-corner-smoothing) !important;
+        text-align      : center;
+        color           : #525252;
+    }
+
+}

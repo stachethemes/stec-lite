@@ -1,0 +1,120 @@
+.stec-top-scroll-item-style() {
+    box-sizing      : border-box;
+    width           : 100%;
+    text-align      : center;
+    font-size       : var(--stec-top-font-size);
+    height          : 38px;
+    line-height     : 38px;
+    background-color: var(--stec-top-menu-bg-active-primary);
+    color           : var(--stec-top-menu-color-active);
+
+    &.active,
+    &:hover {
+        background-color: var(--stec-top-menu-bg-active-secondary);
+        color           : var(--stec-top-menu-color-active);
+    }
+}
+
+.stec-top-scroll-menu-month {
+    min-width: 90px;
+}
+
+.stec-top-scroll-menu {
+    .noselect;
+    position: relative;
+    width   : 100%;
+
+    &:hover {
+        .stec-top-scroll-menu-dropdown {
+            display: block;
+        }
+    }
+
+    .stec-top-scroll-menu-control {
+        .stec-top-scroll-item-style;
+    }
+
+
+    &:not(:last-child):not(:first-child) {
+        .stec-top-menu-button {
+            border-radius: 0;
+        }
+    }
+
+    &:first-child {
+        .stec-top-menu-button {
+            border-top-right-radius   : 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .stec-top-scroll-menu-control-up {
+            border-top-left-radius: var(--stec-corner-smoothing);
+        }
+    }
+
+    &:last-child {
+        .stec-top-menu-button {
+            border-top-right-radius   : var(--stec-corner-smoothing);
+            border-bottom-right-radius: var(--stec-corner-smoothing);
+        }
+
+
+        &:not(:first-child) {
+            .stec-top-menu-button {
+                border-top-left-radius   : 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        .stec-top-scroll-menu-control-up {
+            border-top-right-radius: var(--stec-corner-smoothing);
+        }
+    }
+
+    .stec-top-scroll-menu-control-down {
+        border-bottom-left-radius : var(--stec-corner-smoothing);
+        border-bottom-right-radius: var(--stec-corner-smoothing);
+    }
+
+    .stec-top-scroll-menu-dropdown {
+        display : none;
+        position: absolute;
+        width   : 100%;
+        top     : 0;
+        cursor  : pointer;
+
+        i {}
+    }
+
+    .stec-top-scroll-menu-dropdown-list {
+        .stec-top-scroll-menu-dropdown-option {
+            .stec-top-scroll-item-style;
+            white-space: nowrap;
+            overflow   : hidden;
+        }
+
+        max-height: 266px; // 7 * 38
+        overflow-x: hidden;
+
+        .hiddenScrollBar;
+    }
+
+    .stec-top-menu-button-label-short {
+        display: none;
+    }
+}
+
+.stec.mobile {
+    .stec-top-scroll-menu-month {
+        min-width: 60px;
+    }
+
+    .stec-top-scroll-menu-dropdown-option {
+        height: 42px;
+        line-height: 42px;
+    }
+
+    .stec-top-scroll-menu-dropdown-list {
+        max-height: 294px; // 7 * 42
+    }
+}

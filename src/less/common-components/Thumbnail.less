@@ -1,0 +1,75 @@
+.stec-thumbnail {
+    .noselect;
+    @size: 52px;
+    .box(@size);
+    min-width    : @size;
+    border-radius: 3px;
+    overflow     : hidden;
+    box-sizing   : content-box;
+
+    .stec-thumbnail-icon {
+        .flexbox(center, center);
+        height   : inherit;
+        width    : inherit;
+        font-size: 28px;
+    }
+
+    .stec-thumbnail-date {
+        height: inherit;
+        width : inherit;
+
+        stec-span,
+        span {
+            display    : inline-block;
+            line-height: 1;
+        }
+
+        .stec-thumbnail-date-day {
+            width      : 100%;
+            text-align : center;
+            font-size  : 24px;
+            position   : relative;
+            top        : 4px;
+            margin-top : 4px;
+            font-weight: bold;
+        }
+
+        .stec-thumbnail-date-month {
+            width         : 100%;
+            text-align    : center;
+            font-size     : 10px;
+            text-transform: uppercase;
+        }
+    }
+
+    .stec-thumbnail-image {
+        height             : inherit;
+        width              : inherit;
+        background-size    : cover;
+        background-position: center;
+    }
+
+    &.small {
+        @small-size: 34px;
+        .box(@small-size);
+        min-width: @small-size;
+
+        .stec-thumbnail-icon {
+            font-size: 16px;
+        }
+
+        .stec-thumbnail-date {
+
+            .stec-thumbnail-date-day {
+                top      : 0;
+                font-size: 16px;
+            }
+
+            .stec-thumbnail-date-month {
+                position      : relative;
+                top           : -5px;
+                text-transform: none;
+            }
+        }
+    }
+}

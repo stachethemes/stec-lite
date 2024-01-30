@@ -1,0 +1,62 @@
+.stec-event-counter {
+
+    .stec-event-counter-status {
+        .flexbox;
+        margin-bottom: 10px;
+
+        stec-span,
+        span {
+            padding         : 4px 8px;
+            font-size       : 10px;
+            background-color: rgba(200, 200, 200, 0.5);
+            text-transform  : uppercase;
+            border-radius   : var(--stec-corner-smoothing);
+            margin          : 0 2px;
+            color           : #fff;
+
+            &.stec-event-counter-status-0 {
+                background-color: @color-green;
+            }
+
+            &.stec-event-counter-status-1 {
+                background-color: @color-yellow;
+            }
+
+            &.stec-event-counter-status-2 {
+                background-color: @color-red;
+            }
+        }
+
+    }
+
+    .stec-event-counter-countdown {
+
+        .flexbox;
+
+        .stec-event-counter-countdown-cell {
+
+            text-align: center;
+
+            &:not(:last-child) {
+                border-right: 1px solid var(--stec-event-counter-separator-color);
+            }
+
+            stec-span,
+            span {
+                display: inline-block;
+                width  : 100%;
+            }
+
+            .stec-event-counter-countdown-cell-num {
+                font-size  : 40px;
+                font-weight: bold;
+            }
+
+            .stec-event-counter-countdown-cell-label {
+                font-size : 14px;
+                margin-top: 5px;
+            }
+        }
+    }
+
+}

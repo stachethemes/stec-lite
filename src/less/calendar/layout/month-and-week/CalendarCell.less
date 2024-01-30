@@ -1,0 +1,88 @@
+.stec-calendar-cell {
+    position  : relative;
+    background: var(--stec-mw-cell-bg);
+    cursor    : pointer;
+    .noselect;
+
+    &.stec-calendar-cell-is-diff-month {
+        background: var(--stec-mw-cell-diff-bg);
+
+        &:not(.stec-calendar-cell-is-today) {
+            .stec-calendar-cell-label {
+                color: var(--stec-mw-cell-diff-color);
+            }
+        }
+    }
+
+    &.stec-calendar-cell-is-active {
+
+        background: var(--stec-mw-cell-bg-active);
+
+        &:not(.stec-calendar-cell-is-today) {
+            .stec-calendar-cell-label {
+                color: var(--stec-mw-cell-color-active);
+            }
+        }
+
+    }
+
+    &:not(.stec-calendar-cell-is-active):hover {
+
+        background-color: var(--stec-mw-cell-bg-hover);
+
+        &:not(.stec-calendar-cell-is-today) {
+            .stec-calendar-cell-label {
+                color: var(--stec-mw-cell-color-hover);
+            }
+        }
+
+    }
+
+    &.stec-calendar-cell-bottom-left-border {
+        border-bottom-left-radius: var(--stec-corner-smoothing);
+    }
+
+    &.stec-calendar-cell-bottom-right-border {
+        border-bottom-right-radius: var(--stec-corner-smoothing);
+    }
+}
+
+.stec-calendar-cell-label {
+    position   : absolute;
+    top        : 10px;
+    left       : 10px;
+    font-size  : var(--stec-layout-month-week-cell-label-font-size);
+    color      : var(--stec-mw-cell-color);
+    font-weight: bold;
+    line-height: 1;
+
+}
+
+.stec-calendar-cell-is-today {
+
+    .stec-calendar-cell-label {
+        color           : var(--stec-mw-cell-today-color);
+        background-color: var(--stec-mw-cell-today-bg);
+        padding         : 5px;
+        box-sizing      : border-box;
+        border-radius   : var(--stec-corner-smoothing);
+        margin-top      : -5px;
+        margin-left     : -5px;
+        min-width       : 24px;
+        text-align      : center;
+    }
+
+}
+
+.stec-layout-week-fixed-style,
+.stec-layout-month-fixed-style {
+    .stec-calendar-cell {
+        .autoBox(100%);
+    }
+}
+
+.stec.mobile {
+    .stec-calendar-cell-label {
+        font-size: var(--stec-layout-month-week-cell-label-mobile-font-size);
+    }
+}

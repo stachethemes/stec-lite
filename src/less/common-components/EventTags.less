@@ -1,0 +1,79 @@
+.stec-tags-list {
+    .noselect;
+
+    stec-span,
+    span {
+        line-height  : 1;
+        position     : relative;
+        border-radius: var(--stec-corner-smoothing);
+        color        : #fff;
+        font-size    : 12px;
+        padding      : 4px 6px;
+        display      : inline-block;
+        margin-right : 5px;
+        cursor       : default;
+        margin-bottom: 4px;
+
+        &:hover {
+            z-index: 1000;
+        }
+    }
+
+    &.small {
+
+        stec-span,
+        span {
+            padding      : 2px 4px;
+            margin-right : 4px;
+            margin-bottom: 4px;
+            font-size    : 10px;
+        }
+
+        .stec-tag-live {
+            padding      : 2px 4px;
+            margin-right : 4px;
+            margin-bottom: 4px;
+            font-size    : 10px;
+        }
+    }
+}
+
+.stec-tag-live {
+    border-radius   : 3px;
+    color           : #fff;
+    font-size       : 12px;
+    padding         : 4px 6px;
+    display         : inline-block;
+    margin-right    : 5px;
+    cursor          : default;
+    background-color: #ff0000;
+    line-height     : 1;
+    .inlineFlexbox;
+
+    i {
+        animation-name           : stec-tag-live;
+        animation-play-state     : running;
+        animation-duration       : 1.4s;
+        animation-iteration-count: infinite;
+        animation-fill-mode      : forwards;
+        animation-timing-function: linear;
+        font-size                : 6px;
+        margin-left              : 5px;
+        margin-right             : 0;
+    }
+}
+
+
+@keyframes stec-tag-live {
+    0% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: .5;
+    }
+}

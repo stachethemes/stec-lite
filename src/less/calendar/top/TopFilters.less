@@ -1,0 +1,22 @@
+.stec-top-menu-filters {
+
+    .stec-top-menu-button {
+        border-radius: var(--stec-corner-smoothing);
+    }
+
+    &:not(:first-child) {
+
+        .stec-top-menu-button {
+            border-top-left-radius   : 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    &:not(:last-child) {
+        .stec-top-menu-button {
+            border-top-right-radius   : 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+}

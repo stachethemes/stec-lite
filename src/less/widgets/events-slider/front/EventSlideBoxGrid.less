@@ -1,0 +1,148 @@
+.stec-slide-boxgrid {
+    background-color: rgba(0, 0, 0, 0);
+    box-sizing      : border-box;
+    position        : relative;
+    height          : inherit;
+    width           : inherit;
+    cursor          : pointer;
+    overflow        : hidden;
+
+    .stec-slide-boxgrid-container {
+        position: absolute;
+        left    : 0;
+        top     : 0;
+        .box(100%);
+        padding   : 10px;
+        z-index   : 1;
+        box-sizing: border-box;
+
+        .stec-slide-boxgrid-event-top {
+
+            .noselect;
+
+            .flexbox(flex-start, flex-start);
+
+            stec-span,
+            span {
+                color      : var(--stec-boxgrid-text-color);
+                line-height: 1;
+            }
+
+            .stec-slide-boxgrid-event-icon {
+                i {
+                    font-size   : 28px;
+                    margin-right: 10px;
+                    color       : var(--stec-boxgrid-text-color);
+                    line-height : 1;
+                }
+            }
+
+            .stec-slide-boxgrid-event-date {
+
+                margin-top: -4px;
+            }
+
+            .stec-slide-boxgrid-event-date-day {
+                font-size     : 32px;
+                font-weight   : bold;
+                vertical-align: text-bottom;
+            }
+
+            .stec-slide-boxgrid-event-date-month-and-year {
+                vertical-align: text-bottom;
+                margin-left: 4px;
+
+                .stec-slide-boxgrid-event-date-month {
+                    font-size     : 12px;
+                    font-weight   : bold;
+                    text-transform: uppercase;
+                }
+
+                .stec-slide-boxgrid-event-date-year {
+                    font-size     : 10px;
+                    font-weight   : bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .stec-slide-boxgrid-event-date-daylabel {
+                font-size: 12px;
+            }
+
+        }
+    }
+
+    .stec-slide-boxgrid-event-content {
+        box-sizing: border-box;
+        overflow  : hidden;
+        left      : 0;
+        position  : absolute;
+        width     : 100%;
+        bottom    : 0;
+        padding   : 10px;
+
+        .stec-slide-boxgrid-event-title {
+            width      : 100%;
+            font-size  : 24px;
+            margin     : 10px 0;
+            color      : var(--stec-boxgrid-title-color);
+            line-height: 1.2;
+            display    : inline-block;
+        }
+
+        .stec-slide-boxgrid-event-description {
+            display    : inline-block;
+            width      : 100%;
+            font-size  : 14px;
+            color      : var(--stec-boxgrid-text-color);
+            line-height: 1.5;
+
+            p {
+                font-size: 14px;
+                margin   : 0;
+            }
+        }
+    }
+
+
+    .stec-slide-boxgrid-background-image {
+        height             : 100%;
+        width              : 100%;
+        background-size    : cover;
+        background-position: center;
+        background-repeat  : no-repeat;
+        position           : absolute;
+        left               : 0;
+        top                : 0;
+        z-index            : 0;
+        overflow           : hidden;
+
+        &:after {
+            .box(100%);
+            background-color: rgba(0, 0, 0, 0.5);
+            content         : '';
+            position        : absolute;
+            left            : 0;
+            top             : 0;
+            transition      : background-color .25s ease;
+        }
+
+    }
+
+    &:hover {
+        .stec-slide-boxgrid-background-image {
+            &:after {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        }
+    }
+
+    .stec-slide-boxgrid-link {
+        .box(100%);
+        position: absolute;
+        left    : 0;
+        top     : 0;
+        z-index : 2;
+    }
+
+}

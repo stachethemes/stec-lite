@@ -1,0 +1,134 @@
+.stec-media-carousel {
+    width     : 100%;
+    height    : 0;
+    box-sizing: content-box;
+    position  : relative;
+
+    &:not(.stec-media-carousel-images-ready) {
+        background-color: #ECEBEB;
+    }
+}
+
+.no-thumbs {
+    .stec-media-carousel-images {
+        width: 100%;
+    }
+}
+
+.stec-media-carousel-images {
+    top             : 0;
+    right           : 0;
+    position        : absolute;
+    width           : calc(100% - 85px);
+    height          : 100%;
+    border-radius   : var(--stec-corner-smoothing);
+    overflow        : hidden;
+}
+
+.stec-media-carousel-image {
+    position           : absolute;
+    width              : 100%;
+    height             : inherit;
+    background-size    : cover;
+    background-position: 50% 50%;
+    opacity            : 0;
+    transition         : opacity .5s linear, background-position .5s ease;
+    cursor             : zoom-in;
+
+    &.active {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+.stec-media-carousel-thumbnails {
+    position     : absolute;
+    left         : 0;
+    top          : 0;
+    border-radius: var(--stec-corner-smoothing);
+    float        : left;
+    min-width    : 80px;
+    width        : 80px;
+    height       : 100%;
+    white-space  : nowrap;
+    overflow-x   : hidden;
+    overflow-y   : auto;
+    .hiddenScrollBar();
+    scroll-behavior: smooth;
+}
+
+.stec-media-carousel-thumbnail {
+    background-position: 50% 50%;
+    cursor             : pointer;
+    position           : relative;
+    background-size    : cover;
+    .box(80px);
+    border-radius: var(--stec-corner-smoothing);
+    overflow     : hidden;
+
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    &:after {
+        position        : absolute;
+        z-index         : 1;
+        content         : '';
+        left            : 0;
+        top             : 0;
+        width           : 100%;
+        height          : 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition      : background-color .5s linear;
+    }
+
+    &:hover {
+        &:after {
+            transition      : background-color .2s linear;
+            background-color: rgba(0, 0, 0, 0);
+        }
+    }
+
+    &.active {
+        &:after {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    }
+}
+
+.mobile {
+
+    .stec-media-carousel {
+
+        position: relative;
+
+        &:not(.no-thumbs) {
+            margin-bottom: 90px;
+        }
+
+    }
+
+    .stec-media-carousel-images {
+        width: 100%;
+    }
+
+    .stec-media-carousel-thumbnails {
+        position  : absolute;
+        left      : 0;
+        top       : calc(100% + 5px);
+        width     : 100%;
+        height    : 80px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        z-index   : 100;
+    }
+
+    .stec-media-carousel-thumbnail {
+        display      : inline-block;
+        margin-bottom: 0;
+
+        &:not(:first-child) {
+            margin-left: 5px;
+        }
+    }
+}

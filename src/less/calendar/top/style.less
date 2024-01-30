@@ -1,0 +1,58 @@
+@import './Top.less';
+@import './TopMainMenu.less';
+@import './TopScrollMenu.less';
+@import './TopLayoutMenu.less';
+@import './TopLayoutDropdownMenu.less';
+@import './TopButton.less';
+@import './TopSearch.less';
+@import './TopSearchInput.less';
+@import './TopSearchMenu.less';
+@import './TopSearchResult.less';
+@import './TopSearchResults.less';
+@import './TopFilters.less';
+@import './TopFilter.less';
+@import './TopFilterItems.less';
+@import './TopFilterItem.less';
+@import './TopFilterItemSearch.less';
+@import './TopFiltersMenu.less';
+@import './TopFiltersInline.less';
+
+.stec-calendar-dashboard-button {
+    width        : 100%;
+    display      : block;
+    border-radius: var(--stec-corner-smoothing);
+    height       : 38px;
+    line-height  : 38px;
+    padding      : 0 10px;
+    box-sizing   : border-box;
+    cursor       : pointer;
+
+    background-color: var(--stec-top-menu-bg);
+    color           : var(--stec-top-menu-color);
+    font-size       : var(--stec-top-font-size);
+
+    &:not(:first-child) {
+        margin-top: 5px;
+
+    }
+
+    &.active,
+    &:hover {
+        background-color: var(--stec-top-menu-bg-active-primary);
+        color           : var(--stec-top-menu-color-active);
+    }
+
+    i {
+        margin-right: 5px;
+    }
+
+    &:first-child {
+        border-top-left-radius   : var(--stec-corner-smoothing);
+        border-bottom-left-radius: var(--stec-corner-smoothing);
+    }
+
+    &:last-child {
+        border-top-right-radius   : var(--stec-corner-smoothing);
+        border-bottom-right-radius: var(--stec-corner-smoothing);
+    }
+}

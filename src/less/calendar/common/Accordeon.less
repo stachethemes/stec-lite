@@ -1,0 +1,42 @@
+.stec-accordeon {
+    animation-name           : stec-accordeon;
+    animation-duration       : .27s;
+    animation-timing-function: linear;
+    animation-fill-mode      : forwards;
+    animation-play-state     : running;
+    animation-iteration-count: 1;
+    animation-direction      : normal;
+    transform-origin         : top;
+    overflow                 : hidden;
+    transform                : rotateX(-90deg);
+    max-height               : 0;
+    width                    : 100%;
+
+    &:not(:first-child) {
+        margin-top: 1px;
+    }
+
+    &.stec-accordeon-no-animаtion {
+        animation : none !important;
+        transform : none !important;
+        max-height: none !important;
+    }
+}
+
+@keyframes stec-accordeon {
+    0% {
+        transform : rotateX(-90deg);
+        filter    : brightness(0.5);
+        max-height: 0;
+    }
+
+    99% {
+        max-height: 142px;
+    }
+
+    100% {
+        transform : rotateX(-0);
+        filter    : brightness(1);
+        max-height: inherit;
+    }
+}

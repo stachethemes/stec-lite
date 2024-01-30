@@ -1,0 +1,35 @@
+@import '@Stec/LESS/helpers.less';
+@import '@Stec/LESS/variables.less';
+@import '@Stec/LESS/web-components/all.less';
+@import '@Stec/LESS/common-components/EventTags.less';
+@import '@Stec/LESS/common-components/Thumbnail.less';
+@import './EventPreview.less';
+
+.stec-widget-events-list {
+    font-family     : var(--stec-font-general);
+    background-color: #fff;
+    line-height     : 1;
+    padding         : 16px;
+    box-sizing      : border-box;
+
+    .stec-skeleton {
+        padding-bottom: 10px;
+        background    : '#fff';
+        height        : 76px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        }
+    }
+
+    .stec-widget-events-list-title {
+        font-size     : 16px;
+        font-weight   : bold;
+        margin-bottom : 10px;
+        color         : #434a54;
+        border-bottom : 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 10px;
+
+    }
+
+}

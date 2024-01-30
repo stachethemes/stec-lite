@@ -1,0 +1,102 @@
+.stec-loader {
+
+    text-align: center;
+
+    i {
+        font-size: 36px;
+        color    : #454850;
+        animation: stec-loader-animation 2s infinite linear;
+        display  : inline-block;
+    }
+
+    stec-span,
+    span {
+        display    : block;
+        margin-top : 10px;
+        font-size  : 12px;
+        color      : #545454;
+        font-weight: bold;
+    }
+
+    .stec-loader-calendar-sprite {
+        background-position      : 0 0;
+        background-image         : url('../../images/stec-calendar-preloader-sprite.png');
+        width                    : 50px;
+        height                   : 48px;
+        overflow                 : hidden;
+        animation-name           : stec-loader-calendar-sprite-animation;
+        animation-duration       : 2s;
+        animation-play-state     : running;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(1, end);
+        margin                   : 0 auto;
+    }
+
+
+    &.stec-loader-small-wide,
+    &.stec-loader-small {
+        .inlineFlexbox();
+        width          : auto;
+        justify-content: flex-start;
+        box-sizing     : border-box;
+
+        i {
+            margin-left: 0;
+            font-size  : 16px;
+            color      : #545454;
+        }
+
+        stec-span,
+        span {
+            margin-top    : 0;
+            margin-left   : 5px;
+            text-transform: none;
+            font-weight   : bold
+        }
+    }
+
+    &.stec-loader-small-wide {
+        width: 100%;
+    }
+}
+
+@keyframes stec-loader-animation {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes stec-loader-calendar-sprite-animation {
+
+    0% {
+        background-position: 0 0;
+    }
+
+    15% {
+        background-position: -50px 0;
+    }
+
+    20% {
+        background-position: -100px 0;
+    }
+
+    45% {
+        background-position: -150px 0;
+    }
+
+    60% {
+        background-position: -200px 0;
+    }
+
+    75% {
+        background-position: -250px 0;
+    }
+
+    90% {
+        background-position: -300px 0;
+    }
+}

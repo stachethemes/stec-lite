@@ -1,0 +1,28 @@
+.stec-pagination {
+    width     : 100%;
+    display   : inline-block;
+    margin-top: 20px;
+
+    stec-span,
+    span {
+        height          : 30px;
+        min-width       : 30px;
+        padding         : 0 12px;
+        box-sizing      : border-box;
+        text-align      : center;
+        line-height     : 30px;
+        background-color: #1d2327;
+        color           : #fff;
+        display         : inline-block;
+        margin          : 2px;
+        font-size       : 12px;
+        cursor          : pointer;
+        border-radius   : 3px;
+
+        &:hover,
+        &.active {
+            background-color: #ff5f5f;
+            color           : #fff;
+        }
+    }
+}

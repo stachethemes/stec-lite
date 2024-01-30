@@ -1,0 +1,201 @@
+.stec-event-tooltip {
+
+    position                 : absolute;
+    background-color         : var(--stec-grid-bg);
+    border-radius            : var(--stec-corner-smoothing);
+    width                    : 300px;
+    left                     : ~'calc(100% + 4px)';
+    top                      : -20px;
+    animation-name           : stec-event-tooltip-show-right-to-left;
+    animation-duration       : .25s;
+    animation-play-state     : running;
+    animation-iteration-count: 1;
+    animation-direction      : normal;
+    animation-fill-mode      : forwards;
+
+    &:before {
+        position: absolute;
+        content : '';
+        .box(10px);
+        background-color: var(--stec-grid-bg);
+        left            : -4px;
+        top             : 25px;
+        transform       : rotate(45deg);
+        z-index         : 0;
+    }
+
+    .stec-event-tooltip-container-wrapper {
+        padding   : 20px;
+        box-sizing: border-box;
+    }
+
+    .stec-event-tooltip-container {
+        border-radius: var(--stec-corner-smoothing);
+        border       : 1px solid rgba(0, 0, 0, 0.1);
+        height       : inherit;
+        width        : inherit;
+        box-sizing   : border-box;
+        position     : relative;
+    }
+
+    .stec-event-tooltip-title {
+        width     : 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size : var(--stec-layout-month-week-tooltip-title-font-size);
+        color     : var(--stec-grid-title-color);
+    }
+
+    .stec-event-tooltip-description {
+        width      : 100%;
+        text-align : center;
+        margin-top : 10px;
+        font-size  : var(--stec-layout-month-week-tooltip-font-size);
+        color      : var(--stec-grid-text-color);
+        line-height: 1.5;
+
+        p {
+            margin   : 0;
+            font-size: 14px;
+        }
+    }
+
+    .stec-event-tooltip-nfo {
+        width      : 100%;
+        border-top : 1px solid rgba(0, 0, 0, 0.1);
+        padding    : 15px 10px;
+        box-sizing : border-box;
+        line-height: 1.4;
+        font-size  : var(--stec-layout-month-week-tooltip-font-size);
+        color      : var(--stec-grid-text-color);
+        .inlineFlexbox(space-between, flex-start);
+
+        stec-span,
+        span {
+            width      : ~'calc(100% - 25px)';
+            display    : inline-block;
+            line-height: 1.4;
+        }
+
+        i {
+            line-height: 1.4;
+            min-width  : 25px;
+            text-align : center;
+        }
+    }
+
+    .stec-thumbnail {
+        margin: 0 auto;
+    }
+
+    &.stec-event-tooltip-has-image {
+
+        .stec-event-tooltip-container {
+            border-top             : none;
+            border-top-left-radius : 0;
+            border-top-right-radius: 0;
+        }
+
+        .stec-thumbnail {
+            position: absolute;
+            top     : -28px;
+            left    : ~'calc(50% - 27px)';
+            border  : 2px solid var(--stec-grid-bg);
+        }
+
+        .stec-tags-list {
+            position: absolute;
+            top     : 0;
+            left    : 0;
+        }
+    }
+
+    .stec-tags-list {
+        box-sizing: border-box;
+        padding   : 8px 8px 0px 8px;
+    }
+
+    .stec-event-counter-small {
+
+        .stec-event-counter-countdown-cell-num {
+            color: var(--stec-grid-title-color);
+        }
+
+        .stec-event-counter-countdown-cell-label {
+            color: var(--stec-grid-text-color);
+        }
+
+    }
+
+}
+
+.stec-event-tooltip-background-image {
+    height                 : 168px;
+    width                  : 100%;
+    background-size        : cover;
+    background-position    : center;
+    background-repeat      : no-repeat;
+    border-top-left-radius : var(--stec-corner-smoothing);
+    border-top-right-radius: var(--stec-corner-smoothing);
+    position               : relative;
+    z-index                : 0;
+}
+
+.stec-calendar-cell {
+
+    &:nth-child(7n),
+    &:nth-child(7n + 1),
+    &:nth-child(7n - 1) {
+
+        .stec-event-tooltip {
+
+            animation-name           : stec-event-tooltip-show-left-to-right;
+            animation-duration       : .25s;
+            animation-play-state     : running;
+            animation-iteration-count: 1;
+            animation-direction      : normal;
+            animation-fill-mode      : forwards;
+
+            left: -304px;
+
+            &:before {
+                left: ~'calc(100% - 6px)';
+            }
+        }
+    }
+
+
+    &:nth-child(n + 23) {
+        .stec-event-tooltip {
+            top   : auto;
+            bottom: -20px;
+
+            &:before {
+                top   : auto;
+                bottom: 25px;
+            }
+        }
+    }
+}
+
+@keyframes stec-event-tooltip-show-left-to-right {
+    0% {
+        opacity  : 0;
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes stec-event-tooltip-show-right-to-left {
+    0% {
+        opacity  : 0;
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

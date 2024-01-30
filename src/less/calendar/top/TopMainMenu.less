@@ -1,0 +1,31 @@
+.stec-top-main-menu {
+    align-items: center;
+    .flexbox(flex-start);
+
+    .stec-top-main-menu-section {
+        float: left;
+        width: 100%;
+        .flexbox(flex-start);
+
+        &:not(:first-child) {
+            margin-left: 5px;
+        }
+
+        >.stec-top-menu-button:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .stec-top-menu-today-icon,
+    .stec-top-menu-print-icon,
+    .stec-top-menu-search-icon,
+    .stec-top-menu-filter-icon {}
+
+    .stec-top-menu-today-label,
+    .stec-top-menu-print-label,
+    .stec-top-menu-filter-label,
+    .stec-top-menu-search-label {
+        display    : inline-block;
+        margin-left: 5px;
+    }
+}

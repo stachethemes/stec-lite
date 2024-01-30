@@ -1,0 +1,47 @@
+.stec-calendar-week-day-label {
+    color      : var(--stec-mw-legend-color);
+    font-size  : 12px;
+    width      : 100%;
+    padding    : 12px 10px;
+    box-sizing : border-box;
+    text-align : center;
+    line-height: 1;
+
+    &:not(:last-child) {
+        border-right: 1px solid var(--stec-layout-month-week-separator-color);
+    }
+
+    &.stec-calendar-week-day-label-today {
+        color   : var(--stec-mw-legend-today-color);
+        position: relative;
+        z-index : 0;
+
+        &:after {
+            width           : 100%;
+            height          : 100%;
+            content         : '';
+            position        : absolute;
+            left            : 0;
+            top             : 0;
+            background-color: var(--stec-mw-legend-today-bg);
+            z-index         : -1;
+        }
+    }
+
+    .stec-calendar-week-day-label-short {
+        display: none;
+    }
+}
+
+.mobile {
+
+    .stec-calendar-week-day-label {
+        .stec-calendar-week-day-label-full {
+            display: none;
+        }
+
+        .stec-calendar-week-day-label-short {
+            display: block;
+        }
+    }
+}

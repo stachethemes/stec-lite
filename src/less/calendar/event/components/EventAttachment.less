@@ -1,0 +1,80 @@
+.stec-attachments-list {
+
+    display: inline-block;
+    width  : 100%;
+
+    .stec-attachment {
+
+        &:first-child {
+            margin-top : 20px;
+            padding-top: 20px;
+            border-top : 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        &:not(:last-child) {
+            padding-bottom: 20px;
+            border-bottom : 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+    }
+
+    .stec-attachments-list-head {
+        width: 100%;
+        .flexbox(space-between, center);
+        cursor: pointer;
+
+        .stec-attachments-list-title {
+            font-weight: bold;
+            font-size  : 16px;
+            line-height: 1.2;
+            color      : var(--stec-ec-title-secondary-color);
+
+            i {
+                margin-right: 5px;
+            }
+
+        }
+
+        >i {
+            color: var(--stec-ec-button-toggle-color);
+
+            &:hover {
+                color: var(--stec-ec-button-toggle-color-hover);
+            }
+        }
+    }
+}
+
+.stec-attachment {
+    width: 100%;
+    .flexbox(space-between, center);
+
+    .stec-button {
+        margin-left: 30px;
+    }
+
+    a {
+        &:not(.stec-button) {
+
+            text-decoration: none;
+            font-weight    : normal;
+            font-size      : 14px;
+            line-height    : 1.2;
+            color          : var(--stec-ec-title-secondary-color);
+            text-overflow  : ellipsis;
+            overflow       : hidden;
+
+            &:hover {
+                color: var(--stec-a-hover-color);
+            }
+        }
+
+    }
+
+    i {
+        margin-right: 5px;
+    }
+}

@@ -1,0 +1,99 @@
+.stec-list-manager-item {
+    background-color: #fff;
+    width           : 100%;
+    padding         : 10px 12px;
+    box-sizing      : border-box;
+    border-radius   : 3px;
+    .flexbox(space-between, center);
+
+    >div,
+    >stec-div {
+        .flexbox(flex-start, center);
+
+        input[type="checkbox"],
+        stec-checkbox {
+            margin-right: 10px;
+        }
+
+        .stec-thumbnail {
+            margin-right: 10px;
+        }
+
+        .stec-list-manager-item-title {
+            font-size  : 14px;
+            font-weight: bold;
+            color      : #454850;
+            cursor     : pointer;
+        }
+
+        .stec-list-manager-item-description {
+            font-size  : 13px;
+            margin-top : 5px;
+            color      : #545454;
+            line-height: 1.2;
+        }
+
+        .stec-list-manager-item-prop {
+            font-size  : 13px;
+            margin-top : 5px;
+            color      : #545454;
+            line-height: 1.2;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .stec-list-manager-item-controls {
+        display: none;
+
+        .stec-button {
+
+            &:not(:first-child) {
+                margin-left: 6px;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: #202020;
+
+        .stec-list-manager-item-controls {
+            display: block;
+        }
+
+        .stec-list-manager-item-title,
+        .stec-list-manager-item-prop,
+        .stec-list-manager-item-description {
+            color: #fff;
+        }
+
+        .stec-list-manager-item-title:hover {
+            color: @color-blue + 30%;
+        }
+    }
+}
+
+.stec-dashboard.mobile {
+
+    .stec-list-manager-item {
+        display: block;
+
+        .stec-list-manager-item-controls {
+            display   : block;
+            text-align: right;
+
+            .stec-button {
+                margin-top: 6px;
+                padding  : 6px 10px;
+                font-size: 12px;
+            }
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+
+}

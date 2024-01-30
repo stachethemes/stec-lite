@@ -1,0 +1,176 @@
+.stec-dashboard-upsert-event-wrapper {
+
+    margin-top: 6px;
+    .flexbox(space-between, flex-start);
+
+    .stec-dashboard-upsert-event-component-container {
+        width: ~'calc(100% - 206px)';
+
+        >.stec-section {
+            min-height: 495px;
+        }
+    }
+}
+
+.stec-dashboard-event-upsert-attachment {
+    box-sizing   : border-box;
+    padding      : 14px;
+    border       : 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    .flexbox(space-between, center);
+    border-radius: 3px;
+
+    .stec-dashboard-event-upsert-attachment-url {
+        font-size    : 14px;
+        color        : #454850;
+        padding-right: 10px;
+        box-sizing   : border-box;
+    }
+
+    .stec-dashboard-event-upsert-attachment-remove {
+        font-size: 14px;
+        color    : #454850;
+        cursor   : pointer;
+
+        &:hover {
+            color: #ff5f5f;
+        }
+    }
+}
+
+.stec-dashboard-event-upsert-search-result-product-item {
+
+    .flexbox(flex-start, flex-start);
+    padding   : 10px;
+    box-sizing: border-box;
+    width     : 100%;
+    cursor    : default;
+
+    img {
+        width        : 60px;
+        height       : 60px;
+        border-radius: 3px;
+    }
+
+    .stec-dashboard-event-upsert-search-result-product-item-image {
+        margin-right: 10px;
+    }
+
+    .stec-dashboard-event-upsert-search-result-product-item-content {
+
+        .stec-dashboard-event-upsert-search-result-product-item-title {
+            font-weight: bold;
+            font-size  : 16px;
+            color      : #202020;
+        }
+
+        .stec-dashboard-event-upsert-search-result-product-item-price {
+            width    : 100%;
+            display  : inline-block;
+            font-size: 12px;
+            color    : #202020;
+        }
+
+        .stec-dashboard-event-upsert-search-result-product-item-in-stock {
+            width    : 100%;
+            display  : inline-block;
+            font-size: 12px;
+            color    : #202020;
+        }
+
+        .stec-button {
+            margin-top: 10px;
+            padding   : 8px;
+            float     : left;
+            font-size : 12px;
+        }
+    }
+}
+
+.stec-dashboard-event-upsert-product-list-item {
+    padding        : 10px 0;
+    box-sizing     : border-box;
+    width          : 100%;
+    cursor         : default;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    border-bottom  : 1px solid rgba(0, 0, 0, 0.1);
+
+    .stec-dashboard-event-upsert-product-list-item-main {
+        .flexbox(flex-start, flex-start);
+
+        .stec-dashboard-event-upsert-product-list-item-image {
+            img {
+                width        : 60px;
+                height       : 60px;
+                border-radius: 3px;
+            }
+
+            margin-right: 10px;
+        }
+
+        .stec-dashboard-event-upsert-product-list-item-content {
+
+            .stec-dashboard-event-upsert-product-list-item-title {
+                font-weight: bold;
+                font-size  : 16px;
+                color      : #202020;
+            }
+
+            .stec-dashboard-event-upsert-product-list-item-price {
+                width    : 100%;
+                display  : inline-block;
+                font-size: 12px;
+                color    : #202020;
+            }
+
+            .stec-dashboard-event-upsert-product-list-item-in-stock {
+                width    : 100%;
+                display  : inline-block;
+                font-size: 12px;
+                color    : #202020;
+            }
+
+            .stec-dashboard-event-upsert-product-list-item-desc {
+                margin-top: 5px;
+                width     : 100%;
+                display   : inline-block;
+                font-size : 12px;
+                color     : #202020;
+            }
+        }
+    }
+
+    .stec-dashboard-event-upsert-product-list-item-control {
+        i {
+            color : #454850;
+            cursor: pointer;
+
+            &:hover {
+                color: #ff5f5f;
+            }
+        }
+    }
+}
+
+.mobile {
+
+    .stec-dashboard-upsert-event-wrapper {
+
+        margin-top: 6px;
+        .flexbox(space-between, flex-start);
+
+        .stec-dashboard-upsert-event-component-container {
+            width: ~'calc(100% - 56px)';
+        }
+    }
+
+    .stec-dashboard-upsert-event-component-container>.stec-button {
+
+        &:not(:last-child) {
+            margin-bottom: 6px;
+        }
+    }
+
+}

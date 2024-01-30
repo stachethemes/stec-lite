@@ -1,0 +1,71 @@
+@import '@Stec/LESS/variables.less';
+@import '@Stec/LESS/helpers.less';
+@import '@Stec/LESS/web-components/all.less';
+@import '@Stec/LESS/common-components/Flexbox.less';
+@import '@Stec/LESS/common-components/QtySelector.less';
+@import '@Stec/LESS/common-components/Thumbnail.less';
+@import '@Stec/LESS/common-components/EventTags.less';
+@import '@Stec/LESS/common-components/Tag.less';
+@import '@Stec/LESS/common-components/Button.less';
+@import '@Stec/LESS/common-components/LightModal.less';
+@import '@Stec/LESS/common-components/InputText.less';
+@import '@Stec/LESS/common-components/InputTextarea.less';
+@import '@Stec/LESS/common-components/TextEditor.less';
+@import '@Stec/LESS/common-components/DatePicker.less';
+@import '@Stec/LESS/common-components/Spacer.less';
+@import '@Stec/LESS/common-components/InputCheckbox.less';
+@import '@Stec/LESS/common-components/InvalidField.less';
+@import '@Stec/LESS/common-components/FieldTitle.less';
+@import '@Stec/LESS/common-components/FieldDescription.less';
+@import '@Stec/LESS/common-components/Modal.less';
+@import '@Stec/LESS/common-components/MediaCarousel.less';
+@import '@Stec/LESS/common-components/ModalMediaCarousel.less';
+@import '@Stec/LESS/common-components/ErrorBoundary.less';
+@import '@Stec/LESS/common-components/Loader.less';
+@import './top/style.less';
+@import './common/PreviewContainer.less';
+@import './common/Accordeon.less';
+@import './event/EventPreview.less';
+@import './layout/map/MapElements.less';
+
+.stec {
+    width      : 100%;
+    font-family: var(--stec-font-general);
+
+    i {
+        box-sizing: content-box;
+    }
+
+    .stec-skeleton {
+        opacity                  : 0;
+        animation-name           : stec-show-skeleton-anim;
+        animation-duration       : .250s;
+        animation-delay          : 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode      : forwards;
+
+        &.no-delay {
+            animation-delay: 0s;
+        }
+    }
+
+}
+
+.stec-no-events-found-text {
+    color      : var(--stec-agenda-list-title-color);
+    font-size  : 14px;
+    font-weight: bold;
+    margin     : 10px 0;
+    display    : inline-block;
+    width      : 100%;
+}
+
+@keyframes stec-show-skeleton-anim {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

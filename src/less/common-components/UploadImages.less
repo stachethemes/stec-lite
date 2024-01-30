@@ -1,0 +1,92 @@
+.stec-upload-images-container {
+    background   : #fff;
+    max-width    : 100%;
+    border-radius: var(--stec-corner-smoothing);
+    padding      : 20px;
+    box-sizing   : border-box;
+
+    &-dnd {
+        box-sizing: border-box;
+        padding   : 30px 20px;
+        border    : 2px dashed @color-gray;
+        text-align: center;
+
+        i {
+            font-size : 50px;
+            color     : @color-gray;
+            display   : block;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        &.drag-over {
+            i {
+                color    : @color-blue;
+                transform: scale(1.2);
+            }
+
+
+            border : 2px dashed @color-blue;
+
+        }
+
+        span,
+        stec-span {
+            text-align : center;
+            width      : 100%;
+            margin-top : 20px;
+            color      : var(--stec-ec-text-color);
+            font-size  : 16px;
+            line-height: 1.2;
+        }
+
+        .stec-button {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none !important;
+        }
+    }
+
+    .stec-upload-images-preview {
+        width                : 100%;
+        display              : grid;
+        gap                  : 15px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+        &-item {
+
+            position: relative;
+            overflow: hidden;
+
+            .box(100px);
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius   : var(--stec-corner-smoothing);
+            .flexbox(center, center);
+
+            img {
+                width        : 100px;
+                height       : auto;
+                border-radius: var(--stec-corner-smoothing);
+            }
+
+            &-remove {
+                position: absolute;
+                top     : 0;
+                right   : 0;
+                .box(26px);
+                cursor  : pointer;
+                .flexbox(center, center);
+                background-color         : @color-red;
+                border-bottom-left-radius: var(--stec-corner-smoothing);
+
+                i {
+                    font-size: 16px;
+                    color    : #fff;
+                }
+            }
+        }
+    }
+
+}

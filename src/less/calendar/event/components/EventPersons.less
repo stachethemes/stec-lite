@@ -1,0 +1,150 @@
+.stec-persons-list {
+
+    .stec-event-person {
+        &:not(:last-child) {
+            padding-bottom: 15px;
+            border-bottom : 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        &:not(:first-child) {
+            margin-top: 15px;
+        }
+    }
+}
+
+.stec-event-person {
+
+    width  : 100%;
+    display: inline-block;
+
+    .stec-event-person-image {
+        .box(100px);
+        max-width    : 100px;
+        min-width    : 100px;
+        position     : relative;
+        float        : left;
+        border-radius: var(--stec-corner-smoothing);
+        overflow     : hidden;
+
+        img {
+            width : 100%;
+            height: auto;
+        }
+    }
+
+    .stec-event-person-head {
+        float: right;
+        width: calc(100% - 120px);
+
+        .stec-event-person-head-title {
+            font-weight: bold;
+            font-size  : 16px;
+            line-height: 1.2;
+
+            color: var(--stec-ec-title-secondary-color);
+
+            a {
+                color          : var(--stec-ec-title-secondary-color);
+                text-decoration: none;
+            }
+        }
+
+        .stec-event-person-head-subtitle {
+            font-weight: normal;
+            font-size  : 12px;
+            line-height: 1.5;
+            color      : var(--stec-ec-title-secondary-color);
+        }
+    }
+
+    .stec-event-person-content {
+        float: right;
+        width: calc(100% - 120px);
+
+
+        .stec-event-person-content-about {
+            margin-top : 10px;
+            width      : 100%;
+            line-height: 1.5;
+            font-size  : 16px;
+            color      : var(--stec-ec-text-color);
+
+            p {
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                font-size: 14px;
+            }
+        }
+
+        .stec-event-person-content-social {
+
+            margin-top: 10px;
+            display   : block;
+
+            a {
+                &:not(:last-child) {
+                    margin-right: 5px;
+                }
+
+                .box(30px);
+                background-color: #c9ccd3;
+                line-height     : 30px;
+                text-align      : center;
+                display         : inline-block;
+                border-radius   : var(--stec-corner-smoothing);
+                overflow        : hidden;
+
+                i {
+                    font-size: 16px;
+                    color    : #fff;
+                }
+
+                &:hover {
+                    background-color: #c9ccd3 - 10%;
+                }
+            }
+        }
+    }
+
+    &.no-image {
+        .stec-event-person-content {
+            width: 100%;
+        }
+
+        .stec-event-person-head {
+            float: left;
+        }
+    }
+}
+
+.mobile {
+
+    .stec-event-person {
+
+        .stec-event-person-image {
+            width    : 60px;
+            max-width: 60px;
+            min-width: 60px;
+            height   : 60px;
+
+        }
+
+        .stec-event-person-head {
+
+            width: calc(100% - 70px);
+
+            .stec-tag {
+                margin-right: 0;
+            }
+        }
+
+        .stec-event-person-content {
+            width: 100%;
+        }
+
+    }
+
+
+}

@@ -1,0 +1,1 @@
+Make sure your language files reside in wp-content\languages\plugins folder

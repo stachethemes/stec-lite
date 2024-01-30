@@ -1,0 +1,33 @@
+.stec-single-page,
+.stec {
+    .leaflet-popup-pane {
+        margin-top: -50px !important;
+    }
+
+    .leaflet-marker-icon {
+        box-sizing: content-box;
+    }
+}
+
+.stec-gmap-overlay-pin,
+.stec-omap-marker-pin {
+    z-index         : 0;
+    cursor          : pointer;
+    border          : 2px solid #fff;
+    background-color: #fff;
+    width           : 52px;
+    height          : 52px;
+    border-radius   : 3px;
+    box-shadow      : rgb(0 0 0 / 30%) 0px 6px 4px -1px;
+
+    &:before {
+        position: absolute;
+        .box(20px);
+        background-color: #fff;
+        content         : '';
+        bottom          : -5px;
+        left            : ~'calc(50% - 10px)';
+        z-index         : -1;
+        transform       : rotateZ(45deg);
+    }
+}

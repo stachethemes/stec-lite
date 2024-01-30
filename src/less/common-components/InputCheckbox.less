@@ -1,0 +1,40 @@
+.stec-checkbox-wrapper {
+
+    overflow: hidden;
+
+    label {
+
+        display: block;
+        
+        width  : 100%;
+        float  : left;
+        margin : 0;
+        padding: 0;
+        .flexbox(flex-start);
+
+        input {
+            margin  : 0;
+            position: relative;
+            top     : 1px;
+            float   : left;
+        }
+
+        .stec-field-title {
+            float       : right;
+            width       : ~'calc(100% - 50px)';
+            position    : relative;
+            top         : 2px;
+            padding-left: 10px;
+        }
+    }
+
+    .stec-field-description {
+        display    : inline-block;
+        margin-top : 5px;
+        font-weight: normal;
+    }
+
+    .stec-invalid-field-floating {
+        margin-top: 30px;
+    }
+}

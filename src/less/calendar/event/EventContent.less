@@ -1,0 +1,60 @@
+.stec-event-content {
+    box-sizing      : border-box;
+    width           : 100%;
+    background-color: var(--stec-ec-bg);
+
+    .stec-button {
+        background-color: var(--stec-ec-button-bg);
+        color           : var(--stec-ec-button-color);
+
+        a,
+        span,
+        stec-span,
+        i {
+            color: var(--stec-ec-button-color);
+
+        }
+
+        &:hover {
+            background-color: var(--stec-ec-button-bg-hover);
+            color           : var(--stec-ec-button-color-hover);
+
+            a,
+            span,
+            stec-span,
+            i {
+                color: var(--stec-ec-button-color-hover);
+
+            }
+        }
+
+    }
+
+    .stec-event-counter {
+        .stec-event-counter-countdown-cell-num {
+            color: var(--stec-ec-title-secondary-color);
+        }
+
+        .stec-event-counter-countdown-cell-label {
+            color: var(--stec-ec-text-color);
+        }
+    }
+
+}
+
+.stec-event {
+
+    .stec-event-content-button-close,
+    .stec-event-content-button-edit {
+        width                  : 100%;
+        border-top-right-radius: 0;
+        border-top-left-radius : 0;
+        padding                : 5px;
+        background-color       : var(--stec-color-gray);
+
+        &:hover {
+            background-color: var(--stec-color-blue);
+        }
+    }
+
+}

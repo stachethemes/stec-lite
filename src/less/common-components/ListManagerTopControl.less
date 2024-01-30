@@ -1,0 +1,86 @@
+.stec-list-manager-top-control {
+    padding      : 10px 12px;
+    box-sizing   : border-box;
+    width        : 100%;
+    margin-bottom: 10px;
+    .flexbox(flex-start, center);
+
+
+    .stec-list-manager-top-control-checkbox {
+
+        .noselect;
+
+        .flexbox();
+
+        font-size  : 14px;
+        font-weight: bold;
+        color      : #454850;
+        cursor     : pointer;
+        white-space: nowrap;
+
+        input[type="checkbox"],
+        .stec-input-type-checkbox {
+            margin-right: 10px;
+        }
+    }
+
+    .stec-list-manager-top-control-button {
+
+        .noselect;
+
+        cursor: pointer;
+
+        margin-left: 20px;
+
+        font-size  : 14px;
+        font-weight: bold;
+        color      : #454850;
+        white-space: nowrap;
+
+        i {
+            font-size   : 14px;
+            font-weight : regular;
+            color       : #454850;
+            margin-right: 5px;
+        }
+
+
+        &:hover {
+
+            &.red {
+                color: @color-red;
+
+                i {
+                    color: @color-red;
+                }
+            }
+
+            &.blue {
+                color: @color-blue;
+
+                i {
+                    color: @color-blue;
+                }
+            }
+
+            &.green {
+                color: @color-green;
+
+                i {
+                    color: @color-green;
+                }
+            }
+
+            &.yellow {
+                color: @color-yellow;
+
+                i {
+                    color: @color-yellow;
+                }
+            }
+
+        }
+
+
+    }
+}

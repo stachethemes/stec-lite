@@ -1,0 +1,77 @@
+.stec-share {
+    a {
+        .box(36px);
+        border-radius: var(--stec-corner-smoothing);
+        color        : #fff;
+        font-size    : 16px;
+        line-height  : 36px;
+        text-align   : center;
+        display      : inline-block;
+
+        i {
+            line-height: 36px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        @color-increase: 30%;
+
+        &.stec-share-facebook-color {
+            background-color: @color-facebook;
+
+            &:hover {
+                background-color: @color-facebook + @color-increase;
+            }
+        }
+
+        &.stec-share-twitter-color {
+            background-color: @color-twitter;
+
+            &:hover {
+                background-color: @color-twitter + @color-increase;
+            }
+        }
+
+        &.stec-share-messenger-color {
+            background-color: @color-messenger;
+
+            &:hover {
+                background-color: @color-messenger + @color-increase;
+            }
+        }
+
+        &.stec-share-whatsapp-color {
+            background-color: @color-whatsapp;
+
+            &:hover {
+                background-color: @color-whatsapp + @color-increase;
+            }
+        }
+
+        &.stec-share-viber-color {
+            background-color: @color-viber;
+
+            &:hover {
+                background-color: @color-viber + @color-increase;
+            }
+        }
+
+        &.stec-share-telegram-color {
+            background-color: @color-telegram;
+
+            &:hover {
+                background-color: @color-telegram + @color-increase
+            }
+        }
+
+        &.stec-share-copylink-color {
+            background-color: #4d4f53;
+
+            &:hover {
+                background-color: #4d4f53 + @color-increase
+            }
+        }
+    }
+}

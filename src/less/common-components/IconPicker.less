@@ -1,0 +1,105 @@
+.stec-icon-picker-wrapper {
+    max-width: 400px;
+    position : relative;
+
+    label {
+
+        display: block;
+
+        .stec-icon-picker-selected {
+            .box(50px);
+            box-sizing      : border-box;
+            background-color: #f5f5f5;
+            cursor          : pointer;
+            border          : 1px solid #e3e3e3;
+            border-radius   : 3px;
+            color           : #545454;
+            font-size       : 30px;
+            .flexbox;
+        }
+
+    }
+
+    &.active {
+        .stec-icon-picker-container {
+            z-index         : 100;
+            display         : block;
+            background-color: #fff;
+
+            input {
+                color: #545454;
+
+                &:focus {
+                    box-shadow: none !important;
+                }
+            }
+        }
+    }
+
+    .stec-icon-picker-container {
+        position     : absolute;
+        top          : 52px;
+        display      : none;
+        padding      : 12px;
+        box-sizing   : border-box;
+        border       : 1px solid #e3e3e3;
+        border-radius: 3px;
+        min-width    : 400px;
+
+        &:before {
+            .box(20px);
+            content   : '';
+            background: #fff;
+            transform : rotate(45deg);
+            position  : absolute;
+            top       : -10px;
+            left      : 15px;
+            z-index   : -1;
+        }
+
+        input {
+            height       : 40px;
+            line-height  : 40px;
+            background   : #f8f8f8;
+            border       : 1px solid rgba(0, 0, 0, 0.07);
+            width        : 100%;
+            font-size    : 14px;
+            color        : #545454;
+            padding      : 0 10px;
+            border-radius: 3px;
+            box-sizing   : border-box;
+        }
+
+        .stec-icon-picker-list {
+            width                : 100%;
+            display              : grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            margin-top           : 10px;
+            gap                  : 4px;
+            max-height           : 300px;
+            overflow             : auto;
+            .miniScrollBar(#e3e3e3);
+
+            .stec-icon-picker-list-icon {
+                @background  : #f5f5f5;
+                font-size    : 30px;
+                text-align   : center;
+                line-height  : 50px;
+                border-radius: 3px;
+                width        : 100%;
+                height       : 50px;
+                background   : @background;
+                cursor       : pointer;
+
+                i {
+                    color         : #545454;
+                    vertical-align: middle;
+                }
+
+                &:hover {
+                    background: @background - 30%;
+                }
+            }
+        }
+    }
+}
