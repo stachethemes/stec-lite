@@ -1,10 +1,10 @@
 {
     "name": "stec",
-    "version": "5.2.2",
+    "version": "5.2.3",
     "description": "Stachethemes Event Calendar V",
     "private": true,
     "scripts": {
-        "build": "webpack",
+        "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack --watch",
         "do-pot": "wp i18n make-pot . build/languages/stec.pot --include=build --exclude=src --skip-audit"
     },
@@ -20,6 +20,7 @@
         "babel-plugin-formatjs": "^10.5.0",
         "babel-plugin-transform-react-jsx": "^6.24.1",
         "copy-webpack-plugin": "^12.0.2",
+        "cross-env": "^7.0.3",
         "css-loader": "^6.7.3",
         "css-minimizer-webpack-plugin": "^6.0.0",
         "eslint": "^8.56.0",
@@ -52,8 +53,8 @@
         "react-facebook": "^9.0.12",
         "react-hot-toast": "^2.4.0",
         "react-portal": "^4.2.2",
-        "react-responsive-masonry": "^2.1.7",
         "react-qr-code": "^2.0.11",
+        "react-responsive-masonry": "^2.1.7",
         "recoil": "^0.7.7"
     },
     "browserslist": [

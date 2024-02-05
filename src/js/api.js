@@ -352,12 +352,18 @@ export const newApiGet = ({
 
                 if (!response.ok) {
 
+                    // ? @todo reduce bloat
+                    
                     if (translateErrorCode && translateErrorCode[result.code]) {
                         errorMessage = translateErrorCode[result.code];
                     } else if (errorMessage === 'auto' && result && result.message) {
                         errorMessage = result.message;
                     } else {
                         errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                    }
+
+                    if (errorMessage === 'auto') {
+                        errorMessage = __('Sorry, something went wrong', 'stec')
                     }
 
                     throw new Error(errorMessage);
@@ -506,6 +512,10 @@ export const newApiPost = async ({
                     errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
                 }
 
+                if (errorMessage === 'auto') {
+                    errorMessage = __('Sorry, something went wrong', 'stec')
+                }
+
                 throw new Error(errorMessage);
 
             }
@@ -638,6 +648,10 @@ export const newApiPut = async ({
                     errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
                 }
 
+                if (errorMessage === 'auto') {
+                    errorMessage = __('Sorry, something went wrong', 'stec')
+                }
+
                 throw new Error(errorMessage);
 
             }
@@ -765,6 +779,10 @@ export const newApiDelete = ({
                     errorMessage = result.message;
                 } else {
                     errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                }
+
+                if (errorMessage === 'auto') {
+                    errorMessage = __('Sorry, something went wrong', 'stec')
                 }
 
                 throw new Error(errorMessage);

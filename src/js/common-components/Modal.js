@@ -23,9 +23,10 @@ function Modal(props) {
 
         return () => {
 
-            if (modalWindows.length <= 1) {
+            if (document.querySelectorAll('.stec-modal-overlay').length <= 0) {
                 document.body.classList.remove('stec-modal-is-open');
             }
+
         }
 
     }, [props.isOpen]);
@@ -77,7 +78,7 @@ function Modal(props) {
                     }
                 }}>
 
-                <StecDiv className='stec-modal-close' onClick={(e)=>{
+                <StecDiv className='stec-modal-close' onClick={(e) => {
                     e.stopPropagation();
                     props.onClose();
                 }}>

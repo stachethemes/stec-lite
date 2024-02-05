@@ -3,9 +3,10 @@ import { DatePicker } from '@Stec/CommonComponents/DatePicker';
 import { InputCheckbox, UncontrolledInputCheckbox } from '@Stec/CommonComponents/InputCheckbox';
 import { UncontrolledInputColor } from '@Stec/CommonComponents/InputColor';
 import { UncontrolledInputSelect } from '@Stec/CommonComponents/InputSelect';
-import { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
+import InputText, { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
 import { UncontrolledInputThumbType } from '@Stec/CommonComponents/InputThumbType';
 import Modal from '@Stec/CommonComponents/Modal';
+import Flexbox from '@Stec/CommonComponents/Flexbox';
 import RRuleGenerator from '@Stec/CommonComponents/RRuleGenerator';
 import Section from '@Stec/CommonComponents/Section';
 import Spacer from '@Stec/CommonComponents/Spacer';
@@ -575,6 +576,29 @@ function General(props) {
 
     return (
         <Section title={__('General', 'stec')}>
+
+{
+                postData.current.link &&
+                <Flexbox className='stec-dashboard-edit-event-permalink'>
+
+                    <InputText
+                        readOnly={true}
+                        title={__('Permalink', 'stec')}
+                        value={postData.current.link}
+                        description={__('The event current permalink', 'stec')}
+                        onChange={() => {
+                            // do nothing
+                        }}
+                    />
+
+                    <Button
+                        extra={{
+                            title: __('View event', 'stec')
+                        }}
+                        className='blue'
+                        label={__('View', 'stec')} href={postData.current.link} target={'_blank'} />
+                </Flexbox>
+            }
 
             <UncontrolledInputText
                 ref={(ref) => focusFieldsRef.current['title'] = ref}

@@ -147,6 +147,7 @@ const TopDatePicker = ({ forceFullLabels = false }) => {
 
     switch (activeLayout) {
 
+        case 'map':
         case 'boxgrid':
         case 'grid':
         case 'month':

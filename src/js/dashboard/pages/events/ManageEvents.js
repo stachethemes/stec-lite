@@ -665,6 +665,29 @@ const ManageEventsReady = (props) => {
             }
         },
         {
+            id: 'approve',
+            color: 'green',
+            icon: <i key='icon' className='fa-solid fa-thumbs-up' />,
+            label: __('Approve', 'stec'),
+            onClick: (id) => {
+                approveEvent(id);
+            }
+        },
+        {
+            id: 'view',
+            color: 'blue',
+            icon: <i key='icon' className='fa-solid fa-eye' />,
+            label: __('View', 'stec'),
+            onClick: (id) => {
+
+                const foundEvent = items.find(item => item.id === id);
+                const permalink = foundEvent.link;
+
+                window.open(permalink, '_blank');
+
+            }
+        },
+        {
             id: 'duplicate',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-clone' />,
@@ -678,15 +701,6 @@ const ManageEventsReady = (props) => {
                 } else {
                     duplicateEvent(id);
                 }
-            }
-        },
-        {
-            id: 'approve',
-            color: 'green',
-            icon: <i key='icon' className='fa-solid fa-thumbs-up' />,
-            label: __('Approve', 'stec'),
-            onClick: (id) => {
-                approveEvent(id);
             }
         },
         {

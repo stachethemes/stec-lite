@@ -107,15 +107,20 @@ class Events {
 
     public static function get_rest_events($args = array()) {
 
+        global $wp_query;
+
         $default_args = array(
             'context'           => 'event',
             'page'              => 1,
             'per_page'          => Settings::get('misc', 'events_per_request', 100),
-            'permission_type'   => 'read_permission'
+            'permission_type'   => 'read_permission',
+            'lang'              => Helpers::get_lang_code()
         );
 
         $args           = Helpers::wp_parse_args($args, $default_args);
         $fetched_events = array();
+
+        $wp_query->query_vars['stec_doing_prefetch'] = true;
 
         while (true) {
 
@@ -143,6 +148,8 @@ class Events {
             $args['page'] = $current_page + 1;
         }
 
+        unset($wp_query->query_vars['stec_doing_prefetch']);
+
         do_action('stec_events_get_rest_events_after_loop');
 
         return $fetched_events;
@@ -150,9 +157,12 @@ class Events {
 
     public static function get_rest_event($args = array()) {
 
+        global $wp_query;
+
         $default_args = array(
             'context'           => 'event',
-            'permission_type'   => 'read_permission'
+            'permission_type'   => 'read_permission',
+            'lang'              => Helpers::get_lang_code()
         );
 
         $args = Helpers::wp_parse_args($args, $default_args);
@@ -162,13 +172,19 @@ class Events {
             $request->set_param($param, $param_value);
         }
 
+        // ! Set flag to prevent potential infinite loop 
+        $wp_query->query_vars['stec_doing_prefetch'] = true;
+
         $response = rest_do_request($request);
+
+        unset($wp_query->query_vars['stec_doing_prefetch']);
 
         if ($response->is_error()) {
             return false;
         }
 
         $event = $response->get_data();
+
 
         return $event;
     }

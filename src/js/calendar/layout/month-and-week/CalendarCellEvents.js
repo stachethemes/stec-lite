@@ -58,7 +58,7 @@ const CalendarCellEvents = (props) => {
                             cellMoment={props.cellMoment} event={event}
                             eventMarginTop={eventMarginTop}
                             forceTitle={forceDisplayTitle}
-
+                            setActiveEventKey={props.setActiveEventKey}
                         />
                     );
                 } else {
@@ -68,6 +68,7 @@ const CalendarCellEvents = (props) => {
                         event={event}
                         eventMarginTop={0}
                         forceTitle={true}
+                        setActiveEventKey={props.setActiveEventKey}
                     />
                     );
                     added = added + 1;
@@ -76,7 +77,13 @@ const CalendarCellEvents = (props) => {
 
             case 'auto':
             default:
-                maybeHasEvents.push(<CalendarCellEvent key={`${event.id}-${event.repeat_offset}`} cellMoment={props.cellMoment} event={event} eventMarginTop={eventMarginTop} />);
+                maybeHasEvents.push(<CalendarCellEvent
+                    key={`${event.id}-${event.repeat_offset}`}
+                    cellMoment={props.cellMoment}
+                    event={event}
+                    eventMarginTop={eventMarginTop}
+                    setActiveEventKey={props.setActiveEventKey}
+                />);
 
         }
 
@@ -105,7 +112,7 @@ const CalendarCellEvents = (props) => {
             <StecDiv className='stec-calendar-cell-events-more-events'>
                 {hiddenEvents}
             </StecDiv>
-            
+
         </StecDiv>;
     }
 

@@ -1,9 +1,10 @@
-import { StecDiv } from '@Stec/WebComponents';
-import { __, sprintf } from '@wordpress/i18n';
-import { useState } from 'react';
+import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import TopFilterItem from './TopFilterItem';
 import TopFilterItemSearch from './TopFilterItemSearch';
 import TopFilterItemToggleAll from './TopFilterItemToggleAll';
+import { useState } from 'react';
+
+import { __, sprintf } from '@wordpress/i18n';
 
 const TopFilterItems = ({ filter }) => {
 

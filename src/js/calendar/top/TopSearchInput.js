@@ -1,5 +1,6 @@
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { useEffect } from 'react';
+import { __ } from '@wordpress/i18n';
 
 const TopSearchInput = ({ placeholder, onChange, delay = 500 }) => {
 

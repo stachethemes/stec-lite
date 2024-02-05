@@ -1,0 +1,99 @@
+.stec.mobile {
+
+    .stec-top-filters-menu:not(.static):not(.prevent-mobile) {
+
+        .stec-top-filter {
+            margin-right: 0;
+
+            &:not(:last-child) {
+                .stec-top-filter-selector {
+                    border-top-right-radius   : 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            &:not(:first-child) {
+                .stec-top-filter-selector {
+                    border-left              : none;
+                    border-top-left-radius   : 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+
+            .stec-top-filter-selector {
+
+                .stec-top-filter-title {
+                    width: 100%;
+
+                    span,
+                    stec-span {
+                        display: none;
+                    }
+
+                    i {
+                        margin-right: 0;
+                        font-size   : 14px;
+                    }
+                }
+
+                .stec-top-filter-selector-toggle-icons {
+                    display: none;
+                }
+            }
+
+            .stec-top-search-menu-input-wrapper {
+                border-top-left-radius : var(--stec-corner-smoothing);
+                border-top-right-radius: var(--stec-corner-smoothing);
+            }
+
+            .stec-top-filter-items {
+                &:first-child {
+                    border-top-left-radius : var(--stec-corner-smoothing);
+                    border-top-right-radius: var(--stec-corner-smoothing);
+                }
+            }
+
+            &.active {
+
+                .stec-top-filter-items-container {
+                    position  : absolute;
+                    width     : 100%;
+                    left      : 0;
+                    padding   : 0 12px;
+                    box-sizing: border-box;
+                }
+
+                &:first-child {
+
+                    .stec-top-search-menu-input-wrapper {
+                        border-top-left-radius: 0;
+                    }
+
+                    .stec-top-filter-items {
+
+                        &:first-child {
+                            border-top-left-radius: 0;
+                        }
+
+                    }
+                }
+
+                &:last-child {
+
+                    .stec-top-search-menu-input-wrapper {
+                        border-top-right-radius: 0;
+                    }
+
+                    .stec-top-filter-items {
+
+                        &:first-child {
+                            border-top-right-radius: 0;
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+}

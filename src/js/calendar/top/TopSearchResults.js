@@ -1,8 +1,8 @@
 
-import { useCalendarEvents, useCalendarMoment, useSearchEventsByText, useSettingsAtt } from '@Stec/JS/calendar/hooks';
+import { useCalendarMoment, useCalendarEvents, useSearchEventsByText, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { __, sprintf } from '@wordpress/i18n';
 import TopSearchResult from './TopSearchResult';
+import { __, sprintf } from '@wordpress/i18n';
 
 const TopSearchResults = ({ searchText, onEventSelect }) => {
 

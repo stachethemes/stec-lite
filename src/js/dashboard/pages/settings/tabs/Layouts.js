@@ -94,6 +94,17 @@ function Layouts({ settings }) {
                 <Spacer />
 
                 <UncontrolledInputCheckbox
+                    title={__('Quick open', 'stec')}
+                    defaultValue={settingsLayouts.month_week_quick_open}
+                    onChange={value => {
+                        settingsLayouts.month_week_quick_open = value;
+                    }}
+                    description={__('If checked, the event will open in modal window when clicked over without expanding the entire list', 'stec')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputCheckbox
                     title={__('Tooltip image keep aspect ratio', 'stec')}
                     defaultValue={settingsLayouts.month_week_image_auto_height}
                     onChange={value => {

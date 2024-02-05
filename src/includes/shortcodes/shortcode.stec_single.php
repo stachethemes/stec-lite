@@ -25,6 +25,7 @@ class Shortcode_Stec_Single {
     public static function register_scripts() {
 
         if (!wp_script_is('stec-single-init-js', 'registered')) {
+
             wp_register_script(
                 'stec-single-init-js',
                 STEC_LITE_PLUGIN_URL . 'assets/js/single-page/init.js',
@@ -36,6 +37,7 @@ class Shortcode_Stec_Single {
                 )
             );
         }
+
     }
 
     public static function load_scripts($force = false) {
@@ -53,6 +55,46 @@ class Shortcode_Stec_Single {
             wp_set_script_translations('stec-single-init-js', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
             do_action('stec_load_scripts', $post, 'stec-single-init-js');
         }
+    }
+
+    public static function prefetch_event($event_id, $start_date) {
+
+        $event = Events::get_rest_event(array(
+            'id'              => $event_id,
+            'start_date'      => $start_date,
+            'context'         => 'event',
+            'permission_type' => 'read_permission'
+        ));
+
+        $is_overrided = (bool) $event['meta']['recurrence_id'];
+
+        if ($is_overrided) {
+            // do not calculate offset for overrided event
+            return $event;
+        }
+
+        $event_timezone         = Helpers::get_event_timezone($event_id);
+        $initial_start_date     = $event['meta']['start_date'];
+        $initial_start_date_utc = $event['meta']['start_date_utc'];
+        $initial_end_date       = $event['meta']['end_date'];
+        $initial_end_date_utc   = $event['meta']['end_date_utc'];
+        $start_date_utc         = Helpers::get_datetime_utc($start_date, $event_timezone);
+        $offset                 = Helpers::get_datetime_diff($start_date_utc, $initial_start_date_utc);
+        $end_date_object        = new \DateTime($initial_end_date, new \DateTimeZone('UTC'));
+        $end_date_object->modify('+' . $offset . ' seconds');
+        $end_date = $end_date_object->format('Y-m-d\TH:i');
+        $end_date_utc = Helpers::get_datetime_utc($end_date, $event_timezone);
+
+        $event['initial_start_date']     = $initial_start_date;
+        $event['initial_start_date_utc'] = $initial_start_date_utc;
+        $event['initial_end_date']       = $initial_end_date;
+        $event['initial_end_date_utc']   = $initial_end_date_utc;
+        $event['meta']['start_date']     = $start_date;
+        $event['meta']['start_date_utc'] = $start_date_utc;
+        $event['meta']['end_date']       = $end_date;
+        $event['meta']['end_date_utc']   = $end_date_utc;
+
+        return $event;
     }
 
     public static function register_single_instance($atts) {
@@ -83,14 +125,20 @@ class Shortcode_Stec_Single {
             'calendar',
             'layouts',
             'map',
+            'submit_form',
+            'attendance',
+            'reminders',
+            'forecast',
+            'captcha',
             'comments',
+            'builder',
             'dashboard'
         ));
 
         $atts = array_merge($atts, $defaults_from_settings);
 
         if (Settings::get('misc', 'events_prefetch')) {
-            $atts['event_data'] = Post_Types_Stec_Event::prefetch_event($post->ID, $start_date);
+            $atts['event_data'] = self::prefetch_event($post->ID, $start_date);
         }
 
 ?>

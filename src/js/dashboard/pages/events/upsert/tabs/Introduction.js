@@ -61,7 +61,7 @@ const Introduction = (props) => {
 
         <UncontrolledInputText
             title={__('External link text', 'stec')}
-            description={__('External link text', 'stec')}
+            description={__('External link text. Leave empty to use the default link text', 'stec')}
             placeholder={__('The external link button text', 'stec')}
             onChange={value => {
                 postData.current.meta.external_link.text = value;

@@ -1,11 +1,13 @@
 import PreviewEvents from '@Stec/JS/calendar/common/PreviewEvents';
 import { useCalendarMoment, useLayoutEventsCache, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { getFirstDayOfMonthInView, getFirstDayOfWeekInView } from '@Stec/JS/helpers';
+import Event from '@Stec/JS/calendar/event/Event';
 import { useState } from 'react';
 import CalendarCell from './CalendarCell';
 
 function CellsContainer({ layoutType }) {
 
+    const [activeEventKey, setActiveEventKey] = useState(false);
     const shouldIncludeSubmitForm = true !== useSettingsAtt('layouts__month_week_es_form_on_top');
     const dowOffset = useSettingsAtt('calendar__dow');
     const { safeValue: calendarMomentSafe } = useCalendarMoment();
@@ -13,6 +15,7 @@ function CellsContainer({ layoutType }) {
     const { events: layoutEvents, ready: layoutEventsReady } = useLayoutEventsCache(cacheResetKey);
     const [activeCellDate, setActiveCellDate] = useState(false);
     const activeEndWeekMoment = activeCellDate ? getFirstDayOfWeekInView(activeCellDate, dowOffset).add(6, 'days') : false;
+    let activeEvent = false;
 
     const getGridCells = () => {
 
@@ -54,6 +57,7 @@ function CellsContainer({ layoutType }) {
                     isActive={isActive}
                     eventsInCell={cellEvents}
                     cellMoment={cellMoment}
+                    setActiveEventKey={setActiveEventKey}
                     onClick={() => {
 
                         const cellDate = cellMoment.format('YYYY-MM-DD');
@@ -90,8 +94,38 @@ function CellsContainer({ layoutType }) {
         return monthGridCells;
     }
 
+    if (layoutEventsReady && activeEventKey) {
+
+        const activeEventKeyInfo = activeEventKey.split('--');
+        const dateKey = activeEventKeyInfo[0];
+        const eventId = parseInt(activeEventKeyInfo[1], 10);
+        const eventStartDate = activeEventKeyInfo[2];
+        const dateKeyEvents = layoutEvents[dateKey] ?? [];
+        const event = dateKeyEvents.find(item => item.id === eventId && item.meta.start_date === eventStartDate);
+
+        if (event) {
+            activeEvent = event;
+        }
+    }
+
     return (
-        getGridCells()
+        <>
+            {getGridCells()}
+
+            {
+                !!activeEvent && <Event
+                    key={activeEventKey}
+                    event={activeEvent}
+                    active={true}
+                    forceOpenIn={'modal'}
+                    noPreviewWhenModal={true} // Prevents display of the preview container in the grid layout
+                    onActiveToggle={() => {
+                        setActiveEventKey(false);
+                    }}
+                />
+            }
+
+        </>
     )
 }
 

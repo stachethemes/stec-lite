@@ -1,10 +1,10 @@
-import { useTopFilters } from '@Stec/JS/calendar/hooks';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import { StecDiv } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
 import { useRef, useState } from 'react';
 import TopButton from './TopButton';
 import TopFiltersMenu from './TopFiltersMenu';
+import { useTopFilters } from '@Stec/JS/calendar/hooks';
+import { __ } from '@wordpress/i18n';
 
 const TopFilters = () => {
 

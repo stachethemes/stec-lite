@@ -145,6 +145,7 @@ class Shortcode_Stec {
             'layouts__month_week_force_title'         => 'atom_default',
             'layouts__month_week_es_form_on_top'      => 'atom_default',
             'layouts__month_week_style'               => 'atom_default',
+            'layouts__month_week_quick_open'          => 'atom_default',
             'layouts__map_zoom'                       => 'atom_default',
             'map__type'                               => 'atom_default',
             'map__gmap_api_key'                       => 'atom_default',

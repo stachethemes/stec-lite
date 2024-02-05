@@ -1,7 +1,7 @@
-import { useTopFilters } from '@Stec/JS/calendar/hooks';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
+import { useTopFilters } from '@Stec/JS/calendar/hooks';
 import { cloneDeep } from 'lodash';
+import { __ } from '@wordpress/i18n';
 
 const TopFilterItemToggleAll = ({ filterId, items }) => {
 

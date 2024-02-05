@@ -6,6 +6,7 @@ import EventTooltip from './EventTooltip';
 
 const CalendarCellEvent = (props) => {
 
+    const quickOpen = useSettingsAtt('layouts__month_week_quick_open');
     const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
     const cellColor = getCellColor(props.event, thumbnailSource);
     const eventStartMomentLocal = moment.tz(props.event.meta.start_date, props.event.meta.timezone).local();
@@ -50,6 +51,20 @@ const CalendarCellEvent = (props) => {
             className={classNameArray.join(' ')} style={{
                 backgroundColor: cellColor,
                 marginTop: 22 * props.eventMarginTop
+            }}
+
+            onClick={(e) => {
+
+                if (quickOpen) {
+                    e.stopPropagation();
+
+                    const cellDateKey = props.cellMoment.format('YYYY-MM-DD');
+                    const eventId = props.event.id;
+                    const eventStartDate = props.event.meta.start_date;
+                    const activeEventKey = `${cellDateKey}--${eventId}--${eventStartDate}`;
+
+                    props.setActiveEventKey(activeEventKey);
+                }
             }}
 
             onMouseOver={() => {

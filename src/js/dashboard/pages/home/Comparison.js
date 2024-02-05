@@ -99,6 +99,13 @@ const ComparisonTable = () => {
             pro: true
         },
         {
+            id: 'locations-page',
+            title: __('Locations Page', 'stec'),
+            desc: __('Display locations on a single page.', 'stec'),
+            lite: false,
+            pro: true
+        },
+        {
             id: 'translatable',
             title: __('Translatable', 'stec'),
             desc: __('Translate the plugin to any language.', 'stec'),

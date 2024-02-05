@@ -124,8 +124,14 @@ export const useEvents = (widgetParams) => {
             setReady(true);
         }
 
-        if (!queryError && queryReady && items.length) {
-            getEventsInRange();
+        if (!queryError && queryReady) {
+
+            if (items.length){
+                getEventsInRange();
+            } else {
+                setReady(true);
+            }
+
         }
 
         if (queryError) {

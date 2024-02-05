@@ -2,6 +2,7 @@ import { useCalendarMoment, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { getFirstDayOfWeekInView } from '@Stec/JS/helpers';
 import { StecDiv } from '@Stec/WebComponents';
 import CalendarWeekDayLabel from './CalendarWeekDayLabel';
+import { __ } from '@wordpress/i18n';
 
 const CalendarWeekLabels = ({ layoutType }) => {
 

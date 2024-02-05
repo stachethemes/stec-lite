@@ -7,9 +7,12 @@
     cursor          : pointer;
     box-sizing      : border-box;
     background-color: var(--stec-top-menu-bg-active-secondary);
-    border-top      : 1px solid var(--stec-top-separator-color);
     padding         : 10px;
     .flexbox(flex-start, flex-start);
+
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--stec-top-separator-color);
+    }
 
     i {
         margin-right: 8px;
@@ -25,14 +28,4 @@
     stec-span {
         line-height: 1.3;
     }
-}
-
-.stec-top-filters-menu.static {
-
-    .stec-top-filter-item {
-        color           : var(--stec-top-menu-color-active);
-        background-color: var(--stec-top-menu-bg-active-primary);
-        
-    }
-    
 }

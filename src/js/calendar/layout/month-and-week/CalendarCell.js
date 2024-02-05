@@ -28,6 +28,7 @@ const CalendarCell = (props) => {
             <CalendarCellEvents
                 cellMoment={props.cellMoment}
                 eventsInCell={props.eventsInCell}
+                setActiveEventKey={props.setActiveEventKey}
             />
 
         </StecDiv>

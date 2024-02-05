@@ -43,22 +43,6 @@ const DashboardButton = () => {
         });
     }
 
-    const getHasDashboardItems = () => {
-        
-        const manageTerms = STEC_VARIABLES?.current_user?.capability?.manage_terms;
-        const manageEvents = STEC_VARIABLES?.current_user?.capability?.manage_events;
-        const manageSettings = STEC_VARIABLES?.current_user?.capability?.manage_settings;
-
-        if (false === manageTerms && false === manageEvents && false === manageSettings) {
-            return false;
-        }
-
-        return true;
-
-    }
-
-    const hasDashboardItems = getHasDashboardItems();
-
     const classNameArray = ['stec-calendar-dashboard-button'];
 
     if (active) {
@@ -69,7 +53,7 @@ const DashboardButton = () => {
         return null;
     }
 
-    if (!showDashboard || !hasDashboardItems) {
+    if (!showDashboard) {
         return (
             null
         )

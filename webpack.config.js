@@ -3,7 +3,7 @@ const commonConfig = require('./webpack.common');
 const productionConfig = require('./webpack.prod');
 const developmentConfig = require('./webpack.dev');
 const entries = require('./webpack.entries');
-const mode = 'production';
+const mode = process.env.NODE_ENV || 'development';
 
 module.exports = () => {
     switch (mode) {

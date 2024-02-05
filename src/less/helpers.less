@@ -90,8 +90,12 @@
 }
 
 .miniScrollBar(@color: white) {
-    scroll-behavior: auto;
-    scrollbar-width: thin;
+
+    // ! Fix for Firefox
+    @-moz-document url-prefix() {
+        scroll-behavior: auto;
+        scrollbar-width: thin;
+    }
 
     &::-webkit-scrollbar {
         width: 5px;

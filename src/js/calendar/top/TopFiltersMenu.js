@@ -17,10 +17,16 @@ const TopFiltersMenu = ({ staticMode = false }) => {
         return hasValidItems;
     });
 
+    const filtersCount = filtersNotEmpty.length;
+
     const classNameArray = ['stec-top-filters-menu'];
 
     if (staticMode) {
         classNameArray.push('static');
+    }
+
+    if (filtersCount <= 2) {
+        classNameArray.push('prevent-mobile');
     }
 
     return (

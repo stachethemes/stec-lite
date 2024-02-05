@@ -1,10 +1,10 @@
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
 import FieldDescription from './FieldDescription';
 import FieldTitle from './FieldTitle';
 import InvalidField from './InvalidField';
 const { useState, useRef, useEffect } = wp.element;
+import { __ } from '@wordpress/i18n';
 
 export const InputSelect = React.forwardRef((props, ref) => {
 
@@ -100,7 +100,21 @@ export const InputSelect = React.forwardRef((props, ref) => {
 
             items = currentValue.map(value => {
 
-                const item = props.options.filter(opt => opt.value === value)[0];
+                let item = props.options.filter(opt => opt.value === value)[0];
+
+                if (!item) {
+
+                    // ! If value is empty return null
+                    if (!value) {
+                        return null;
+                    }
+
+                    // ! If item is not found in options, create one with value as label
+                    item = {
+                        value: value,
+                        label: value
+                    }
+                }
 
                 return (
                     <StecDiv
@@ -137,11 +151,21 @@ export const InputSelect = React.forwardRef((props, ref) => {
 
             let item = props.options.filter(opt => opt.value === currentValue);
 
-            if (item.length <= 0) {
-                return '';
-            }
+            if (item.length > 0) {
+                item = item[0];
+            } else {
 
-            item = item[0];
+                // ! If value is empty return null
+                if (!currentValue) {
+                    return null;
+                }
+
+                // ! If item is not found in options, create one with value as label
+                item = {
+                    value: currentValue,
+                    label: currentValue
+                }
+            }
 
             items = <StecDiv
                 key={item.value}
@@ -337,9 +361,24 @@ export const UncontrolledInputSelect = React.forwardRef((props, ref) => {
         let items = '';
 
         if (Array.isArray(currentValue)) {
+
             items = currentValue.map(value => {
 
-                const item = props.options.filter(opt => opt.value === value)[0];
+                let item = props.options.filter(opt => opt.value === value)[0];
+
+                if (!item) {
+
+                    // ! If value is empty return null
+                    if (!value) {
+                        return null;
+                    }
+
+                    // ! If item is not found in options, create one with value as label
+                    item = {
+                        value: value,
+                        label: value
+                    }
+                }
 
                 return (
                     <StecDiv
@@ -373,15 +412,26 @@ export const UncontrolledInputSelect = React.forwardRef((props, ref) => {
                 );
 
             })
+
         } else {
 
             let item = props.options.filter(opt => opt.value === currentValue);
 
-            if (item.length <= 0) {
-                return '';
-            }
+            if (item.length > 0) {
+                item = item[0];
+            } else {
 
-            item = item[0];
+                // ! If value is empty return null
+                if (!currentValue) {
+                    return null;
+                }
+
+                // ! If item is not found in options, create one with value as label
+                item = {
+                    value: currentValue,
+                    label: currentValue
+                }
+            }
 
             items = <StecDiv
                 key={item.value}

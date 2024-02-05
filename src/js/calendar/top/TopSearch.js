@@ -1,10 +1,10 @@
 import Event from '@Stec/JS/calendar/event/Event';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import { StecDiv } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
 import { useRef, useState } from 'react';
 import TopButton from './TopButton';
 import TopSearchMenu from './TopSearchMenu';
+import { __ } from '@wordpress/i18n';
 
 const TopSearch = () => {
 
