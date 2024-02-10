@@ -23,7 +23,7 @@ function EventLocationAddress({ event, style }) {
 
                             return (
                                 <StecDiv key={orderKey}>
-                                    <StecSpan>{__('Country', 'stec')}</StecSpan>
+                                    <StecSpan>{__('Country', 'stachethemes_event_calendar_lite')}</StecSpan>
                                     <StecSpan>{event.location.country}</StecSpan>
                                 </StecDiv>
                             )
@@ -37,7 +37,7 @@ function EventLocationAddress({ event, style }) {
 
                             return (
                                 <StecDiv key={orderKey}>
-                                    <StecSpan>{__('State', 'stec')}</StecSpan>
+                                    <StecSpan>{__('State', 'stachethemes_event_calendar_lite')}</StecSpan>
                                     <StecSpan>{event.location.state}</StecSpan>
                                 </StecDiv>
                             )
@@ -51,7 +51,7 @@ function EventLocationAddress({ event, style }) {
 
                             return (
                                 <StecDiv key={orderKey}>
-                                    <StecSpan>{__('City', 'stec')}</StecSpan>
+                                    <StecSpan>{__('City', 'stachethemes_event_calendar_lite')}</StecSpan>
                                     <StecSpan>{event.location.city}</StecSpan>
                                 </StecDiv>
                             )
@@ -65,7 +65,7 @@ function EventLocationAddress({ event, style }) {
 
                             return (
                                 <StecDiv key={orderKey}>
-                                    <StecSpan>{__('Address', 'stec')}</StecSpan>
+                                    <StecSpan>{__('Address', 'stachethemes_event_calendar_lite')}</StecSpan>
                                     <StecSpan>{event.location.address}</StecSpan>
                                 </StecDiv>
                             )
@@ -79,7 +79,7 @@ function EventLocationAddress({ event, style }) {
 
                             return (
                                 <StecDiv key={orderKey}>
-                                    <StecSpan>{__('Postal code', 'stec')}</StecSpan>
+                                    <StecSpan>{__('Postal code', 'stachethemes_event_calendar_lite')}</StecSpan>
                                     <StecSpan>{event.location.postal_code}</StecSpan>
                                 </StecDiv>
                             )

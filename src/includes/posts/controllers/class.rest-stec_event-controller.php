@@ -79,17 +79,17 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $data = $request->get_json_params();
 
             if (false === is_array($data['stec_cal']) || !$data['stec_cal']) {
-                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stec'));
+                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stachethemes_event_calendar_lite'));
             }
 
             $calendar = get_term($data['stec_cal'][0], 'stec_cal');
 
             if (false === $calendar instanceof \WP_Term) {
-                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stec'));
+                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stachethemes_event_calendar_lite'));
             }
 
             if (false === Permissions::user_has_term_permission($initiator, $calendar, 'stec_cal', 'use_permission')) {
-                throw new Stec_Exception(esc_html__("You do not have permission to use this calendar", 'stec'));
+                throw new Stec_Exception(esc_html__("You do not have permission to use this calendar", 'stachethemes_event_calendar_lite'));
             }
 
             // Set start_date_utc and end_date_utc
@@ -680,17 +680,17 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $data = $request->get_json_params();
 
             if (false === is_array($data['stec_cal']) || !$data['stec_cal']) {
-                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stec'));
+                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stachethemes_event_calendar_lite'));
             }
 
             $calendar = get_term($data['stec_cal'][0], 'stec_cal');
 
             if (false === $calendar instanceof \WP_Term) {
-                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stec'));
+                throw new Stec_Exception(esc_html__('Event must have a calendar', 'stachethemes_event_calendar_lite'));
             }
 
             if (false === Permissions::user_has_term_permission($initiator, $calendar, 'stec_cal', 'use_permission')) {
-                throw new Stec_Exception(esc_html__("You do not have permission to use this calendar", 'stec'));
+                throw new Stec_Exception(esc_html__("You do not have permission to use this calendar", 'stachethemes_event_calendar_lite'));
             }
 
             // Default permissions if empty
@@ -839,7 +839,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $calendar_id = $request->get_param('id');
 
             if (false === Permissions::current_user_has_term_permission($calendar_id, 'stec_cal', 'edit_permission')) {
-                throw new Stec_Exception(esc_html__('You do not have permission to delete events from this calendar', 'stec'));
+                throw new Stec_Exception(esc_html__('You do not have permission to delete events from this calendar', 'stachethemes_event_calendar_lite'));
             }
 
             $events_to_delete = get_posts(array(
@@ -887,7 +887,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             ));
 
             if (false === $result) {
-                throw new Stec_Exception(esc_html__('Event could not be archived', 'stec'));
+                throw new Stec_Exception(esc_html__('Event could not be archived', 'stachethemes_event_calendar_lite'));
             }
 
             return true;
@@ -915,7 +915,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             ));
 
             if (false === $result) {
-                throw new Stec_Exception(esc_html__('Event could not be unarchived', 'stec'));
+                throw new Stec_Exception(esc_html__('Event could not be unarchived', 'stachethemes_event_calendar_lite'));
             }
 
             return true;

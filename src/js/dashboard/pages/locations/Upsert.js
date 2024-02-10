@@ -38,14 +38,14 @@ const PermissionsList = (props) => {
                 <UncontrolledInputSelect
                     ref={(ref) => focusFieldsRef.current['edit_permission'] = ref}
                     multiple={true}
-                    title={__('Edit permission', 'stec')}
+                    title={__('Edit permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList.filter(item => {
                         return item.value !== 'stec_public'
                     })}
                     defaultValue={postData.current.meta.edit_permission}
-                    description={__('Who can edit this location', 'stec')}
+                    description={__('Who can edit this location', 'stachethemes_event_calendar_lite')}
                     required={true}
-                    errorMessage={__('The edit permission cannot be empty', 'stec')}
+                    errorMessage={__('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')}
                     wasSubmitted={wasSubmitted}
                     onChange={value => {
                         postData.current.meta.edit_permission = value;
@@ -62,12 +62,12 @@ const PermissionsList = (props) => {
                 <UncontrolledInputSelect
                     ref={(ref) => focusFieldsRef.current['use_permission'] = ref}
                     multiple={true}
-                    title={__('Use permission', 'stec')}
+                    title={__('Use permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList}
                     defaultValue={postData.current.meta.use_permission}
-                    description={__('Who can add this location to their events', 'stec')}
+                    description={__('Who can add this location to their events', 'stachethemes_event_calendar_lite')}
                     required={true}
-                    errorMessage={__('The use permission cannot be empty', 'stec')}
+                    errorMessage={__('The use permission cannot be empty', 'stachethemes_event_calendar_lite')}
                     wasSubmitted={wasSubmitted}
                     onChange={value => {
                         postData.current.meta.use_permission = value;
@@ -133,7 +133,7 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
     const findCoordinates = async () => {
 
         if (postData.current.meta.address === '' && postData.current.meta.city === '' && postData.current.meta.country === '') {
-            toast.error(__('No location provided', 'stec'));
+            toast.error(__('No location provided', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -153,9 +153,9 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
 
             setFieldKey(uniqueId());
 
-            toast.success(__('Coordinates added', 'stec'));
+            toast.success(__('Coordinates added', 'stachethemes_event_calendar_lite'));
         } else {
-            toast.error(__('Unable to obtain coordinates', 'stec'));
+            toast.error(__('Unable to obtain coordinates', 'stachethemes_event_calendar_lite'));
         }
 
     }
@@ -165,7 +165,7 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
             <UncontrolledInputText
                 key={fieldKey}
                 title={__('Coordinates')}
-                placeholder={__('Lng, Lat', 'stec')}
+                placeholder={__('Lng, Lat', 'stachethemes_event_calendar_lite')}
                 description={__('Location coordinates in decimal format')}
                 defaultValue={postData.current.meta.coordinates}
                 onChange={value => {
@@ -176,7 +176,7 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
 
             <Spacer />
 
-            <Button className='blue' label={[<i key='icon' className='fas fa-map-marked-alt' />, __('Get Coordinates', 'stec')]} onClick={() => {
+            <Button className='blue' label={[<i key='icon' className='fas fa-map-marked-alt' />, __('Get Coordinates', 'stachethemes_event_calendar_lite')]} onClick={() => {
                 findCoordinates();
             }} />
         </>
@@ -198,60 +198,60 @@ const LocationTypeForm = React.forwardRef((props, ref) => {
 
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.country}
-                    title={__('Country', 'stec')}
-                    placeholder={__('Country name', 'stec')}
+                    title={__('Country', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('Country name', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.country = value;
                     }}
-                    description={__('Country', 'stec')}
+                    description={__('Country', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
 
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.state}
-                    title={__('State/Province', 'stec')}
-                    placeholder={__('State/Province', 'stec')}
+                    title={__('State/Province', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('State/Province', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.state = value;
                     }}
-                    description={__('State or Province if applicable', 'stec')}
+                    description={__('State or Province if applicable', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
 
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.city}
-                    title={__('City', 'stec')}
-                    placeholder={__('City name', 'stec')}
+                    title={__('City', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('City name', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.city = value;
                     }}
-                    description={__('City name if applicable', 'stec')}
+                    description={__('City name if applicable', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
 
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.postal_code}
-                    title={__('Postal code', 'stec')}
-                    placeholder={__('Postal code', 'stec')}
+                    title={__('Postal code', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('Postal code', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.postal_code = value;
                     }}
-                    description={__('Postal code if applicable', 'stec')}
+                    description={__('Postal code if applicable', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
 
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.address}
-                    title={__('Address', 'stec')}
-                    placeholder={__('Location address', 'stec')}
+                    title={__('Address', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('Location address', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.address = value;
                     }}
-                    description={__('Address', 'stec')}
+                    description={__('Address', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -267,19 +267,19 @@ const LocationTypeForm = React.forwardRef((props, ref) => {
             <>
                 <UncontrolledInputText
                     defaultValue={postData.current.meta.address}
-                    title={__('Address', 'stec')}
-                    placeholder={__('Location address', 'stec')}
+                    title={__('Address', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('Location address', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.address = value;
                     }}
-                    description={__('Virtual location address (https://...)', 'stec')}
+                    description={__('Virtual location address (https://...)', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
 
                 <UncontrolledInputCheckbox
-                    title={__('Protected address', 'stec')}
-                    description={__('Only logged-in users can view the address', 'stec')}
+                    title={__('Protected address', 'stachethemes_event_calendar_lite')}
+                    description={__('Only logged-in users can view the address', 'stachethemes_event_calendar_lite')}
                     defaultValue={postData.current.meta.protected}
                     onChange={value => {
                         postData.current.meta.protected = value;
@@ -295,14 +295,14 @@ const LocationTypeForm = React.forwardRef((props, ref) => {
             <InputSelect
                 multiple={false}
                 value={type}
-                title={__('Type', 'stec')}
+                title={__('Type', 'stachethemes_event_calendar_lite')}
                 options={[
                     {
-                        label: __('Physical location', 'stec'),
+                        label: __('Physical location', 'stachethemes_event_calendar_lite'),
                         value: 'physical'
                     },
                     {
-                        label: __('Virtual location', 'stec'),
+                        label: __('Virtual location', 'stachethemes_event_calendar_lite'),
                         value: 'virtual'
                     },
                 ]}
@@ -310,7 +310,7 @@ const LocationTypeForm = React.forwardRef((props, ref) => {
                     setType(value);
                     postData.current.meta.type = value;
                 }}
-                description={__('Choose location type', 'stec')}
+                description={__('Choose location type', 'stachethemes_event_calendar_lite')}
             />
 
             <Spacer />
@@ -357,7 +357,7 @@ export function UpsertForm(props) {
     const resetForm = () => {
         setPostData(locationDataDefaults);
         setWasSubmitted(false);
-        toast(__('The form has been reset', 'stec'));
+        toast(__('The form has been reset', 'stachethemes_event_calendar_lite'));
     }
 
     // Validates the form fields and toast focus error message
@@ -368,29 +368,29 @@ export function UpsertForm(props) {
                 id: 'name',
                 regex: getRegexByType('title'),
                 meta: false,
-                errorMessage: __('The location must have a name', 'stec'),
+                errorMessage: __('The location must have a name', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'slug',
                 regex: getRegexByType('slug'),
                 meta: false,
-                errorMessage: __('The location must have a valid slug', 'stec'),
+                errorMessage: __('The location must have a valid slug', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'use_permission',
                 meta: true,
-                errorMessage: __('The use permission cannot be empty', 'stec')
+                errorMessage: __('The use permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'edit_permission',
                 meta: true,
-                errorMessage: __('The edit permission cannot be empty', 'stec')
+                errorMessage: __('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'coordinates',
                 regex: getRegexByType('coordinates'),
                 meta: true,
-                errorMessage: __('The location must have valid coordinates', 'stec'),
+                errorMessage: __('The location must have valid coordinates', 'stachethemes_event_calendar_lite'),
                 condition: 'physical'
             },
 
@@ -444,7 +444,7 @@ export function UpsertForm(props) {
     const onUpsertLocation = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -483,7 +483,7 @@ export function UpsertForm(props) {
                                 data: postData.current,
                                 includeResponseStatus: true,
                                 translateErrorCode: {
-                                    'term_exists': __('A location with this name already exists', 'stec')
+                                    'term_exists': __('A location with this name already exists', 'stachethemes_event_calendar_lite')
                                 },
                                 errorMessage: 'auto'
                             });
@@ -506,7 +506,7 @@ export function UpsertForm(props) {
                                     group: 'taxonomy-stec_loc'
                                 });
 
-                                return resolve(__('Created', 'stec'));
+                                return resolve(__('Created', 'stachethemes_event_calendar_lite'));
                             }
 
                             case 200: {
@@ -521,12 +521,12 @@ export function UpsertForm(props) {
                                     group: 'taxonomy-stec_loc'
                                 });
 
-                                return resolve(__('Updated', 'stec'));
+                                return resolve(__('Updated', 'stachethemes_event_calendar_lite'));
 
                             }
 
                             default: {
-                                return reject(__('Sorry, something went wrong', 'stec'));
+                                return reject(__('Sorry, something went wrong', 'stachethemes_event_calendar_lite'));
                             }
                         }
 
@@ -543,7 +543,7 @@ export function UpsertForm(props) {
 
             }),
             {
-                loading: __('Saving', 'stec'),
+                loading: __('Saving', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -563,7 +563,7 @@ export function UpsertForm(props) {
     const deleteLocation = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -596,7 +596,7 @@ export function UpsertForm(props) {
                             group: 'taxonomy-stec_loc'
                         });
 
-                        return resolve(__('Deleted', 'stec'));
+                        return resolve(__('Deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -609,7 +609,7 @@ export function UpsertForm(props) {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -626,8 +626,8 @@ export function UpsertForm(props) {
 
 
     const sectionTitle = postData.current.id ?
-        [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit location', 'stec')] :
-        [<i key='icon' className='fa-solid fa-plus' />, __('Add new location', 'stec')];
+        [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit location', 'stachethemes_event_calendar_lite')] :
+        [<i key='icon' className='fa-solid fa-plus' />, __('Add new location', 'stachethemes_event_calendar_lite')];
 
     return (
 
@@ -639,11 +639,11 @@ export function UpsertForm(props) {
                 ref={(ref) => focusFieldsRef.current['name'] = ref}
                 title={__('Name')}
                 defaultValue={postData.current.name}
-                placeholder={__('Location name', 'stec')}
+                placeholder={__('Location name', 'stachethemes_event_calendar_lite')}
                 description={__('Location name')}
                 required={true}
                 regex={getRegexByType('title')}
-                errorMessage={__('The location must have a name', 'stec')}
+                errorMessage={__('The location must have a name', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
                 onChange={value => {
                     postData.current.name = value;
@@ -656,11 +656,11 @@ export function UpsertForm(props) {
                 ref={(ref) => focusFieldsRef.current['slug'] = ref}
                 title={__('Slug')}
                 defaultValue={postData.current.slug}
-                placeholder={__('Location slug', 'stec')}
+                placeholder={__('Location slug', 'stachethemes_event_calendar_lite')}
                 description={__('Leave empty to auto-generate')}
                 required={false}
                 regex={getRegexByType('slug')}
-                errorMessage={__('The location must have a valid slug', 'stec')}
+                errorMessage={__('The location must have a valid slug', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.slug = value;
                 }}
@@ -670,9 +670,9 @@ export function UpsertForm(props) {
             <Spacer />
 
             <UncontrolledInputColor
-                title={__('Color', 'stec')}
+                title={__('Color', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.color}
-                description={__('Location color', 'stec')}
+                description={__('Location color', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.meta.color = value;
                 }}
@@ -681,8 +681,8 @@ export function UpsertForm(props) {
             <Spacer />
 
             <UncontrolledInputTextarea
-                title={__('Description', 'stec')}
-                description={__('About this location', 'stec')}
+                title={__('Description', 'stachethemes_event_calendar_lite')}
+                description={__('About this location', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.description}
                 onChange={(value) => {
                     postData.current.description = value;
@@ -699,10 +699,10 @@ export function UpsertForm(props) {
 
             <Spacer />
 
-            <Button label={postData.current.id ? __('Update', 'stec') : __('Create', 'stec', 0)} className='green' onClick={onUpsertLocation} />
-            <Button label={__('Reset form', 'stec')} className='yellow' style={{ marginLeft: 5 }} onClick={resetForm} />
-            {postData.current.id && <ConfirmButton label={__('Delete', 'stec')} className='red' style={{ marginLeft: 5 }} onClick={deleteLocation} />}
-            <Button label={__('Back', 'stec')} className='blue' style={{ marginLeft: 5 }} onClick={() => {
+            <Button label={postData.current.id ? __('Update', 'stachethemes_event_calendar_lite') : __('Create', 'stachethemes_event_calendar_lite', 0)} className='green' onClick={onUpsertLocation} />
+            <Button label={__('Reset form', 'stachethemes_event_calendar_lite')} className='yellow' style={{ marginLeft: 5 }} onClick={resetForm} />
+            {postData.current.id && <ConfirmButton label={__('Delete', 'stachethemes_event_calendar_lite')} className='red' style={{ marginLeft: 5 }} onClick={deleteLocation} />}
+            <Button label={__('Back', 'stachethemes_event_calendar_lite')} className='blue' style={{ marginLeft: 5 }} onClick={() => {
                 // If the term was deleted we better reset the query args
                 const resetQuery = postData.current.id ? false : true;
                 props.onBack(resetQuery)
@@ -744,14 +744,14 @@ function Upsert() {
             <StecDiv className='stec-dashboard-top-nav'>
 
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-home' />, __('Home', 'stec')]} onClick={() => {
+                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-home' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
                     });
                 }} />
 
-                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage locations', 'stec')]} onClick={goToManageList} />
+                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage locations', 'stachethemes_event_calendar_lite')]} onClick={goToManageList} />
 
             </StecDiv>
 

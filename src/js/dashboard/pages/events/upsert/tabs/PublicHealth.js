@@ -24,11 +24,11 @@ const PublicHealth = (props) => {
     }
 
     return (
-        <Section title={__('Public health measures', 'stec')} >
+        <Section title={__('Public health measures', 'stachethemes_event_calendar_lite')} >
 
             <UncontrolledInputCheckbox
-                title={__('Require face masks', 'stec')}
-                description={__('Require event attendees to wear face masks', 'stec')}
+                title={__('Require face masks', 'stachethemes_event_calendar_lite')}
+                description={__('Require event attendees to wear face masks', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_masks}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_masks = checked;
@@ -38,8 +38,8 @@ const PublicHealth = (props) => {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require temperature screening', 'stec')}
-                description={__('Require event attendees to undergo temperature screening upon entry', 'stec')}
+                title={__('Require temperature screening', 'stachethemes_event_calendar_lite')}
+                description={__('Require event attendees to undergo temperature screening upon entry', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_temp}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_temp = checked;
@@ -49,8 +49,8 @@ const PublicHealth = (props) => {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require safe distance', 'stec')}
-                description={__('Require event attendees to maintain safe physical distance', 'stec')}
+                title={__('Require safe distance', 'stachethemes_event_calendar_lite')}
+                description={__('Require event attendees to maintain safe physical distance', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_distance}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_distance = checked;
@@ -60,8 +60,8 @@ const PublicHealth = (props) => {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require tracing', 'stec')}
-                description={__('Require event attendees to provide their contact information for contact tracing purposes', 'stec')}
+                title={__('Require tracing', 'stachethemes_event_calendar_lite')}
+                description={__('Require event attendees to provide their contact information for contact tracing purposes', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_tracing}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_tracing = checked;
@@ -71,46 +71,46 @@ const PublicHealth = (props) => {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require negative rapid antigen test', 'stec')}
+                title={__('Require negative rapid antigen test', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_rapid_test}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_rapid_test = checked;
                 }}
-                description={__('Require event attendees to have negative rapid antigen test', 'stec')}
+                description={__('Require event attendees to have negative rapid antigen test', 'stachethemes_event_calendar_lite')}
             />
 
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require negative PCR test', 'stec')}
+                title={__('Require negative PCR test', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_pcr_test}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_pcr_test = checked;
                 }}
-                description={__('Require event attendees to have negative PCR test', 'stec')}
+                description={__('Require event attendees to have negative PCR test', 'stachethemes_event_calendar_lite')}
             />
 
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Require vaccination certificate', 'stec')}
+                title={__('Require vaccination certificate', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.require_certificate}
                 onChange={checked => {
                     postData.current.meta.health_measures.require_certificate = checked;
 
                 }}
-                description={__('Require event attendees to have valid vaccination certificate', 'stec')}
+                description={__('Require event attendees to have valid vaccination certificate', 'stachethemes_event_calendar_lite')}
             />
 
             <Spacer />
 
             <UncontrolledInputTextarea
-                title={__('Custom requirements', 'stec')}
+                title={__('Custom requirements', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.health_measures.custom}
                 onChange={value => {
                     postData.current.meta.health_measures.custom = value;
                 }}
-                description={__('Add your own requirement here separated by | character', 'stec')}
+                description={__('Add your own requirement here separated by | character', 'stachethemes_event_calendar_lite')}
             />
 
         </Section>

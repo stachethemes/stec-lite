@@ -29,16 +29,16 @@ function ListManagerTopControl(props) {
                     setConfirmModalOpen(false);
                 }}
                 headerIcon='fa-solid fa-triangle-exclamation'
-                title={__('Are you sure you want to delete the selected items?', 'stec')}
+                title={__('Are you sure you want to delete the selected items?', 'stachethemes_event_calendar_lite')}
                 buttons={
                     [
-                        <Button key='delete' className='red' label={__('Delete', 'stec')} onClick={() => {
+                        <Button key='delete' className='red' label={__('Delete', 'stachethemes_event_calendar_lite')} onClick={() => {
                             if (confirmYesAction.current) {
                                 confirmYesAction.current.onClick();
                                 setConfirmModalOpen(false);
                             }
                         }} />,
-                        <Button key='cancel' className='yellow' label={__('Cancel', 'stec')} onClick={() => {
+                        <Button key='cancel' className='yellow' label={__('Cancel', 'stachethemes_event_calendar_lite')} onClick={() => {
                             confirmYesAction.current = false;
                             setConfirmModalOpen(false);
                         }} />,

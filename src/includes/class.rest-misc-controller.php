@@ -222,7 +222,7 @@ class Rest_Misc_Controller {
             $search = $request->get_param('s');
 
             if (!$search) {
-                throw new Stec_Exception(esc_html__('Missing search term', 'stec'));
+                throw new Stec_Exception(esc_html__('Missing search term', 'stachethemes_event_calendar_lite'));
             }
 
             $data_fields = array('ID', 'user_login', 'user_email', 'display_name');
@@ -280,7 +280,7 @@ class Rest_Misc_Controller {
             // Validate that all files are images
             foreach ($files as $file) {
                 if (!in_array($file['type'], array('image/jpeg', 'image/png'))) {
-                    throw new Stec_Exception(esc_html__('Invalid file type', 'stec'));
+                    throw new Stec_Exception(esc_html__('Invalid file type', 'stachethemes_event_calendar_lite'));
                 }
             }
 

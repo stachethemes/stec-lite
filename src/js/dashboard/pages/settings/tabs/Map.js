@@ -15,19 +15,19 @@ function Map({ settings }) {
 
     return (
         <Section>
-            <SectionCollapseContent title={__('Map settings', 'stec')} subtitle={__('Show map settings', 'stec')}>
+            <SectionCollapseContent title={__('Map settings', 'stachethemes_event_calendar_lite')} subtitle={__('Show map settings', 'stachethemes_event_calendar_lite')}>
                 <InputSelect
                     value={mapProvider}
-                    title={__('Map provider', 'stec')}
-                    description={__(`Choose your map provider`, 'stec')}
+                    title={__('Map provider', 'stachethemes_event_calendar_lite')}
+                    description={__(`Choose your map provider`, 'stachethemes_event_calendar_lite')}
                     options={[
                         {
                             value: 'osm',
-                            label: __('Open Street Map', 'stec')
+                            label: __('Open Street Map', 'stachethemes_event_calendar_lite')
                         },
                         {
                             value: 'gmap',
-                            label: __('Google Maps', 'stec')
+                            label: __('Google Maps', 'stachethemes_event_calendar_lite')
                         }
                     ]}
                     onChange={value => {
@@ -41,8 +41,8 @@ function Map({ settings }) {
                     <>
                         <Spacer />
                         <UncontrolledInputText
-                            title={__('API Key', 'stec')}
-                            description={__('Enter your google maps API key', 'stec')}
+                            title={__('API Key', 'stachethemes_event_calendar_lite')}
+                            description={__('Enter your google maps API key', 'stachethemes_event_calendar_lite')}
                             defaultValue={settingsMap.gmap_api_key}
                             onChange={value => {
                                 settingsMap.gmap_api_key = value;
@@ -54,14 +54,14 @@ function Map({ settings }) {
                 <Spacer />
 
                 <UncontrolledQtySelector
-                    title={__('Map zoom', 'stec')}
+                    title={__('Map zoom', 'stachethemes_event_calendar_lite')}
                     min={1}
                     max={20}
                     defaultValue={settingsLayouts.map_zoom}
                     onChange={value => {
                         settingsLayouts.map_zoom = value;
                     }}
-                    description={__('Initial map zoom value', 'stec')}
+                    description={__('Initial map zoom value', 'stachethemes_event_calendar_lite')}
                 />
 
             </SectionCollapseContent>

@@ -51,7 +51,7 @@ const Edit = (props) => {
             <StecDiv className='stec-widget-events-list-admin-preview-label'>
                 <img src={`${getImageUrl('stachethemes-avatar.jpg')}`} alt="stachethemes" />
                 <StecSpan>
-                    {__('Events List Widget', 'stec')}
+                    {__('Events List Widget', 'stachethemes_event_calendar_lite')}
                 </StecSpan>
             </StecDiv>
 
@@ -62,12 +62,12 @@ const Edit = (props) => {
 
                     <SectionCollapseContent
                         collapsed={true}
-                        title={__('General', 'stec')}
-                        subtitle={__('Toggle general settings', 'stec')}>
+                        title={__('General', 'stachethemes_event_calendar_lite')}
+                        subtitle={__('Toggle general settings', 'stachethemes_event_calendar_lite')}>
 
                         <QtySelector
-                            title={__('Events Limit', 'stec')}
-                            placeholder={__('Quantity', 'stec')}
+                            title={__('Events Limit', 'stachethemes_event_calendar_lite')}
+                            placeholder={__('Quantity', 'stachethemes_event_calendar_lite')}
                             min={1}
                             max={9999}
                             value={limit}
@@ -79,16 +79,16 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputSelect
-                            title={__('Order List', 'stec')}
+                            title={__('Order List', 'stachethemes_event_calendar_lite')}
                             value={order}
                             options={[
                                 {
                                     value: 'desc',
-                                    label: __('Descending', 'stec')
+                                    label: __('Descending', 'stachethemes_event_calendar_lite')
                                 },
                                 {
                                     value: 'asc',
-                                    label: __('Ascending', 'stec')
+                                    label: __('Ascending', 'stachethemes_event_calendar_lite')
                                 },
                             ]}
                             onChange={(newValue) => {
@@ -99,16 +99,16 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputSelect
-                            title={__('Open events in', 'stec')}
+                            title={__('Open events in', 'stachethemes_event_calendar_lite')}
                             value={open_events_in}
                             options={[
                                 {
                                     value: '_self',
-                                    label: __('Same Window', 'stec')
+                                    label: __('Same Window', 'stachethemes_event_calendar_lite')
                                 },
                                 {
                                     value: '_blank',
-                                    label: __('New Window', 'stec')
+                                    label: __('New Window', 'stachethemes_event_calendar_lite')
                                 },
                             ]}
                             onChange={(newValue) => {
@@ -118,7 +118,7 @@ const Edit = (props) => {
 
                         <Spacer />
                         <InputCheckbox
-                            title={__("Use external link", 'stec')}
+                            title={__("Use external link", 'stachethemes_event_calendar_lite')}
                             value={prefer_external_link}
                             onChange={value => {
                                 setAttributes({ prefer_external_link: value });
@@ -128,7 +128,7 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputCheckbox
-                            title={__('Show Tags', 'stec')}
+                            title={__('Show Tags', 'stachethemes_event_calendar_lite')}
                             value={display_tags}
                             onChange={value => {
                                 setAttributes({ display_tags: value });
@@ -138,7 +138,7 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputCheckbox
-                            title={__('Show Thumbnail', 'stec')}
+                            title={__('Show Thumbnail', 'stachethemes_event_calendar_lite')}
                             value={display_thumbnail}
                             onChange={value => {
                                 setAttributes({ display_thumbnail: value });
@@ -147,7 +147,7 @@ const Edit = (props) => {
 
                         <Spacer />
                         <InputCheckbox
-                            title={__('Show Categories', 'stec')}
+                            title={__('Show Categories', 'stachethemes_event_calendar_lite')}
                             value={display_categories}
                             onChange={value => {
                                 setAttributes({ display_categories: value });
@@ -155,7 +155,7 @@ const Edit = (props) => {
                         />
                         <Spacer />
                         <InputCheckbox
-                            title={__('Show Locations', 'stec')}
+                            title={__('Show Locations', 'stachethemes_event_calendar_lite')}
                             value={display_locations}
                             onChange={value => {
                                 setAttributes({ display_locations: value });
@@ -163,7 +163,7 @@ const Edit = (props) => {
                         />
                         <Spacer />
                         <InputCheckbox
-                            title={__('Show Tickets', 'stec')}
+                            title={__('Show Tickets', 'stachethemes_event_calendar_lite')}
                             value={display_tickets}
                             onChange={value => {
                                 setAttributes({ display_tickets: value });
@@ -171,7 +171,7 @@ const Edit = (props) => {
                         />
                         <Spacer />
                         <InputCheckbox
-                            title={__('Show Description', 'stec')}
+                            title={__('Show Description', 'stachethemes_event_calendar_lite')}
                             value={display_description}
                             onChange={value => {
                                 setAttributes({ display_description: value });
@@ -183,33 +183,33 @@ const Edit = (props) => {
 
                     <SectionCollapseContent
                         collapsed={true}
-                        title={__('Filters', 'stec')}
-                        subtitle={__('Toggle filters settings', 'stec')}>
+                        title={__('Filters', 'stachethemes_event_calendar_lite')}
+                        subtitle={__('Toggle filters settings', 'stachethemes_event_calendar_lite')}>
 
                         <InputSelect
-                            title={__('Event Status', 'stec')}
+                            title={__('Event Status', 'stachethemes_event_calendar_lite')}
                             multiple={true}
-                            description={__('Filter events by status', 'stec')}
+                            description={__('Filter events by status', 'stachethemes_event_calendar_lite')}
                             options={
                                 [
                                     {
-                                        label: __('Scheduled', 'stec'),
+                                        label: __('Scheduled', 'stachethemes_event_calendar_lite'),
                                         value: 'EventScheduled'
                                     },
                                     {
-                                        label: __('Moved Online', 'stec'),
+                                        label: __('Moved Online', 'stachethemes_event_calendar_lite'),
                                         value: 'EventMovedOnline'
                                     },
                                     {
-                                        label: __('Postponed', 'stec'),
+                                        label: __('Postponed', 'stachethemes_event_calendar_lite'),
                                         value: 'EventPostponed'
                                     },
                                     {
-                                        label: __('Rescheduled', 'stec'),
+                                        label: __('Rescheduled', 'stachethemes_event_calendar_lite'),
                                         value: 'EventRescheduled'
                                     },
                                     {
-                                        label: __('Cancelled', 'stec'),
+                                        label: __('Cancelled', 'stachethemes_event_calendar_lite'),
                                         value: 'EventCancelled'
                                     },
                                 ]
@@ -223,8 +223,8 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputText
-                            title={__('Calendars', 'stec')}
-                            description={__('Filter events by calendars. Comma separated id values', 'stec')}
+                            title={__('Calendars', 'stachethemes_event_calendar_lite')}
+                            description={__('Filter events by calendars. Comma separated id values', 'stachethemes_event_calendar_lite')}
                             placeholder='101,102,103...'
                             value={stec_cal}
                             onChange={(value) => {
@@ -235,8 +235,8 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputText
-                            title={__('Categories', 'stec')}
-                            description={__('Filter events by categories. Comma separated id values', 'stec')}
+                            title={__('Categories', 'stachethemes_event_calendar_lite')}
+                            description={__('Filter events by categories. Comma separated id values', 'stachethemes_event_calendar_lite')}
                             placeholder='101,102,103...'
                             value={stec_cat}
                             onChange={(value) => {
@@ -247,8 +247,8 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputText
-                            title={__('Locations', 'stec')}
-                            description={__('Filter events by locations. Comma separated id values', 'stec')}
+                            title={__('Locations', 'stachethemes_event_calendar_lite')}
+                            description={__('Filter events by locations. Comma separated id values', 'stachethemes_event_calendar_lite')}
                             placeholder='101,102,103...'
                             value={stec_loc}
                             onChange={(value) => {
@@ -259,8 +259,8 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputText
-                            title={__('Organizers', 'stec')}
-                            description={__('Filter events by organizers. Comma separated id values', 'stec')}
+                            title={__('Organizers', 'stachethemes_event_calendar_lite')}
+                            description={__('Filter events by organizers. Comma separated id values', 'stachethemes_event_calendar_lite')}
                             placeholder='101,102,103...'
                             value={stec_org}
                             onChange={(value) => {
@@ -271,8 +271,8 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputText
-                            title={__('Author', 'stec')}
-                            description={__('Filter events by authors. Comma separated id values', 'stec')}
+                            title={__('Author', 'stachethemes_event_calendar_lite')}
+                            description={__('Filter events by authors. Comma separated id values', 'stachethemes_event_calendar_lite')}
                             placeholder='101,102,103...'
                             value={author}
                             onChange={(value) => {
@@ -283,131 +283,131 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputSelect
-                            title={__('Min date', 'stec')}
-                            description={__('Minimum date range', 'stec')}
+                            title={__('Min date', 'stachethemes_event_calendar_lite')}
+                            description={__('Minimum date range', 'stachethemes_event_calendar_lite')}
                             options={[
                                 {
-                                    label: __('None', 'stec'),
+                                    label: __('None', 'stachethemes_event_calendar_lite'),
                                     value: ''
                                 },
                                 {
-                                    label: __('Now', 'stec'),
+                                    label: __('Now', 'stachethemes_event_calendar_lite'),
                                     value: 'now'
                                 },
                                 {
-                                    label: __('Start of today', 'stec'),
+                                    label: __('Start of today', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_today'
                                 },
                                 {
-                                    label: __('End of today', 'stec'),
+                                    label: __('End of today', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_today'
                                 },
                                 {
-                                    label: __('Start of current week', 'stec'),
+                                    label: __('Start of current week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_week'
                                 },
                                 {
-                                    label: __('End of current week', 'stec'),
+                                    label: __('End of current week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_week'
                                 },
                                 {
-                                    label: __('Start of previous week', 'stec'),
+                                    label: __('Start of previous week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_week'
                                 },
                                 {
-                                    label: __('End of previous week', 'stec'),
+                                    label: __('End of previous week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_week'
                                 },
                                 {
-                                    label: __('Start of next week', 'stec'),
+                                    label: __('Start of next week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_week'
                                 },
                                 {
-                                    label: __('End of next week', 'stec'),
+                                    label: __('End of next week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_week'
                                 },
                                 {
-                                    label: __('Start of current month', 'stec'),
+                                    label: __('Start of current month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_month'
                                 },
                                 {
-                                    label: __('End of current month', 'stec'),
+                                    label: __('End of current month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_month'
                                 },
                                 {
-                                    label: __('Start of previous month', 'stec'),
+                                    label: __('Start of previous month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_month'
                                 },
                                 {
-                                    label: __('End of previous month', 'stec'),
+                                    label: __('End of previous month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_month'
                                 },
                                 {
-                                    label: __('Start of next month', 'stec'),
+                                    label: __('Start of next month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_month'
                                 },
                                 {
-                                    label: __('End of next month', 'stec'),
+                                    label: __('End of next month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_month'
                                 },
                                 {
-                                    label: __('Start of current year', 'stec'),
+                                    label: __('Start of current year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_year'
                                 },
                                 {
-                                    label: __('End of current year', 'stec'),
+                                    label: __('End of current year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_year'
                                 },
                                 {
-                                    label: __('Start of previous year', 'stec'),
+                                    label: __('Start of previous year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_year'
                                 },
                                 {
-                                    label: __('End of previous year', 'stec'),
+                                    label: __('End of previous year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_year'
                                 },
                                 {
-                                    label: __('Start of next year', 'stec'),
+                                    label: __('Start of next year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_year'
                                 },
                                 {
-                                    label: __('End of next year', 'stec'),
+                                    label: __('End of next year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_year'
                                 },
                                 {
-                                    label: __('3 months ahead', 'stec'),
+                                    label: __('3 months ahead', 'stachethemes_event_calendar_lite'),
                                     value: '3_months_ahead'
                                 },
                                 {
-                                    label: __('3 months ago', 'stec'),
+                                    label: __('3 months ago', 'stachethemes_event_calendar_lite'),
                                     value: '3_months_ago'
                                 },
                                 {
-                                    label: __('6 months ahead', 'stec'),
+                                    label: __('6 months ahead', 'stachethemes_event_calendar_lite'),
                                     value: '6_months_ahead'
                                 },
                                 {
-                                    label: __('6 months ago', 'stec'),
+                                    label: __('6 months ago', 'stachethemes_event_calendar_lite'),
                                     value: '6_months_ago'
                                 },
                                 {
-                                    label: __('1 year ahead', 'stec'),
+                                    label: __('1 year ahead', 'stachethemes_event_calendar_lite'),
                                     value: '1_year_ahead'
                                 },
                                 {
-                                    label: __('1 year ago', 'stec'),
+                                    label: __('1 year ago', 'stachethemes_event_calendar_lite'),
                                     value: '1_year_ago'
                                 },
                                 {
-                                    label: __('2 years ahead', 'stec'),
+                                    label: __('2 years ahead', 'stachethemes_event_calendar_lite'),
                                     value: '2_years_ahead'
                                 },
                                 {
-                                    label: __('2 years ago', 'stec'),
+                                    label: __('2 years ago', 'stachethemes_event_calendar_lite'),
                                     value: '2_years_ago'
                                 },
                                 {
-                                    label: __('Select Date', 'stec'),
+                                    label: __('Select Date', 'stachethemes_event_calendar_lite'),
                                     value: 'custom'
                                 }
                             ]}
@@ -422,8 +422,8 @@ const Edit = (props) => {
                                 <Spacer />
 
                                 <DatePicker
-                                    title={__('Select min date', 'stec')}
-                                    description={__('Select min date', 'stec')}
+                                    title={__('Select min date', 'stachethemes_event_calendar_lite')}
+                                    description={__('Select min date', 'stachethemes_event_calendar_lite')}
                                     includeTime={false}
                                     value={min_date_custom}
                                     onChange={(value) => {
@@ -437,131 +437,131 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputSelect
-                            title={__('Max date', 'stec')}
-                            description={__('Maximum date range', 'stec')}
+                            title={__('Max date', 'stachethemes_event_calendar_lite')}
+                            description={__('Maximum date range', 'stachethemes_event_calendar_lite')}
                             options={[
                                 {
-                                    label: __('None', 'stec'),
+                                    label: __('None', 'stachethemes_event_calendar_lite'),
                                     value: ''
                                 },
                                 {
-                                    label: __('Now', 'stec'),
+                                    label: __('Now', 'stachethemes_event_calendar_lite'),
                                     value: 'now'
                                 },
                                 {
-                                    label: __('Start of today', 'stec'),
+                                    label: __('Start of today', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_today'
                                 },
                                 {
-                                    label: __('End of today', 'stec'),
+                                    label: __('End of today', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_today'
                                 },
                                 {
-                                    label: __('Start of current week', 'stec'),
+                                    label: __('Start of current week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_week'
                                 },
                                 {
-                                    label: __('End of current week', 'stec'),
+                                    label: __('End of current week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_week'
                                 },
                                 {
-                                    label: __('Start of previous week', 'stec'),
+                                    label: __('Start of previous week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_week'
                                 },
                                 {
-                                    label: __('End of previous week', 'stec'),
+                                    label: __('End of previous week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_week'
                                 },
                                 {
-                                    label: __('Start of next week', 'stec'),
+                                    label: __('Start of next week', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_week'
                                 },
                                 {
-                                    label: __('End of next week', 'stec'),
+                                    label: __('End of next week', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_week'
                                 },
                                 {
-                                    label: __('Start of current month', 'stec'),
+                                    label: __('Start of current month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_month'
                                 },
                                 {
-                                    label: __('End of current month', 'stec'),
+                                    label: __('End of current month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_month'
                                 },
                                 {
-                                    label: __('Start of previous month', 'stec'),
+                                    label: __('Start of previous month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_month'
                                 },
                                 {
-                                    label: __('End of previous month', 'stec'),
+                                    label: __('End of previous month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_month'
                                 },
                                 {
-                                    label: __('Start of next month', 'stec'),
+                                    label: __('Start of next month', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_month'
                                 },
                                 {
-                                    label: __('End of next month', 'stec'),
+                                    label: __('End of next month', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_month'
                                 },
                                 {
-                                    label: __('Start of current year', 'stec'),
+                                    label: __('Start of current year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_this_year'
                                 },
                                 {
-                                    label: __('End of current year', 'stec'),
+                                    label: __('End of current year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_this_year'
                                 },
                                 {
-                                    label: __('Start of previous year', 'stec'),
+                                    label: __('Start of previous year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_prev_year'
                                 },
                                 {
-                                    label: __('End of previous year', 'stec'),
+                                    label: __('End of previous year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_prev_year'
                                 },
                                 {
-                                    label: __('Start of next year', 'stec'),
+                                    label: __('Start of next year', 'stachethemes_event_calendar_lite'),
                                     value: 'start_of_next_year'
                                 },
                                 {
-                                    label: __('End of next year', 'stec'),
+                                    label: __('End of next year', 'stachethemes_event_calendar_lite'),
                                     value: 'end_of_next_year'
                                 },
                                 {
-                                    label: __('3 months ahead', 'stec'),
+                                    label: __('3 months ahead', 'stachethemes_event_calendar_lite'),
                                     value: '3_months_ahead'
                                 },
                                 {
-                                    label: __('3 months ago', 'stec'),
+                                    label: __('3 months ago', 'stachethemes_event_calendar_lite'),
                                     value: '3_months_ago'
                                 },
                                 {
-                                    label: __('6 months ahead', 'stec'),
+                                    label: __('6 months ahead', 'stachethemes_event_calendar_lite'),
                                     value: '6_months_ahead'
                                 },
                                 {
-                                    label: __('6 months ago', 'stec'),
+                                    label: __('6 months ago', 'stachethemes_event_calendar_lite'),
                                     value: '6_months_ago'
                                 },
                                 {
-                                    label: __('1 year ahead', 'stec'),
+                                    label: __('1 year ahead', 'stachethemes_event_calendar_lite'),
                                     value: '1_year_ahead'
                                 },
                                 {
-                                    label: __('1 year ago', 'stec'),
+                                    label: __('1 year ago', 'stachethemes_event_calendar_lite'),
                                     value: '1_year_ago'
                                 },
                                 {
-                                    label: __('2 years ahead', 'stec'),
+                                    label: __('2 years ahead', 'stachethemes_event_calendar_lite'),
                                     value: '2_years_ahead'
                                 },
                                 {
-                                    label: __('2 years ago', 'stec'),
+                                    label: __('2 years ago', 'stachethemes_event_calendar_lite'),
                                     value: '2_years_ago'
                                 },
                                 {
-                                    label: __('Select Date', 'stec'),
+                                    label: __('Select Date', 'stachethemes_event_calendar_lite'),
                                     value: 'custom'
                                 }
                             ]}
@@ -576,8 +576,8 @@ const Edit = (props) => {
                                 <Spacer />
 
                                 <DatePicker
-                                    title={__('Select date', 'stec')}
-                                    description={__('Select max date', 'stec')}
+                                    title={__('Select date', 'stachethemes_event_calendar_lite')}
+                                    description={__('Select max date', 'stachethemes_event_calendar_lite')}
                                     includeTime={false}
                                     value={max_date_custom}
                                     onChange={(value) => {
@@ -591,7 +591,7 @@ const Edit = (props) => {
                         <Spacer />
 
                         <InputCheckbox
-                            title={__('Featured only', 'stec')}
+                            title={__('Featured only', 'stachethemes_event_calendar_lite')}
                             value={featured_only}
                             onChange={value => {
                                 setAttributes({ featured_only: value });
@@ -602,13 +602,13 @@ const Edit = (props) => {
 
                     <SectionCollapseContent
                         collapsed={true}
-                        title={__('Misc', 'stec')}
-                        subtitle={__('Toggle misc settings', 'stec')}>
+                        title={__('Misc', 'stachethemes_event_calendar_lite')}
+                        subtitle={__('Toggle misc settings', 'stachethemes_event_calendar_lite')}>
 
                         <InputCheckbox
                             value={events_prefetch}
-                            title={__('Prefetch events', 'stec')}
-                            description={__('Prefetch events on page load', 'stec')}
+                            title={__('Prefetch events', 'stachethemes_event_calendar_lite')}
+                            description={__('Prefetch events on page load', 'stachethemes_event_calendar_lite')}
                             onChange={value => {
                                 setAttributes({ events_prefetch: value })
                             }}
@@ -618,8 +618,8 @@ const Edit = (props) => {
 
                         <InputTextarea
 
-                            title={__('Extra attributes', 'stec')}
-                            description={__('Add any extra attributes to the shortcode', 'stec')}
+                            title={__('Extra attributes', 'stachethemes_event_calendar_lite')}
+                            description={__('Add any extra attributes to the shortcode', 'stachethemes_event_calendar_lite')}
                             includeTime={false}
                             value={extra}
                             onChange={(value) => {

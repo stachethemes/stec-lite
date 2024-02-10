@@ -9,8 +9,8 @@ const AgendaSlider = () => {
 
     const instanceId = useSettingsAtt('id');
     const { safeValue: calendarMoment, setValue: setCalendarMoment } = useCalendarMoment();
-
     const { minAllowedMoment, maxAllowedMoment } = useMinMaxCalendarMoments();
+    const bodyDefaultOverflow = useRef(document.body.style.overflow);
 
     const [agendaSettings, setAgendaSettings] = useReducer((state, action) => {
 
@@ -136,7 +136,10 @@ const AgendaSlider = () => {
         function onDragStart(e) {
             if (isDraggable) {
 
-                if (!isMobile()) {
+                if (isMobile()) {
+                    // * Prevent vertical scrolling on mobile while dragging
+                    document.body.style.overflow = 'hidden';
+                } else {
                     e.preventDefault();
                 }
 
@@ -171,7 +174,10 @@ const AgendaSlider = () => {
 
             if (isDraggable) {
 
-                if (!isMobile()) {
+                if (isMobile()) {
+                    // * Restore the default overflow value
+                    document.body.style.overflow = bodyDefaultOverflow.current;
+                } else {
                     e.preventDefault();
                 }
 

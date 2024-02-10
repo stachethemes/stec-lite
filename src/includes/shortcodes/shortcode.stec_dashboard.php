@@ -61,7 +61,7 @@ class Shortcode_Stec_Dashboard {
 
         if ($force || true === self::has_shortcode('stec_dashboard')) {
             wp_enqueue_script('stec-admin-dashboard-js');
-            wp_set_script_translations('stec-admin-dashboard-js', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+            wp_set_script_translations('stec-admin-dashboard-js', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
         }
 
         if (Settings::get('dashboard', 'wpmedia')) {

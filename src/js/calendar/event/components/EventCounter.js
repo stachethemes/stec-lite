@@ -8,13 +8,13 @@ const CounterStatus = React.memo(({ counterStatus }) => {
     return (
         <StecDiv className='stec-event-counter-status'>
             <StecSpan className={counterStatus === 0 ? 'stec-event-counter-status-0' : ''}>
-                {__('Starting in', 'stec')}
+                {__('Starting in', 'stachethemes_event_calendar_lite')}
             </StecSpan>
             <StecSpan className={counterStatus === 1 ? 'stec-event-counter-status-1' : ''}>
-                {__('In progress', 'stec')}
+                {__('In progress', 'stachethemes_event_calendar_lite')}
             </StecSpan>
             <StecSpan className={counterStatus === 2 ? 'stec-event-counter-status-2' : ''}>
-                {__('Expired', 'stec')}
+                {__('Expired', 'stachethemes_event_calendar_lite')}
             </StecSpan>
         </StecDiv>
     )
@@ -29,15 +29,15 @@ const DHMRender = React.memo(({ days, hours, minutes }) => {
         <>
             <StecDiv className='stec-event-counter-countdown-cell'>
                 <StecSpan className='stec-event-counter-countdown-cell-num'>{days}</StecSpan>
-                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Days', 'stec')}</StecSpan>
+                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Days', 'stachethemes_event_calendar_lite')}</StecSpan>
             </StecDiv>
             <StecDiv className='stec-event-counter-countdown-cell'>
                 <StecSpan className='stec-event-counter-countdown-cell-num'>{hours}</StecSpan>
-                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Hours', 'stec')}</StecSpan>
+                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Hours', 'stachethemes_event_calendar_lite')}</StecSpan>
             </StecDiv>
             <StecDiv className='stec-event-counter-countdown-cell'>
                 <StecSpan className='stec-event-counter-countdown-cell-num'>{minutes}</StecSpan>
-                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Minutes', 'stec')}</StecSpan>
+                <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Minutes', 'stachethemes_event_calendar_lite')}</StecSpan>
             </StecDiv>
         </>
     )
@@ -68,7 +68,7 @@ const EventCounter = ({ event, style }) => {
 
             return {
                 status: 0,
-                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stec'), days, hours, minutes, seconds),
+                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stachethemes_event_calendar_lite'), days, hours, minutes, seconds),
                 days: days,
                 hours: hours,
                 minutes: minutes,
@@ -84,7 +84,7 @@ const EventCounter = ({ event, style }) => {
 
             return {
                 status: 1,
-                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stec'), days, hours, minutes, seconds),
+                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stachethemes_event_calendar_lite'), days, hours, minutes, seconds),
                 days: days,
                 hours: hours,
                 minutes: minutes,
@@ -95,7 +95,7 @@ const EventCounter = ({ event, style }) => {
         else {
             return {
                 status: 2,
-                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stec'), 0, 0, 0, 0),
+                string: sprintf(__('%d\D %d\H %d\M %d\S', 'stachethemes_event_calendar_lite'), 0, 0, 0, 0),
                 days: 0,
                 hours: 0,
                 minutes: 0,
@@ -145,7 +145,7 @@ const EventCounter = ({ event, style }) => {
 
                 <StecDiv className='stec-event-counter-countdown-cell'>
                     <StecSpan className='stec-event-counter-countdown-cell-num'>{countData.seconds}</StecSpan>
-                    <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Seconds', 'stec')}</StecSpan>
+                    <StecSpan className='stec-event-counter-countdown-cell-label'>{__('Seconds', 'stachethemes_event_calendar_lite')}</StecSpan>
                 </StecDiv>
             </StecDiv>
 

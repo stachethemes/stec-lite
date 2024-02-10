@@ -62,8 +62,8 @@ const Attachments = (props) => {
         }
 
         const selection = await MediaFrame({
-            title: __('Attachments', 'stec'),
-            buttonText: __('Add attachments', 'stec'),
+            title: __('Attachments', 'stachethemes_event_calendar_lite'),
+            buttonText: __('Add attachments', 'stachethemes_event_calendar_lite'),
             libraryType: '',
             multiple: true
         });
@@ -95,14 +95,14 @@ const Attachments = (props) => {
     }
 
     return (
-        <Section title={__('Attachments', 'stec')} >
+        <Section title={__('Attachments', 'stachethemes_event_calendar_lite')} >
 
             <AttachmentsContent key={instanceKey} ref={postData} onRequestNewInstance={resetInstance} />
 
             <Button
                 disabled={typeof window.wp.media === 'undefined' || !STEC_VARIABLES?.current_user?.capability?.upload_files}
                 className='blue'
-                label={__('Add Attachments', 'stec')}
+                label={__('Add Attachments', 'stachethemes_event_calendar_lite')}
                 onClick={addAttachments} />
 
         </Section>

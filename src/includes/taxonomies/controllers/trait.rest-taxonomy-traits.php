@@ -52,7 +52,7 @@ trait Rest_Taxonomy_Traits {
             array(
                 'args'   => array(
                     'id' => array(
-                        'description' => esc_html__('Unique identifier for the term.', 'stec'),
+                        'description' => esc_html__('Unique identifier for the term.', 'stachethemes_event_calendar_lite'),
                         'type'        => 'integer',
                     ),
                 ),
@@ -78,7 +78,7 @@ trait Rest_Taxonomy_Traits {
                         'force' => array(
                             'type'        => 'boolean',
                             'default'     => true,
-                            'description' => esc_html__('Required to be true, as terms do not support trashing.', 'stec'),
+                            'description' => esc_html__('Required to be true, as terms do not support trashing.', 'stachethemes_event_calendar_lite'),
                         ),
                     ),
                 ),

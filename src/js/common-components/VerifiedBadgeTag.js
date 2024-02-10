@@ -24,7 +24,7 @@ const VerifiedBadgeTag = ({ title = '', style = {} }) => {
                 title={title}
                 buttons={
                     [
-                        <Button key='close' className='blue' label={__('Close', 'stec')} onClick={() => {
+                        <Button key='close' className='blue' label={__('Close', 'stachethemes_event_calendar_lite')} onClick={() => {
                             setOpen(false);
                         }} />
                     ]
@@ -37,7 +37,7 @@ const VerifiedBadgeTag = ({ title = '', style = {} }) => {
                         </g>
                     </svg>
 
-                    <FieldDescription style={{ marginLeft: 5, marginTop: 0 }} text={_x('This badge is given to verified users.', 'Verified badge modal text', 'stec')} />
+                    <FieldDescription style={{ marginLeft: 5, marginTop: 0 }} text={_x('This badge is given to verified users.', 'Verified badge modal text', 'stachethemes_event_calendar_lite')} />
                 </Flexbox>
 
                 <Spacer />

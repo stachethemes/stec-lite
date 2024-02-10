@@ -48,8 +48,8 @@ class Widget_Events_Slider {
 
         register_block_type('stec/widget-events-slider', array(
             'api_version'     => 2,
-            'textdomain'      => 'stec',
-            'title'           => esc_html__('Events Slider', 'stec'),
+            'textdomain'      => 'stachethemes_event_calendar_lite',
+            'title'           => esc_html__('Events Slider', 'stachethemes_event_calendar_lite'),
             'editor_script'   => 'stec-widget-admin-events-slider',
             'editor_style'    => 'stec-widget-admin-events-slider-style',
             'render_callback' => function ($attributes, $content) {
@@ -78,7 +78,7 @@ class Widget_Events_Slider {
 
             if (has_block('stec/widget-events-slider')) {
                 wp_enqueue_script('stec-widget-events-slider');
-                wp_set_script_translations('stec-widget-events-slider', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+                wp_set_script_translations('stec-widget-events-slider', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
             }
         });
     }

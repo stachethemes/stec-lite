@@ -182,28 +182,28 @@ const tabsDefaults = [
     {
         id: 'general',
         icon: 'fa-solid fa-cog',
-        label: __('General', 'stec'),
+        label: __('General', 'stachethemes_event_calendar_lite'),
         active: true,
         keywords: getKeywordsByTabId('general')
     },
     {
         id: 'introduction',
         icon: 'fa-solid fa-paragraph',
-        label: __('Introduction', 'stec'),
+        label: __('Introduction', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('introduction')
     },
     {
         id: 'schedule',
         icon: 'fa-solid fa-list',
-        label: __('Schedule', 'stec'),
+        label: __('Schedule', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('schedule')
     },
     {
         id: 'location',
         icon: 'fa-solid fa-map-marker-alt',
-        label: __('Location', 'stec'),
+        label: __('Location', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('location')
             
@@ -211,35 +211,35 @@ const tabsDefaults = [
     {
         id: 'organizers',
         icon: 'fa-solid fa-user-edit',
-        label: __('Organizers', 'stec'),
+        label: __('Organizers', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('organizers')
     },
     {
         id: 'guests',
         icon: 'fa-solid fa-star',
-        label: __('Guests', 'stec'),
+        label: __('Guests', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('guests')
     },
     {
         id: 'attachments',
         icon: 'fa-solid fa-file-download',
-        label: __('Attachments', 'stec'),
+        label: __('Attachments', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('attachments')
     },
     {
         id: 'public-health',
         icon: 'fa-solid fa-shield-virus',
-        label: __('Public health', 'stec'),
+        label: __('Public health', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('public-health')
     },
     {
         id: 'about',
         icon: 'fa-solid fa-address-card',
-        label: __('About', 'stec'),
+        label: __('About', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('about')
     }

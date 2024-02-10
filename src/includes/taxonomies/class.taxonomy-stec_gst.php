@@ -19,8 +19,8 @@ class Taxonomy_Stec_Gst {
             self::$taxonomy,
             'stec_event',
             array(
-                'label'                => esc_html__('Guests', 'stec'),
-                'labels'               => self::get_taxonomy_labels(esc_html__('Guest', 'stec'), esc_html__('Guests', 'stec')),
+                'label'                => esc_html__('Guests', 'stachethemes_event_calendar_lite'),
+                'labels'               => self::get_taxonomy_labels(esc_html__('Guest', 'stachethemes_event_calendar_lite'), esc_html__('Guests', 'stachethemes_event_calendar_lite')),
                 'public'               => false,
                 'publicly_queryable'   => false,
                 'show_in_rest'         => true,

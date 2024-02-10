@@ -89,7 +89,7 @@ const FilterByTaxonomyItems = ({ activeItems, selectedItems, taxonomy, onChange 
     });
 
     if (itemsReady === false) {
-        return <Loader type="small-wide" title={__('Refreshing list', 'stec')} style={{
+        return <Loader type="small-wide" title={__('Refreshing list', 'stachethemes_event_calendar_lite')} style={{
             padding: 10
         }} />
     }
@@ -107,7 +107,7 @@ const FilterByTaxonomyItems = ({ activeItems, selectedItems, taxonomy, onChange 
     });
 
     const itemsWithUnassignedOption = [{
-        label: __('Unassigned', 'stec'),
+        label: __('Unassigned', 'stachethemes_event_calendar_lite'),
         value: -1,
         active: false
     }, ...items];
@@ -128,7 +128,7 @@ const FilterByTaxonomy = ({ label, icon, taxonomy, selectedItems, activeItems, o
 
     return (
         <StecDiv className={`stec-manage-list-filters ${showDropdown ? 'active' : ''} ${hasActiveItems ? 'has-active-items' : ''}`} ref={itemRef}
-            title={sprintf(__('Filter by %s', 'stec'), label)}
+            title={sprintf(__('Filter by %s', 'stachethemes_event_calendar_lite'), label)}
             onClick={() => {
                 setShowDropdown(!showDropdown)
             }}>
@@ -140,7 +140,7 @@ const FilterByTaxonomy = ({ label, icon, taxonomy, selectedItems, activeItems, o
                     e.stopPropagation();
                 }}>
                     <StecDiv className='stec-manage-list-filters-dropdown-label'>
-                        {sprintf(__('Filter by %s', 'stec'), label)}
+                        {sprintf(__('Filter by %s', 'stachethemes_event_calendar_lite'), label)}
                     </StecDiv>
 
                     <FilterByTaxonomyItems selectedItems={selectedItems} activeItems={activeItems} taxonomy={taxonomy} onChange={onChange} />
@@ -165,7 +165,7 @@ const FilterByDates = ({ label, icon, values, activeValues, onChange }) => {
 
     return (
         <StecDiv className={`stec-manage-list-filters ${showDropdown ? 'active' : ''} ${hasActiveItems ? 'has-active-items' : ''}`} ref={itemRef}
-            title={sprintf(__('Filter by %s', 'stec'), label)}
+            title={sprintf(__('Filter by %s', 'stachethemes_event_calendar_lite'), label)}
             onClick={() => {
                 setShowDropdown(!showDropdown)
             }}>
@@ -177,12 +177,12 @@ const FilterByDates = ({ label, icon, values, activeValues, onChange }) => {
                     e.stopPropagation();
                 }}>
                     <StecDiv className='stec-manage-list-filters-dropdown-label'>
-                        {sprintf(__('Filter by %s', 'stec'), label)}
+                        {sprintf(__('Filter by %s', 'stachethemes_event_calendar_lite'), label)}
                     </StecDiv>
 
                     <UncontrolledDatePicker
                         includeTime={false}
-                        title={__('Min date', 'stec')}
+                        title={__('Min date', 'stachethemes_event_calendar_lite')}
                         defaultValue={values?.minDate || ''}
                         onChange={value => {
                             onChange({
@@ -194,7 +194,7 @@ const FilterByDates = ({ label, icon, values, activeValues, onChange }) => {
 
                     <UncontrolledDatePicker
                         includeTime={false}
-                        title={__('Max date', 'stec')}
+                        title={__('Max date', 'stachethemes_event_calendar_lite')}
                         defaultValue={values?.maxDate || ''}
                         onChange={value => {
                             onChange({
@@ -256,7 +256,7 @@ function ListFilters(props) {
                 <FilterByTaxonomy
                     selectedItems={args.calendar}
                     activeItems={calendar}
-                    label={__('Calendars', 'stec')}
+                    label={__('Calendars', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-calendar'}
                     taxonomy={'stec_cal'}
                     onChange={items => {
@@ -267,7 +267,7 @@ function ListFilters(props) {
                 <FilterByTaxonomy
                     activeItems={category}
                     selectedItems={args.category}
-                    label={__('Categories', 'stec')}
+                    label={__('Categories', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-folder'}
                     taxonomy={'stec_cat'}
                     onChange={items => {
@@ -278,7 +278,7 @@ function ListFilters(props) {
                 <FilterByTaxonomy
                     activeItems={location}
                     selectedItems={args.location}
-                    label={__('Locations', 'stec')}
+                    label={__('Locations', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-map'}
                     taxonomy={'stec_loc'}
                     onChange={items => {
@@ -289,7 +289,7 @@ function ListFilters(props) {
                 <FilterByTaxonomy
                     activeItems={organizer}
                     selectedItems={args.organizer}
-                    label={__('Organizers', 'stec')}
+                    label={__('Organizers', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-user'}
                     taxonomy={'stec_org'}
                     onChange={items => {
@@ -300,7 +300,7 @@ function ListFilters(props) {
                 <FilterByTaxonomy
                     activeItems={guest}
                     selectedItems={args.guest}
-                    label={__('Guests', 'stec')}
+                    label={__('Guests', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-star'}
                     taxonomy={'stec_gst'}
                     onChange={items => {
@@ -309,7 +309,7 @@ function ListFilters(props) {
                 />
 
                 <FilterByDates
-                    label={__('Date', 'stec')}
+                    label={__('Date', 'stachethemes_event_calendar_lite')}
                     icon={'fa-solid fa-clock'}
                     activeValues={{
                         minDate: min_date,
@@ -329,7 +329,7 @@ function ListFilters(props) {
                     <StecSpan className='stec-manage-list-filterss-apply' onClick={() => {
                         props.onApply(args);
                     }}>
-                        <i className='fa-solid fa-filter' />{__('Apply', 'stec')}
+                        <i className='fa-solid fa-filter' />{__('Apply', 'stachethemes_event_calendar_lite')}
                     </StecSpan>
 
                     <StecSpan className='stec-manage-list-filterss-clear' onClick={() => {
@@ -347,7 +347,7 @@ function ListFilters(props) {
 
                         props.onApply(emptyValues);
                     }}>
-                        <i className='fa-solid fa-times' />{__('Clear', 'stec')}
+                        <i className='fa-solid fa-times' />{__('Clear', 'stachethemes_event_calendar_lite')}
                     </StecSpan>
 
                 </StecSpan>
@@ -355,7 +355,7 @@ function ListFilters(props) {
             </StecDiv>
 
             <UncontrolledDelayedInputText
-                placeholder={__('Search', 'stec')}
+                placeholder={__('Search', 'stachethemes_event_calendar_lite')}
                 defaultValue={search || ''}
                 onChange={value => {
 

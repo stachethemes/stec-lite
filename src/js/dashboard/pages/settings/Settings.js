@@ -30,12 +30,12 @@ const FatalError = ({ resetSettings }) => {
     return (
         <Section>
 
-            <FieldTitle text={__('Unable to display calendar settings. Reset to default settings?', 'stec')} />
-            <FieldDescription text={__(`If resetting the settings doesn't resolve the issue, please contact our support team for further assistance`, 'stec')} />
+            <FieldTitle text={__('Unable to display calendar settings. Reset to default settings?', 'stachethemes_event_calendar_lite')} />
+            <FieldDescription text={__(`If resetting the settings doesn't resolve the issue, please contact our support team for further assistance`, 'stachethemes_event_calendar_lite')} />
 
             <Spacer />
 
-            <Button className='yellow' label={__('Reset to defaults', 'stec')} onClick={()=>{
+            <Button className='yellow' label={__('Reset to defaults', 'stachethemes_event_calendar_lite')} onClick={()=>{
                 resetSettings('');
             }} />
 
@@ -104,7 +104,7 @@ const SettingsRender = ({ settings, tabs, setTabs, onSave, onReset }) => {
 
             <StecDiv className='stec-dashboard-top-nav'>
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stec')]} onClick={() => {
+                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
@@ -115,7 +115,7 @@ const SettingsRender = ({ settings, tabs, setTabs, onSave, onReset }) => {
 
             <PageHeading label={[
                 <i key='icon' className='fa-solid fa-wrench' />,
-                __('Manage settings', 'stec')]} />
+                __('Manage settings', 'stachethemes_event_calendar_lite')]} />
 
             <StecDiv className='stec-dashboard-settings-wrapper'>
 
@@ -129,7 +129,7 @@ const SettingsRender = ({ settings, tabs, setTabs, onSave, onReset }) => {
 
                         <Spacer />
 
-                        <Button className='green' label={__('Save settings', 'stec')} onClick={() => {
+                        <Button className='green' label={__('Save settings', 'stachethemes_event_calendar_lite')} onClick={() => {
                             onSave(settings)
                         }} />
 
@@ -187,7 +187,7 @@ const SettingsReady = ({ tabs, setTabs, settings }) => {
 
                         setInstance(d.getTime());
 
-                        return resolve(__('Settings updated', 'stec'));
+                        return resolve(__('Settings updated', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -200,7 +200,7 @@ const SettingsReady = ({ tabs, setTabs, settings }) => {
 
             }),
             {
-                loading: __('Updating settings', 'stec'),
+                loading: __('Updating settings', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -244,7 +244,7 @@ const SettingsReady = ({ tabs, setTabs, settings }) => {
 
                         setInstance(d.getTime());
 
-                        return resolve(__('Settings have been reset', 'stec'));
+                        return resolve(__('Settings have been reset', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -257,7 +257,7 @@ const SettingsReady = ({ tabs, setTabs, settings }) => {
 
             }),
             {
-                loading: __('Updating settings', 'stec'),
+                loading: __('Updating settings', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;

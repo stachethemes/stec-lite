@@ -11,12 +11,12 @@ const TopMenuSection = ({ settingsCalendar }) => {
     const [topMenuEnabled, setTopMenuEnabled] = useState(settingsCalendar.top_enabled);
 
     return (
-        <SectionCollapseContent title={__('Calendar top menu', 'stec')} subtitle={__('Show calendar top menu settings', 'stec')}>
+        <SectionCollapseContent title={__('Calendar top menu', 'stachethemes_event_calendar_lite')} subtitle={__('Show calendar top menu settings', 'stachethemes_event_calendar_lite')}>
 
             <InputCheckbox
                 value={topMenuEnabled}
-                title={__('Top menu', 'stec')}
-                description={__(`Display top menu`, 'stec')}
+                title={__('Top menu', 'stachethemes_event_calendar_lite')}
+                description={__(`Display top menu`, 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     settingsCalendar.top_enabled = value;
                     setTopMenuEnabled(value);
@@ -30,8 +30,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_today_button}
-                        title={__('Today button', 'stec')}
-                        description={__(`Display today button`, 'stec')}
+                        title={__('Today button', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display today button`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_today_button = value;
                         }}
@@ -41,8 +41,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_nav_buttons}
-                        title={__('Navigation buttons', 'stec')}
-                        description={__(`Display previous & next date navigation buttons`, 'stec')}
+                        title={__('Navigation buttons', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display previous & next date navigation buttons`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_nav_buttons = value;
                         }}
@@ -52,8 +52,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_datepicker_menu}
-                        title={__('Date picker menu', 'stec')}
-                        description={__(`Display date picker dropdown menu`, 'stec')}
+                        title={__('Date picker menu', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display date picker dropdown menu`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_datepicker_menu = value;
                         }}
@@ -63,8 +63,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_search_menu}
-                        title={__('Search menu', 'stec')}
-                        description={__(`Display search events menu`, 'stec')}
+                        title={__('Search menu', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display search events menu`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_search_menu = value;
                         }}
@@ -74,8 +74,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_layouts_menu}
-                        title={__('Layouts menu', 'stec')}
-                        description={__(`Display layouts menu`, 'stec')}
+                        title={__('Layouts menu', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display layouts menu`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_layouts_menu = value;
                         }}
@@ -85,22 +85,22 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputSelect
                         defaultValue={settingsCalendar.top_filters_menu}
-                        title={__('Filters menu', 'stec')}
+                        title={__('Filters menu', 'stachethemes_event_calendar_lite')}
                         options={[
                             {
-                                label: __('Hide', 'stec'),
+                                label: __('Hide', 'stachethemes_event_calendar_lite'),
                                 value: 0
                             },
                             {
-                                label: __('Toggle', 'stec'),
+                                label: __('Toggle', 'stachethemes_event_calendar_lite'),
                                 value: 1
                             },
                             {
-                                label: __('Always Visible', 'stec'),
+                                label: __('Always Visible', 'stachethemes_event_calendar_lite'),
                                 value: 2
                             },
                         ]}
-                        description={__(`Set top menu filters visibility`, 'stec')}
+                        description={__(`Set top menu filters visibility`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_filters_menu = value;
                         }}
@@ -110,8 +110,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_inline_categories}
-                        title={__('Inline categories list', 'stec')}
-                        description={__(`Display categories inline below the top menu`, 'stec')}
+                        title={__('Inline categories list', 'stachethemes_event_calendar_lite')}
+                        description={__(`Display categories inline below the top menu`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_inline_categories = value;
                         }}
@@ -121,8 +121,8 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <UncontrolledInputCheckbox
                         defaultValue={settingsCalendar.top_categories_start_inactive}
-                        title={__('Uncheck categories', 'stec')}
-                        description={__(`Uncheck categories upon initial calendar load`, 'stec')}
+                        title={__('Uncheck categories', 'stachethemes_event_calendar_lite')}
+                        description={__(`Uncheck categories upon initial calendar load`, 'stachethemes_event_calendar_lite')}
                         onChange={value => {
                             settingsCalendar.top_categories_start_inactive = value;
                         }}
@@ -144,73 +144,73 @@ function Calendar({ settings }) {
     const layoutsList = [
         {
             value: 'agenda',
-            label: __('Agenda', 'stec')
+            label: __('Agenda', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'month',
-            label: __('Month', 'stec')
+            label: __('Month', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'week',
-            label: __('Week', 'stec')
+            label: __('Week', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'day',
-            label: __('Day', 'stec')
+            label: __('Day', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'grid',
-            label: __('Grid', 'stec')
+            label: __('Grid', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'boxgrid',
-            label: __('Box grid', 'stec')
+            label: __('Box grid', 'stachethemes_event_calendar_lite')
         },
         {
             value: 'map',
-            label: __('Map', 'stec')
+            label: __('Map', 'stachethemes_event_calendar_lite')
         },
     ];
 
     return (
         <Section>
 
-            <SectionCollapseContent title={__('Date & time settings', 'stec')} subtitle={__('Show date and time settings', 'stec')}>
+            <SectionCollapseContent title={__('Date & time settings', 'stachethemes_event_calendar_lite')} subtitle={__('Show date and time settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.dow}
-                    title={__('First day of the week', 'stec')}
+                    title={__('First day of the week', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Monday', 'stec'),
+                            label: __('Monday', 'stachethemes_event_calendar_lite'),
                             value: 1
                         },
                         {
-                            label: __('Tuesday', 'stec'),
+                            label: __('Tuesday', 'stachethemes_event_calendar_lite'),
                             value: 2
                         },
                         {
-                            label: __('Wednesday', 'stec'),
+                            label: __('Wednesday', 'stachethemes_event_calendar_lite'),
                             value: 3
                         },
                         {
-                            label: __('Thursday', 'stec'),
+                            label: __('Thursday', 'stachethemes_event_calendar_lite'),
                             value: 4
                         },
                         {
-                            label: __('Friday', 'stec'),
+                            label: __('Friday', 'stachethemes_event_calendar_lite'),
                             value: 5
                         },
                         {
-                            label: __('Saturday', 'stec'),
+                            label: __('Saturday', 'stachethemes_event_calendar_lite'),
                             value: 6
                         },
                         {
-                            label: __('Sunday', 'stec'),
+                            label: __('Sunday', 'stachethemes_event_calendar_lite'),
                             value: 0
                         },
                     ]}
-                    description={__(`Select first day of the week for your calendar`, 'stec')}
+                    description={__(`Select first day of the week for your calendar`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.dow = value;
                     }}
@@ -220,26 +220,26 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.date_format}
-                    title={__('Date format', 'stec')}
+                    title={__('Date format', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Month Day Year', 'stec'),
+                            label: __('Month Day Year', 'stachethemes_event_calendar_lite'),
                             value: 'stec_mdy'
                         },
                         {
-                            label: __('Day Month Year', 'stec'),
+                            label: __('Day Month Year', 'stachethemes_event_calendar_lite'),
                             value: 'stec_dmy'
                         },
                         {
-                            label: __('Year Month Day', 'stec'),
+                            label: __('Year Month Day', 'stachethemes_event_calendar_lite'),
                             value: 'stec_ymd'
                         },
                         {
-                            label: __('Use WordPress Settings', 'stec'),
+                            label: __('Use WordPress Settings', 'stachethemes_event_calendar_lite'),
                             value: 'wp'
                         },
                     ]}
-                    description={__(`Set date format for your calendar`, 'stec')}
+                    description={__(`Set date format for your calendar`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.date_format = value;
                     }}
@@ -249,22 +249,22 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.time_format}
-                    title={__('Time format', 'stec')}
+                    title={__('Time format', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('12 hours', 'stec'),
+                            label: __('12 hours', 'stachethemes_event_calendar_lite'),
                             value: 'stec_12'
                         },
                         {
-                            label: __('24 hours', 'stec'),
+                            label: __('24 hours', 'stachethemes_event_calendar_lite'),
                             value: 'stec_24'
                         },
                         {
-                            label: __('Use WordPress Settings', 'stec'),
+                            label: __('Use WordPress Settings', 'stachethemes_event_calendar_lite'),
                             value: 'wp'
                         },
                     ]}
-                    description={__(`Set time format for your calendar`, 'stec')}
+                    description={__(`Set time format for your calendar`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.time_format = value;
                     }}
@@ -274,8 +274,8 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsCalendar.use_user_timezone}
-                    title={__("Show dates in user's timezone", 'stec')}
-                    description={__(`Enable this option to display the event dates in the user's local timezone`, 'stec')}
+                    title={__("Show dates in user's timezone", 'stachethemes_event_calendar_lite')}
+                    description={__(`Enable this option to display the event dates in the user's local timezone`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.use_user_timezone = value;
                     }}
@@ -285,8 +285,8 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsCalendar.show_tz_offset}
-                    title={__('Show timezone abbreviation', 'stec')}
-                    description={__(`Display timezone abbreviation next to the time`, 'stec')}
+                    title={__('Show timezone abbreviation', 'stachethemes_event_calendar_lite')}
+                    description={__(`Display timezone abbreviation next to the time`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.show_tz_offset = value;
                     }}
@@ -296,13 +296,13 @@ function Calendar({ settings }) {
 
             <TopMenuSection settingsCalendar={settingsCalendar} />
 
-            <SectionCollapseContent title={__('Calendar layouts', 'stec')} subtitle={__('Show calendar layouts settings', 'stec')}>
+            <SectionCollapseContent title={__('Calendar layouts', 'stachethemes_event_calendar_lite')} subtitle={__('Show calendar layouts settings', 'stachethemes_event_calendar_lite')}>
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsCalendar.layouts ? settingsCalendar.layouts.split(',') : []}
-                    title={__('Calendar layouts', 'stec')}
+                    title={__('Calendar layouts', 'stachethemes_event_calendar_lite')}
                     options={layoutsList}
-                    description={__(`Set the available layouts for your calendar`, 'stec')}
+                    description={__(`Set the available layouts for your calendar`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.layouts = [value].join(',');
                     }}
@@ -312,9 +312,9 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.layout}
-                    title={__('Default calendar layout', 'stec')}
+                    title={__('Default calendar layout', 'stachethemes_event_calendar_lite')}
                     options={layoutsList}
-                    description={__(`Select the default calendar layout`, 'stec')}
+                    description={__(`Select the default calendar layout`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.layout = value;
                     }}
@@ -322,43 +322,43 @@ function Calendar({ settings }) {
 
             </SectionCollapseContent>
 
-            <SectionCollapseContent title={__('Event preview', 'stec')} subtitle={__('Show event preview settings', 'stec')}>
+            <SectionCollapseContent title={__('Event preview', 'stachethemes_event_calendar_lite')} subtitle={__('Show event preview settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputCheckbox
-                    title={__('Display toggle button', 'stec')}
+                    title={__('Display toggle button', 'stachethemes_event_calendar_lite')}
                     defaultValue={settingsCalendar.ep_toggle_button}
                     onChange={value => {
                         settingsCalendar.ep_toggle_button = value;
                     }}
-                    description={__(`Display toggle event button at the right side of the preview container`, 'stec')}
+                    description={__(`Display toggle event button at the right side of the preview container`, 'stachethemes_event_calendar_lite')}
                 />
 
             </SectionCollapseContent>
 
-            <SectionCollapseContent title={__('Open events & links', 'stec')} subtitle={__('Show open events & links settings', 'stec')}>
+            <SectionCollapseContent title={__('Open events & links', 'stachethemes_event_calendar_lite')} subtitle={__('Show open events & links settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.open_events_in}
-                    title={__('Open Events In', 'stec')}
+                    title={__('Open Events In', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Calendar', 'stec'),
+                            label: __('Calendar', 'stachethemes_event_calendar_lite'),
                             value: 'calendar'
                         },
                         {
-                            label: __('Popup', 'stec'),
+                            label: __('Popup', 'stachethemes_event_calendar_lite'),
                             value: 'modal'
                         },
                         {
-                            label: __('Single page', 'stec'),
+                            label: __('Single page', 'stachethemes_event_calendar_lite'),
                             value: 'single'
                         },
                         {
-                            label: __('Exernal link', 'stec'),
+                            label: __('Exernal link', 'stachethemes_event_calendar_lite'),
                             value: 'external'
                         },
                     ]}
-                    description={__(`Select how to open your events on click`, 'stec')}
+                    description={__(`Select how to open your events on click`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.open_events_in = value;
                     }}
@@ -368,18 +368,18 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.links_target}
-                    title={__('Open links In', 'stec')}
+                    title={__('Open links In', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Same window', 'stec'),
+                            label: __('Same window', 'stachethemes_event_calendar_lite'),
                             value: '_self'
                         },
                         {
-                            label: __('New window', 'stec'),
+                            label: __('New window', 'stachethemes_event_calendar_lite'),
                             value: '_blank'
                         },
                     ]}
-                    description={__(`Open links in new window or same window`, 'stec')}
+                    description={__(`Open links in new window or same window`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.links_target = value;
                     }}
@@ -387,10 +387,10 @@ function Calendar({ settings }) {
 
             </SectionCollapseContent>
 
-            <SectionCollapseContent title={__('Organizers & Guests', 'stec')} subtitle={__('Show organizers & guests settings', 'stec')}>
+            <SectionCollapseContent title={__('Organizers & Guests', 'stachethemes_event_calendar_lite')} subtitle={__('Show organizers & guests settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputCheckbox
-                    title={__('Conceal publicly visible emails from non-logged-in users', 'stec')}
+                    title={__('Conceal publicly visible emails from non-logged-in users', 'stachethemes_event_calendar_lite')}
                     defaultValue={settingsCalendar.hide_emails}
                     onChange={value => {
                         settingsCalendar.hide_emails = value;
@@ -399,30 +399,30 @@ function Calendar({ settings }) {
 
             </SectionCollapseContent>
 
-            <SectionCollapseContent title={__('Other', 'stec')} subtitle={__('Show open "other" settings', 'stec')}>
+            <SectionCollapseContent title={__('Other', 'stachethemes_event_calendar_lite')} subtitle={__('Show open "other" settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.thumbnail_source}
-                    title={__('Front-end event thumbnail source', 'stec')}
+                    title={__('Front-end event thumbnail source', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Event', 'stec'),
+                            label: __('Event', 'stachethemes_event_calendar_lite'),
                             value: 'event'
                         },
                         {
-                            label: __('Calendar', 'stec'),
+                            label: __('Calendar', 'stachethemes_event_calendar_lite'),
                             value: 'calendar'
                         },
                         {
-                            label: __('Category', 'stec'),
+                            label: __('Category', 'stachethemes_event_calendar_lite'),
                             value: 'category'
                         },
                         {
-                            label: __('Organizer', 'stec'),
+                            label: __('Organizer', 'stachethemes_event_calendar_lite'),
                             value: 'organizer'
                         },
                     ]}
-                    description={__(`Select event thumbnail source`, 'stec')}
+                    description={__(`Select event thumbnail source`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.thumbnail_source = value;
                     }}
@@ -431,7 +431,7 @@ function Calendar({ settings }) {
                 <Spacer />
 
                 <UncontrolledInputCheckbox
-                    title={__('Auto-focus events', 'stec')}
+                    title={__('Auto-focus events', 'stachethemes_event_calendar_lite')}
                     defaultValue={settingsCalendar.scroll_to_event}
                     onChange={value => {
                         settingsCalendar.scroll_to_event = value;

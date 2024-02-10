@@ -18,8 +18,8 @@ const ConfirmResetSettingsButton = (props) => {
     delete propsWithoutClick.onClick;
 
     const promptTitle = deleteAllSections ?
-        __('Are you sure you want to reset all settings?', 'stec') :
-        __('Are you sure you want to reset these settings?', 'stec', 0) 
+        __('Are you sure you want to reset all settings?', 'stachethemes_event_calendar_lite') :
+        __('Are you sure you want to reset these settings?', 'stachethemes_event_calendar_lite', 0) 
 
     return <>
 
@@ -36,22 +36,22 @@ const ConfirmResetSettingsButton = (props) => {
 
                     <Button key='proceed' className='red' label={
                         deleteAllSections ?
-                            __('Reset', 'stec') :
-                            __('Reset', 'stec', 0)
+                            __('Reset', 'stachethemes_event_calendar_lite') :
+                            __('Reset', 'stachethemes_event_calendar_lite', 0)
 
                     } onClick={() => {
                         setModalOpen(false);
                         clickProp(deleteAllSections ? '' : props.section);
                     }} />,
 
-                    <Button key='cancel' className='yellow' label={__('Cancel', 'stec')} onClick={() => {
+                    <Button key='cancel' className='yellow' label={__('Cancel', 'stachethemes_event_calendar_lite')} onClick={() => {
                         setModalOpen(false);
                     }} />
                 ]
             }
         >
             <InputCheckbox
-                title={__('Reset all settings', 'stec')}
+                title={__('Reset all settings', 'stachethemes_event_calendar_lite')}
                 value={deleteAllSections}
                 onChange={value => {
                     setDeleteAllSections(value);
@@ -62,7 +62,7 @@ const ConfirmResetSettingsButton = (props) => {
 
         </LightModal>
 
-        <Button {...propsWithoutClick} label={__('Reset to defaults', 'stec')} onClick={() => {
+        <Button {...propsWithoutClick} label={__('Reset to defaults', 'stachethemes_event_calendar_lite')} onClick={() => {
             setModalOpen(true);
         }} />
 

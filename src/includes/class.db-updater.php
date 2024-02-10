@@ -82,7 +82,7 @@ class Db_Updater {
             add_action('admin_notices', function () use ($install_version) {
                 printf(
                     '<div class="notice notice-error is-dismissible"><p>%s</p></div>',
-                    esc_html__('Stachethemes Event Calendar database update failed.', 'stec')
+                    esc_html__('Stachethemes Event Calendar database update failed.', 'stachethemes_event_calendar_lite')
                 );
             });
 
@@ -93,7 +93,7 @@ class Db_Updater {
 
         add_action('admin_notices', function () use ($install_version) {
             printf('<div class="notice notice-success is-dismissible"><p>%s</p></div>', sprintf(
-                esc_html__('Stachethemes Event Calendar database is up to date. Current version: %s', 'stec'),
+                esc_html__('Stachethemes Event Calendar database is up to date. Current version: %s', 'stachethemes_event_calendar_lite'),
                 $install_version
             ));
         });

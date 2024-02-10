@@ -11,7 +11,7 @@ function List() {
     const emptyCalendar = (item, blockActionRef) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -33,7 +33,7 @@ function List() {
 
                         setInstanceKey(new Date().getTime());
 
-                        return resolve(__('Events deleted', 'stec'));
+                        return resolve(__('Events deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         
@@ -47,7 +47,7 @@ function List() {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -66,8 +66,8 @@ function List() {
         listPageId: 'calendars-list',
         upsertPageId: 'calendars-upsert',
         restUrl: 'CALENDARS',
-        termLabelSingle: __('calendar', 'stec'),
-        termLabelPlural: __('calendars', 'stec'),
+        termLabelSingle: __('calendar', 'stachethemes_event_calendar_lite'),
+        termLabelPlural: __('calendars', 'stachethemes_event_calendar_lite'),
         taxonomyName: 'stec_cal',
         itemsMap: (item, itemControls, checkedItems, blockActionRef) => {
 
@@ -77,7 +77,7 @@ function List() {
 
                 const emptyButton = {
                     id: 'empty-calendar',
-                    label: [<i key='icon' className='fa-solid fa-broom' />, _x('Empty', 'Empty the calendar', 'stec')],
+                    label: [<i key='icon' className='fa-solid fa-broom' />, _x('Empty', 'Empty the calendar', 'stachethemes_event_calendar_lite')],
                     color: 'yellow',
                     onClick: () => {
                         emptyCalendar(item, blockActionRef);
@@ -93,7 +93,7 @@ function List() {
                 key: item.id,
                 id: item.id,
                 title: `${item.name} (ID#${item.id})`,
-                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stec'), item.count),
+                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stachethemes_event_calendar_lite'), item.count),
                 thumbnail: {
                     type: item.meta.thumbnail.type,
                     icon: item.meta.thumbnail.icon,

@@ -31,7 +31,7 @@ const EventShareAndExportContent = ({ event, style, items }) => {
                     <Button
                         target={'_BLANK'}
                         href={getGoogleCalImportLink(event)}
-                        label={__('Import to Google Calendar', 'stec')}
+                        label={__('Import to Google Calendar', 'stachethemes_event_calendar_lite')}
                     />
 
                 </StecDiv>
@@ -54,7 +54,7 @@ const EventShareAndExportDummy = ({ style }) => {
                 <Button
                     target={'_BLANK'}
                     style={{ marginLeft: '5px' }}
-                    label={__('Import to Google Calendar', 'stec')}
+                    label={__('Import to Google Calendar', 'stachethemes_event_calendar_lite')}
                 />
 
             </StecDiv>

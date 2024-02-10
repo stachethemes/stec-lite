@@ -26,16 +26,16 @@ const ConfirmButton = (props) => {
                 setModalOpen(false);
             }}
             headerIcon='fa-solid fa-triangle-exclamation'
-            title={props.promptText || __('Are you sure you want to delete this item?', 'stec')}
+            title={props.promptText || __('Are you sure you want to delete this item?', 'stachethemes_event_calendar_lite')}
             buttons={
                 [
 
-                    <Button key='proceed' className='red' label={props.yesLabel || __('Delete', 'stec')} onClick={() => {
+                    <Button key='proceed' className='red' label={props.yesLabel || __('Delete', 'stachethemes_event_calendar_lite')} onClick={() => {
                         setModalOpen(false);
                         clickProp();
                     }} />,
 
-                    <Button key='cancel' className='yellow' label={props.noLabel || __('Cancel', 'stec')} onClick={() => {
+                    <Button key='cancel' className='yellow' label={props.noLabel || __('Cancel', 'stachethemes_event_calendar_lite')} onClick={() => {
                         setModalOpen(false);
                     }} />
                 ]

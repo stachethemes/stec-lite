@@ -14,7 +14,7 @@ const TopSearchMenu = ({ onEventSelect }) => {
 
         <StecDiv className={classNameArray.join(' ')}>
 
-            <TopSearchInput placeholder={__('Search event', 'stec')} onChange={(value) => {
+            <TopSearchInput placeholder={__('Search event', 'stachethemes_event_calendar_lite')} onChange={(value) => {
                 setSearchText(value);
             }} />
 

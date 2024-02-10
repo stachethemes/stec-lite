@@ -64,7 +64,7 @@ class Shortcode_Stec_Events_Slider {
 
         if ($force || true === self::has_shortcode('stec_events_slider')) {
             wp_enqueue_script('stec-widget-events-slider');
-            wp_set_script_translations('stec-widget-events-slider', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+            wp_set_script_translations('stec-widget-events-slider', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
         }
 
         do_action('stec_load_scripts', $post, 'stec-widget-events-slider');
@@ -221,7 +221,7 @@ class Shortcode_Stec_Events_Slider {
             'featured_only'         => false,
             'prefer_external_link'  => false,
             'thumbnail_source'      => Settings::get('calendar', 'thumbnail_source'),
-            'tickets_btn_label'     => esc_html_x('Tickets', 'Button label', 'stec'),
+            'tickets_btn_label'     => esc_html_x('Tickets', 'Button label', 'stachethemes_event_calendar_lite'),
             'stec_cal'              => '',
             'stec_cat'              => '',
             'stec_loc'              => '',

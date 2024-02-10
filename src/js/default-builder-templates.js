@@ -296,7 +296,7 @@ export const eventLayoutTemplate = [
                     ],
                     "style": {}
                 },
-                "label": _x('Introduction', 'Tab label', 'stec'),
+                "label": _x('Introduction', 'Tab label', 'stachethemes_event_calendar_lite'),
                 "icon": "fas fa-info"
             },
             {
@@ -535,7 +535,7 @@ export const eventLayoutTemplate = [
                     ],
                     "style": {}
                 },
-                "label": _x('Location', 'Tab label', 'stec'),
+                "label": _x('Location', 'Tab label', 'stachethemes_event_calendar_lite'),
                 "icon": "fas fa-map-marker"
             },
             {
@@ -620,7 +620,7 @@ export const eventLayoutTemplate = [
                     ],
                     "style": {}
                 },
-                "label": _x('Schedule', 'Tab label', 'stec'),
+                "label": _x('Schedule', 'Tab label', 'stachethemes_event_calendar_lite'),
                 "icon": "fas fa-list"
             },
             {
@@ -705,7 +705,7 @@ export const eventLayoutTemplate = [
                     ],
                     "style": {}
                 },
-                "label": _x('Guests', 'Tab label', 'stec'),
+                "label": _x('Guests', 'Tab label', 'stachethemes_event_calendar_lite'),
                 "icon": "fas fa-star"
             },
             {
@@ -790,7 +790,7 @@ export const eventLayoutTemplate = [
                     ],
                     "style": {}
                 },
-                "label": _x('Comments', 'Tab label', 'stec'),
+                "label": _x('Comments', 'Tab label', 'stachethemes_event_calendar_lite'),
                 "icon": "fas fa-comments"
             }
         ],

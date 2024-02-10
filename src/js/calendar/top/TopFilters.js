@@ -27,7 +27,7 @@ const TopFilters = () => {
 
             <TopButton label={[
                 <i key='icon' className='stec-top-menu-filter-icon fa-solid fa-filter' />,
-                <span key='text' className='stec-top-menu-filter-label'>{__('Filter', 'stec')}</span>
+                <span key='text' className='stec-top-menu-filter-label'>{__('Filter', 'stachethemes_event_calendar_lite')}</span>
             ]} active={active} onClick={(e) => {
                 setActive(!active);
             }} />

@@ -22,7 +22,7 @@ const UserData = ({ userData, onClose, onSelect, applyButtonTitle }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User id', 'stec')}
+                title={__('User id', 'stachethemes_event_calendar_lite')}
                 value={id}
             />
 
@@ -30,7 +30,7 @@ const UserData = ({ userData, onClose, onSelect, applyButtonTitle }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User display name', 'stec')}
+                title={__('User display name', 'stachethemes_event_calendar_lite')}
                 value={display_name}
             />
 
@@ -38,7 +38,7 @@ const UserData = ({ userData, onClose, onSelect, applyButtonTitle }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User e-mail', 'stec')}
+                title={__('User e-mail', 'stachethemes_event_calendar_lite')}
                 value={user_email}
             />
 
@@ -50,7 +50,7 @@ const UserData = ({ userData, onClose, onSelect, applyButtonTitle }) => {
                     onSelect(userData);
                 }} />
 
-                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stec')} className='red' onClick={onClose} />
+                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stachethemes_event_calendar_lite')} className='red' onClick={onClose} />
 
             </StecDiv>
 
@@ -64,7 +64,7 @@ const NoDataButtons = ({ applyButtonTitle, onClose }) => {
     return (
         <StecDiv className='stec-light-modal-content-buttons'>
             <Button disabled={true} style={{ width: '100%' }} key='update-author' label={applyButtonTitle} className='gray' />
-            <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stec')} className='red' onClick={onClose} />
+            <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stachethemes_event_calendar_lite')} className='red' onClick={onClose} />
         </StecDiv>
     )
 }
@@ -85,7 +85,7 @@ const DataHandle = ({
 
             {(!ready && !error) && <>
                 <Spacer />
-                <Loader type='small' title={__('Searching...', 'stec')} />
+                <Loader type='small' title={__('Searching...', 'stachethemes_event_calendar_lite')} />
             </>}
 
             <Spacer />
@@ -104,7 +104,7 @@ const DataHandle = ({
             return noDataButtons;
         }
 
-        const errorMessage = typeof error === 'string' ? error : __('Sorry, something went wrong', 'stec');
+        const errorMessage = typeof error === 'string' ? error : __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
 
         return (
             <>
@@ -120,7 +120,7 @@ const DataHandle = ({
         return (
             <>
                 <Spacer />
-                <FieldTitle text={__('User not found', 'stec')} />
+                <FieldTitle text={__('User not found', 'stachethemes_event_calendar_lite')} />
                 {noDataButtons}
             </>
         )
@@ -160,8 +160,8 @@ const SearchUserModal = ({ isOpen, onClose, onSelect, modalTitle, applyButtonTit
 
             <UncontrolledDelayedInputText
                 minLength={0}
-                title={__('Search user', 'stec')}
-                description={__('Search user by id, name or email', 'stec')}
+                title={__('Search user', 'stachethemes_event_calendar_lite')}
+                description={__('Search user by id, name or email', 'stachethemes_event_calendar_lite')}
                 defaultValue={searchValue}
                 onChange={value => {
                     setSearchValue(value);
@@ -226,9 +226,9 @@ export default function SearchUserDetails(props) {
         return null;
     }
 
-    const buttonTitle = props.buttonTitle || __('Search for user', 'stec');
-    const modalTitle = props.modalTitle || __('Search for user', 'stec');
-    const applyButtonTitle = props.applyButtonTitle || __('Select user', 'stec');
+    const buttonTitle = props.buttonTitle || __('Search for user', 'stachethemes_event_calendar_lite');
+    const modalTitle = props.modalTitle || __('Search for user', 'stachethemes_event_calendar_lite');
+    const applyButtonTitle = props.applyButtonTitle || __('Select user', 'stachethemes_event_calendar_lite');
 
     return (
         <StecDiv>

@@ -151,7 +151,7 @@ function Upsert() {
     const deleteEvent = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -177,7 +177,7 @@ function Upsert() {
 
                         setPostData(clonePostData, false);
 
-                        return resolve(__('Deleted', 'stec'));
+                        return resolve(__('Deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -190,7 +190,7 @@ function Upsert() {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -220,45 +220,45 @@ function Upsert() {
                 id: 'title',
                 regex: getRegexByType('title'),
                 meta: false,
-                errorMessage: __('The event must have a title', 'stec'),
+                errorMessage: __('The event must have a title', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'slug',
                 regex: getRegexByType('slug'),
                 meta: false,
-                errorMessage: __('The event must have a valid slug', 'stec'),
+                errorMessage: __('The event must have a valid slug', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'stec_cal',
                 meta: false,
-                errorMessage: __('The event must have a calendar', 'stec')
+                errorMessage: __('The event must have a calendar', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'start_date',
                 regex: getRegexByType('start_date'),
                 meta: true,
-                errorMessage: __('Event must have a start date', 'stec')
+                errorMessage: __('Event must have a start date', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'end_date',
                 regex: getRegexByType('end_date'),
                 meta: true,
-                errorMessage: __('Event must have an end date', 'stec')
+                errorMessage: __('Event must have an end date', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'timezone',
                 meta: true,
-                errorMessage: __('The event must have a timezone', 'stec')
+                errorMessage: __('The event must have a timezone', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'read_permission',
                 meta: true,
-                errorMessage: __('The read permission cannot be empty', 'stec')
+                errorMessage: __('The read permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'edit_permission',
                 meta: true,
-                errorMessage: __('The edit permission cannot be empty', 'stec')
+                errorMessage: __('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')
             }
         ]
 
@@ -309,7 +309,7 @@ function Upsert() {
                 focusFieldsRef.current['start_date'].focus();
             }
 
-            toast.error(__('Start date must be before end date', 'stec'));
+            toast.error(__('Start date must be before end date', 'stachethemes_event_calendar_lite'));
 
             return false;
         }
@@ -321,7 +321,7 @@ function Upsert() {
     const onUpsertEvent = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -374,20 +374,20 @@ function Upsert() {
 
                                 setPostData(data);
 
-                                return resolve(__('Created', 'stec'));
+                                return resolve(__('Created', 'stachethemes_event_calendar_lite'));
                             }
 
                             case 200: {
 
                                 setPostData(data);
 
-                                return resolve(__('Updated', 'stec'));
+                                return resolve(__('Updated', 'stachethemes_event_calendar_lite'));
 
                             }
 
                             default: {
 
-                                return reject(__(`Sorry, something went wrong`, 'stec'))
+                                return reject(__(`Sorry, something went wrong`, 'stachethemes_event_calendar_lite'))
                             }
                         }
 
@@ -402,7 +402,7 @@ function Upsert() {
 
             }),
             {
-                loading: __('Saving', 'stec'),
+                loading: __('Saving', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -421,7 +421,7 @@ function Upsert() {
     const resetForm = () => {
         setPostData(eventDataDefaults);
         setWasSubmitted(false);
-        toast(__('The form has been reset', 'stec'));
+        toast(__('The form has been reset', 'stachethemes_event_calendar_lite'));
     }
 
     const isEdit = postData.current.id || false;
@@ -434,20 +434,20 @@ function Upsert() {
 
             <StecDiv className='stec-dashboard-top-nav'>
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stec')]} onClick={() => {
+                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
                     });
                 }} />
 
-                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage events', 'stec')]} onClick={goToManageList} />
+                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage events', 'stachethemes_event_calendar_lite')]} onClick={goToManageList} />
 
             </StecDiv>
 
             <PageHeading label={isEdit ?
-                [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit event', 'stec')] :
-                [<i key='icon' className='fa-solid fa-plus' />, __('Add new event', 'stec')]} />
+                [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit event', 'stachethemes_event_calendar_lite')] :
+                [<i key='icon' className='fa-solid fa-plus' />, __('Add new event', 'stachethemes_event_calendar_lite')]} />
 
             <UpsertContent
                 key={formInstance}
@@ -460,10 +460,10 @@ function Upsert() {
                 formButtons={() => {
                     return (
                         <>
-                            <Button style={{marginRight: 5}} label={isEdit ? (moderateCalendar && postData.current.meta.approved === 0 ? __('Approve', 'stec') : __('Update', 'stec', 0)) : __('Create', 'stec', 1)} className='green' onClick={onUpsertEvent} />
-                            <Button label={__('Reset form', 'stec')} className='yellow' style={{ marginRight: 5 }} onClick={resetForm} />
-                            {postData.current.id && <ConfirmButton label={__('Delete', 'stec')} className='red' style={{ marginRight: 5 }} onClick={deleteEvent} />}
-                            <Button label={__('Back', 'stec')} className='blue' onClick={goToManageList} />
+                            <Button style={{marginRight: 5}} label={isEdit ? (moderateCalendar && postData.current.meta.approved === 0 ? __('Approve', 'stachethemes_event_calendar_lite') : __('Update', 'stachethemes_event_calendar_lite', 0)) : __('Create', 'stachethemes_event_calendar_lite', 1)} className='green' onClick={onUpsertEvent} />
+                            <Button label={__('Reset form', 'stachethemes_event_calendar_lite')} className='yellow' style={{ marginRight: 5 }} onClick={resetForm} />
+                            {postData.current.id && <ConfirmButton label={__('Delete', 'stachethemes_event_calendar_lite')} className='red' style={{ marginRight: 5 }} onClick={deleteEvent} />}
+                            <Button label={__('Back', 'stachethemes_event_calendar_lite')} className='blue' onClick={goToManageList} />
                         </>
                     )
                 }}

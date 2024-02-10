@@ -33,7 +33,7 @@ const InputSearch = React.forwardRef((props, ref) => {
 
                             {
                                 'loading' === props.status &&
-                                <Loader type='small-wide' title={__('Searching...', 'stec')} />
+                                <Loader type='small-wide' title={__('Searching...', 'stachethemes_event_calendar_lite')} />
                             }
 
                             {
@@ -41,12 +41,12 @@ const InputSearch = React.forwardRef((props, ref) => {
 
                                     {
                                         props.isError && <StecSpan className='stec-input-search-nothing-found'>
-                                            <i className='fa-solid fa-triangle-exclamation' style={{marginRight: 5}} />{__('Unexpected error', 'stec')}
+                                            <i className='fa-solid fa-triangle-exclamation' style={{marginRight: 5}} />{__('Unexpected error', 'stachethemes_event_calendar_lite')}
                                         </StecSpan>
                                     }
 
                                     {(!props.isError && (false === Array.isArray(props.items) || props.items.length <= 0)) && <StecSpan className='stec-input-search-nothing-found'>
-                                        {__('Nothing found', 'stec')}
+                                        {__('Nothing found', 'stachethemes_event_calendar_lite')}
                                     </StecSpan>}
 
                                     {(!props.isError && Array.isArray(props.items) && props.items.length > 0) && props.items}

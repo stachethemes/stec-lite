@@ -17,7 +17,7 @@ const ScheduleItem = React.forwardRef((props, ref) => {
 
     const sectionRef = useRef(false);
 
-    const sectionDefaultTitle = __('Timespan', 'stec');
+    const sectionDefaultTitle = __('Timespan', 'stachethemes_event_calendar_lite');
     const sectionTitle = item.title || sectionDefaultTitle;
 
     const updateSectionTitle = (value) => {
@@ -29,7 +29,7 @@ const ScheduleItem = React.forwardRef((props, ref) => {
         ref={sectionRef}
         key={item.id}
         title={sectionTitle}
-        subtitle={__('Edit timespan...', 'stec')}
+        subtitle={__('Edit timespan...', 'stachethemes_event_calendar_lite')}
         onRemove={() => {
 
             ref.current.meta.schedule = ref.current.meta.schedule.filter(scheduleItem => {
@@ -40,8 +40,8 @@ const ScheduleItem = React.forwardRef((props, ref) => {
         }}>
 
         <UncontrolledInputText
-            title={__('Title', 'stec')}
-            placeholder={__('Timespan Title', 'stec')}
+            title={__('Title', 'stachethemes_event_calendar_lite')}
+            placeholder={__('Timespan Title', 'stachethemes_event_calendar_lite')}
             defaultValue={item.title}
             onChange={value => {
                 item.title = value;
@@ -52,7 +52,7 @@ const ScheduleItem = React.forwardRef((props, ref) => {
         <Spacer />
 
         <UncontrolledDatePicker
-            title={__('Date and time', 'stec')}
+            title={__('Date and time', 'stachethemes_event_calendar_lite')}
             includeTime={true}
             defaultValue={item.start}
             onChange={value => {
@@ -63,7 +63,7 @@ const ScheduleItem = React.forwardRef((props, ref) => {
         <Spacer />
 
         <UncontrolledInputColor
-            title={__('Color', 'stec')}
+            title={__('Color', 'stachethemes_event_calendar_lite')}
             defaultValue={item.color}
             onChange={(value) => {
                 item.color = value;
@@ -78,7 +78,7 @@ const ScheduleItem = React.forwardRef((props, ref) => {
         <Spacer />
 
         <UncontrolledInputTextarea
-            title={__('Details', 'stec')}
+            title={__('Details', 'stachethemes_event_calendar_lite')}
             defaultValue={item.details}
             onChange={value => {
                 item.details = value;
@@ -137,11 +137,11 @@ const Schedule = (props) => {
     }
 
     return (
-        <Section title={__('Schedule', 'stec')}>
+        <Section title={__('Schedule', 'stachethemes_event_calendar_lite')}>
 
             <ScheduleContent instanceKey={instanceKey} ref={props.postData} onRequestNewInstance={resetInstance} />
 
-            <Button className='blue' style={{ marginTop: 5 }} label={__('Add Timespan', 'stec')} onClick={addItem} />
+            <Button className='blue' style={{ marginTop: 5 }} label={__('Add Timespan', 'stachethemes_event_calendar_lite')} onClick={addItem} />
 
         </Section>
     )

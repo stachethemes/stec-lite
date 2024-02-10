@@ -20,13 +20,13 @@ function ListManager(props) {
             {
                 false === props.ready &&
                 <StecDiv className='stec-list-manager-loader'>
-                    <Loader type="calendar-sprite" title={__('Refreshing list', 'stec')} />
+                    <Loader type="calendar-sprite" title={__('Refreshing list', 'stachethemes_event_calendar_lite')} />
                 </StecDiv>
             }
 
             {
                 props.ready && cachePropsRef.current.items.length <= 0 &&
-                <StecDiv className='stec-list-manager-is-empty'>{__('No entries found', 'stec')}</StecDiv>
+                <StecDiv className='stec-list-manager-is-empty'>{__('No entries found', 'stachethemes_event_calendar_lite')}</StecDiv>
             }
 
             {

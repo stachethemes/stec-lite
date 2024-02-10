@@ -64,7 +64,7 @@ class Shortcode_Stec_Events_List {
 
         if ($force || true === self::has_shortcode('stec_events_list')) {
             wp_enqueue_script('stec-widget-events-list');
-            wp_set_script_translations('stec-widget-events-list', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+            wp_set_script_translations('stec-widget-events-list', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
         }
 
         do_action('stec_load_scripts', $post, 'stec-widget-events-list');

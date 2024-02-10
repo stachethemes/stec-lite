@@ -7,8 +7,8 @@ function List() {
         listPageId: 'guests-list',
         upsertPageId: 'guests-upsert',
         restUrl: 'GUESTS',
-        termLabelSingle: __('guest', 'stec'),
-        termLabelPlural: __('guests', 'stec'),
+        termLabelSingle: __('guest', 'stachethemes_event_calendar_lite'),
+        termLabelPlural: __('guests', 'stachethemes_event_calendar_lite'),
         taxonomyName: 'stec_gst',
         itemsMap: (item, itemControls, checkedItems) => {
 
@@ -19,7 +19,7 @@ function List() {
                     key: item.id,
                     id: item.id,
                     title: `${item.name} (ID#${item.id})`,
-                    description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stec'), item.count),
+                    description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stachethemes_event_calendar_lite'), item.count),
                     thumbnail: {
                         type: hasImage ? 'image' : 'icon',
                         icon: 'fa-solid fa-user',

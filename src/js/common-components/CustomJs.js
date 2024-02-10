@@ -44,7 +44,7 @@ function CustomJs(props) {
             <StecDiv className='stec-builder-element-custom-js' style={props.style}>
 
                 <Highlight lang={js ? 'js' : 'plaintext'}>
-                    {js || __('Add your custom JS here', 'stec')}
+                    {js || __('Add your custom JS here', 'stachethemes_event_calendar_lite')}
                 </Highlight>
 
             </StecDiv>

@@ -97,7 +97,7 @@ const CalendarPreloaderFetch = ({ children }) => {
 
     if (false === filtersReady || false === eventsReady) {
         return (
-            <Loader className='stec-calendar-preloader' type='calendar-sprite' title={__('Loading calendar', 'stec')} />
+            <Loader className='stec-calendar-preloader' type='calendar-sprite' title={__('Loading calendar', 'stachethemes_event_calendar_lite')} />
         );
     }
 

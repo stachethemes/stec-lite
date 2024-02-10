@@ -54,7 +54,7 @@ const ManageTermsReady = (props) => {
     const deleteTerm = (id) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -87,7 +87,7 @@ const ManageTermsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Deleted', 'stec'));
+                        return resolve(__('Deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -101,7 +101,7 @@ const ManageTermsReady = (props) => {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
 
@@ -124,14 +124,14 @@ const ManageTermsReady = (props) => {
     const duplicateTerm = (id) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         const foundTerm = items.find(item => item.id === id);
 
         if (!foundTerm) {
-            toast.error(__('Term not found', 'stec'));
+            toast.error(__('Term not found', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -178,11 +178,11 @@ const ManageTermsReady = (props) => {
                                     }
                                 });
 
-                                return resolve(__('Duplicated', 'stec'));
+                                return resolve(__('Duplicated', 'stachethemes_event_calendar_lite'));
 
                             default:
 
-                                return reject(__(`Sorry, something went wrong`, 'stec'));
+                                return reject(__(`Sorry, something went wrong`, 'stachethemes_event_calendar_lite'));
 
                         }
 
@@ -197,7 +197,7 @@ const ManageTermsReady = (props) => {
 
             }),
             {
-                loading: __('Duplicating', 'stec'),
+                loading: __('Duplicating', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
 
@@ -220,12 +220,12 @@ const ManageTermsReady = (props) => {
     const deleteSelectedItems = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         if (checkedItems.length <= 0) {
-            return toast.error(__('No items selected', 'stec'));
+            return toast.error(__('No items selected', 'stachethemes_event_calendar_lite'));
         }
 
         toast.promise(
@@ -261,7 +261,7 @@ const ManageTermsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Items deleted', 'stec'));
+                        return resolve(__('Items deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -272,7 +272,7 @@ const ManageTermsReady = (props) => {
                 bulkDelete();
             }),
             {
-                loading: __('Deleting items', 'stec'),
+                loading: __('Deleting items', 'stachethemes_event_calendar_lite'),
                 success: (successMessage) => {
 
                     blockActionRef.current = false;
@@ -302,7 +302,7 @@ const ManageTermsReady = (props) => {
     const listManagerControls = [
         {
             id: 'select-all',
-            label: __('Select all', 'stec'),
+            label: __('Select all', 'stachethemes_event_calendar_lite'),
             onClick: () => {
 
                 if (checkedItems.length === items.length) {
@@ -317,7 +317,7 @@ const ManageTermsReady = (props) => {
         {
             id: 'delete',
             color: 'red',
-            label: [<i key='icon' className='fa-solid fa-trash' />, __('Delete', 'stec')],
+            label: [<i key='icon' className='fa-solid fa-trash' />, __('Delete', 'stachethemes_event_calendar_lite')],
             onClick: () => {
                 deleteSelectedItems();
             }
@@ -346,7 +346,7 @@ const ManageTermsReady = (props) => {
             id: 'duplicate',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-clone' />,
-            label: __('Duplicate', 'stec'),
+            label: __('Duplicate', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 duplicateTerm(id);
             }
@@ -355,7 +355,7 @@ const ManageTermsReady = (props) => {
             id: 'edit',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-edit' />,
-            label: __('Edit', 'stec'),
+            label: __('Edit', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 editTerm(id);
             }
@@ -364,7 +364,7 @@ const ManageTermsReady = (props) => {
             id: 'delete',
             color: 'red',
             icon: <i key='icon' className='fa-solid fa-trash' />,
-            label: __('Delete', 'stec'),
+            label: __('Delete', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 deleteTerm(id);
             }
@@ -384,7 +384,7 @@ const ManageTermsReady = (props) => {
                 <StecDiv className='stec-manage-list-filterss-buttons' />
 
                 <UncontrolledDelayedInputText
-                    placeholder={__('Search', 'stec')}
+                    placeholder={__('Search', 'stachethemes_event_calendar_lite')}
                     defaultValue={taxonomyQueryArgs.search || ''}
                     onChange={value => {
 

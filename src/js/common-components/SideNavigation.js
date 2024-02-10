@@ -73,7 +73,7 @@ function SideNavigation(props) {
             
             <UncontrolledDelayedInputText
                 minLength={0}
-                placeholder={__('Search option or feature', 'stec')}
+                placeholder={__('Search option or feature', 'stachethemes_event_calendar_lite')}
                 defaultValue={searchFilter}
                 onChange={value => {
                     setSearchFilter(value);

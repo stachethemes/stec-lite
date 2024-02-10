@@ -9,10 +9,10 @@ function Pages({ settings }) {
     const settingsPages = settings.current.pages;
 
     return (
-        <Section title={__('Pages settings', 'stec')}>
+        <Section title={__('Pages settings', 'stachethemes_event_calendar_lite')}>
 
             <UncontrolledInputText
-                title={__('Events single page slug', 'stec')}
+                title={__('Events single page slug', 'stachethemes_event_calendar_lite')}
                 defaultValue={settingsPages.events_page_slug}
                 onChange={value => {
                     settingsPages.events_page_slug = value;
@@ -21,7 +21,7 @@ function Pages({ settings }) {
 
             <Spacer />
 
-            <FieldTitle text={__('Note: If you make changes to these settings, you will need to refresh your permalinks. To do so, navigate to your Dashboard, click on Settings, then Permalinks, and finally click on the Save Changes button.', 'stec')} />
+            <FieldTitle text={__('Note: If you make changes to these settings, you will need to refresh your permalinks. To do so, navigate to your Dashboard, click on Settings, then Permalinks, and finally click on the Save Changes button.', 'stachethemes_event_calendar_lite')} />
 
         </Section>
     )

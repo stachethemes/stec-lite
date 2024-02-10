@@ -10,7 +10,7 @@ define('STEC_LITE_PLUGIN_FILE', __FILE__);
 
 class Stachethemes_Event_Calendar {
 
-    public $version = '5.2.3';
+    public $version = '5.2.4';
 
     private static $instance;
 
@@ -25,17 +25,15 @@ class Stachethemes_Event_Calendar {
         'stec-widget-events-list',
         'stec-admin-dashboard-js',
         'stec-single-init-js',
-        'stec-guests-page-init-js',
-        'stec-organizers-page-init-js',
         'stec-init-js'
     );
 
     public function __wakeup() {
-        _doing_it_wrong(__FUNCTION__, esc_html__('Unserializing instances of this class is forbidden.', 'stec'), $this->version);
+        _doing_it_wrong(__FUNCTION__, esc_html__('Unserializing instances of this class is forbidden.', 'stachethemes_event_calendar_lite'), $this->version);
     }
 
     public function __clone() {
-        _doing_it_wrong(__FUNCTION__, esc_html__('Cloning is forbidden.', 'stec'), $this->version);
+        _doing_it_wrong(__FUNCTION__, esc_html__('Cloning is forbidden.', 'stachethemes_event_calendar_lite'), $this->version);
     }
 
     public static function get_instance() {
@@ -61,9 +59,9 @@ class Stachethemes_Event_Calendar {
 
             add_action('admin_notices', function () {
                 printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', sprintf(
-                    esc_html__('%1$s is already installed. Please deactivate it before activating %2$s %3$s.', 'stec'),
-                    '<strong>' . esc_html__('Stachethemes Event Calendar', 'stec') . '</strong>',
-                    '<strong>' . esc_html__('Stachethemes Event Calendar Lite', 'stec') . '</strong>',
+                    esc_html__('%1$s is already installed. Please deactivate it before activating %2$s %3$s.', 'stachethemes_event_calendar_lite'),
+                    '<strong>' . esc_html__('Stachethemes Event Calendar', 'stachethemes_event_calendar_lite') . '</strong>',
+                    '<strong>' . esc_html__('Stachethemes Event Calendar Lite', 'stachethemes_event_calendar_lite') . '</strong>',
                     '<strong>' . $this->version . '</strong>'
                 ));
             });
@@ -77,12 +75,14 @@ class Stachethemes_Event_Calendar {
         add_filter('script_loader_tag', array($this, 'add_script_attributes'), 10, 2);
         add_filter('style_loader_tag', array($this, 'add_style_attributes'), 10, 4);
         add_action('wp_enqueue_scripts', array($this, 'register_dep_script_hooks'), 5);
+        add_action('wp_enqueue_scripts', array($this, 'register_dep_style_hooks'), 5);
         add_action('admin_enqueue_scripts', array($this, 'register_dep_script_hooks'), 5);
-        add_action('wp_head', array($this, 'register_css_variables'), 10);
         add_action('wp_footer', array($this, 'register_js_constants'), 10);
         add_action('admin_footer', array($this, 'register_js_constants'), 10);
         add_action('wp_head', array($this, 'load_font_awesome'), 10);
         add_action('admin_head', array($this, 'load_font_awesome'), 10);
+
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_general_css'), 11);
 
         add_action('wp_ajax_stec_rest_nonce', array($this, 'return_rest_nonce_response'));
         add_action('wp_ajax_nopriv_stec_rest_nonce', array($this, 'return_rest_nonce_response'));
@@ -137,64 +137,17 @@ class Stachethemes_Event_Calendar {
     }
 
     public function load_textdomain() {
-        load_plugin_textdomain('stec', false, STEC_LITE_PLUGIN_RELPATH . 'languages');
+        load_plugin_textdomain('stachethemes_event_calendar_lite', false, STEC_LITE_PLUGIN_RELPATH . 'languages');
     }
 
     /**
-     * CSS variables (Fonts & Colors)
-     * 
-     * Since 5.2.0 this function is used by the Embed class as well. Hence the $force and $echo params
+     * Enqueue general css and css variables
+     * filter stec_force_general_css can be used to force general css enqueue
      */
-    public function register_css_variables($force = false, $echo = true) {
+    public function enqueue_general_css() {
 
-        $has_entries = $force ? true : $this->has_calendar_entries();
-
-        if ($has_entries) {
-
-            $CSS = Settings::get('fac');
-
-            if (array_key_exists('custom-style', $CSS)) {
-                $CUSTOM_STYLE = $CSS['custom-style'];
-                unset($CSS['custom-style']);
-            } else {
-                $CUSTOM_STYLE = '';
-            }
-
-            $CSS_ARRAY = array();
-
-            $CSS_ARRAY[] = '<!-- STEC CSS VARIABLES -->';
-            $CSS_ARRAY[] = PHP_EOL;
-            $CSS_ARRAY[] = '<style>';
-            $CSS_ARRAY[] = ':root {';
-
-            foreach ($CSS as $var => $value) {
-                $CSS_ARRAY[] = sprintf('--stec-%s:%s;', $var, $value);
-            }
-
-            $CSS_ARRAY[] = '}';
-            $CSS_ARRAY[] = '</style>';
-            $CSS_ARRAY[] = PHP_EOL;
-            $CSS_ARRAY[] = '<!-- /STEC CSS VARIABLES -->';
-            $CSS_ARRAY[] = PHP_EOL;
-
-            if ($CUSTOM_STYLE) {
-                $CSS_ARRAY[] = '<!-- STEC CUSTOM CSS -->';
-                $CSS_ARRAY[] = PHP_EOL;
-                $CSS_ARRAY[] = '<style>';
-                $CSS_ARRAY[] = $CUSTOM_STYLE;
-                $CSS_ARRAY[] = '</style>';
-                $CSS_ARRAY[] = PHP_EOL;
-                $CSS_ARRAY[] = '<!-- /STEC CUSTOM CSS -->';
-                $CSS_ARRAY[] = PHP_EOL;
-            }
-
-            $return = implode('', $CSS_ARRAY);
-
-            if ($echo) {
-                echo $return;
-            }
-
-            return $return;
+        if ($this->has_calendar_entries() || apply_filters('stec_force_general_css', false)) {
+            wp_enqueue_style('stec-css-dependencies');
         }
     }
 
@@ -297,6 +250,10 @@ class Stachethemes_Event_Calendar {
         $constants = apply_filters('stec_js_constants', $constants);
 
         printf('<script type="text/javascript">const STEC_VARIABLES = %s;</script>', wp_json_encode($constants));
+    }
+
+    public function register_dep_style_hooks() {
+        wp_register_style('stec-css-dependencies', STEC_LITE_PLUGIN_URL . 'includes/general-css.php', array(), STEC_LITE_PLUGIN_VERSION);
     }
 
     public function register_dep_script_hooks() {

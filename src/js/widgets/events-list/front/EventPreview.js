@@ -99,7 +99,7 @@ function EventPreview({ widgetProps, event }) {
                 {(true === widgetProps.display_tickets && Array.isArray(event.meta.tickets) && event.meta.tickets.length > 0) &&
                     <StecSpan>
                         <i className='fa-solid fa-ticket-alt' />
-                        {__('Tickets', 'stec')}
+                        {__('Tickets', 'stachethemes_event_calendar_lite')}
                     </StecSpan>
                 }
 

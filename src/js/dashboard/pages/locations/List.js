@@ -7,8 +7,8 @@ function List() {
         listPageId: 'locations-list',
         upsertPageId: 'locations-upsert',
         restUrl: 'LOCATIONS',
-        termLabelSingle: __('location', 'stec'),
-        termLabelPlural: __('locations', 'stec'),
+        termLabelSingle: __('location', 'stachethemes_event_calendar_lite'),
+        termLabelPlural: __('locations', 'stachethemes_event_calendar_lite'),
         taxonomyName: 'stec_loc',
         itemsMap: (item, itemControls, checkedItems) => {
 
@@ -16,7 +16,7 @@ function List() {
                 key: item.id,
                 id: item.id,
                 title: `${item.name} (ID#${item.id})`,
-                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stec'), item.count),
+                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stachethemes_event_calendar_lite'), item.count),
                 thumbnail: {
                     type: 'icon',
                     icon: item.meta.type === 'physical' ? 'fa-solid fa-globe-americas' : 'fa-solid fa-wifi',

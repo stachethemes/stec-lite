@@ -25,9 +25,9 @@ const SelectFromList = ({ postData }) => {
     return (
 
         <UncontrolledInputSelect
-            title={__('Select organizers', 'stec')}
+            title={__('Select organizers', 'stachethemes_event_calendar_lite')}
             multiple={true}
-            description={__('Select existing organizers', 'stec')}
+            description={__('Select existing organizers', 'stachethemes_event_calendar_lite')}
             defaultValue={postData.current.stec_org}
             options={organizers.map(item => {
                 return (
@@ -111,7 +111,7 @@ const Organizers = (props) => {
 
             </Modal>
 
-            <Section title={__('Organizers list', 'stec')}>
+            <Section title={__('Organizers list', 'stachethemes_event_calendar_lite')}>
 
                 <SelectFromList key={listKey} postData={postData} />
 
@@ -119,7 +119,7 @@ const Organizers = (props) => {
 
                 <Button
                     disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
-                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new organizer', 'stec')]}
+                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new organizer', 'stachethemes_event_calendar_lite')]}
                     className='blue'
                     onClick={() => {
 

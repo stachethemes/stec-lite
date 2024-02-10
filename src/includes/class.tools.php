@@ -52,7 +52,7 @@ class Tools {
         $allowed_taxonomies = array('stec_cal', 'stec_cat', 'stec_gst', 'stec_org', 'stec_loc');
 
         if (false === in_array($taxonomy_name, $allowed_taxonomies)) {
-            throw new Stec_Exception(esc_html__('Only calendar taxonomies are allowed', 'stec'));
+            throw new Stec_Exception(esc_html__('Only calendar taxonomies are allowed', 'stachethemes_event_calendar_lite'));
         }
 
         $terms = get_terms(array(

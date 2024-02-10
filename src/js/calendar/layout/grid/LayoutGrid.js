@@ -40,7 +40,7 @@ const NextMonthButton = React.forwardRef(({ gridGutter }, ref) => {
 
     const monthLabel = getMonthLabel(nextMonthMoment.month());
     const yearLabel = nextMonthMoment.year();
-    const buttonLabel = [<i key='icon' className='fa-solid fa-calendar-alt' />, sprintf(_x('Go to %s, %s', 'month, year', 'stec'), monthLabel, yearLabel)];
+    const buttonLabel = [<i key='icon' className='fa-solid fa-calendar-alt' />, sprintf(_x('Go to %s, %s', 'month, year', 'stachethemes_event_calendar_lite'), monthLabel, yearLabel)];
 
     return (
         <Button onClick={() => {
@@ -157,7 +157,7 @@ const LayoutGrid = () => {
 
                 {
                     <StecDiv className='stec-no-events-found-text'>
-                        {sprintf(__('No events found in %s', 'stec'), [monthLabel, year].join(' '))}
+                        {sprintf(__('No events found in %s', 'stachethemes_event_calendar_lite'), [monthLabel, year].join(' '))}
                     </StecDiv>
                 }
 
@@ -209,7 +209,7 @@ const LayoutGrid = () => {
                     onClick={() => {
                         setPage(page + 1);
                     }}
-                    label={__('Show more', 'stec')}
+                    label={__('Show more', 'stachethemes_event_calendar_lite')}
                     style={{ marginTop: gridGutter, width: '100%' }}
                 />
             }

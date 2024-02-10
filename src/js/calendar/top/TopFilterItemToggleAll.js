@@ -48,7 +48,7 @@ const TopFilterItemToggleAll = ({ filterId, items }) => {
             toggle();
         }}>
             <i className='fa-solid fa-check-double' />
-            <StecSpan>{__('Select All', 'stec')}</StecSpan>
+            <StecSpan>{__('Select All', 'stachethemes_event_calendar_lite')}</StecSpan>
         </StecDiv>
     )
 }

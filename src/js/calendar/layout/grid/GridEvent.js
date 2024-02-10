@@ -123,7 +123,7 @@ const GridEvent = ({ event, onActive }) => {
                     style={{
                         marginLeft: 5
                     }}
-                    title={_x('Verified organizer', 'Verified organizer title text', 'stec')}
+                    title={_x('Verified organizer', 'Verified organizer title text', 'stachethemes_event_calendar_lite')}
                 />
             );
         }

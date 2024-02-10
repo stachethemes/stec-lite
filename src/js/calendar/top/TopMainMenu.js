@@ -16,7 +16,7 @@ const TopMainMenuToday = () => {
         label={
             [
                 <i key='icon' className='stec-top-menu-today-icon fa-solid fa-calendar-check' />,
-                <span key='text' className='stec-top-menu-today-label'>{__('Today', 'stec')}</span>
+                <span key='text' className='stec-top-menu-today-label'>{__('Today', 'stachethemes_event_calendar_lite')}</span>
             ]
         }
         onClick={() => {

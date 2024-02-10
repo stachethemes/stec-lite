@@ -21,8 +21,8 @@ class Taxonomy_Stec_Org {
             self::$taxonomy,
             'stec_event',
             array(
-                'label'                => esc_html__('Organizers', 'stec'),
-                'labels'               => self::get_taxonomy_labels(esc_html__('Organizer', 'stec'), esc_html__('Organizers', 'stec')),
+                'label'                => esc_html__('Organizers', 'stachethemes_event_calendar_lite'),
+                'labels'               => self::get_taxonomy_labels(esc_html__('Organizer', 'stachethemes_event_calendar_lite'), esc_html__('Organizers', 'stachethemes_event_calendar_lite')),
                 'public'               => false,
                 'publicly_queryable'   => false,
                 'show_in_rest'         => true,

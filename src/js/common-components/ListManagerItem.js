@@ -30,16 +30,16 @@ const ButtonControls = (props) => {
                     setConfirmModalOpen(false);
                 }}
                 headerIcon='fa-solid fa-triangle-exclamation'
-                title={confirmYesAction.current.message || __('Are you sure you want to delete this item?', 'stec')}
+                title={confirmYesAction.current.message || __('Are you sure you want to delete this item?', 'stachethemes_event_calendar_lite')}
                 buttons={
                     [
-                        <Button key='delete' className='red' label={__('Delete', 'stec')} onClick={() => {
+                        <Button key='delete' className='red' label={__('Delete', 'stachethemes_event_calendar_lite')} onClick={() => {
                             if (confirmYesAction.current) {
                                 confirmYesAction.current.onClick(confirmYesAction.current.id);
                                 setConfirmModalOpen(false);
                             }
                         }} />,
-                        <Button key='cancel' className='yellow' label={__('Cancel', 'stec')} onClick={() => {
+                        <Button key='cancel' className='yellow' label={__('Cancel', 'stachethemes_event_calendar_lite')} onClick={() => {
                             confirmYesAction.current = false;
                             setConfirmModalOpen(false);
                         }} />,
@@ -63,7 +63,7 @@ const ButtonControls = (props) => {
                                     onClick: control.onClick,
                                     id: props.id,
                                     message: control.id === 'empty-calendar' ?
-                                        __('Are you use you want to delete all events from this calendar', 'stec') : false
+                                        __('Are you use you want to delete all events from this calendar', 'stachethemes_event_calendar_lite') : false
                                 };
                                 setConfirmModalOpen(true);
                             } else {

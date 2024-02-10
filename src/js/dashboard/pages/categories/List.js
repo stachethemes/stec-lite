@@ -7,15 +7,15 @@ function List() {
         listPageId: 'categories-list',
         upsertPageId: 'categories-upsert',
         restUrl: 'CATEGORIES',
-        termLabelSingle: __('category', 'stec'),
-        termLabelPlural: __('categories', 'stec'),
+        termLabelSingle: __('category', 'stachethemes_event_calendar_lite'),
+        termLabelPlural: __('categories', 'stachethemes_event_calendar_lite'),
         taxonomyName: 'stec_cat',
         itemsMap: (item, itemControls, checkedItems) => {
             return {
                 key: item.id,
                 id: item.id,
                 title: `${item.name} (ID#${item.id})`,
-                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stec'), item.count),
+                description: sprintf(_n('Used by %d event', 'Used by %d events', item.count, 'stachethemes_event_calendar_lite'), item.count),
                 thumbnail: {
                     type: item.meta.thumbnail.type,
                     icon: item.meta.thumbnail.icon,

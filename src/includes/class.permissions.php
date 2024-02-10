@@ -209,17 +209,17 @@ class Permissions {
         $stec_permissions = array(
 
             array(
-                'label' => esc_html__('Public', 'stec'),
+                'label' => esc_html__('Public', 'stachethemes_event_calendar_lite'),
                 'value' => 'stec_public',
             ),
 
             array(
-                'label' => esc_html__('Private', 'stec'),
+                'label' => esc_html__('Private', 'stachethemes_event_calendar_lite'),
                 'value' => 'stec_private',
             ),
 
             array(
-                'label' => esc_html__('Logged-in users', 'stec'),
+                'label' => esc_html__('Logged-in users', 'stachethemes_event_calendar_lite'),
                 'value' => 'stec_logged_in',
             ),
         );

@@ -51,7 +51,7 @@ const TopSearchResults = ({ searchText, onEventSelect }) => {
     if (true === searchResultsReady && searchResults.length <= 0) {
         return (
             <StecSpan className='stec-top-menu-search-result-message'>
-                <i className='fa-solid fa-search' />{__('No events found', 'stec')}
+                <i className='fa-solid fa-search' />{__('No events found', 'stachethemes_event_calendar_lite')}
             </StecSpan>
         )
     }
@@ -59,7 +59,7 @@ const TopSearchResults = ({ searchText, onEventSelect }) => {
     if (true !== searchResultsReady) {
         return (
             <StecSpan className='stec-top-menu-search-result-message'>
-                <i className='fa-solid fa-search' />{sprintf(__('Searching for %s', 'stec'), searchText)}
+                <i className='fa-solid fa-search' />{sprintf(__('Searching for %s', 'stachethemes_event_calendar_lite'), searchText)}
             </StecSpan>
         )
     }

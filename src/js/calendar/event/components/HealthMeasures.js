@@ -19,7 +19,7 @@ function HealthMeasures({ event, style }) {
                 </StecSpan>
 
                 <StecSpan className='stec-event-health-measures-title'>
-                    {__('This event has health safety measures put in place', 'stec')}
+                    {__('This event has health safety measures put in place', 'stachethemes_event_calendar_lite')}
                 </StecSpan>
             </StecDiv>
 
@@ -41,13 +41,13 @@ function HealthMeasures({ event, style }) {
                 }
 
                 const measuresLabels = {
-                    require_masks: __('All attendees are required to wear face masks', 'stec'),
-                    require_temp: __('All attendees will undergo temperature screening upon entry', 'stec'),
-                    require_distance: __('All attendees are required to maintain a safe physical distance', 'stec'),
-                    require_tracing: __('All attendees are required to provide their contact information for contact tracing purposes', 'stec'),
-                    require_certificate: __('All attendees are required to have valid vaccination certificate', 'stec'),
-                    require_pcr_test: __('All attendees are required to have negative PCR test result performed 48 hours before the event start date', 'stec'),
-                    require_rapid_test: __('All attendees are required to have negative rapid test result performed 48 hours before the event start date', 'stec'),
+                    require_masks: __('All attendees are required to wear face masks', 'stachethemes_event_calendar_lite'),
+                    require_temp: __('All attendees will undergo temperature screening upon entry', 'stachethemes_event_calendar_lite'),
+                    require_distance: __('All attendees are required to maintain a safe physical distance', 'stachethemes_event_calendar_lite'),
+                    require_tracing: __('All attendees are required to provide their contact information for contact tracing purposes', 'stachethemes_event_calendar_lite'),
+                    require_certificate: __('All attendees are required to have valid vaccination certificate', 'stachethemes_event_calendar_lite'),
+                    require_pcr_test: __('All attendees are required to have negative PCR test result performed 48 hours before the event start date', 'stachethemes_event_calendar_lite'),
+                    require_rapid_test: __('All attendees are required to have negative rapid test result performed 48 hours before the event start date', 'stachethemes_event_calendar_lite'),
                 };
 
                 if (true === measure[1]) {

@@ -52,8 +52,8 @@ class Widget_Stec {
 
         register_block_type('stec/widget-stec', array(
             'api_version'     => 2,
-            'textdomain'      => 'stec',
-            'title'           => esc_html__('Full Calendar', 'stec'),
+            'textdomain'      => 'stachethemes_event_calendar_lite',
+            'title'           => esc_html__('Full Calendar', 'stachethemes_event_calendar_lite'),
             'editor_script'   => 'stec-widget-admin-stec',
             'editor_style'    => 'stec-widget-admin-stec-style',
             'render_callback' => function ($attributes, $content) {
@@ -91,7 +91,7 @@ class Widget_Stec {
 
             if (has_block('stec/widget-stec')) {
                 wp_enqueue_script('stec-init-js');
-                wp_set_script_translations('stec-init-js', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+                wp_set_script_translations('stec-init-js', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
             }
         });
 

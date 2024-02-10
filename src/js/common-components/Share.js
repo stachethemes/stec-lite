@@ -60,9 +60,9 @@ const Share = ({ link, allowedItems = [], hrefTarget = '_SELF', context = 'view'
                 try {
                     e.preventDefault();
                     navigator.clipboard.writeText(link);
-                    toast.success(__('Link copied to clipboard', 'stec'));
+                    toast.success(__('Link copied to clipboard', 'stachethemes_event_calendar_lite'));
                 } catch (e) {
-                    toast.error(__('Unable to copy link to clipboard', 'stec'));
+                    toast.error(__('Unable to copy link to clipboard', 'stachethemes_event_calendar_lite'));
                 }
 
             }

@@ -20,8 +20,8 @@ class Taxonomy_Stec_Cal {
             self::$taxonomy,
             'stec_event',
             array(
-                'label'                => esc_html__('Calendars', 'stec'),
-                'labels'               => self::get_taxonomy_labels(esc_html__('Calendar', 'stec'), esc_html__('Calendars', 'stec')),
+                'label'                => esc_html__('Calendars', 'stachethemes_event_calendar_lite'),
+                'labels'               => self::get_taxonomy_labels(esc_html__('Calendar', 'stachethemes_event_calendar_lite'), esc_html__('Calendars', 'stachethemes_event_calendar_lite')),
                 'public'               => false,
                 'publicly_queryable'   => false,
                 'show_in_rest'         => true,

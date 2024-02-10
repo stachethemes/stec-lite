@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 function Pagination({
     pages,
     currentPage,
-    onClick, prevLabel = __('Previous', 'stec'),
+    onClick, prevLabel = __('Previous', 'stachethemes_event_calendar_lite'),
     nextLabel = __('Next', 'steec')
 }) {
 

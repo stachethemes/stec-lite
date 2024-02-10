@@ -40,7 +40,7 @@ const NextButton = React.forwardRef((props, ref) => {
 
     const monthLabel = getMonthLabel(nextMonthMoment.month());
     const yearLabel = nextMonthMoment.year();
-    const buttonLabel = [<i key='icon' className='fa-solid fa-calendar-alt' />, sprintf(_x('Go to %s, %s', 'month, year', 'stec'), monthLabel, yearLabel)];
+    const buttonLabel = [<i key='icon' className='fa-solid fa-calendar-alt' />, sprintf(_x('Go to %s, %s', 'month, year', 'stachethemes_event_calendar_lite'), monthLabel, yearLabel)];
 
     return (
         <Button onClick={() => {
@@ -74,10 +74,10 @@ const AgendaList = ({ day, month, year }) => {
 
         if (reverseOrder) {
 
-            return sprintf(__('Events from %s and prior', 'stec'), [day, monthLabel, year].join(' '));
+            return sprintf(__('Events from %s and prior', 'stachethemes_event_calendar_lite'), [day, monthLabel, year].join(' '));
         }
 
-        return sprintf(__('Events since %s', 'stec'), [day, monthLabel, year].join(' '));
+        return sprintf(__('Events since %s', 'stachethemes_event_calendar_lite'), [day, monthLabel, year].join(' '));
 
     }
 
@@ -91,7 +91,7 @@ const AgendaList = ({ day, month, year }) => {
 
                 <>
                     <StecDiv className='stec-no-events-found-text'>
-                        {__('No events found', 'stec')}
+                        {__('No events found', 'stachethemes_event_calendar_lite')}
                     </StecDiv>
 
                     <NextButton ref={agendaListRef} />

@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component {
                     {this.props.icon && <i className={this.props.icon} />}
 
                     {
-                        this.props.text ? this.props.text : __('Sorry, something went wrong', 'stec')
+                        this.props.text ? this.props.text : __('Sorry, something went wrong', 'stachethemes_event_calendar_lite')
                     }
                 </StecSpan>
             )

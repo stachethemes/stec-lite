@@ -25,7 +25,7 @@ const LayoutDay = () => {
 
             {
                 (layoutEventsReady && events.length <= 0) &&
-                <StecDiv className='stec-no-events-found-text'>{__('No events found for this day', 'stec')}</StecDiv>
+                <StecDiv className='stec-no-events-found-text'>{__('No events found for this day', 'stachethemes_event_calendar_lite')}</StecDiv>
             }
 
 

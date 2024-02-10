@@ -39,14 +39,14 @@ const PermissionsList = (props) => {
                 <UncontrolledInputSelect
                     ref={(ref) => focusFieldsRef.current['edit_permission'] = ref}
                     multiple={true}
-                    title={__('Edit permission', 'stec')}
+                    title={__('Edit permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList.filter(item => {
                         return item.value !== 'stec_public'
                     })}
                     defaultValue={postData.current.meta.edit_permission}
-                    description={__('Who can edit this calendar', 'stec')}
+                    description={__('Who can edit this calendar', 'stachethemes_event_calendar_lite')}
                     required={true}
-                    errorMessage={__('The edit permission cannot be empty', 'stec')}
+                    errorMessage={__('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')}
                     wasSubmitted={wasSubmitted}
                     onChange={value => {
                         postData.current.meta.edit_permission = value;
@@ -63,15 +63,15 @@ const PermissionsList = (props) => {
                 <UncontrolledInputSelect
                     ref={(ref) => focusFieldsRef.current['use_permission'] = ref}
                     multiple={true}
-                    title={__('Use permission', 'stec')}
+                    title={__('Use permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList.filter(item => {
                         // return item.value !== 'stec_public'
                         return item;
                     })}
                     defaultValue={postData.current.meta.use_permission}
-                    description={__('Who can submit events to this calendar', 'stec')}
+                    description={__('Who can submit events to this calendar', 'stachethemes_event_calendar_lite')}
                     required={true}
-                    errorMessage={__('The use permission cannot be empty', 'stec')}
+                    errorMessage={__('The use permission cannot be empty', 'stachethemes_event_calendar_lite')}
                     wasSubmitted={wasSubmitted}
                     onChange={value => {
                         postData.current.meta.use_permission = value;
@@ -81,9 +81,9 @@ const PermissionsList = (props) => {
                 <Spacer />
 
                 <UncontrolledInputCheckbox
-                    title={__('Require approval for events submitted by others', 'stec')}
+                    title={__('Require approval for events submitted by others', 'stachethemes_event_calendar_lite')}
                     defaultValue={postData.current.meta.require_event_approval}
-                    description={__(`If checked events submitted by others to this calendar will not be published until approved by the moderator`, 'stec')}
+                    description={__(`If checked events submitted by others to this calendar will not be published until approved by the moderator`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         postData.current.meta.require_event_approval = value;
                     }}
@@ -128,7 +128,7 @@ export function UpsertForm(props) {
     const resetForm = () => {
         setPostData(calendarDataDefaults);
         setWasSubmitted(false);
-        toast(__('The form has been reset', 'stec'));
+        toast(__('The form has been reset', 'stachethemes_event_calendar_lite'));
     }
 
     // Validates the form fields and toast focus error message
@@ -139,33 +139,33 @@ export function UpsertForm(props) {
                 id: 'name',
                 regex: getRegexByType('title'),
                 meta: false,
-                errorMessage: __('The calendar must have a name', 'stec'),
+                errorMessage: __('The calendar must have a name', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'slug',
                 regex: getRegexByType('slug'),
                 meta: false,
-                errorMessage: __('The calendar must have a valid slug', 'stec'),
+                errorMessage: __('The calendar must have a valid slug', 'stachethemes_event_calendar_lite'),
             },
             {
                 id: 'timezone',
                 meta: true,
-                errorMessage: __('The calendar must have a timezone', 'stec')
+                errorMessage: __('The calendar must have a timezone', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'read_permission',
                 meta: true,
-                errorMessage: __('The read permission cannot be empty', 'stec')
+                errorMessage: __('The read permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'use_permission',
                 meta: true,
-                errorMessage: __('The use permission cannot be empty', 'stec')
+                errorMessage: __('The use permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
             {
                 id: 'edit_permission',
                 meta: true,
-                errorMessage: __('The edit permission cannot be empty', 'stec')
+                errorMessage: __('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')
             },
         ]
 
@@ -210,7 +210,7 @@ export function UpsertForm(props) {
     const onUpsertCalendar = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -250,7 +250,7 @@ export function UpsertForm(props) {
                                 data: postData.current,
                                 includeResponseStatus: true,
                                 translateErrorCode: {
-                                    'term_exists': __('A calendar with this name already exists', 'stec')
+                                    'term_exists': __('A calendar with this name already exists', 'stachethemes_event_calendar_lite')
                                 },
                                 errorMessage: 'auto'
                             });
@@ -273,7 +273,7 @@ export function UpsertForm(props) {
                                     group: 'taxonomy-stec_cal'
                                 });
 
-                                return resolve(__('Updated', 'stec'));
+                                return resolve(__('Updated', 'stachethemes_event_calendar_lite'));
 
                             }
 
@@ -290,7 +290,7 @@ export function UpsertForm(props) {
                                     group: 'taxonomy-stec_cal'
                                 });
 
-                                return resolve(__('Created', 'stec'));
+                                return resolve(__('Created', 'stachethemes_event_calendar_lite'));
                             }
 
                         }
@@ -306,7 +306,7 @@ export function UpsertForm(props) {
 
             }),
             {
-                loading: __('Saving', 'stec'),
+                loading: __('Saving', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -326,7 +326,7 @@ export function UpsertForm(props) {
     const deleteCalendar = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -359,7 +359,7 @@ export function UpsertForm(props) {
                             group: 'taxonomy-stec_cal'
                         });
 
-                        return resolve(__('Deleted', 'stec'));
+                        return resolve(__('Deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -372,7 +372,7 @@ export function UpsertForm(props) {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -388,8 +388,8 @@ export function UpsertForm(props) {
     }
 
     const sectionTitle = postData.current.id ?
-        [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit calendar', 'stec')] :
-        [<i key='icon' className='fa-solid fa-plus' />, __('Add new calendar', 'stec')];
+        [<i key='icon' className='fa-solid fa-pen-to-square' />, __('Edit calendar', 'stachethemes_event_calendar_lite')] :
+        [<i key='icon' className='fa-solid fa-plus' />, __('Add new calendar', 'stachethemes_event_calendar_lite')];
 
     return (
 
@@ -403,11 +403,11 @@ export function UpsertForm(props) {
                 ref={(ref) => focusFieldsRef.current['name'] = ref}
                 title={__('Name')}
                 defaultValue={postData.current.name}
-                placeholder={__('Calendar name', 'stec')}
+                placeholder={__('Calendar name', 'stachethemes_event_calendar_lite')}
                 description={__('Calendar display name')}
                 required={true}
                 regex={getRegexByType('title')}
-                errorMessage={__('The calendar must have a name', 'stec')}
+                errorMessage={__('The calendar must have a name', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
                 onChange={value => {
                     postData.current.name = value;
@@ -420,11 +420,11 @@ export function UpsertForm(props) {
                 ref={(ref) => focusFieldsRef.current['slug'] = ref}
                 title={__('Slug')}
                 defaultValue={postData.current.slug}
-                placeholder={__('Calendar slug', 'stec')}
+                placeholder={__('Calendar slug', 'stachethemes_event_calendar_lite')}
                 description={__('Leave empty to auto-generate')}
                 required={false}
                 regex={/^[a-za-z0-9]+(?:-[a-za-z0-9]+)*$|^$/}
-                errorMessage={__('The calendar must have a valid slug', 'stec')}
+                errorMessage={__('The calendar must have a valid slug', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.slug = value;
                 }}
@@ -434,9 +434,9 @@ export function UpsertForm(props) {
             <Spacer />
 
             <UncontrolledInputColor
-                title={__('Color', 'stec')}
+                title={__('Color', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.color}
-                description={__('Calendar color', 'stec')}
+                description={__('Calendar color', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.meta.color = value;
                 }}
@@ -445,9 +445,9 @@ export function UpsertForm(props) {
             <Spacer />
 
             <UncontrolledInputThumbType
-                title={__('Thumbnail type', 'stec')}
+                title={__('Thumbnail type', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.thumbnail}
-                description={__('Thumbnail type for your events. Events can override this value', 'stec')}
+                description={__('Thumbnail type for your events. Events can override this value', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.meta.thumbnail = value;
                 }}
@@ -457,7 +457,7 @@ export function UpsertForm(props) {
 
             <UncontrolledInputSelect
                 ref={(ref) => focusFieldsRef.current['timezone'] = ref}
-                title={__('Timezone', 'stec')}
+                title={__('Timezone', 'stachethemes_event_calendar_lite')}
                 required={true}
                 options={timezonesList.map((tz) => {
                     return {
@@ -466,8 +466,8 @@ export function UpsertForm(props) {
                     }
                 })}
                 defaultValue={postData.current.meta.timezone}
-                description={__('This will be the default timezone for the events in this calendar. Can be changed later. Events can override this value when necessary.', 'stec')}
-                errorMessage={__('The calendar must have a timezone', 'stec')}
+                description={__('This will be the default timezone for the events in this calendar. Can be changed later. Events can override this value when necessary.', 'stachethemes_event_calendar_lite')}
+                errorMessage={__('The calendar must have a timezone', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
                 onChange={value => {
                     postData.current.meta.timezone = value;
@@ -480,10 +480,10 @@ export function UpsertForm(props) {
 
             <Spacer />
 
-            <Button label={postData.current.id ? __('Update', 'stec') : __('Create', 'stec', 0)} className='green' onClick={onUpsertCalendar} />
-            <Button label={__('Reset form', 'stec')} className='yellow' style={{ marginLeft: 5 }} onClick={resetForm} />
-            {postData.current.id && <ConfirmButton label={__('Delete', 'stec')} className='red' style={{ marginLeft: 5 }} onClick={deleteCalendar} />}
-            <Button label={__('Back', 'stec')} className='blue' style={{ marginLeft: 5 }} onClick={() => {
+            <Button label={postData.current.id ? __('Update', 'stachethemes_event_calendar_lite') : __('Create', 'stachethemes_event_calendar_lite', 0)} className='green' onClick={onUpsertCalendar} />
+            <Button label={__('Reset form', 'stachethemes_event_calendar_lite')} className='yellow' style={{ marginLeft: 5 }} onClick={resetForm} />
+            {postData.current.id && <ConfirmButton label={__('Delete', 'stachethemes_event_calendar_lite')} className='red' style={{ marginLeft: 5 }} onClick={deleteCalendar} />}
+            <Button label={__('Back', 'stachethemes_event_calendar_lite')} className='blue' style={{ marginLeft: 5 }} onClick={() => {
                 // If the term was deleted we better reset the query args
                 const resetQuery = postData.current.id ? false : true;
                 props.onBack(resetQuery)
@@ -524,14 +524,14 @@ function Upsert() {
 
             <StecDiv className='stec-dashboard-top-nav'>
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-home' />, __('Home', 'stec')]} onClick={() => {
+                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-home' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
                     });
                 }} />
 
-                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage calendars', 'stec')]} onClick={goToManageList} />
+                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage calendars', 'stachethemes_event_calendar_lite')]} onClick={goToManageList} />
 
             </StecDiv>
 

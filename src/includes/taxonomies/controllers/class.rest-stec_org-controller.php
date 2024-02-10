@@ -67,7 +67,7 @@ class Rest_Stec_Org_Controller extends \WP_REST_Terms_Controller {
             if (false === current_user_can('stec_verify_persons')) {
                 return new \WP_Error(
                     'stec_verify_persons',
-                    esc_html__('You do not have permission to verify organizers', 'stec')
+                    esc_html__('You do not have permission to verify organizers', 'stachethemes_event_calendar_lite')
                 );
             }
         }
@@ -89,7 +89,7 @@ class Rest_Stec_Org_Controller extends \WP_REST_Terms_Controller {
             if (false === current_user_can('stec_verify_persons')) {
                 return new \WP_Error(
                     'stec_verify_persons',
-                    esc_html__('You do not have permission to verify organizers', 'stec')
+                    esc_html__('You do not have permission to verify organizers', 'stachethemes_event_calendar_lite')
                 );
             }
         }

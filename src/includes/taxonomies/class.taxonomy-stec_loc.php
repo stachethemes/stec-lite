@@ -19,8 +19,8 @@ class Taxonomy_Stec_Loc {
             self::$taxonomy,
             'stec_event',
             array(
-                'label'                => esc_html__('Locations', 'stec'),
-                'labels'               => self::get_taxonomy_labels(esc_html__('Location', 'stec'), esc_html__('Locations', 'stec')),
+                'label'                => esc_html__('Locations', 'stachethemes_event_calendar_lite'),
+                'labels'               => self::get_taxonomy_labels(esc_html__('Location', 'stachethemes_event_calendar_lite'), esc_html__('Locations', 'stachethemes_event_calendar_lite')),
                 'public'               => false,
                 'publicly_queryable'   => false,
                 'show_in_rest'         => true,

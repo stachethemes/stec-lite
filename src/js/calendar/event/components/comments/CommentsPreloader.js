@@ -5,7 +5,7 @@ function CommentsPreloader() {
     return (
         <StecDiv className='stec-event-comments-preloader'>
             <StecSpan className='stec-event-comments-preloader-icon'><i className='fas fa-comments' /></StecSpan>
-            <StecSpan className='stec-event-comments-preloader-text'>{__('Loading Comments', 'stec')}</StecSpan>
+            <StecSpan className='stec-event-comments-preloader-text'>{__('Loading Comments', 'stachethemes_event_calendar_lite')}</StecSpan>
         </StecDiv>
     )
 }

@@ -23,7 +23,7 @@ const TopFilterItems = ({ filter }) => {
     return (
         <StecDiv className='stec-top-filter-items-container'>
 
-            {(items.length > 5 || searchText) && <TopFilterItemSearch placeholder={sprintf(__('Search %s', 'stec'), filter.label.toLowerCase())} onChange={(searchText) => {
+            {(items.length > 5 || searchText) && <TopFilterItemSearch placeholder={sprintf(__('Search %s', 'stachethemes_event_calendar_lite'), filter.label.toLowerCase())} onChange={(searchText) => {
                 setSearchText(searchText);
             }} />}
 

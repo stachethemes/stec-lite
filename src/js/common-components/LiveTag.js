@@ -48,7 +48,7 @@ const LiveTag = ({ event }) => {
 
     return (
         <StecDiv className='stec-tag-live'>
-            {__('Live', 'stec')}
+            {__('Live', 'stachethemes_event_calendar_lite')}
             <i className='fas fa-circle' />
         </StecDiv>
     )

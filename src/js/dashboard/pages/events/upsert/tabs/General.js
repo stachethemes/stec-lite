@@ -38,8 +38,8 @@ const RecurrenceOverride = (props) => {
 
     return <>
         <DatePicker
-            title={__('Recurrence override date', 'stec')}
-            description={__('Select recurrence override date.', 'stec')}
+            title={__('Recurrence override date', 'stachethemes_event_calendar_lite')}
+            description={__('Select recurrence override date.', 'stachethemes_event_calendar_lite')}
             value={moment(overrideDate).format('YYYY-MM-DD')}
             includeTime={false}
             onChange={(date) => {
@@ -72,17 +72,17 @@ const PermissionsList = (props) => {
                     ref={(ref) => focusFieldsRef.current['read_permission'] = ref}
                     multiple={true}
                     defaultValue={postData.current.meta.read_permission}
-                    title={__('Read permission', 'stec')}
+                    title={__('Read permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList.filter((item) => {
                         return item;
                     })}
                     onChange={value => {
                         postData.current.meta.read_permission = value;
                     }}
-                    description={__('Who can view this event', 'stec')}
+                    description={__('Who can view this event', 'stachethemes_event_calendar_lite')}
                     required={true}
                     wasSubmitted={wasSubmitted}
-                    errorMessage={__('The read permission cannot be empty', 'stec')}
+                    errorMessage={__('The read permission cannot be empty', 'stachethemes_event_calendar_lite')}
                 />
 
             </WithMaybeDisplayPermissions>
@@ -95,17 +95,17 @@ const PermissionsList = (props) => {
                     ref={(ref) => focusFieldsRef.current['edit_permission'] = ref}
                     multiple={true}
                     defaultValue={postData.current.meta.edit_permission}
-                    title={__('Edit permission', 'stec')}
+                    title={__('Edit permission', 'stachethemes_event_calendar_lite')}
                     options={permissionsList.filter((item) => {
                         return item.value !== 'stec_public'
                     })}
                     onChange={value => {
                         postData.current.meta.edit_permission = value;
                     }}
-                    description={__('Who can edit this event', 'stec')}
+                    description={__('Who can edit this event', 'stachethemes_event_calendar_lite')}
                     required={true}
                     wasSubmitted={wasSubmitted}
-                    errorMessage={__('The edit permission cannot be empty', 'stec')}
+                    errorMessage={__('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')}
                 />
 
             </WithMaybeDisplayPermissions>
@@ -127,7 +127,7 @@ const SelectCategoriesList = ({ postData, focusFieldsRef, wasSubmitted }) => {
     return <React.Fragment key='SelectCategoriesList'>
 
         {(categoriesReady && !categoriesError) && <UncontrolledInputSelect
-            title={__('Categories', 'stec')}
+            title={__('Categories', 'stachethemes_event_calendar_lite')}
             multiple={true}
             defaultValue={postData.current.stec_cat}
             options={categories.map(item => {
@@ -139,7 +139,7 @@ const SelectCategoriesList = ({ postData, focusFieldsRef, wasSubmitted }) => {
                     }
                 )
             })}
-            description={__('Assign event categories', 'stec')}
+            description={__('Assign event categories', 'stachethemes_event_calendar_lite')}
             required={true}
             onChange={(value) => {
                 postData.current.stec_cat = value;
@@ -216,7 +216,7 @@ const SelectCategories = ({ postData, focusFieldsRef, wasSubmitted }) => {
         <Button
             disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
             className='blue'
-            label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new category', 'stec')]}
+            label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new category', 'stachethemes_event_calendar_lite')]}
             onClick={() => {
 
                 if (!STEC_VARIABLES.current_user.capability.manage_terms) {
@@ -242,7 +242,7 @@ const SelectCalendarList = ({ postData, focusFieldsRef, wasSubmitted, onCalendar
 
         {(calendarsReady && !calendarsError) && <UncontrolledInputSelect
             ref={(ref) => focusFieldsRef.current['stec_cal'] = ref}
-            title={__('Select calendar', 'stec')}
+            title={__('Select calendar', 'stachethemes_event_calendar_lite')}
             defaultValue={postData.current.stec_cal}
             options={calendars.map(item => {
                 return (
@@ -252,7 +252,7 @@ const SelectCalendarList = ({ postData, focusFieldsRef, wasSubmitted, onCalendar
                     }
                 )
             })}
-            description={__('Assign the event to the selected calendar', 'stec')}
+            description={__('Assign the event to the selected calendar', 'stachethemes_event_calendar_lite')}
             required={true}
             onChange={(value) => {
                 postData.current.stec_cal = value;
@@ -273,7 +273,7 @@ const SelectCalendarList = ({ postData, focusFieldsRef, wasSubmitted, onCalendar
                     onCalendarChange(postData.current.stec_cal, calendars);
                 }
             }}
-            errorMessage={__('The event must have a calendar', 'stec')}
+            errorMessage={__('The event must have a calendar', 'stachethemes_event_calendar_lite')}
             wasSubmitted={wasSubmitted}
         />}
 
@@ -333,7 +333,7 @@ const SelectCalendar = ({ postData, focusFieldsRef, wasSubmitted, onCalendarChan
         <Button
             disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
             className='blue'
-            label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new calendar', 'stec')]}
+            label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new calendar', 'stachethemes_event_calendar_lite')]}
             onClick={() => {
 
                 if (!STEC_VARIABLES.current_user.capability.manage_terms) {
@@ -389,8 +389,8 @@ const EventDateTimeComponent = (props) => {
 
             <DatePicker
                 ref={(ref) => props.focusFieldsRef.current['start_date'] = ref}
-                title={__('Start date', 'stec')}
-                description={__('Event initial start date', 'stec')}
+                title={__('Start date', 'stachethemes_event_calendar_lite')}
+                description={__('Event initial start date', 'stachethemes_event_calendar_lite')}
                 includeTime={!allDay}
                 value={startDateString}
                 onChange={(value) => {
@@ -411,7 +411,7 @@ const EventDateTimeComponent = (props) => {
 
                 }}
                 required={true}
-                errorMessage={__('Event must have a start date', 'stec')}
+                errorMessage={__('Event must have a start date', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
             />
 
@@ -419,8 +419,8 @@ const EventDateTimeComponent = (props) => {
 
             <DatePicker
                 ref={(ref) => props.focusFieldsRef.current['end_date'] = ref}
-                title={__('End date', 'stec')}
-                description={__('Event initial end date', 'stec')}
+                title={__('End date', 'stachethemes_event_calendar_lite')}
+                description={__('Event initial end date', 'stachethemes_event_calendar_lite')}
                 includeTime={!allDay}
                 value={endDateString}
                 onChange={(value) => {
@@ -441,7 +441,7 @@ const EventDateTimeComponent = (props) => {
 
                 }}
                 required={true}
-                errorMessage={__('Event must have an end date', 'stec')}
+                errorMessage={__('Event must have an end date', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
             />
 
@@ -449,7 +449,7 @@ const EventDateTimeComponent = (props) => {
 
             <InputCheckbox
                 title={__('All day', 'stec ')}
-                description={__('Check if your event spans throughout the day', 'stec')}
+                description={__('Check if your event spans throughout the day', 'stachethemes_event_calendar_lite')}
                 value={allDay}
                 onChange={checked => {
 
@@ -484,7 +484,7 @@ const EventDateTimeComponent = (props) => {
 
             <InputCheckbox
                 title={__('Hide end date', 'stec ')}
-                description={__(`Check if you don't want to show the event end date on the front-end`, 'stec')}
+                description={__(`Check if you don't want to show the event end date on the front-end`, 'stachethemes_event_calendar_lite')}
                 value={hideEnd}
                 onChange={checked => {
                     setHideEnd(checked);
@@ -495,8 +495,8 @@ const EventDateTimeComponent = (props) => {
                 <Spacer />
 
                 <RRuleGenerator
-                    title={__('Repeat event', 'stec')}
-                    description={__('Set repeat scheme for your events', 'stec')}
+                    title={__('Repeat event', 'stachethemes_event_calendar_lite')}
+                    description={__('Set repeat scheme for your events', 'stachethemes_event_calendar_lite')}
                     exdate={exdate}
                     rrule={rrule}
                     manual={manualRrule}
@@ -544,9 +544,9 @@ const SelectCalendarThumbAndColor = ({ postData, focusFieldsRef, wasSubmitted, o
             <Spacer />
 
             <UncontrolledInputColor
-                title={__('Event Color', 'stec')}
+                title={__('Event Color', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.color}
-                description={__('Select color for your event', 'stec')}
+                description={__('Select color for your event', 'stachethemes_event_calendar_lite')}
                 onChange={(value) => {
                     postData.current.meta.color = value;
                 }}
@@ -555,9 +555,9 @@ const SelectCalendarThumbAndColor = ({ postData, focusFieldsRef, wasSubmitted, o
             <Spacer />
 
             <UncontrolledInputThumbType
-                title={__('Thumbnail type', 'stec')}
+                title={__('Thumbnail type', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.thumbnail}
-                description={__('Event thumbnail', 'stec')}
+                description={__('Event thumbnail', 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     postData.current.meta.thumbnail = value;
                 }}
@@ -575,7 +575,7 @@ function General(props) {
     const focusFieldsRef = props.focusFieldsRef;
 
     return (
-        <Section title={__('General', 'stec')}>
+        <Section title={__('General', 'stachethemes_event_calendar_lite')}>
 
 {
                 postData.current.link &&
@@ -583,9 +583,9 @@ function General(props) {
 
                     <InputText
                         readOnly={true}
-                        title={__('Permalink', 'stec')}
+                        title={__('Permalink', 'stachethemes_event_calendar_lite')}
                         value={postData.current.link}
-                        description={__('The event current permalink', 'stec')}
+                        description={__('The event current permalink', 'stachethemes_event_calendar_lite')}
                         onChange={() => {
                             // do nothing
                         }}
@@ -593,24 +593,24 @@ function General(props) {
 
                     <Button
                         extra={{
-                            title: __('View event', 'stec')
+                            title: __('View event', 'stachethemes_event_calendar_lite')
                         }}
                         className='blue'
-                        label={__('View', 'stec')} href={postData.current.link} target={'_blank'} />
+                        label={__('View', 'stachethemes_event_calendar_lite')} href={postData.current.link} target={'_blank'} />
                 </Flexbox>
             }
 
             <UncontrolledInputText
                 ref={(ref) => focusFieldsRef.current['title'] = ref}
-                title={__('Title', 'stec')}
-                description={__('The event title', 'stec')}
-                placeholder={__('Title', 'stec')}
+                title={__('Title', 'stachethemes_event_calendar_lite')}
+                description={__('The event title', 'stachethemes_event_calendar_lite')}
+                placeholder={__('Title', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.title.raw}
                 onChange={value => {
                     postData.current.title.raw = value;
                 }}
                 regex={getRegexByType('title')}
-                errorMessage={__('The event must have a title', 'stec')}
+                errorMessage={__('The event must have a title', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
             />
 
@@ -618,16 +618,16 @@ function General(props) {
 
             <UncontrolledInputText
                 ref={(ref) => focusFieldsRef.current['slug'] = ref}
-                title={__('Slug', 'stec')}
-                placeholder={__('Slug', 'stec')}
-                description={__('The event title slug. Leave empty to auto-generate', 'stec')}
+                title={__('Slug', 'stachethemes_event_calendar_lite')}
+                placeholder={__('Slug', 'stachethemes_event_calendar_lite')}
+                description={__('The event title slug. Leave empty to auto-generate', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.slug}
                 onChange={value => {
                     postData.current.slug = value;
 
                 }}
                 regex={getRegexByType('slug')}
-                errorMessage={__('The event must have a valid slug', 'stec')}
+                errorMessage={__('The event must have a valid slug', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
             />
 
@@ -644,9 +644,9 @@ function General(props) {
 
             <UncontrolledInputSelect
                 ref={(ref) => focusFieldsRef.current['timezone'] = ref}
-                title={__('Timezone', 'stec')}
+                title={__('Timezone', 'stachethemes_event_calendar_lite')}
                 options={[{
-                    label: __('Use calendar timezone', 'stec'),
+                    label: __('Use calendar timezone', 'stachethemes_event_calendar_lite'),
                     value: 'stec_cal_default'
                 }, ...timezonesList.map(tz => {
                     return {
@@ -659,8 +659,8 @@ function General(props) {
                 onChange={value => {
                     postData.current.meta.timezone = value;
                 }}
-                description={__('Event timezone', 'stec')}
-                errorMessage={__('The event must have a timezone', 'stec')}
+                description={__('Event timezone', 'stachethemes_event_calendar_lite')}
+                errorMessage={__('The event must have a timezone', 'stachethemes_event_calendar_lite')}
                 wasSubmitted={wasSubmitted}
             />
 
@@ -689,16 +689,16 @@ function General(props) {
             <Spacer />
 
             <UncontrolledInputSelect
-                title={__('Event Status', 'stec')}
+                title={__('Event Status', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.event_status}
                 options={[
-                    { value: 'EventScheduled', label: __('Scheduled', 'stec') },
-                    { value: 'EventMovedOnline', label: __('Moved Online', 'stec') },
-                    { value: 'EventPostponed', label: __('Postponed', 'stec') },
-                    { value: 'EventRescheduled', label: __('Rescheduled', 'stec') },
-                    { value: 'EventCancelled', label: __('Cancelled', 'stec') },
+                    { value: 'EventScheduled', label: __('Scheduled', 'stachethemes_event_calendar_lite') },
+                    { value: 'EventMovedOnline', label: __('Moved Online', 'stachethemes_event_calendar_lite') },
+                    { value: 'EventPostponed', label: __('Postponed', 'stachethemes_event_calendar_lite') },
+                    { value: 'EventRescheduled', label: __('Rescheduled', 'stachethemes_event_calendar_lite') },
+                    { value: 'EventCancelled', label: __('Cancelled', 'stachethemes_event_calendar_lite') },
                 ]}
-                description={__('Set event status', 'stec')}
+                description={__('Set event status', 'stachethemes_event_calendar_lite')}
                 onChange={(value) => {
                     postData.current.meta.event_status = value;
                 }}
@@ -707,7 +707,7 @@ function General(props) {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Set as Featured', 'stec')} description={__('Mark event as featured', 'stec')}
+                title={__('Set as Featured', 'stachethemes_event_calendar_lite')} description={__('Mark event as featured', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.meta.featured}
                 onChange={checked => {
                     postData.current.meta.featured = checked;
@@ -717,9 +717,9 @@ function General(props) {
             <Spacer />
 
             <UncontrolledInputCheckbox
-                title={__('Allow comments', 'stec')}
+                title={__('Allow comments', 'stachethemes_event_calendar_lite')}
                 defaultValue={'open' === postData.current.comment_status}
-                description={__('Allow comments for this event', 'stec')}
+                description={__('Allow comments for this event', 'stachethemes_event_calendar_lite')}
                 onChange={checked => {
                     postData.current.comment_status = true === checked ? 'open' : 'closed';
                 }}

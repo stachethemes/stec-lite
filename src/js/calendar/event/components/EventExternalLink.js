@@ -6,7 +6,7 @@ const EventExternalLinkLive = ({ event, style }) => {
 
     const linksTarget = useSettingsAtt('calendar__links_target');
     const href = event.meta.external_link.url;
-    const label = event.meta.external_link.text || __('Read more', 'stec');
+    const label = event.meta.external_link.text || __('Read more', 'stachethemes_event_calendar_lite');
 
     return <Button target={linksTarget} href={href} label={label} style={style} />
 
@@ -15,7 +15,7 @@ const EventExternalLinkLive = ({ event, style }) => {
 function EventExternalLink({ event, style, context = 'view' }) {
 
     if (context === 'editor') {
-        return <Button label={__('Read more', 'stec')} style={style} />
+        return <Button label={__('Read more', 'stachethemes_event_calendar_lite')} style={style} />
     }
 
     if (!event.meta?.external_link?.url) {

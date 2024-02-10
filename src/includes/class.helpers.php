@@ -4,6 +4,18 @@ namespace Stachethemes\Steclite;
 
 class Helpers {
 
+    public static function get_file_contents($file) {
+
+        require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+        require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+
+        $filesystem = new \WP_Filesystem_Direct(true);
+
+        $content = $filesystem->get_contents($file);
+
+        return $content;
+    }
+
     /**
      * Similiar to wp_parse_args but with recursive array_replace
      */
@@ -96,7 +108,8 @@ class Helpers {
         foreach ($files as $file) {
 
             // Check if attachment exists using the _wp_attachment_metadata custom key
-            $content            = file_get_contents($file['tmp_name']);
+            $content = self::get_file_contents($file['tmp_name']);
+
             $image_content_hash = wp_hash($content);
 
             $attachment_id = $wpdb->get_var(
@@ -111,7 +124,7 @@ class Helpers {
                 continue;
             }
 
-            $upload = wp_upload_bits($file['name'], null, file_get_contents($file['tmp_name']));
+            $upload = wp_upload_bits($file['name'], null, self::get_file_contents($file['tmp_name']));
 
             if (!$upload['error']) {
 
@@ -134,7 +147,7 @@ class Helpers {
                 // Add the attachment ID to your $result array
                 $result[] = $attach_id;
             } else {
-                throw new Stec_Exception(esc_html__('Error uploading file: ' . $upload['error'], 'stec'));
+                throw new Stec_Exception(esc_html__('Error uploading file: ' . $upload['error'], 'stachethemes_event_calendar_lite'));
             }
         }
 

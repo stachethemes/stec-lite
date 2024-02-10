@@ -10,12 +10,12 @@ function Language({ settings }) {
 
     return (
         <Section>
-            <SectionCollapseContent title={__('Language settings', 'stec')} subtitle={__('Show language settings', 'stec')}>
+            <SectionCollapseContent title={__('Language settings', 'stachethemes_event_calendar_lite')} subtitle={__('Show language settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsLang.i18n_translate_all}
-                    title={__('Enable i18n-loader.js for en_US locale', 'stec')}
-                    description={__('Turn on this setting you want to load en_US .po files', 'stec')}
+                    title={__('Enable i18n-loader.js for en_US locale', 'stachethemes_event_calendar_lite')}
+                    description={__('Turn on this setting you want to load en_US .po files', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsLang.i18n_translate_all = value;
                     }}
@@ -25,8 +25,8 @@ function Language({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsLang.i18n_loader}
-                    title={__('Enable i18n data loader', 'stec')}
-                    description={__('Enables i18n-loader.js to load .po files if available.', 'stec')}
+                    title={__('Enable i18n data loader', 'stachethemes_event_calendar_lite')}
+                    description={__('Enables i18n-loader.js to load .po files if available.', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsLang.i18n_loader = value;
                     }}

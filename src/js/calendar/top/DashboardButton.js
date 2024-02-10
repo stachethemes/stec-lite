@@ -19,7 +19,7 @@ const ChangesNotice = () => {
     return (
         <StecDiv className='stec-dashboard-changes-notice'>
             <i className='notice-icon fas fa-exclamation-triangle' />
-            {__('Please note that certain changes may require you to reload the page in order to see them take effect on the front-end', 'stec')}
+            {__('Please note that certain changes may require you to reload the page in order to see them take effect on the front-end', 'stachethemes_event_calendar_lite')}
             <StecSpan className='close-button' onClick={() => {
                 setDisplay(false);
             }}>
@@ -77,7 +77,7 @@ const DashboardButton = () => {
 
             }}>{[
                 <i key='icon' className='fa-solid fa-cog' />,
-                <StecSpan key='text'>{__('Calendar Dashboard', 'stec')}</StecSpan>
+                <StecSpan key='text'>{__('Calendar Dashboard', 'stachethemes_event_calendar_lite')}</StecSpan>
             ]}</StecDiv>
 
             <Suspense fallback=''>

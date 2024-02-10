@@ -23,12 +23,12 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
     const submitRequest = () => {
 
         if (!contentRef.current ) {
-            toast.error(__('Context is empty', 'stec'));
+            toast.error(__('Context is empty', 'stachethemes_event_calendar_lite'));
             return false;
         }
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -70,7 +70,7 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
 
                             setGeneratedContent(data.message);
 
-                            return resolve(__(`Content generated`, 'stec'));
+                            return resolve(__(`Content generated`, 'stachethemes_event_calendar_lite'));
 
                         } else {
 
@@ -89,7 +89,7 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
 
             }),
             {
-                loading: __('Just a moment...', 'stec'),
+                loading: __('Just a moment...', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -111,12 +111,12 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
             <StecDiv className='stec-modal-ai-content-title'>
                 <i className='fa-solid fa-wand-magic-sparkles'></i>
                 {
-                    __('Intelligent Content Enhancement', 'stec')
+                    __('Intelligent Content Enhancement', 'stachethemes_event_calendar_lite')
                 }
             </StecDiv>
 
             <UncontrolledInputText
-                title={__('Task', 'stec')}
+                title={__('Task', 'stachethemes_event_calendar_lite')}
                 defaultValue={taskRef.current}
                 onChange={value => {
                     taskRef.current = value;
@@ -128,7 +128,7 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
             <Grid gap='10px' columns={'1fr 1fr'}>
 
                 <UncontrolledInputTextarea
-                    title={__('Context', 'stec')}
+                    title={__('Context', 'stachethemes_event_calendar_lite')}
                     defaultValue={contentRef.current}
                     onChange={value => {
                         contentRef.current = value;
@@ -137,7 +137,7 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
 
                 <InputTextarea
                     style={{ marginLeft: 6 }}
-                    title={__('Suggested Content', 'stec')}
+                    title={__('Suggested Content', 'stachethemes_event_calendar_lite')}
                     value={generatedContent}
                     onChange={value => {
                         setGeneratedContent(value);
@@ -146,14 +146,14 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
 
             </Grid>
 
-            <FieldDescription text={sprintf(__('Note the plugin connects to %s to process your request', 'stec'), 'https://api.openai.com')} />
+            <FieldDescription text={sprintf(__('Note the plugin connects to %s to process your request', 'stachethemes_event_calendar_lite'), 'https://api.openai.com')} />
 
             <Spacer />
 
             <Flexbox style={{
                 justifyContent: 'flex-start'
             }}>
-                <Button disabled={!generatedContent} label={__('Apply changes', 'stec')} className='green' onClick={() => {
+                <Button disabled={!generatedContent} label={__('Apply changes', 'stachethemes_event_calendar_lite')} className='green' onClick={() => {
 
                     if (generatedContent) {
                         onApply(generatedContent);
@@ -161,10 +161,10 @@ const ModalAIContent = ({ setModalOpen, task, content, onApply }) => {
                     }
 
                 }} />
-                <Button label={__('Generate', 'stec')} style={{ marginLeft: 6 }} b className='blue' onClick={submitRequest} />
+                <Button label={__('Generate', 'stachethemes_event_calendar_lite')} style={{ marginLeft: 6 }} b className='blue' onClick={submitRequest} />
                 <Button style={{
                     marginLeft: 6
-                }} label={__('Close', 'stec')} className='red' onClick={() => {
+                }} label={__('Close', 'stachethemes_event_calendar_lite')} className='red' onClick={() => {
                     setModalOpen(false);
                 }} />
             </Flexbox>

@@ -33,7 +33,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType('stec/widget-stec', {
     apiVersion: 2,
-    title: __('Full Calendar', 'stec'),
+    title: __('Full Calendar', 'stachethemes_event_calendar_lite'),
     icon: 'calendar-alt',
     category: 'stachethemes',
     attributes: attributes,

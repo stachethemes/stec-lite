@@ -33,14 +33,14 @@ const SelectFromList = ({ postData }) => {
 
     listLocation.unshift({
         value: '',
-        label: __('None', 'stec'),
+        label: __('None', 'stachethemes_event_calendar_lite'),
     });
 
     return (
 
         <UncontrolledInputSelect
-            title={__('Select location', 'stec')}
-            description={__('Select existing locations', 'stec')}
+            title={__('Select location', 'stachethemes_event_calendar_lite')}
+            description={__('Select existing locations', 'stachethemes_event_calendar_lite')}
             defaultValue={postData.current.stec_loc}
             options={listLocation}
             onChange={value => {
@@ -102,7 +102,7 @@ const Locations = (props) => {
 
             </Modal>
 
-            <Section title={__('Locations list', 'stec')}>
+            <Section title={__('Locations list', 'stachethemes_event_calendar_lite')}>
 
                 <SelectFromList key={listKey} postData={postData} />
 
@@ -110,7 +110,7 @@ const Locations = (props) => {
 
                 <Button
                     disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
-                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new location', 'stec')]}
+                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new location', 'stachethemes_event_calendar_lite')]}
                     className='blue'
                     onClick={() => {
 

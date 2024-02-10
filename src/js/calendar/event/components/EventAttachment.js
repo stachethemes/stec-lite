@@ -11,7 +11,7 @@ const EventAttachment = ({ attachment }) => {
             <a download href={attachment.url}>{caption}</a>
 
             <Button href={attachment.url} label={[
-                <i key='icon' className='fa-solid fa-download' />, __('Download', 'stec')
+                <i key='icon' className='fa-solid fa-download' />, __('Download', 'stachethemes_event_calendar_lite')
             ]} extra={{
                 download: true
             }} />

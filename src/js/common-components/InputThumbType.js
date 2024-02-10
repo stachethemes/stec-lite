@@ -28,9 +28,9 @@ export const UncontrolledInputThumbType = (props) => {
     switch (currentValue.type) {
         case 'icon':
             displaySettings = <IconPicker
-                title={__('Select icon', 'stec')}
+                title={__('Select icon', 'stachethemes_event_calendar_lite')}
                 value={currentValue.icon || ''}
-                description={__('Select icon for your thumbnail', 'stec')}
+                description={__('Select icon for your thumbnail', 'stachethemes_event_calendar_lite')}
                 onPick={(icon) => {
                     updateCurrentValue({ ...currentValue, icon: icon });
                 }}
@@ -45,8 +45,8 @@ export const UncontrolledInputThumbType = (props) => {
             displaySettings = <InputImages
                 multiple={false}
                 value={currentValue.image || []}
-                buttonTitle={__('Select image', 'stec')}
-                description={__('Select image for your thumbnail', 'stec')}
+                buttonTitle={__('Select image', 'stachethemes_event_calendar_lite')}
+                description={__('Select image for your thumbnail', 'stachethemes_event_calendar_lite')}
                 onChange={(images) => {
                     updateCurrentValue({ ...currentValue, image: images });
                 }}
@@ -61,9 +61,9 @@ export const UncontrolledInputThumbType = (props) => {
                 title={props.title}
                 description={props.description}
                 options={[
-                    { value: 'icon', label: __('Icon', 'stec') },
-                    { value: 'date', label: __('Date', 'stec') },
-                    { value: 'image', label: __('Image', 'stec') },
+                    { value: 'icon', label: __('Icon', 'stachethemes_event_calendar_lite') },
+                    { value: 'date', label: __('Date', 'stachethemes_event_calendar_lite') },
+                    { value: 'image', label: __('Image', 'stachethemes_event_calendar_lite') },
                 ]}
 
                 value={currentValue.type ? currentValue.type : 'icon'}
@@ -94,9 +94,9 @@ export const InputThumbType = (props) => {
     switch (props.value.type) {
         case 'icon':
             displaySettings = <IconPicker
-                title={__('Select icon', 'stec')}
+                title={__('Select icon', 'stachethemes_event_calendar_lite')}
                 value={props.value.icon || ''}
-                description={__('Select icon for your thumbnail', 'stec')}
+                description={__('Select icon for your thumbnail', 'stachethemes_event_calendar_lite')}
                 onPick={(icon) => {
                     updateCurrentValue({ ...props.value, icon: icon });
                 }}
@@ -111,8 +111,8 @@ export const InputThumbType = (props) => {
             displaySettings = <InputImages
                 multiple={false}
                 value={props.value.image || []}
-                buttonTitle={__('Select image', 'stec')}
-                description={__('Select image for your thumbnail', 'stec')}
+                buttonTitle={__('Select image', 'stachethemes_event_calendar_lite')}
+                description={__('Select image for your thumbnail', 'stachethemes_event_calendar_lite')}
                 onChange={(images) => {
                     updateCurrentValue({ ...props.value, image: images });
                 }}
@@ -132,9 +132,9 @@ export const InputThumbType = (props) => {
                 title={props.title}
                 description={props.description}
                 options={[
-                    { value: 'icon', label: __('Icon', 'stec') },
-                    { value: 'date', label: __('Date', 'stec') },
-                    { value: 'image', label: __('Image', 'stec') },
+                    { value: 'icon', label: __('Icon', 'stachethemes_event_calendar_lite') },
+                    { value: 'date', label: __('Date', 'stachethemes_event_calendar_lite') },
+                    { value: 'image', label: __('Image', 'stachethemes_event_calendar_lite') },
                 ]}
 
                 defaultValue={props.value.type ? props.value.type : 'icon'}

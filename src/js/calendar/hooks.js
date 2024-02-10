@@ -121,27 +121,27 @@ export const useAvailableLayouts = () => {
     const layouts = [
         {
             id: 'agenda',
-            label: __('Agenda', 'stec'),
+            label: __('Agenda', 'stachethemes_event_calendar_lite'),
         },
         {
             id: 'month',
-            label: __('Month', 'stec')
+            label: __('Month', 'stachethemes_event_calendar_lite')
         },
         {
             id: 'week',
-            label: __('Week', 'stec')
+            label: __('Week', 'stachethemes_event_calendar_lite')
         },
         {
             id: 'day',
-            label: __('Day', 'stec')
+            label: __('Day', 'stachethemes_event_calendar_lite')
         },
         {
             id: 'grid',
-            label: __('Grid', 'stec')
+            label: __('Grid', 'stachethemes_event_calendar_lite')
         },
         {
             id: 'boxgrid',
-            label: __('Box grid', 'stec')
+            label: __('Box grid', 'stachethemes_event_calendar_lite')
         }
     ];
 
@@ -566,18 +566,18 @@ export const usePrepareTopFilters = ({ events, eventsReady }) => {
                     {
                         id: 'calendars',
                         icon: 'fa-solid fa-calendar',
-                        label: __('Calendars', 'stec'),
+                        label: __('Calendars', 'stachethemes_event_calendar_lite'),
                         items: []
                     },
                     {
                         id: 'categories',
                         icon: 'fa-solid fa-folder',
-                        label: __('Categories', 'stec'),
+                        label: __('Categories', 'stachethemes_event_calendar_lite'),
                         defaultActiveValue: !categoriesStartInActive,
                         items: [
                             {
                                 id: 0,
-                                label: __('Uncategorized', 'stec'),
+                                label: __('Uncategorized', 'stachethemes_event_calendar_lite'),
                                 active: !categoriesStartInActive
                             }
                         ]
@@ -585,11 +585,11 @@ export const usePrepareTopFilters = ({ events, eventsReady }) => {
                     {
                         id: 'locations',
                         icon: 'fa-solid fa-map-marker-alt',
-                        label: __('Locations', 'stec'),
+                        label: __('Locations', 'stachethemes_event_calendar_lite'),
                         items: [
                             {
                                 id: 0,
-                                label: __('No location', 'stec'),
+                                label: __('No location', 'stachethemes_event_calendar_lite'),
                                 active: true
                             }
                         ]
@@ -597,11 +597,11 @@ export const usePrepareTopFilters = ({ events, eventsReady }) => {
                     {
                         id: 'organizers',
                         icon: 'fa-solid fa-users',
-                        label: __('Organizers', 'stec'),
+                        label: __('Organizers', 'stachethemes_event_calendar_lite'),
                         items: [
                             {
                                 id: 0,
-                                label: __('No organizer', 'stec'),
+                                label: __('No organizer', 'stachethemes_event_calendar_lite'),
                                 active: true
                             }
                         ]
@@ -609,11 +609,11 @@ export const usePrepareTopFilters = ({ events, eventsReady }) => {
                     {
                         id: 'guests',
                         icon: 'fa-solid fa-star',
-                        label: __('Guests', 'stec'),
+                        label: __('Guests', 'stachethemes_event_calendar_lite'),
                         items: [
                             {
                                 id: 0,
-                                label: __('No guests', 'stec'),
+                                label: __('No guests', 'stachethemes_event_calendar_lite'),
                                 active: true
                             }
                         ]

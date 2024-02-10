@@ -11,7 +11,7 @@ function CustomHtml(props) {
         return (
             <StecDiv className='stec-builder-element-custom-html' style={props.style}>
                 <Highlight lang={html ? 'html' : 'plaintext'}>
-                    {html || __('Add your custom HTML here', 'stec')}
+                    {html || __('Add your custom HTML here', 'stachethemes_event_calendar_lite')}
                 </Highlight>
             </StecDiv>
         )

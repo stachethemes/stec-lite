@@ -56,7 +56,7 @@ const IconPicker = ({ title, value, description, onPick }) => {
                 </label>
 
                 <StecDiv className='stec-icon-picker-container'>
-                    <input type="text" placeholder={__('Search icon', 'stec')} onChange={(e) => {
+                    <input type="text" placeholder={__('Search icon', 'stachethemes_event_calendar_lite')} onChange={(e) => {
                         onSearchKeyPress(e.target.value);
                     }} />
 
@@ -69,7 +69,7 @@ const IconPicker = ({ title, value, description, onPick }) => {
                             })}
                         </StecDiv>}
 
-                    <Button className='blue' style={{ marginTop: '10px' }} label={__('Clear', 'stec')} onClick={() => {
+                    <Button className='blue' style={{ marginTop: '10px' }} label={__('Clear', 'stachethemes_event_calendar_lite')} onClick={() => {
                         onPick('');
                     }} />
                 </StecDiv>

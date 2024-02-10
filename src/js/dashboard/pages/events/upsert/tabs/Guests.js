@@ -24,9 +24,9 @@ const SelectFromList = ({ postData }) => {
 
     return (
         <UncontrolledInputSelect
-            title={__('Select guests', 'stec')}
+            title={__('Select guests', 'stachethemes_event_calendar_lite')}
             multiple={true}
-            description={__('Select existing guests', 'stec')}
+            description={__('Select existing guests', 'stachethemes_event_calendar_lite')}
             defaultValue={postData.current.stec_gst}
             options={guests.map(item => {
                 return (
@@ -108,7 +108,7 @@ const Guests = (props) => {
 
             </Modal>
 
-            <Section title={__('Guests list', 'stec')}>
+            <Section title={__('Guests list', 'stachethemes_event_calendar_lite')}>
 
                 <SelectFromList key={listKey} postData={postData} />
 
@@ -116,7 +116,7 @@ const Guests = (props) => {
 
                 <Button
                     disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
-                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new guest', 'stec')]}
+                    label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new guest', 'stachethemes_event_calendar_lite')]}
                     className='blue'
                     onClick={() => {
 

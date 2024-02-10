@@ -137,7 +137,7 @@ export const useApiGet = (props) => {
         args,
         cacheGroup,
         cacheKey,
-        errorMessage = __('An error occurred while fetching the data.', 'stec'),
+        errorMessage = __('An error occurred while fetching the data.', 'stachethemes_event_calendar_lite'),
         waitExec = false,
         includeResponseHeaders = false,
         includeResponseStatus = false,
@@ -293,7 +293,7 @@ export const newApiGet = ({
         'X-WP-Nonce': STEC_VARIABLES.api_nonce
     },
     translateErrorCode = false,
-    errorMessage = __('Sorry, something went wrong', 'stec'),
+    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite'),
     expectType = 'json'
 }) => {
 
@@ -359,11 +359,11 @@ export const newApiGet = ({
                     } else if (errorMessage === 'auto' && result && result.message) {
                         errorMessage = result.message;
                     } else {
-                        errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                        errorMessage = errorMessage || __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
                     }
 
                     if (errorMessage === 'auto') {
-                        errorMessage = __('Sorry, something went wrong', 'stec')
+                        errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite')
                     }
 
                     throw new Error(errorMessage);
@@ -461,7 +461,7 @@ export const newApiPost = async ({
     data,
     headers = {},
     translateErrorCode = false, // handle error code messages so user understand what is going on,
-    errorMessage = __('Sorry, something went wrong', 'stec'), // default error message, if set to 'auto' it will extract the content from the .message property of the response
+    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite'), // default error message, if set to 'auto' it will extract the content from the .message property of the response
 }) => {
 
     let fetchUrl = testFetchUrl(route);
@@ -509,11 +509,11 @@ export const newApiPost = async ({
                 } else if (errorMessage === 'auto' && result && result.message) {
                     errorMessage = result.message;
                 } else {
-                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
                 }
 
                 if (errorMessage === 'auto') {
-                    errorMessage = __('Sorry, something went wrong', 'stec')
+                    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite')
                 }
 
                 throw new Error(errorMessage);
@@ -597,7 +597,7 @@ export const newApiPut = async ({
     data,
     headers = {},
     translateErrorCode = false,
-    errorMessage = __('Sorry, something went wrong', 'stec'),
+    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite'),
 }) => {
 
     let fetchUrl = testFetchUrl(route);
@@ -645,11 +645,11 @@ export const newApiPut = async ({
                 } else if (errorMessage === 'auto' && result && result.message) {
                     errorMessage = result.message;
                 } else {
-                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
                 }
 
                 if (errorMessage === 'auto') {
-                    errorMessage = __('Sorry, something went wrong', 'stec')
+                    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite')
                 }
 
                 throw new Error(errorMessage);
@@ -730,7 +730,7 @@ export const newApiDelete = ({
     includeResponseStatus = false,
     headers = {},
     translateErrorCode = false,
-    errorMessage = __(`Sorry, something went wrong`, 'stec')
+    errorMessage = __(`Sorry, something went wrong`, 'stachethemes_event_calendar_lite')
 
 }) => {
 
@@ -778,11 +778,11 @@ export const newApiDelete = ({
                 } else if (errorMessage === 'auto' && result && result.message) {
                     errorMessage = result.message;
                 } else {
-                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stec');
+                    errorMessage = errorMessage || __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
                 }
 
                 if (errorMessage === 'auto') {
-                    errorMessage = __('Sorry, something went wrong', 'stec')
+                    errorMessage = __('Sorry, something went wrong', 'stachethemes_event_calendar_lite')
                 }
 
                 throw new Error(errorMessage);

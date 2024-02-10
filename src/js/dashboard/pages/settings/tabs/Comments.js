@@ -13,20 +13,20 @@ function Comments({ settings }) {
 
     return (
         <Section>
-            <SectionCollapseContent title={__('Comments settings', 'stec')} subtitle={__('Show comments settings', 'stec')}>
+            <SectionCollapseContent title={__('Comments settings', 'stachethemes_event_calendar_lite')} subtitle={__('Show comments settings', 'stachethemes_event_calendar_lite')}>
 
                 <InputSelect
-                    title={__('Comments form type', 'stec')}
-                    description={__('Choose default form', 'stec')}
+                    title={__('Comments form type', 'stachethemes_event_calendar_lite')}
+                    description={__('Choose default form', 'stachethemes_event_calendar_lite')}
                     value={type}
                     options={[
                         {
                             value: 'internal',
-                            label: __('Internal', 'stec')
+                            label: __('Internal', 'stachethemes_event_calendar_lite')
                         },
                         {
                             value: 'facebook',
-                            label: __('Facebook', 'stec')
+                            label: __('Facebook', 'stachethemes_event_calendar_lite')
                         },
                     ]}
                     onChange={value => {
@@ -42,7 +42,7 @@ function Comments({ settings }) {
                         <Spacer />
 
                         <UncontrolledInputText
-                            title={__('Facebook App ID', 'stec')}
+                            title={__('Facebook App ID', 'stachethemes_event_calendar_lite')}
                             defaultValue={settingsComments.fb_app_id}
                             onChange={value => {
                                 settingsComments.fb_app_id = value;

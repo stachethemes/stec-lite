@@ -37,8 +37,8 @@ const TextEditorRich = (props) => {
     const handleMediaLibrary = async (editor) => {
 
         const images = await MediaFrame({
-            title: _x('Select Images', 'TinyMCE Editor Media Library', 'stec'),
-            buttonText: _x('Add Images', 'TinyMCE Editor Media Library', 'stec'),
+            title: _x('Select Images', 'TinyMCE Editor Media Library', 'stachethemes_event_calendar_lite'),
+            buttonText: _x('Add Images', 'TinyMCE Editor Media Library', 'stachethemes_event_calendar_lite'),
             libraryType: 'image',
             multiple: true
         });
@@ -59,8 +59,8 @@ const TextEditorRich = (props) => {
         }
 
         editor?.ui?.registry?.addButton('mediaLibrary', {
-            text: _x('Media Library', 'TinyMCE Button', 'stec'),
-            tooltip: _x('Add images from the media library', 'TinyMCE Button', 'stec'),
+            text: _x('Media Library', 'TinyMCE Button', 'stachethemes_event_calendar_lite'),
+            tooltip: _x('Add images from the media library', 'TinyMCE Button', 'stachethemes_event_calendar_lite'),
             onAction: function (_) {
                 handleMediaLibrary(editor);
             }

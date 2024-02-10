@@ -36,7 +36,7 @@ class Post_Types_Stec_Event {
         register_post_type(
             self::$post_type,
             array(
-                'labels'                => self::get_post_labels(esc_html__('Event', 'stec'), esc_html__('Events', 'stec')),
+                'labels'                => self::get_post_labels(esc_html__('Event', 'stachethemes_event_calendar_lite'), esc_html__('Events', 'stachethemes_event_calendar_lite')),
                 'rest_controller_class' => '\Stachethemes\Steclite\Rest_Stec_Event_Controller',
                 'exclude_from_search'   => false,
                 'public'                => true,

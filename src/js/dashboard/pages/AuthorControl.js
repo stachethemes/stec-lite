@@ -26,7 +26,7 @@ const AuthorData = ({ userData, setEditMode, setAuthorId }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User id', 'stec')}
+                title={__('User id', 'stachethemes_event_calendar_lite')}
                 value={id}
             />
 
@@ -34,7 +34,7 @@ const AuthorData = ({ userData, setEditMode, setAuthorId }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User display name', 'stec')}
+                title={__('User display name', 'stachethemes_event_calendar_lite')}
                 value={display_name}
             />
 
@@ -42,7 +42,7 @@ const AuthorData = ({ userData, setEditMode, setAuthorId }) => {
 
             <InputText
                 readOnly={true}
-                title={__('User e-mail', 'stec')}
+                title={__('User e-mail', 'stachethemes_event_calendar_lite')}
                 value={user_email}
             />
 
@@ -50,13 +50,13 @@ const AuthorData = ({ userData, setEditMode, setAuthorId }) => {
 
             <StecDiv className='stec-light-modal-content-buttons'>
 
-                <Button style={{ width: '100%' }} key='update-author' label={__('Change author', 'stec')} className='green' onClick={() => {
+                <Button style={{ width: '100%' }} key='update-author' label={__('Change author', 'stachethemes_event_calendar_lite')} className='green' onClick={() => {
                     setAuthorId(parseInt(id, 10));
                     setEditMode(false);
-                    toast(__('Author updated', 'stec'));
+                    toast(__('Author updated', 'stachethemes_event_calendar_lite'));
                 }} />
 
-                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stec')} className='red' onClick={() => {
+                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stachethemes_event_calendar_lite')} className='red' onClick={() => {
                     setEditMode(false);
                 }} />
 
@@ -82,16 +82,16 @@ const DataHandle = ({
 
             {(!ready && !error) && <>
                 <Spacer />
-                <Loader type='small' title={__('Searching...', 'stec')} />
+                <Loader type='small' title={__('Searching...', 'stachethemes_event_calendar_lite')} />
             </>}
 
             <Spacer />
 
             <StecDiv className='stec-light-modal-content-buttons'>
 
-                <Button disabled={true} style={{ width: '100%' }} key='update-author' label={__('Change author', 'stec')} className='gray' />
+                <Button disabled={true} style={{ width: '100%' }} key='update-author' label={__('Change author', 'stachethemes_event_calendar_lite')} className='gray' />
 
-                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stec')} className='red' onClick={() => {
+                <Button style={{ width: '100%' }} key='cancel' label={__('Cancel', 'stachethemes_event_calendar_lite')} className='red' onClick={() => {
                     setEditMode(false);
                 }} />
 
@@ -109,7 +109,7 @@ const DataHandle = ({
             return noDataButtons;
         }
 
-        const errorMessage = typeof error === 'string' ? error : __('Sorry, something went wrong', 'stec');
+        const errorMessage = typeof error === 'string' ? error : __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
 
         return (
             <>
@@ -125,7 +125,7 @@ const DataHandle = ({
         return (
             <>
                 <Spacer />
-                <FieldTitle text={__('User not found', 'stec')} />
+                <FieldTitle text={__('User not found', 'stachethemes_event_calendar_lite')} />
                 {noDataButtons}
             </>
         )
@@ -167,12 +167,12 @@ const EditAuthorForm = ({ setEditMode, authorId, setAuthorId }) => {
                 setEditMode(false);
             }}
             headerIcon='fa-solid fa-user'
-            title={__('Change author', 'stec')}>
+            title={__('Change author', 'stachethemes_event_calendar_lite')}>
 
             <UncontrolledDelayedInputText
                 minLength={0}
-                title={__('Search user', 'stec')}
-                description={__('Search user by id, name or email', 'stec')}
+                title={__('Search user', 'stachethemes_event_calendar_lite')}
+                description={__('Search user by id, name or email', 'stachethemes_event_calendar_lite')}
                 defaultValue={searchValue}
                 onChange={value => {
                     setSearchValue(value);
@@ -200,7 +200,7 @@ const EditAuthor = ({ authorId, setAuthorId }) => {
     return (
         <>
 
-            <i title={__('Change author', 'stec')} className='stec-dashboard-change-author-side-button fa-solid fa-user-pen' onClick={() => {
+            <i title={__('Change author', 'stachethemes_event_calendar_lite')} className='stec-dashboard-change-author-side-button fa-solid fa-user-pen' onClick={() => {
                 setEditMode((state) => !state);
             }} />
 
@@ -236,7 +236,7 @@ export default function AuthorControl({ postData }) {
     return (
         <StecDiv className='stec-dashboard-change-author-control'>
 
-            <FieldTitle text={__('Author user id', 'stec')} />
+            <FieldTitle text={__('Author user id', 'stachethemes_event_calendar_lite')} />
             <Flexbox style={{ justifyContent: 'space-between' }}>
                 <InputText
                     readOnly={true}
@@ -244,7 +244,7 @@ export default function AuthorControl({ postData }) {
                 />
                 {canEditAuthor && <EditAuthor authorId={authorId} setAuthorId={setAuthorId} />}
             </Flexbox>
-            <FieldDescription text={__('Current author user id', 'stec')} />
+            <FieldDescription text={__('Current author user id', 'stachethemes_event_calendar_lite')} />
 
 
         </StecDiv>

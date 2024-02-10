@@ -6,7 +6,7 @@ import Edit from './edit';
 
 registerBlockType('stec/widget-events-list', {
     apiVersion: 2,
-    title: __('Events List', 'stec'),
+    title: __('Events List', 'stachethemes_event_calendar_lite'),
     icon: 'editor-justify',
     category: 'stachethemes',
     attributes: attributes,

@@ -19,12 +19,12 @@ const CommentForm = ({ event, replyTo, onSubmit }) => {
     const submitComment = async () => {
 
         if (comment.current === '') {
-            toast.error(__('Comment is empty', 'stec'));
+            toast.error(__('Comment is empty', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -49,12 +49,12 @@ const CommentForm = ({ event, replyTo, onSubmit }) => {
 
                         onSubmit();
 
-                        return resolve(__('Comments updated', 'stec'));
+                        return resolve(__('Comments updated', 'stachethemes_event_calendar_lite'));
 
 
                     } catch (e) {
 
-                        return reject(__(`Sorry, something went wrong`, 'stec'));
+                        return reject(__(`Sorry, something went wrong`, 'stachethemes_event_calendar_lite'));
                     }
 
 
@@ -64,7 +64,7 @@ const CommentForm = ({ event, replyTo, onSubmit }) => {
 
             }),
             {
-                loading: __('Saving', 'stec'),
+                loading: __('Saving', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -80,7 +80,7 @@ const CommentForm = ({ event, replyTo, onSubmit }) => {
 
     }
 
-    const placeholderText = replyTo === 0 ? __('Leave a comment', 'stec') : __('Reply to this comment', 'stec', 0);
+    const placeholderText = replyTo === 0 ? __('Leave a comment', 'stachethemes_event_calendar_lite') : __('Reply to this comment', 'stachethemes_event_calendar_lite', 0);
 
     if (!STEC_VARIABLES?.current_user?.data?.id) {
         return null;
@@ -264,9 +264,9 @@ const InternalCommentsRender = ({ event, style }) => {
                     comments.length <= 0 && <>
                         <StecDiv className='stec-event-comments-empty'>
                             <i className='stec-event-comments-empty-icon fa-solid fa-comments' />
-                            <StecSpan className='stec-event-comments-empty-big'>{__('No Comments Yet', 'stec')}</StecSpan>
-                            <StecSpan className='stec-event-comments-empty-small'>{__('Be the first to share what you think!', 'stec')}</StecSpan>
-                            {!STEC_VARIABLES?.current_user?.data?.id && <StecSpan className='stec-event-comments-empty-small'>({__('You must log-in first', 'stec')})</StecSpan>}
+                            <StecSpan className='stec-event-comments-empty-big'>{__('No Comments Yet', 'stachethemes_event_calendar_lite')}</StecSpan>
+                            <StecSpan className='stec-event-comments-empty-small'>{__('Be the first to share what you think!', 'stachethemes_event_calendar_lite')}</StecSpan>
+                            {!STEC_VARIABLES?.current_user?.data?.id && <StecSpan className='stec-event-comments-empty-small'>({__('You must log-in first', 'stachethemes_event_calendar_lite')})</StecSpan>}
                         </StecDiv>
                     </>
                 }
@@ -290,8 +290,8 @@ const InternalCommentsRender = ({ event, style }) => {
                         }
 
                         <Pagination
-                            prevLabel={__('Newer', 'stec')}
-                            nextLabel={__('Older', 'stec')}
+                            prevLabel={__('Newer', 'stachethemes_event_calendar_lite')}
+                            nextLabel={__('Older', 'stachethemes_event_calendar_lite')}
                             pages={pages}
                             currentPage={page}
                             onClick={page => {
@@ -321,8 +321,8 @@ const InternalComments = ({ event, style, isBuilder }) => {
 
                     <StecDiv className='stec-event-comments-empty'>
                         <i className='stec-event-comments-empty-icon fa-solid fa-comments' />
-                        <StecSpan className='stec-event-comments-empty-big'>{__('No Comments Yet', 'stec')}</StecSpan>
-                        <StecSpan className='stec-event-comments-empty-small'>{__('Be the first to share what you think!', 'stec')}</StecSpan>
+                        <StecSpan className='stec-event-comments-empty-big'>{__('No Comments Yet', 'stachethemes_event_calendar_lite')}</StecSpan>
+                        <StecSpan className='stec-event-comments-empty-small'>{__('Be the first to share what you think!', 'stachethemes_event_calendar_lite')}</StecSpan>
                     </StecDiv>
 
                     <CommentForm />

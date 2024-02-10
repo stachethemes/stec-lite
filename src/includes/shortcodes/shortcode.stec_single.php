@@ -52,7 +52,7 @@ class Shortcode_Stec_Single {
 
         if ($force || true === self::has_shortcode('stec_single') || (is_object($post) && 'stec_event' === $post->post_type)) {
             wp_enqueue_script('stec-single-init-js');
-            wp_set_script_translations('stec-single-init-js', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+            wp_set_script_translations('stec-single-init-js', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
             do_action('stec_load_scripts', $post, 'stec-single-init-js');
         }
     }

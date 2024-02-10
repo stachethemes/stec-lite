@@ -43,7 +43,7 @@ const TopSearch = () => {
                 <TopButton
                     label={[
                         <i key='icon' className='stec-top-menu-search-icon fa-solid fa-search' />,
-                        <span key='text' className='stec-top-menu-search-label'>{__('Search', 'stec')}</span>
+                        <span key='text' className='stec-top-menu-search-label'>{__('Search', 'stachethemes_event_calendar_lite')}</span>
                     ]}
                     active={active}
                     onClick={(e) => {

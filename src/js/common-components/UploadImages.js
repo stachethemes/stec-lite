@@ -38,17 +38,17 @@ const UploadControl = ({ files, onImagesReady }) => {
                 if (mounted) {
 
                     if (200 !== status || attachments.length === 0) {
-                        throw new Error(__('Sorry, something went wrong', 'stec'));
+                        throw new Error(__('Sorry, something went wrong', 'stachethemes_event_calendar_lite'));
                     }
 
                     onImagesReady(attachments);
 
-                    toast.success(__('Images uploaded successfully', 'stec'));
+                    toast.success(__('Images uploaded successfully', 'stachethemes_event_calendar_lite'));
                 }
 
             } catch (e) {
 
-                const errorMessage = e.message || __('Sorry, something went wrong', 'stec');
+                const errorMessage = e.message || __('Sorry, something went wrong', 'stachethemes_event_calendar_lite');
 
                 toast.error(<StecDiv dangerouslySetInnerHTML={{ __html: errorMessage }} />);
 
@@ -78,7 +78,7 @@ const UploadControl = ({ files, onImagesReady }) => {
     }
 
     const buttonIsDisabled = uploading;
-    const buttonLabel = uploading ? _x('Please wait', 'Upload images', 'stec') : _x('Upload', 'Upload images', 'stec', 0);
+    const buttonLabel = uploading ? _x('Please wait', 'Upload images', 'stachethemes_event_calendar_lite') : _x('Upload', 'Upload images', 'stachethemes_event_calendar_lite', 0);
 
     return (
         <>
@@ -112,7 +112,7 @@ const PreviewImages = (props) => {
                         return (
                             <StecDiv key={index} className='stec-upload-images-preview-item'>
                                 <StecSpan
-                                    title={__('Remove image', 'stec')}
+                                    title={__('Remove image', 'stachethemes_event_calendar_lite')}
                                     className='stec-upload-images-preview-item-remove'
                                     onClick={() => {
 
@@ -175,7 +175,7 @@ function UploadImages(props) {
                 if (!fileExists) {
 
                     if (newFiles[i].size > maxImageSize) {
-                        toast.error(sprintf(__('Image %s is too large. Maximum allowed size is 2MB.', 'stec'), newFiles[i].name));
+                        toast.error(sprintf(__('Image %s is too large. Maximum allowed size is 2MB.', 'stachethemes_event_calendar_lite'), newFiles[i].name));
                         continue;
                     }
 
@@ -259,9 +259,9 @@ function UploadImages(props) {
             <StecDiv className='stec-upload-images-container' ref={containerRef}>
                 <StecDiv className='stec-upload-images-container-dnd' ref={dndContainerRef}>
                     <i className="fa-solid fa-cloud-arrow-up"></i>
-                    <StecSpan>{__('Drag and drop images here', 'stec')}</StecSpan>
-                    <StecSpan>{_x('or', 'Drag and drop images here or...', 'stec')}</StecSpan>
-                    <Button className='blue' label={__('Browse files', 'stec')} onClick={() => {
+                    <StecSpan>{__('Drag and drop images here', 'stachethemes_event_calendar_lite')}</StecSpan>
+                    <StecSpan>{_x('or', 'Drag and drop images here or...', 'stachethemes_event_calendar_lite')}</StecSpan>
+                    <Button className='blue' label={__('Browse files', 'stachethemes_event_calendar_lite')} onClick={() => {
                         inputFieldRef.current.click();
                     }} />
                     <input

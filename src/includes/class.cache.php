@@ -105,7 +105,7 @@ class Cache {
                 throw new Stec_Exception($fs->errors->get_error_message());
             }
 
-            throw new Stec_Exception(esc_html__('Unexpected error', 'stec'));
+            throw new Stec_Exception(esc_html__('Unexpected error', 'stachethemes_event_calendar_lite'));
         }
     }
 

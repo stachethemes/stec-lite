@@ -41,7 +41,7 @@ const PreviewContainer = (props) => {
             {
                 showMore && <Button onClick={() => {
                     setPage(page + 1);
-                }} label={__('Show more', 'stec')} style={{ marginTop: '10px', width: '100%' }} />
+                }} label={__('Show more', 'stachethemes_event_calendar_lite')} style={{ marginTop: '10px', width: '100%' }} />
             }
 
             {!showMore && props.onListEnd && props.onListEnd()}

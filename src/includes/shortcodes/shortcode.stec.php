@@ -65,11 +65,11 @@ class Shortcode_Stec {
 
         global $post;
 
-        $force = self::scripts_are_forced('stec') || $force;
+        $force = self::scripts_are_forced('stachethemes_event_calendar_lite') || $force;
 
-        if ($force || true === self::has_shortcode('stec') || true === self::has_shortcode('stachethemes_ec')) {
+        if ($force || true === self::has_shortcode('stachethemes_event_calendar_lite') || true === self::has_shortcode('stachethemes_ec')) {
             wp_enqueue_script('stec-init-js');
-            wp_set_script_translations('stec-init-js', 'stec', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
+            wp_set_script_translations('stec-init-js', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
         }
 
         if (Settings::get('dashboard', 'wpmedia')) {
@@ -298,7 +298,7 @@ class Shortcode_Stec {
         $shortcode_atts = shortcode_atts(
             $default_atts,
             $atts,
-            'stec'
+            'stachethemes_event_calendar_lite'
         );
 
         $shortcode_atts = apply_filters('stec_shortcode_atts', $shortcode_atts);

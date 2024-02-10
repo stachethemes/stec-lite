@@ -31,21 +31,21 @@ const DuplicateModal = ({ isOpen, id, onClose, onDuplicate }) => {
             isOpen={isOpen}
             onClose={clearAndClose}
             headerIcon='fa-solid fa-clone'
-            title={__('Duplicate event', 'stec')}
+            title={__('Duplicate event', 'stachethemes_event_calendar_lite')}
             buttons={[
-                <Button key='duplicate' className='blue' label={__('Duplicate', 'stec')} onClick={() => {
+                <Button key='duplicate' className='blue' label={__('Duplicate', 'stachethemes_event_calendar_lite')} onClick={() => {
                     onDuplicate({
                         id: id,
                         override: isRecurrenceOverride,
                         date: dateString
                     });
                 }} />,
-                <Button key='cancel' className={'red'} label={__('Cancel', 'stec')} onClick={clearAndClose} />,
+                <Button key='cancel' className={'red'} label={__('Cancel', 'stachethemes_event_calendar_lite')} onClick={clearAndClose} />,
             ]}>
 
             <InputCheckbox
-                title={__('Recurrence override', 'stec')}
-                description={__('Select to use the duplicate as a recurrence override', 'stec')}
+                title={__('Recurrence override', 'stachethemes_event_calendar_lite')}
+                description={__('Select to use the duplicate as a recurrence override', 'stachethemes_event_calendar_lite')}
                 value={isRecurrenceOverride}
                 onChange={value => {
                     setRecurrenceOverride(value);
@@ -55,8 +55,8 @@ const DuplicateModal = ({ isOpen, id, onClose, onDuplicate }) => {
                 isRecurrenceOverride && <>
                     <Spacer />
                     <DatePicker
-                        title={__('Recurrence date', 'stec')}
-                        description={__('Select recurrence date', 'stec')}
+                        title={__('Recurrence date', 'stachethemes_event_calendar_lite')}
+                        description={__('Select recurrence date', 'stachethemes_event_calendar_lite')}
                         value={dateStringDisplay}
                         includeTime={false}
                         onChange={(date) => {
@@ -108,14 +108,14 @@ const ManageEventsReady = (props) => {
     const approveEvent = (id) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         const foundEvent = items.find(item => item.id === id);
 
         if (!foundEvent) {
-            toast.error(__('Event not found', 'stec'));
+            toast.error(__('Event not found', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -144,7 +144,7 @@ const ManageEventsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Event approved', 'stec'));
+                        return resolve(__('Event approved', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -158,7 +158,7 @@ const ManageEventsReady = (props) => {
 
             }),
             {
-                loading: __('Approving', 'stec'),
+                loading: __('Approving', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
 
@@ -202,14 +202,14 @@ const ManageEventsReady = (props) => {
     }) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         const foundEvent = items.find(item => item.id === id);
 
         if (!foundEvent) {
-            toast.error(__('Event not found', 'stec'));
+            toast.error(__('Event not found', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -274,11 +274,11 @@ const ManageEventsReady = (props) => {
                                     }
                                 });
 
-                                return resolve(__('Duplicated', 'stec'));
+                                return resolve(__('Duplicated', 'stachethemes_event_calendar_lite'));
 
                             default:
 
-                                return reject(__(`Sorry, something went wrong`, 'stec'));
+                                return reject(__(`Sorry, something went wrong`, 'stachethemes_event_calendar_lite'));
 
                         }
 
@@ -293,7 +293,7 @@ const ManageEventsReady = (props) => {
 
             }),
             {
-                loading: __('Duplicating', 'stec'),
+                loading: __('Duplicating', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
 
@@ -316,7 +316,7 @@ const ManageEventsReady = (props) => {
     const deleteEvent = (id) => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -345,7 +345,7 @@ const ManageEventsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Deleted', 'stec'));
+                        return resolve(__('Deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -358,7 +358,7 @@ const ManageEventsReady = (props) => {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
 
@@ -381,12 +381,12 @@ const ManageEventsReady = (props) => {
     const deleteSelectedItems = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         if (checkedItems.length <= 0) {
-            return toast.error(__('No items selected', 'stec'));
+            return toast.error(__('No items selected', 'stachethemes_event_calendar_lite'));
         }
 
         toast.promise(
@@ -418,7 +418,7 @@ const ManageEventsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Items deleted', 'stec'));
+                        return resolve(__('Items deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -429,7 +429,7 @@ const ManageEventsReady = (props) => {
                 bulkDelete();
             }),
             {
-                loading: __('Deleting items', 'stec'),
+                loading: __('Deleting items', 'stachethemes_event_calendar_lite'),
                 success: (successMessage) => {
 
                     blockActionRef.current = false;
@@ -459,12 +459,12 @@ const ManageEventsReady = (props) => {
     const archiveSelectedItems = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         if (checkedItems.length <= 0) {
-            return toast.error(__('No items selected', 'stec'));
+            return toast.error(__('No items selected', 'stachethemes_event_calendar_lite'));
         }
 
         toast.promise(
@@ -496,7 +496,7 @@ const ManageEventsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Items archived', 'stec'));
+                        return resolve(__('Items archived', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -507,7 +507,7 @@ const ManageEventsReady = (props) => {
                 bulkArchive();
             }),
             {
-                loading: __('Archiving items', 'stec'),
+                loading: __('Archiving items', 'stachethemes_event_calendar_lite'),
                 success: (successMessage) => {
 
                     blockActionRef.current = false;
@@ -529,12 +529,12 @@ const ManageEventsReady = (props) => {
     const unarchiveSelectedItems = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
         if (checkedItems.length <= 0) {
-            return toast.error(__('No items selected', 'stec'));
+            return toast.error(__('No items selected', 'stachethemes_event_calendar_lite'));
         }
 
         toast.promise(
@@ -566,7 +566,7 @@ const ManageEventsReady = (props) => {
                             }
                         });
 
-                        return resolve(__('Items unarchived', 'stec'));
+                        return resolve(__('Items unarchived', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
                         return reject(e.message);
@@ -577,7 +577,7 @@ const ManageEventsReady = (props) => {
                 bulkArchive();
             }),
             {
-                loading: __('Unarchiving items', 'stec'),
+                loading: __('Unarchiving items', 'stachethemes_event_calendar_lite'),
                 success: (successMessage) => {
 
                     blockActionRef.current = false;
@@ -599,7 +599,7 @@ const ManageEventsReady = (props) => {
     const listManagerControls = [
         {
             id: 'select-all',
-            label: __('Select all', 'stec'),
+            label: __('Select all', 'stachethemes_event_calendar_lite'),
             onClick: () => {
 
                 if (checkedItems.length === items.length) {
@@ -614,7 +614,7 @@ const ManageEventsReady = (props) => {
         {
             id: 'delete',
             color: 'red',
-            label: [<i key='icon' className='fa-solid fa-trash' />, __('Delete', 'stec')],
+            label: [<i key='icon' className='fa-solid fa-trash' />, __('Delete', 'stachethemes_event_calendar_lite')],
             onClick: () => {
                 deleteSelectedItems();
             }
@@ -626,7 +626,7 @@ const ManageEventsReady = (props) => {
         listManagerControls.push({
             id: 'unarchive',
             color: 'blue',
-            label: [<i key='icon' className='fa-solid fa-folder-open' />, __('Unarchive', 'stec')],
+            label: [<i key='icon' className='fa-solid fa-folder-open' />, __('Unarchive', 'stachethemes_event_calendar_lite')],
             onClick: () => {
                 unarchiveSelectedItems();
             }
@@ -637,7 +637,7 @@ const ManageEventsReady = (props) => {
         listManagerControls.push({
             id: 'archive',
             color: 'blue',
-            label: [<i key='icon' className='fa-solid fa-box-archive' />, __('Archive', 'stec')],
+            label: [<i key='icon' className='fa-solid fa-box-archive' />, __('Archive', 'stachethemes_event_calendar_lite')],
             onClick: () => {
                 archiveSelectedItems();
             }
@@ -668,7 +668,7 @@ const ManageEventsReady = (props) => {
             id: 'approve',
             color: 'green',
             icon: <i key='icon' className='fa-solid fa-thumbs-up' />,
-            label: __('Approve', 'stec'),
+            label: __('Approve', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 approveEvent(id);
             }
@@ -677,7 +677,7 @@ const ManageEventsReady = (props) => {
             id: 'view',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-eye' />,
-            label: __('View', 'stec'),
+            label: __('View', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
 
                 const foundEvent = items.find(item => item.id === id);
@@ -691,7 +691,7 @@ const ManageEventsReady = (props) => {
             id: 'duplicate',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-clone' />,
-            label: __('Duplicate', 'stec'),
+            label: __('Duplicate', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
 
                 const foundEvent = items.find(item => item.id === id);
@@ -707,7 +707,7 @@ const ManageEventsReady = (props) => {
             id: 'edit',
             color: 'blue',
             icon: <i key='icon' className='fa-solid fa-edit' />,
-            label: __('Edit', 'stec'),
+            label: __('Edit', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 editEvent(id);
             }
@@ -716,7 +716,7 @@ const ManageEventsReady = (props) => {
             id: 'delete',
             color: 'red',
             icon: <i key='icon' className='fa-solid fa-trash' />,
-            label: __('Delete', 'stec'),
+            label: __('Delete', 'stachethemes_event_calendar_lite'),
             onClick: (id) => {
                 deleteEvent(id);
             }
@@ -790,7 +790,7 @@ const ManageEventsReady = (props) => {
         if (0 === item.meta.approved) {
             tags.push({
                 id: 'unapproved',
-                label: _x('Pending approval','Manage events tag label', 'stec'),
+                label: _x('Pending approval','Manage events tag label', 'stachethemes_event_calendar_lite'),
                 color: '#ff9933'
             })
         }
@@ -798,8 +798,8 @@ const ManageEventsReady = (props) => {
         if (item.meta.rrule !== '') {
             tags.push({
                 id: 'recurrent',
-                label: __('Recurrent', 'stec'),
-                title: _x('Recurrent event','Manage events tag title', 'stec'),
+                label: __('Recurrent', 'stachethemes_event_calendar_lite'),
+                title: _x('Recurrent event','Manage events tag title', 'stachethemes_event_calendar_lite'),
                 color: '#4285f4'
             })
         }
@@ -807,8 +807,8 @@ const ManageEventsReady = (props) => {
         if (item.meta.recurrence_id) {
             tags.push({
                 id: 'override',
-                label: _x('Recurrence override', 'Manage events tag label for recurrence override', 'stec'),
-                title: __('Recurrence override', 'stec'),
+                label: _x('Recurrence override', 'Manage events tag label for recurrence override', 'stachethemes_event_calendar_lite'),
+                title: __('Recurrence override', 'stachethemes_event_calendar_lite'),
                 color: '#ff9933'
             })
         }

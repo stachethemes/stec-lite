@@ -11,7 +11,7 @@ function EventVirtualLocation({ event, style }) {
     if (event.location.protected === true) {
 
         return <StecDiv className='stec-event-location-protected'>
-            {__('Only logged-in users can see this location', 'stec')}
+            {__('Only logged-in users can see this location', 'stachethemes_event_calendar_lite')}
         </StecDiv>
     }
 
@@ -25,7 +25,7 @@ function EventVirtualLocation({ event, style }) {
             <Tag
                 backgroundColor='var(--stec-color-blue)'
                 color='#fff'
-                label={[<i key='icon' className='fa-solid fa-wifi' />, __('Virtual', 'stec')]} />
+                label={[<i key='icon' className='fa-solid fa-wifi' />, __('Virtual', 'stachethemes_event_calendar_lite')]} />
 
             <StecDiv className='stec-event-location-virtual-flex'>
 
@@ -37,26 +37,26 @@ function EventVirtualLocation({ event, style }) {
                     {
                         event.location.description &&
                         <StecDiv className="stec-event-location-virtual-details">
-                            <StecSpan>{__('Details', 'stec')}</StecSpan>
+                            <StecSpan>{__('Details', 'stachethemes_event_calendar_lite')}</StecSpan>
                             <StecDiv dangerouslySetInnerHTML={{ __html: event.location.description }} />
                         </StecDiv>
                     }
 
                     <Button
                         className='green'
-                        label={__('Join this event', 'stec')} href={event.location.address} />
+                        label={__('Join this event', 'stachethemes_event_calendar_lite')} href={event.location.address} />
 
                     <Button
                         className='blue'
                         style={{ marginLeft: 6 }}
-                        label={__('Copy address link', 'stec')} onClick={(e) => {
+                        label={__('Copy address link', 'stachethemes_event_calendar_lite')} onClick={(e) => {
 
                             try {
                                 e.preventDefault();
                                 navigator.clipboard.writeText(event.location.address);
-                                toast.success(__('Link copied to clipboard', 'stec'));
+                                toast.success(__('Link copied to clipboard', 'stachethemes_event_calendar_lite'));
                             } catch (e) {
-                                toast.error(__('Unable to copy link to clipboard', 'stec'));
+                                toast.error(__('Unable to copy link to clipboard', 'stachethemes_event_calendar_lite'));
                             }
 
                         }} />

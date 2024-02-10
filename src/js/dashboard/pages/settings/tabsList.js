@@ -170,63 +170,63 @@ const tabsDefaults = [
     {
         id: 'calendar',
         icon: 'fa-solid fa-calendar',
-        label: __('Calendar', 'stec'),
+        label: __('Calendar', 'stachethemes_event_calendar_lite'),
         active: true,
         keywords: getKeywordsByTabId('calendar')
     },
     {
         id: 'layouts',
         icon: 'fa-solid fa-table',
-        label: __('Layouts', 'stec'),
+        label: __('Layouts', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('layouts')
     },
     {
         id: 'map',
         icon: 'fa-solid fa-map',
-        label: __('Map', 'stec'),
+        label: __('Map', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('map')
     },
     {
         id: 'comments',
         icon: 'fa-solid fa-comments',
-        label: __('Comments', 'stec'),
+        label: __('Comments', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('comments')
     },
     {
         id: 'fac',
         icon: 'fa-solid fa-paint-brush',
-        label: __('Fonts and Colors', 'stec'),
+        label: __('Fonts and Colors', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('fac')
     },
     {
         id: 'dashboard',
         icon: 'fa-solid fa-user-cog',
-        label: __('Dashboard', 'stec'),
+        label: __('Dashboard', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('dashboard')
     },
     {
         id: 'lang',
         icon: 'fa-solid fa-language',
-        label: __('Language', 'stec'),
+        label: __('Language', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('lang')
     },
     {
         id: 'pages',
         icon: 'fa-solid fa-wrench',
-        label: __('Pages', 'stec'),
+        label: __('Pages', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('pages')
     },
     {
         id: 'misc',
         icon: 'fa-solid fa-ellipsis',
-        label: __('Misc', 'stec'),
+        label: __('Misc', 'stachethemes_event_calendar_lite'),
         active: false,
         keywords: getKeywordsByTabId('misc')
     }

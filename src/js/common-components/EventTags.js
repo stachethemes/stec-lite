@@ -13,7 +13,7 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
 
     if (0 === event.meta.approved) {
         tagsList.push({
-            label: __('Pending Approval', 'stec'),
+            label: __('Pending Approval', 'stachethemes_event_calendar_lite'),
             color: '#fdb813'
         });
     }
@@ -22,14 +22,14 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
 
         if (event.meta.featured) {
             tagsList.push({
-                label: [<i key='icon' className='fas fa-star' />, ' ', __('Featured', 'stec')],
+                label: [<i key='icon' className='fas fa-star' />, ' ', __('Featured', 'stachethemes_event_calendar_lite')],
                 color: '#ed1c16'
             });
         }
 
         if (true === eventHasHealthMeasures(event)) {
             tagsList.push({
-                label: [<i key={'icon'} className='fas fa-shield-virus' />, ' ', __('Health measures', 'stec')],
+                label: [<i key={'icon'} className='fas fa-shield-virus' />, ' ', __('Health measures', 'stachethemes_event_calendar_lite')],
                 color: '#0093d0'
             });
         }
@@ -39,28 +39,28 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
     switch (event.meta.event_status) {
         case 'EventPostponed':
             tagsList.push({
-                label: __('Postponed', 'stec'),
+                label: __('Postponed', 'stachethemes_event_calendar_lite'),
                 color: '#eb9534'
             });
             break;
 
         case 'EventRescheduled':
             tagsList.push({
-                label: __('Rescheduled', 'stec'),
+                label: __('Rescheduled', 'stachethemes_event_calendar_lite'),
                 color: '#eb9534'
             });
             break;
 
         case 'EventMovedOnline':
             tagsList.push({
-                label: [<i key='icon' className='fas fa-wifi' />, ' ', __('Moved Online', 'stec')],
+                label: [<i key='icon' className='fas fa-wifi' />, ' ', __('Moved Online', 'stachethemes_event_calendar_lite')],
                 color: '#32a852'
             });
             break;
 
         case 'EventCancelled':
             tagsList.push({
-                label: __('Cancelled', 'stec'),
+                label: __('Cancelled', 'stachethemes_event_calendar_lite'),
                 color: '#f40009'
             });
             break;

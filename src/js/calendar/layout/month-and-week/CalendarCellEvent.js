@@ -1,11 +1,13 @@
 import { useSettingsAtt } from '@Stec/JS/calendar/hooks';
-import { getCellColor, getColorBrightness, isMobile } from '@Stec/JS/helpers';
+import { getCellColor, getColorBrightness, getEventPermalink, isMobile } from '@Stec/JS/helpers';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { useRef, useState } from 'react';
 import EventTooltip from './EventTooltip';
 
 const CalendarCellEvent = (props) => {
 
+    const openEventIn = useSettingsAtt('calendar__open_events_in');
+    const linksTarget = useSettingsAtt('calendar__links_target');
     const quickOpen = useSettingsAtt('layouts__month_week_quick_open');
     const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
     const cellColor = getCellColor(props.event, thumbnailSource);
@@ -58,12 +60,43 @@ const CalendarCellEvent = (props) => {
                 if (quickOpen) {
                     e.stopPropagation();
 
-                    const cellDateKey = props.cellMoment.format('YYYY-MM-DD');
-                    const eventId = props.event.id;
-                    const eventStartDate = props.event.meta.start_date;
-                    const activeEventKey = `${cellDateKey}--${eventId}--${eventStartDate}`;
+                    switch (openEventIn) {
 
-                    props.setActiveEventKey(activeEventKey);
+                        case 'external': {
+
+                            let openLink = props.event.meta?.external_link?.url;
+
+                            if (!openLink) {
+                                openLink = getEventPermalink(props.event);
+                            }
+
+                            window.open(openLink, linksTarget);
+
+                            break;
+
+                        }
+
+                        case 'single': {
+
+                            const openLink = getEventPermalink(props.event);
+
+                            window.open(openLink, linksTarget);
+
+                            break;
+                        }
+
+                        default: {
+
+                            const cellDateKey = props.cellMoment.format('YYYY-MM-DD');
+                            const eventId = props.event.id;
+                            const eventStartDate = props.event.meta.start_date;
+                            const activeEventKey = `${cellDateKey}--${eventId}--${eventStartDate}`;
+
+                            props.setActiveEventKey(activeEventKey);
+                        }
+
+                    }
+
                 }
             }}
 

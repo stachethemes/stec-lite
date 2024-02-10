@@ -87,7 +87,7 @@ export const UncontrolledInputSocialLinks = (props) => {
 
                     <InputText
                         value={link.url}
-                        placeholder={__('Social link URL', 'stec')}
+                        placeholder={__('Social link URL', 'stachethemes_event_calendar_lite')}
                         onChange={(value) => {
                             onInputChange(value, i);
                         }}
@@ -103,7 +103,7 @@ export const UncontrolledInputSocialLinks = (props) => {
                 </StecDiv>
             })}
 
-            <Button className='blue' label={__('Add social link', 'stec')} onClick={onAdd} />
+            <Button className='blue' label={__('Add social link', 'stachethemes_event_calendar_lite')} onClick={onAdd} />
 
             <FieldDescription text={props.description} />
         </StecDiv>
@@ -170,7 +170,7 @@ export const InputSocialLinks = (props) => {
                     />
                     <InputText
                         value={link.url}
-                        placeholder={__('Social link URL', 'stec')}
+                        placeholder={__('Social link URL', 'stachethemes_event_calendar_lite')}
                         onChange={(value) => {
                             onInputChange(value, i);
                         }}
@@ -186,7 +186,7 @@ export const InputSocialLinks = (props) => {
                 </StecDiv>
             })}
 
-            <Button className='blue' label={__('Add social link', 'stec')} onClick={onAdd} />
+            <Button className='blue' label={__('Add social link', 'stachethemes_event_calendar_lite')} onClick={onAdd} />
 
             <FieldDescription text={props.description} />
         </StecDiv>

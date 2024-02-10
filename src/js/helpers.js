@@ -147,13 +147,13 @@ export const centerScrollElement = (scrollWrapperRef, activeElementRef) => {
 export const getDayLabels = (type = '') => {
 
     const dayLabels = [
-        __('Sunday', 'stec'),
-        __('Monday', 'stec'),
-        __('Tuesday', 'stec'),
-        __('Wednesday', 'stec'),
-        __('Thursday', 'stec'),
-        __('Friday', 'stec'),
-        __('Saturday', 'stec'),
+        __('Sunday', 'stachethemes_event_calendar_lite'),
+        __('Monday', 'stachethemes_event_calendar_lite'),
+        __('Tuesday', 'stachethemes_event_calendar_lite'),
+        __('Wednesday', 'stachethemes_event_calendar_lite'),
+        __('Thursday', 'stachethemes_event_calendar_lite'),
+        __('Friday', 'stachethemes_event_calendar_lite'),
+        __('Saturday', 'stachethemes_event_calendar_lite'),
     ];
 
     if ('short' === type) {
@@ -168,18 +168,18 @@ export const getDayLabels = (type = '') => {
 export const getMonthLabels = (type = '') => {
 
     const monthLabels = [
-        __('January', 'stec'),
-        __('February', 'stec'),
-        __('March', 'stec'),
-        __('April', 'stec'),
-        __('May', 'stec'),
-        __('June', 'stec'),
-        __('July', 'stec'),
-        __('August', 'stec'),
-        __('September', 'stec'),
-        __('October', 'stec'),
-        __('November', 'stec'),
-        __('December', 'stec')
+        __('January', 'stachethemes_event_calendar_lite'),
+        __('February', 'stachethemes_event_calendar_lite'),
+        __('March', 'stachethemes_event_calendar_lite'),
+        __('April', 'stachethemes_event_calendar_lite'),
+        __('May', 'stachethemes_event_calendar_lite'),
+        __('June', 'stachethemes_event_calendar_lite'),
+        __('July', 'stachethemes_event_calendar_lite'),
+        __('August', 'stachethemes_event_calendar_lite'),
+        __('September', 'stachethemes_event_calendar_lite'),
+        __('October', 'stachethemes_event_calendar_lite'),
+        __('November', 'stachethemes_event_calendar_lite'),
+        __('December', 'stachethemes_event_calendar_lite')
     ];
 
     if (type === 'short') {
@@ -195,18 +195,18 @@ export const getMonthLabels = (type = '') => {
 export const getMonthLabel = (monthNum, type = '') => {
 
     const monthLabels = [
-        __('January', 'stec'),
-        __('February', 'stec'),
-        __('March', 'stec'),
-        __('April', 'stec'),
-        __('May', 'stec'),
-        __('June', 'stec'),
-        __('July', 'stec'),
-        __('August', 'stec'),
-        __('September', 'stec'),
-        __('October', 'stec'),
-        __('November', 'stec'),
-        __('December', 'stec')
+        __('January', 'stachethemes_event_calendar_lite'),
+        __('February', 'stachethemes_event_calendar_lite'),
+        __('March', 'stachethemes_event_calendar_lite'),
+        __('April', 'stachethemes_event_calendar_lite'),
+        __('May', 'stachethemes_event_calendar_lite'),
+        __('June', 'stachethemes_event_calendar_lite'),
+        __('July', 'stachethemes_event_calendar_lite'),
+        __('August', 'stachethemes_event_calendar_lite'),
+        __('September', 'stachethemes_event_calendar_lite'),
+        __('October', 'stachethemes_event_calendar_lite'),
+        __('November', 'stachethemes_event_calendar_lite'),
+        __('December', 'stachethemes_event_calendar_lite')
     ];
 
     const monthLabel = monthLabels[parseInt(monthNum, 10)];

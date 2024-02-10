@@ -113,8 +113,7 @@ class Events {
             'context'           => 'event',
             'page'              => 1,
             'per_page'          => Settings::get('misc', 'events_per_request', 100),
-            'permission_type'   => 'read_permission',
-            'lang'              => Helpers::get_lang_code()
+            'permission_type'   => 'read_permission'
         );
 
         $args           = Helpers::wp_parse_args($args, $default_args);
@@ -161,8 +160,7 @@ class Events {
 
         $default_args = array(
             'context'           => 'event',
-            'permission_type'   => 'read_permission',
-            'lang'              => Helpers::get_lang_code()
+            'permission_type'   => 'read_permission'
         );
 
         $args = Helpers::wp_parse_args($args, $default_args);

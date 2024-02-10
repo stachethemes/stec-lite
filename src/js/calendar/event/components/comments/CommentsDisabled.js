@@ -9,8 +9,8 @@ function CommentsDisabled({ style }) {
 
                 <StecDiv className='stec-event-comments-empty'>
                     <i className='stec-event-comments-empty-icon fa-solid fa-comments' />
-                    <StecSpan className='stec-event-comments-empty-big'>{__('Sorry, Comments are disabled', 'stec')}</StecSpan>
-                    <StecSpan className='stec-event-comments-empty-small'>{__('You have chosen not to enable the comments section.', 'stec')}</StecSpan>
+                    <StecSpan className='stec-event-comments-empty-big'>{__('Sorry, Comments are disabled', 'stachethemes_event_calendar_lite')}</StecSpan>
+                    <StecSpan className='stec-event-comments-empty-small'>{__('You have chosen not to enable the comments section.', 'stachethemes_event_calendar_lite')}</StecSpan>
                 </StecDiv>
 
             </StecDiv>

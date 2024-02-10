@@ -25,17 +25,17 @@ function Dashboard({ settings }) {
 
     return (
         <Section>
-            <SectionCollapseContent title={__('Dashboard settings', 'stec')} subtitle={__('Show dashboard settings', 'stec')}>
+            <SectionCollapseContent title={__('Dashboard settings', 'stachethemes_event_calendar_lite')} subtitle={__('Show dashboard settings', 'stachethemes_event_calendar_lite')}>
 
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.access}
-                    title={__('Access dashboard', 'stec')}
+                    title={__('Access dashboard', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.access = value;
                     }}
-                    description={__('Who can access the dashboard', 'stec')}
+                    description={__('Who can access the dashboard', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -43,12 +43,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_terms}
-                    title={__('Manage terms', 'stec')}
+                    title={__('Manage terms', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_terms = value;
                     }}
-                    description={__('Only selected roles will be allowed to add new terms', 'stec')}
+                    description={__('Only selected roles will be allowed to add new terms', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -56,12 +56,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_events}
-                    title={__('Manage events', 'stec')}
+                    title={__('Manage events', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_events = value;
                     }}
-                    description={__('Only selected roles will be allowed to manage events', 'stec')}
+                    description={__('Only selected roles will be allowed to manage events', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -69,12 +69,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_settings}
-                    title={__('Manage settings', 'stec')}
+                    title={__('Manage settings', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_settings = value;
                     }}
-                    description={__('Only selected roles will be allowed access to the settings', 'stec')}
+                    description={__('Only selected roles will be allowed access to the settings', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -92,8 +92,8 @@ function Dashboard({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsDashboard.wpmedia}
-                    title={__('Load WP Media on the front-end', 'stec')}
-                    description={__('Allow users to access the WordPress Media Library on the front-end', 'stec')}
+                    title={__('Load WP Media on the front-end', 'stachethemes_event_calendar_lite')}
+                    description={__('Allow users to access the WordPress Media Library on the front-end', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsDashboard.wpmedia = true === value;
                     }}
@@ -103,8 +103,8 @@ function Dashboard({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsDashboard.enforce_private_admin}
-                    title={__('Enforce private back-end', 'stec')}
-                    description={__('If enabled, terms and events permissions will be restricted to Private mode, allowing only their authors to edit, view and use them', 'stec')}
+                    title={__('Enforce private back-end', 'stachethemes_event_calendar_lite')}
+                    description={__('If enabled, terms and events permissions will be restricted to Private mode, allowing only their authors to edit, view and use them', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsDashboard.enforce_private_admin = true === value;
                     }}
@@ -114,8 +114,8 @@ function Dashboard({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsDashboard.enforce_private_front}
-                    title={__('Enforce private front-end', 'stec')}
-                    description={__('If enabled, terms and events will be visible on the front-end only by their author', 'stec')}
+                    title={__('Enforce private front-end', 'stachethemes_event_calendar_lite')}
+                    description={__('If enabled, terms and events will be visible on the front-end only by their author', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsDashboard.enforce_private_front = true === value;
                     }}

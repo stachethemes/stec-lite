@@ -31,7 +31,7 @@ function ListArchive() {
     const emptyArchive = () => {
 
         if (blockActionRef.current === true) {
-            toast(__('Another action is in progress', 'stec'));
+            toast(__('Another action is in progress', 'stachethemes_event_calendar_lite'));
             return;
         }
 
@@ -52,7 +52,7 @@ function ListArchive() {
 
                         setInstanceKey(state => state + 1);
 
-                        return resolve(__('Archive deleted', 'stec'));
+                        return resolve(__('Archive deleted', 'stachethemes_event_calendar_lite'));
 
                     } catch (e) {
 
@@ -66,7 +66,7 @@ function ListArchive() {
 
             }),
             {
-                loading: __('Deleting', 'stec'),
+                loading: __('Deleting', 'stachethemes_event_calendar_lite'),
 
                 success: (successMessage) => {
                     blockActionRef.current = false;
@@ -86,28 +86,28 @@ function ListArchive() {
 
             <StecDiv className='stec-dashboard-top-nav'>
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stec')]} onClick={() => {
+                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
                     });
                 }} />
 
-                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage events', 'stec')]} onClick={() => {
+                <Button className='blue' label={[<i key='icon' className='fa-solid fa-list' />, __('Manage events', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     goToEventsPage();
                 }} />
 
                 <ConfirmButton
-                    promptText={__('Are you sure you want to delete all archived events?', 'stec')}
-                    yesLabel={__('Delete', 'stec')}
+                    promptText={__('Are you sure you want to delete all archived events?', 'stachethemes_event_calendar_lite')}
+                    yesLabel={__('Delete', 'stachethemes_event_calendar_lite')}
                     className='red'
                     label={[<i key='icon' className='fa-solid fa-list' />,
-                    __('Empty archive', 'stec')]}
+                    __('Empty archive', 'stachethemes_event_calendar_lite')]}
                     onClick={emptyArchive} />
 
             </StecDiv>
 
-            <Section key={instanceKey} title={[<i key='icon' className='fa-solid fa-list' />, __('Archived events', 'stec')]}>
+            <Section key={instanceKey} title={[<i key='icon' className='fa-solid fa-list' />, __('Archived events', 'stachethemes_event_calendar_lite')]}>
 
                 <ManageEvents hasItemsRef={hasItems} status='stec_archived' />
 

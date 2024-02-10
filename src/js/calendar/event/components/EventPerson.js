@@ -56,7 +56,7 @@ const EventPersonDescription = ({ person }) => {
 
 }
 
-const EventPerson = ({ person, tagLabel = false, tagBackgroundColor = '', verifiedTitle = _x('Verified', 'person', 'stec') }) => {
+const EventPerson = ({ person, tagLabel = false, tagBackgroundColor = '', verifiedTitle = _x('Verified', 'person', 'stachethemes_event_calendar_lite') }) => {
 
     const classNameArray = ['stec-event-person'];
 

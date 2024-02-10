@@ -181,9 +181,9 @@ export const getStructureComponent = (element, event = false) => {
 
             Component = EventPersons;
 
-            componentParameters.tagLabel = __('Event organizer', 'stec');
+            componentParameters.tagLabel = __('Event organizer', 'stachethemes_event_calendar_lite');
             componentParameters.persons = event.organizers;
-            componentParameters.verifiedTitle = _x('Verified organizer', 'Verified organizer title text', 'stec');
+            componentParameters.verifiedTitle = _x('Verified organizer', 'Verified organizer title text', 'stachethemes_event_calendar_lite');
 
             break;
         }
@@ -192,7 +192,7 @@ export const getStructureComponent = (element, event = false) => {
 
             Component = EventPersons;
 
-            componentParameters.tagLabel = __('Event guest', 'stec');
+            componentParameters.tagLabel = __('Event guest', 'stachethemes_event_calendar_lite');
             componentParameters.persons = event.guests;
 
             break;

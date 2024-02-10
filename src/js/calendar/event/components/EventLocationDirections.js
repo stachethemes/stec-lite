@@ -21,7 +21,7 @@ const InputStartAddess = ({ directionsFrom, setDirectionsFrom }) => {
                 (err) => {
 
                     if (err.code === 1) {
-                        toast.error(__('Sorry, you have disabled this site from accessing your location', 'stec'))
+                        toast.error(__('Sorry, you have disabled this site from accessing your location', 'stachethemes_event_calendar_lite'))
                     } else {
                         toast.error(err.message)
                     }
@@ -35,8 +35,8 @@ const InputStartAddess = ({ directionsFrom, setDirectionsFrom }) => {
         <StecDiv className='stec-input-start-address'>
 
             <InputText
-                title={__('Directions', 'stec')}
-                placeholder={__('Enter start address', 'stec')}
+                title={__('Directions', 'stachethemes_event_calendar_lite')}
+                placeholder={__('Enter start address', 'stachethemes_event_calendar_lite')}
                 value={directionsFrom}
                 onChange={value => {
                     setDirectionsFrom(value);
@@ -44,7 +44,7 @@ const InputStartAddess = ({ directionsFrom, setDirectionsFrom }) => {
 
             {
                 true !== window.STEC_FORCE_DISABLE?.navigator_geoloc &&
-                <i className="fa-solid fa-crosshairs" onClick={getUserLocation} title={__('Find my location', 'stec')} />
+                <i className="fa-solid fa-crosshairs" onClick={getUserLocation} title={__('Find my location', 'stachethemes_event_calendar_lite')} />
             }
 
         </StecDiv>
@@ -65,7 +65,7 @@ const EventLocationDirections = ({ event, style }) => {
             {
                 'osm' === mapType && <Button
                     style={{ width: '100%' }}
-                    label={[<i key='icon' className='fa-solid fa-route' />, __('Get directions', 'stec')]}
+                    label={[<i key='icon' className='fa-solid fa-route' />, __('Get directions', 'stachethemes_event_calendar_lite')]}
                     target={'_BLANK'}
                     href={`https://www.openstreetmap.org/directions?from=${directionsFrom}&to=${event.location.coordinates}`}
                 />
@@ -74,7 +74,7 @@ const EventLocationDirections = ({ event, style }) => {
             {
                 'gmap' === mapType && <Button
                     style={{ width: '100%' }}
-                    label={[<i key='icon' className='fa-solid fa-route' />, __('Get directions', 'stec')]}
+                    label={[<i key='icon' className='fa-solid fa-route' />, __('Get directions', 'stachethemes_event_calendar_lite')]}
                     target={'_BLANK'}
                     href={`https://www.google.com/maps/dir/${directionsFrom}/${event.location.coordinates}`}
                 />

@@ -47,13 +47,11 @@ function stec_on_uninstall_tables_and_settings() {
             continue;
         }
 
-        $sql = $wpdb->prepare("DELETE `POSTS`, `META` 
-                      FROM {$wpdb->prefix}posts as POSTS
-                      LEFT JOIN {$wpdb->prefix}postmeta AS META 
-                      ON META.post_id = POSTS.ID
-                      WHERE POSTS.post_type = %s ", $post_type);
-
-        $wpdb->query($sql);
+        $wpdb->query($wpdb->prepare("DELETE `POSTS`, `META` 
+        FROM {$wpdb->prefix}posts as POSTS
+        LEFT JOIN {$wpdb->prefix}postmeta AS META 
+        ON META.post_id = POSTS.ID
+        WHERE POSTS.post_type = %s ", $post_type));
     }
 
     // Delete plugin taxonomies
@@ -65,12 +63,11 @@ function stec_on_uninstall_tables_and_settings() {
             continue;
         }
 
-        $sql = $wpdb->prepare("SELECT t.*, tt.* FROM $wpdb->terms AS t "
-            . "INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id "
-            . "WHERE tt.taxonomy IN ('%s') "
-            . "ORDER BY t.name ASC", $taxonomy);
 
-        $terms = $wpdb->get_results($sql);
+        $terms = $wpdb->get_results($wpdb->prepare("SELECT t.*, tt.* FROM $wpdb->terms AS t "
+            . "INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id "
+            . "WHERE tt.taxonomy IN ( %s ) "
+            . "ORDER BY t.name ASC", $taxonomy));
 
         // Delete Terms
         if ($terms) {

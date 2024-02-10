@@ -18,7 +18,7 @@ const EventAttachments = ({ event, style }) => {
                 setOpen(!open);
             }}>
                 <StecDiv className='stec-attachments-list-title'>
-                    <i className='fa-solid fa-file-download' />{__('Attachments', 'stec')}
+                    <i className='fa-solid fa-file-download' />{__('Attachments', 'stachethemes_event_calendar_lite')}
                 </StecDiv>
 
                 {

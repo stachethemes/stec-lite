@@ -90,8 +90,8 @@ class Rest_Stec_Loc_Controller extends \WP_REST_Terms_Controller {
                 continue;
             }
 
-            $data[$k]['description'] = esc_html__('Only logged-in users can read the description', 'stec');
-            $data[$k]['meta']['address'] = esc_html__('Only logged-in users can read the address', 'stec');
+            $data[$k]['description'] = esc_html__('Only logged-in users can read the description', 'stachethemes_event_calendar_lite');
+            $data[$k]['meta']['address'] = esc_html__('Only logged-in users can read the address', 'stachethemes_event_calendar_lite');
         }
 
         $items->set_data($data);
@@ -113,8 +113,8 @@ class Rest_Stec_Loc_Controller extends \WP_REST_Terms_Controller {
             return $item;
         }
 
-        $data['description'] = esc_html__('Only logged-in users can read the description', 'stec');
-        $data['meta']['address'] = esc_html__('Only logged-in users can read the address', 'stec');
+        $data['description'] = esc_html__('Only logged-in users can read the description', 'stachethemes_event_calendar_lite');
+        $data['meta']['address'] = esc_html__('Only logged-in users can read the address', 'stachethemes_event_calendar_lite');
 
         $item->set_data($data);
 

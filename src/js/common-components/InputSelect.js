@@ -236,7 +236,7 @@ export const InputSelect = React.forwardRef((props, ref) => {
                             <input
                                 type="text"
                                 className='stec-select-search'
-                                placeholder={__('Search', 'stec')}
+                                placeholder={__('Search', 'stachethemes_event_calendar_lite')}
                                 onChange={(e) => {
                                     if (!e.target.value) {
                                         setSearch(false);
@@ -529,7 +529,7 @@ export const UncontrolledInputSelect = React.forwardRef((props, ref) => {
                         <input
                             type="text"
                             className='stec-select-search'
-                            placeholder={__('Search', 'stec')}
+                            placeholder={__('Search', 'stachethemes_event_calendar_lite')}
                             onChange={(e) => {
                                 if (!e.target.value) {
                                     setSearch(false);

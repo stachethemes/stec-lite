@@ -61,7 +61,7 @@ trait Rest_Post_Traits {
             array(
                 'args'   => array(
                     'id' => array(
-                        'description' => esc_html__('Unique identifier for the post.', 'stec'),
+                        'description' => esc_html__('Unique identifier for the post.', 'stachethemes_event_calendar_lite'),
                         'type'        => 'integer',
                     ),
                 ),
@@ -87,7 +87,7 @@ trait Rest_Post_Traits {
                         'force' => array(
                             'type'        => 'boolean',
                             'default'     => true,
-                            'description' => esc_html__('Force delete post', 'stec'),
+                            'description' => esc_html__('Force delete post', 'stachethemes_event_calendar_lite'),
                         ),
                     ),
                 ),

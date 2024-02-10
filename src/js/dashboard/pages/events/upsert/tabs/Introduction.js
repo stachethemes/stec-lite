@@ -10,11 +10,11 @@ const Introduction = (props) => {
 
     const postData = props.postData;
 
-    return <Section title={__('Introduction', 'stec')}>
+    return <Section title={__('Introduction', 'stachethemes_event_calendar_lite')}>
 
         <UncontrolledInputImages
-            title={__('Add images to your event', 'stec')}
-            buttonTitle={__('Add Images', 'stec')}
+            title={__('Add images to your event', 'stachethemes_event_calendar_lite')}
+            buttonTitle={__('Add Images', 'stachethemes_event_calendar_lite')}
             multiple={true}
             defaultValue={postData.current.meta.images.sort(({ order: a }, { order: b }) => a - b)}
             onChange={images => {
@@ -29,8 +29,8 @@ const Introduction = (props) => {
         <Spacer />
 
         <TextEditor
-            title={__('Description', 'stec')}
-            description={__('Detailed description about the event', 'stec')}
+            title={__('Description', 'stachethemes_event_calendar_lite')}
+            description={__('Detailed description about the event', 'stachethemes_event_calendar_lite')}
             value={postData.current.content.raw} onChange={value => {
                 postData.current.content.raw = value;
             }} />
@@ -38,8 +38,8 @@ const Introduction = (props) => {
         <Spacer />
 
         <UncontrolledInputTextarea
-            title={__('Short description', 'stec')}
-            description={__('Short description about the event', 'stec')}
+            title={__('Short description', 'stachethemes_event_calendar_lite')}
+            description={__('Short description about the event', 'stachethemes_event_calendar_lite')}
             defaultValue={postData.current.excerpt.raw}
             onChange={(value) => {
                 postData.current.excerpt.raw = value;
@@ -48,9 +48,9 @@ const Introduction = (props) => {
         <Spacer />
 
         <UncontrolledInputText
-            title={__('External link', 'stec')}
-            description={__('Any url relevant to your event that you may want to include', 'stec')}
-            placeholder={__('URL', 'stec')}
+            title={__('External link', 'stachethemes_event_calendar_lite')}
+            description={__('Any url relevant to your event that you may want to include', 'stachethemes_event_calendar_lite')}
+            placeholder={__('URL', 'stachethemes_event_calendar_lite')}
             onChange={value => {
                 postData.current.meta.external_link.url = value;
             }}
@@ -60,9 +60,9 @@ const Introduction = (props) => {
         <Spacer />
 
         <UncontrolledInputText
-            title={__('External link text', 'stec')}
-            description={__('External link text. Leave empty to use the default link text', 'stec')}
-            placeholder={__('The external link button text', 'stec')}
+            title={__('External link text', 'stachethemes_event_calendar_lite')}
+            description={__('External link text. Leave empty to use the default link text', 'stachethemes_event_calendar_lite')}
+            placeholder={__('The external link button text', 'stachethemes_event_calendar_lite')}
             onChange={value => {
                 postData.current.meta.external_link.text = value;
             }}
