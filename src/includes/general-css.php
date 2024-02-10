@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php';
+include_once '../../../../../wp-load.php';
 
 header("Content-type: text/css; charset: UTF-8");
 
