@@ -17,6 +17,7 @@ import { __ } from '@wordpress/i18n';
 import { cloneDeep, uniqueId } from 'lodash';
 import { useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import FindOnMap from './FindOnMap/FindOnMap';
 import template from './template';
 
 const PermissionsList = (props) => {
@@ -82,83 +83,11 @@ const PermissionsList = (props) => {
 
 }
 
-const getLocationCoordinates = async (searchAddress) => {
-
-    let coordinates = false;
-
-    if ('' === searchAddress) {
-        return coordinates;
-    }
-
-    if (window?.google?.maps?.Geocoder) {
-
-        try {
-            const geocoder = new window.google.maps.Geocoder();
-            const request = await geocoder.geocode({ 'address': searchAddress });
-            coordinates = request.results[0].geometry.location.toString().replace(/\(|\)/gi, '');
-        } catch (e) {
-            coordinates = false;
-        }
-
-    } else {
-
-        try {
-
-            const request = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + searchAddress);
-            const result = await request.json();
-
-            if (result.length > 0) {
-                coordinates = [result[0].lat, result[0].lon].join(',');
-            } else {
-                coordinates = false;
-            }
-
-        } catch (e) {
-            coordinates = false;
-        }
-
-    }
-
-    return coordinates;
-
-
-}
-
 const CoordinatesInput = React.forwardRef((props, ref) => {
 
     const postData = ref;
 
     const [fieldKey, setFieldKey] = useState(0);
-
-    const findCoordinates = async () => {
-
-        if (postData.current.meta.address === '' && postData.current.meta.city === '' && postData.current.meta.country === '') {
-            toast.error(__('No location provided', 'stachethemes_event_calendar_lite'));
-            return;
-        }
-
-        const searchAddress = [
-            postData.current.meta.address,
-            postData.current.meta.postal_code,
-            postData.current.meta.state,
-            postData.current.meta.city,
-            postData.current.meta.country
-        ].join(', ');
-
-        const coordinates = await getLocationCoordinates(searchAddress);
-
-        if (false !== coordinates) {
-
-            postData.current.meta.coordinates = coordinates;
-
-            setFieldKey(uniqueId());
-
-            toast.success(__('Coordinates added', 'stachethemes_event_calendar_lite'));
-        } else {
-            toast.error(__('Unable to obtain coordinates', 'stachethemes_event_calendar_lite'));
-        }
-
-    }
 
     return (
         <>
@@ -176,8 +105,10 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
 
             <Spacer />
 
-            <Button className='blue' label={[<i key='icon' className='fas fa-map-marked-alt' />, __('Get Coordinates', 'stachethemes_event_calendar_lite')]} onClick={() => {
-                findCoordinates();
+            <FindOnMap coordinates={postData.current.meta.coordinates} onChange={(coordinates) => {
+                postData.current.meta.coordinates = coordinates;
+                setFieldKey(uniqueId());
+                toast.success(__('Coordinates added', 'stec'));
             }} />
         </>
     )
