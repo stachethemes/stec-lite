@@ -95,7 +95,7 @@ const CalendarCellEvents = (props) => {
 
         if (screenType !== 'mobile') {
             displayMoreType = <StecSpan className='stec-calendar-cell-events-more-text'>
-                {sprintf('+%d %s', added, _nx('more', 'more', added, '+n more event(s)', 'stachethemes_event_calendar_lite'))}
+                {sprintf('+%d %s', added, _nx('more', 'more', added, '+n more event(s)', 'stec'))}
             </StecSpan>
         } else {
             displayMoreType = <StecSpan className='stec-calendar-cell-events-more-icon' style={{

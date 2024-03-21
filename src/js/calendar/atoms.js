@@ -62,6 +62,10 @@ export const settingsAttsList = atom({
         layouts__month_week_force_title: false,
         layouts__month_week_style: 'fixed',
         layouts__month_week_quick_open: true,
+        layouts__month_week_tooltip: true,
+        layouts__month_week_counter: true,
+        layouts__month_week_short_desc: true,
+        
         layouts__map_zoom: 10,
 
         map__type: 'osm',

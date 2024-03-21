@@ -6,6 +6,9 @@ import { StecDiv, StecSpan } from '@Stec/WebComponents';
 
 const EventTooltip = ({ event }) => {
 
+    const showTooltip = useSettingsAtt('layouts__month_week_tooltip');
+    const showDescription = useSettingsAtt('layouts__month_week_short_desc');
+    const showCounter = useSettingsAtt('layouts__month_week_counter');
     const showInUserTimezone = useSettingsAtt('calendar__use_user_timezone');
     const tooltipImageAutoHeight = useSettingsAtt('layouts__month_week_image_auto_height');
     const dateFormat = useSettingsAtt('calendar__date_format');
@@ -16,6 +19,10 @@ const EventTooltip = ({ event }) => {
     const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
     const theThumbnail = getEventThumbnailByType(event, '', thumbnailSource);
     const maybeHasImage = getEventSortedImages(event);
+
+    if (!showTooltip) {
+        return null;
+    }
 
     const getImageStyle = (image) => {
 
@@ -38,7 +45,6 @@ const EventTooltip = ({ event }) => {
         )
 
     }
-
 
     if (maybeHasImage.length > 0) {
         classNameArray.push('stec-event-tooltip-has-image')
@@ -106,9 +112,13 @@ const EventTooltip = ({ event }) => {
 
                     <StecDiv className='stec-event-tooltip-title'>{event.title}</StecDiv>
 
-                    {event.short_description && <StecDiv className='stec-event-tooltip-description' dangerouslySetInnerHTML={{ __html: event.short_description }} />}
+                    {
+                        (showDescription && event.short_description) &&
+                        <StecDiv className='stec-event-tooltip-description'
+                            dangerouslySetInnerHTML={{ __html: event.short_description }} />
+                    }
 
-                    <EventCounterSmall event={event} style={{ marginTop: 20 }} />
+                    {showCounter && <EventCounterSmall event={event} style={{ marginTop: 20 }} />}
 
                 </StecDiv>
 

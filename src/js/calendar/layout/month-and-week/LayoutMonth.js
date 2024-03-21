@@ -18,7 +18,7 @@ function LayoutMonth() {
 
         <StecDiv className={classNameArray.join(' ')}>
 
-            <CalendarWeekLabels layoutType={'month'} />
+            <CalendarWeekLabels />
 
             <CellsContainer layoutType={'month'} />
 

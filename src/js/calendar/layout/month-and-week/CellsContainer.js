@@ -1,7 +1,7 @@
 import PreviewEvents from '@Stec/JS/calendar/common/PreviewEvents';
+import Event from '@Stec/JS/calendar/event/Event';
 import { useCalendarMoment, useLayoutEventsCache, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { getFirstDayOfMonthInView, getFirstDayOfWeekInView } from '@Stec/JS/helpers';
-import Event from '@Stec/JS/calendar/event/Event';
 import { useState } from 'react';
 import CalendarCell from './CalendarCell';
 
@@ -16,6 +16,10 @@ function CellsContainer({ layoutType }) {
     const [activeCellDate, setActiveCellDate] = useState(false);
     const activeEndWeekMoment = activeCellDate ? getFirstDayOfWeekInView(activeCellDate, dowOffset).add(6, 'days') : false;
     let activeEvent = false;
+
+    const getIsToday = (cellMomentDateIterator) => {
+        return moment().format('YMD') === cellMomentDateIterator.format('YMD')
+    }
 
     const getGridCells = () => {
 
@@ -36,7 +40,7 @@ function CellsContainer({ layoutType }) {
 
         for (let cellIndex = 1; cellIndex <= cellsCount; cellIndex++) {
 
-            const isToday = moment().format('YMD') === cellMomentDateIterator.format('YMD');
+            const isToday = getIsToday(cellMomentDateIterator);
             const isDiffMonth = !calendarMomentSafe.isSame(cellMomentDateIterator, 'month');
             const cellYmdKey = cellMomentDateIterator.format('YYYY-MM-DD');
             const cellEvents = layoutEventsReady ? (layoutEvents[cellYmdKey] || false) : false;
