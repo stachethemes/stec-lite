@@ -1,7 +1,7 @@
 {
     "name": "stec",
-    "version": "5.2.3",
-    "description": "Stachethemes Event Calendar V",
+    "version": "5.2.7",
+    "description": "Stachethemes Event Calendar Lite is a WordPress Calendar Plugin that allows you to easily create, manage and display events on your website",
     "private": true,
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack",
