@@ -114,7 +114,7 @@ class Settings {
 
             'calendar' => array(
                 'dow'                    => 0,
-                'date_format'            => 'stec_dmy',
+                'date_format'            => 'stec_mdy',
                 'time_format'            => 'stec_24',
                 'show_tz_offset'         => true,
                 'use_user_timezone'      => true,
@@ -258,7 +258,13 @@ class Settings {
             'dashboard' => array(
                 'access'                 => array('stec_logged_in'),
                 'manage_settings'        => array('administrator'),
-                'manage_terms'           => array('administrator'),
+               
+                'manage_stec_cal'        => array('administrator'),
+                'manage_stec_cat'        => array('administrator'),
+                'manage_stec_loc'        => array('administrator'),
+                'manage_stec_org'        => array('administrator'),
+                'manage_stec_gst'        => array('administrator'),
+                
                 'manage_events'          => array('administrator'),
                 'in_calendar'            => true,
                 'wpmedia'                => false,
@@ -337,7 +343,11 @@ class Settings {
         $exclude = array(
             'dashboard__access',
             'dashboard__manage_settings',
-            'dashboard__manage_terms',
+            'dashboard__manage_stec_cal',
+            'dashboard__manage_stec_cat',
+            'dashboard__manage_stec_loc',
+            'dashboard__manage_stec_org',
+            'dashboard__manage_stec_gst',
             'dashboard__manage_events',
             'dashboard__enforce_private_admin',
             'dashboard__enforce_private_front',

@@ -218,7 +218,11 @@ class Stachethemes_Event_Calendar {
                     'access_dashboard'          => current_user_can('stec_access_dashboard'),
                     'manage_settings'           => current_user_can('manage_stec_settings'),
                     'manage_events'             => current_user_can('manage_stec_event'),
-                    'manage_terms'              => current_user_can('manage_stec_terms'),
+                    'manage_calendars'          => current_user_can('manage_stec_cal'),
+                    'manage_categories'         => current_user_can('manage_stec_cat'),
+                    'manage_locations'          => current_user_can('manage_stec_loc'),
+                    'manage_organizers'         => current_user_can('manage_stec_org'),
+                    'manage_guests'             => current_user_can('manage_stec_gst'),
                     'moderate'                  => array(
                         'stec_cal'              => $user_calendars
                     ),

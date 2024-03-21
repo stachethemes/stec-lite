@@ -214,12 +214,12 @@ const SelectCategories = ({ postData, focusFieldsRef, wasSubmitted }) => {
         <SelectCategoriesList key={listKey} postData={postData} focusFieldsRef={focusFieldsRef} wasSubmitted={wasSubmitted} />
 
         <Button
-            disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
+            disabled={!STEC_VARIABLES.current_user.capability.manage_categories}
             className='blue'
             label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new category', 'stachethemes_event_calendar_lite')]}
             onClick={() => {
 
-                if (!STEC_VARIABLES.current_user.capability.manage_terms) {
+                if (!STEC_VARIABLES.current_user.capability.manage_categories) {
                     return false;
                 }
 
@@ -331,12 +331,12 @@ const SelectCalendar = ({ postData, focusFieldsRef, wasSubmitted, onCalendarChan
         <Spacer />
 
         <Button
-            disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
+            disabled={!STEC_VARIABLES.current_user.capability.manage_calendars}
             className='blue'
             label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new calendar', 'stachethemes_event_calendar_lite')]}
             onClick={() => {
 
-                if (!STEC_VARIABLES.current_user.capability.manage_terms) {
+                if (!STEC_VARIABLES.current_user.capability.manage_calendars) {
                     return false;
                 }
 

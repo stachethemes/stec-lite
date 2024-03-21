@@ -61,14 +61,17 @@ class Permissions {
             $capabilities["stec_logged_in"] = true;
         }
 
-        $can_manage_terms    = self::current_user_can_manage_terms($capabilities);
         $can_manage_events   = self::current_user_can_manage_events($capabilities);
         $can_manage_settings = self::current_user_can_manage_settings($capabilities);
         $can_upload_images   = (bool) $user_id;
 
         foreach (self::$taxonomies_list as $taxonomy) {
             $capabilities["read_{$taxonomy}"]   = apply_filters("read_{$taxonomy}", 1, $user_id);
-            $capabilities["manage_{$taxonomy}"] = apply_filters("manage_{$taxonomy}", $can_manage_terms, $user_id);
+            $capabilities["manage_{$taxonomy}"] = apply_filters(
+                "manage_{$taxonomy}",
+                self::current_user_can_manage_terms($capabilities, $taxonomy),
+                $user_id
+            );
             $capabilities["assign_{$taxonomy}"] = apply_filters("assign_{$taxonomy}", 1, $user_id);
         }
 
@@ -77,7 +80,6 @@ class Permissions {
 
         $capabilities['stec_access_dashboard']  = self::current_user_can_access_dashboard($capabilities);
         $capabilities['manage_stec_settings']   = $can_manage_settings;
-        $capabilities['manage_stec_terms']      = $can_manage_terms;
         $capabilities['stec_upload_images']     = $can_upload_images;
         $capabilities['stec_verify_persons']    = apply_filters('stec_verify_persons', self::$is_super_admin);
 
@@ -124,13 +126,19 @@ class Permissions {
         return 0;
     }
 
-    private static function current_user_can_manage_terms($capabilities) {
+    private static function current_user_can_manage_terms($capabilities, $taxonomy) {
 
         if (self::$is_super_admin) {
             return 1;
         }
 
-        $required_roles = Settings::get('dashboard', 'manage_terms');
+        $valid_taxonomies = array('stec_cal', 'stec_cat', 'stec_loc', 'stec_org', 'stec_gst');
+
+        if (false === in_array($taxonomy, $valid_taxonomies)) {
+            return 0;
+        }
+
+        $required_roles = Settings::get('dashboard', 'manage_' . $taxonomy);
 
         foreach ($required_roles as $role) {
 

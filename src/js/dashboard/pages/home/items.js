@@ -153,7 +153,7 @@ const all = [
 const items = all.filter(item => {
 
     switch (item.id) {
-        
+
         case 'upgrade':
         case 'settings': {
             return STEC_VARIABLES?.current_user?.capability?.manage_settings ? true : false;
@@ -164,7 +164,7 @@ const items = all.filter(item => {
         case 'organizers':
         case 'locations':
         case 'calendars': {
-            return STEC_VARIABLES?.current_user?.capability?.manage_terms ? true : false;
+            return STEC_VARIABLES?.current_user?.capability?.[`manage_${item.id}`] ? true : false;
         }
 
         case 'events': {

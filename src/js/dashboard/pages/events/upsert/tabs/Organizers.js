@@ -118,12 +118,12 @@ const Organizers = (props) => {
                 <Spacer />
 
                 <Button
-                    disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
+                    disabled={!STEC_VARIABLES.current_user.capability.manage_organizers}
                     label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new organizer', 'stachethemes_event_calendar_lite')]}
                     className='blue'
                     onClick={() => {
 
-                        if (!STEC_VARIABLES.current_user.capability.manage_terms) {
+                        if (!STEC_VARIABLES.current_user.capability.manage_organizers) {
                             return false;
                         }
 

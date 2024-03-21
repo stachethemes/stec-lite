@@ -29,6 +29,13 @@ const ComparisonTable = () => {
             pro: true
         },
         {
+            id: 'reminders',
+            title: __('Reminders', 'stachethemes_event_calendar_lite'),
+            desc: __('Enable users to set up a reminder for events, send reminders via email', 'stachethemes_event_calendar_lite'),
+            lite: false,
+            pro: true
+        },
+        {
             id: 'event-submission-form',
             title: __('Event Submission Form', 'stachethemes_event_calendar_lite'),
             desc: __('Allow users or visitors to submit events from the frontend.', 'stachethemes_event_calendar_lite'),
@@ -196,6 +203,13 @@ const ComparisonTable = () => {
             id: 'month-print',
             title: __('Month & Week Layout Print', 'stachethemes_event_calendar_lite'),
             desc: __('Print option for month & week layouts', 'stachethemes_event_calendar_lite'),
+            lite: false,
+            pro: true
+        },
+        {
+            id: 'month-images',
+            title: __('Month & Week Layout Images', 'stachethemes_event_calendar_lite'),
+            desc: __('Display images in month & week layouts cells.', 'stachethemes_event_calendar_lite'),
             lite: false,
             pro: true
         },

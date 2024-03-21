@@ -42,13 +42,65 @@ function Dashboard({ settings }) {
 
                 <UncontrolledInputSelect
                     multiple={true}
-                    defaultValue={settingsDashboard.manage_terms}
-                    title={__('Manage terms', 'stachethemes_event_calendar_lite')}
+                    defaultValue={settingsDashboard.manage_stec_cal}
+                    title={__('Manage calendars', 'stec')}
                     options={permissionsListFiltered}
                     onChange={value => {
-                        settingsDashboard.manage_terms = value;
+                        settingsDashboard.manage_stec_cal = value;
                     }}
-                    description={__('Only selected roles will be allowed to add new terms', 'stachethemes_event_calendar_lite')}
+                    description={__('Select user roles permitted to submit and manage calendars', 'stec')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputSelect
+                    multiple={true}
+                    defaultValue={settingsDashboard.manage_stec_cat}
+                    title={__('Manage categories', 'stec')}
+                    options={permissionsListFiltered}
+                    onChange={value => {
+                        settingsDashboard.manage_stec_cat = value;
+                    }}
+                    description={__('Select user roles permitted to submit and manage categories', 'stec')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputSelect
+                    multiple={true}
+                    defaultValue={settingsDashboard.manage_stec_loc}
+                    title={__('Manage locations', 'stec')}
+                    options={permissionsListFiltered}
+                    onChange={value => {
+                        settingsDashboard.manage_stec_loc = value;
+                    }}
+                    description={__('Select user roles permitted to submit and manage locations', 'stec')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputSelect
+                    multiple={true}
+                    defaultValue={settingsDashboard.manage_stec_org}
+                    title={__('Manage organizers', 'stec')}
+                    options={permissionsListFiltered}
+                    onChange={value => {
+                        settingsDashboard.manage_stec_org = value;
+                    }}
+                    description={__('Select user roles permitted to submit and manage organizers', 'stec')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputSelect
+                    multiple={true}
+                    defaultValue={settingsDashboard.manage_stec_gst}
+                    title={__('Manage guests', 'stec')}
+                    options={permissionsListFiltered}
+                    onChange={value => {
+                        settingsDashboard.manage_stec_gst = value;
+                    }}
+                    description={__('Select user roles permitted to submit and manage guests', 'stec')}
                 />
 
                 <Spacer />

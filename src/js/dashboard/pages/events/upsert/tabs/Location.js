@@ -109,12 +109,12 @@ const Locations = (props) => {
                 <Spacer />
 
                 <Button
-                    disabled={!STEC_VARIABLES.current_user.capability.manage_terms}
+                    disabled={!STEC_VARIABLES.current_user.capability.manage_locations}
                     label={[<i key='icon' className='fa-solid fa-plus' />, __('Add new location', 'stachethemes_event_calendar_lite')]}
                     className='blue'
                     onClick={() => {
 
-                        if (!STEC_VARIABLES.current_user.capability.manage_terms) {
+                        if (!STEC_VARIABLES.current_user.capability.manage_locations) {
                             return false;
                         }
 
