@@ -27,8 +27,7 @@ module.exports = {
 	 */
 	async downloadI18n( path, domain, location ) {
 
-		// * STEC MODIFICATION
-		if (!STEC_VARIABLES?.i18n_loader) {
+		if (true !== window.STEC_VARIABLES?.i18n_loader) {
 			return;
 		}
 
@@ -37,12 +36,11 @@ module.exports = {
 			throw new Error( 'wp.jpI18nLoader.state is not set' );
 		}
 
-		// "en_US" is the default, no translations are needed unless STEC_VARIABLES.i18n_translate_all is set to true.
-		if ( state.locale === 'en_US' ) {
+		// "en_US|en_GB" is the default, no translations are needed.
+		if ( state.locale === 'en_US' || state.locale === 'en_GB' ) {
 
-			// * STEC MODIFICATION
-			if (!STEC_VARIABLES?.i18n_translate_all) {
-				return;
+			if (true !== window.STEC_VARIABLES?.i18n_translate_all) {
+				return
 			}
 
 		}

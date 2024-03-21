@@ -50,6 +50,7 @@ const EventPreviewToggleButton = ({ forceActive, active }) => {
 const EventPreview = ({ event, forceActive, active, onToggle, href = false }) => {
 
     const containerRef = useRef(null);
+    const screenType = useCalendarScreenTypeValue();
     const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
     const hrefTarget = useSettingsAtt('calendar__links_target');
     const dateShowTzOffset = useSettingsAtt('calendar__show_tz_offset');
@@ -70,7 +71,7 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
         classNameArray.push('stec-event-preview-cancelled');
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
         if (!containerRef.current) {
             return;
@@ -82,7 +83,7 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
                 container: containerRef.current
             });
         }
-        
+
 
     }, [event]);
 
@@ -116,6 +117,7 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
                                         dateFormat: dateFormat,
                                         timeFormat: timeFormat,
                                         showUtcOffset: dateShowTzOffset,
+                                        fullMonth: screenType !== 'mobile',
                                         showInUserTimezone: showInUserTimezone
                                     })
                                 }
@@ -177,7 +179,7 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
                                 dateFormat: dateFormat,
                                 timeFormat: timeFormat,
                                 showUtcOffset: dateShowTzOffset,
-                                fullMonth: true,
+                                fullMonth: screenType !== 'mobile',
                                 showInUserTimezone: showInUserTimezone
                             })}
                         </StecSpan>

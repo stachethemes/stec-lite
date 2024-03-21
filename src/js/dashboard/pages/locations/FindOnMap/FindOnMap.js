@@ -20,7 +20,7 @@ const FindOnMap = ({ coordinates, onChange }) => {
             <Button
                 className='blue'
                 label={[<i key='icon' className='fa-solid fa-map-marked-alt' />,
-                __('Find on Map', 'stec')]}
+                __('Find on Map', 'stachethemes_event_calendar_lite')]}
                 onClick={() => {
                     setModalOpen(true);
                 }} />

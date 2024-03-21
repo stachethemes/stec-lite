@@ -108,7 +108,7 @@ const CoordinatesInput = React.forwardRef((props, ref) => {
             <FindOnMap coordinates={postData.current.meta.coordinates} onChange={(coordinates) => {
                 postData.current.meta.coordinates = coordinates;
                 setFieldKey(uniqueId());
-                toast.success(__('Coordinates added', 'stec'));
+                toast.success(__('Coordinates added', 'stachethemes_event_calendar_lite'));
             }} />
         </>
     )

@@ -5,6 +5,7 @@
     height          : 350px;
     cursor          : pointer;
     overflow        : hidden;
+    z-index         : 0;
 
     .stec-boxgrid-event-container {
         position: absolute;
@@ -47,13 +48,17 @@
             }
 
             .stec-layout-boxgrid-event-date-month-and-year {
+                position      : relative;
+                top           : -1px;
+                margin-left   : 4px;
                 vertical-align: text-bottom;
-                margin-left: 4px;
 
                 .stec-layout-boxgrid-event-date-month {
                     font-size     : 12px;
                     font-weight   : bold;
                     text-transform: uppercase;
+                    position      : relative;
+                    top           : -1px;
                 }
 
                 .stec-layout-boxgrid-event-date-year {
@@ -64,7 +69,10 @@
             }
 
             .stec-layout-boxgrid-event-date-daylabel {
-                font-size: 12px;
+                font-size     : 10px;
+                text-transform: uppercase;
+                position      : relative;
+                top           : -4px;
             }
 
             .stec-layout-boxgrid-event-container-aside-buttons {
@@ -94,12 +102,12 @@
         padding   : 10px;
 
         .stec-layout-boxgrid-event-title {
-            width      : 100%;
-            font-size  : 24px;
-            margin     : 10px 0;
-            color      : var(--stec-boxgrid-title-color);
-            line-height: 1.4;
-            display    : inline-block;
+            width        : 100%;
+            font-size    : 24px;
+            margin-bottom: 10px;
+            color        : var(--stec-boxgrid-title-color);
+            line-height  : 1.4;
+            display      : inline-block;
         }
 
         .stec-layout-boxgrid-event-description {
@@ -107,7 +115,7 @@
             width      : 100%;
             font-size  : 14px;
             color      : var(--stec-boxgrid-text-color);
-            line-height: 1.5;
+            line-height: 1.6;
 
             p {
                 font-size: 14px;
@@ -144,7 +152,7 @@
     &:hover {
         .stec-boxgrid-event-background-image {
             &:after {
-                background-color: rgba(0, 0, 0,  var(--stec-boxgrid-dimness-hover));
+                background-color: rgba(0, 0, 0, var(--stec-boxgrid-dimness-hover));
             }
         }
     }

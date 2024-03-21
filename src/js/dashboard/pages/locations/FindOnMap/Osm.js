@@ -105,7 +105,7 @@ const Osm = ({
                         map.setView([lat, lon], 15);
                     }
                 } else {
-                    toast.error(__('Location not found', 'stec'));
+                    toast.error(__('Location not found', 'stachethemes_event_calendar_lite'));
                 }
 
             }
@@ -184,7 +184,7 @@ const Osm = ({
         <>
 
             <UncontrolledInputText
-                placeholder={__('Search Location', 'stec')}
+                placeholder={__('Search Location', 'stachethemes_event_calendar_lite')}
                 className='stec-find-on-map-search'
                 value={search}
                 onChange={value => {

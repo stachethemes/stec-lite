@@ -1,9 +1,10 @@
 import { UncontrolledInputTextarea } from '@Stec/CommonComponents/InputTextarea';
-import { MediaFrame } from '@Stec/JS/helpers.js';
+import { MediaFrame, getPluginUrl } from '@Stec/JS/helpers.js';
 import { StecDiv } from '@Stec/WebComponents';
 import { Editor } from '@tinymce/tinymce-react';
-import { _x } from '@wordpress/i18n';
+import { __, _x } from '@wordpress/i18n';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import FieldDescription from './FieldDescription';
 import FieldTitle from './FieldTitle';
 import Flexbox from './Flexbox';
@@ -32,7 +33,20 @@ const TextEditorRich = (props) => {
     const [data, setData] = useState(props.value);
     const onChange = props.onChange;
 
-    const tinymceScriptSrc = STEC_VARIABLES.tiny_mce.src || undefined;
+    const defaultTinyMceUrl = getPluginUrl('assets/js/libs/tinymce/js/tinymce/tinymce.min.js').href;
+    let tinymceScriptSrc = STEC_VARIABLES.tiny_mce.src;
+    let isCustomScr = false;
+
+    if (tinymceScriptSrc === 'cdn') {
+        // * "cdn" is a special word telling the plugin to load the script from the cloud
+        tinymceScriptSrc = undefined;
+    } else if (!tinymceScriptSrc) {
+        // * if the source is empty, use the default
+        tinymceScriptSrc = defaultTinyMceUrl;
+    } else {
+        // * if the source is not empty, it's a custom script
+        isCustomScr = true;
+    }
 
     const handleMediaLibrary = async (editor) => {
 
@@ -82,7 +96,7 @@ const TextEditorRich = (props) => {
         relative_urls: false,
         convert_urls: false,
         menubar: false,
-        plugins: tinymceScriptSrc ? ['link', 'lists', 'image'] : ['link', 'lists', 'image', 'wordcount', 'code'],
+        plugins: isCustomScr ? ['link', 'lists', 'image'] : ['link', 'lists', 'image', 'wordcount', 'code'],
         toolbar: 'undo redo | formatselect | blocks fontsize | bold italic link | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | mediaLibrary image | removeformat | wordcount | code'
     };
 
@@ -105,6 +119,9 @@ const TextEditorRich = (props) => {
                 </Flexbox>
 
                 <Editor
+                    onScriptsLoadError={() => {
+                        props?.onScriptsLoadError?.();
+                    }}
                     tinymceScriptSrc={tinymceScriptSrc}
                     apiKey={STEC_VARIABLES.tiny_mce.api_key}
                     value={data}
@@ -123,12 +140,26 @@ const TextEditorRich = (props) => {
 
 function TextEditor(props) {
 
+    const [editorKey, setEditorKey] = useState(0);
+
     if (window.STEC_FORCE_DISABLE?.tiny_mce) {
         return <TextEditorPlain {...props} />
     }
 
     if (true === STEC_VARIABLES.tiny_mce.enabled) {
-        return <TextEditorRich {...props} />
+
+        return <TextEditorRich {...props} onScriptsLoadError={() => {
+
+            // * If the editor fails to load, disable it and use plain textarea instead
+
+            if (!window.STEC_FORCE_DISABLE) {
+                window.STEC_FORCE_DISABLE = {};
+            }
+
+            window.STEC_FORCE_DISABLE.tiny_mce = true;
+
+            setEditorKey(editorKey + 1);
+        }} />
     }
 
     return <TextEditorPlain {...props} />

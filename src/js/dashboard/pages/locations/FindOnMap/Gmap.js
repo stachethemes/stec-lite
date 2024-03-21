@@ -106,7 +106,7 @@ const Gmap = ({
 
                     }
                 } else {
-                    toast.error(__('Location not found', 'stec'));
+                    toast.error(__('Location not found', 'stachethemes_event_calendar_lite'));
                 }
 
             }
@@ -208,7 +208,7 @@ const Gmap = ({
         <>
 
             <UncontrolledInputText
-                placeholder={__('Search Location', 'stec')}
+                placeholder={__('Search Location', 'stachethemes_event_calendar_lite')}
                 className='stec-find-on-map-search'
                 value={search}
                 onChange={value => {

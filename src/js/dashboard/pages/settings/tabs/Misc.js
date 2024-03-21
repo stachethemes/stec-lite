@@ -1,6 +1,6 @@
 import FieldDescription from '@Stec/CommonComponents/FieldDescription';
 import InputCheckbox, { UncontrolledInputCheckbox } from '@Stec/CommonComponents/InputCheckbox';
-import { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
+import InputText, { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
 import Section from '@Stec/CommonComponents/Section';
 import SectionCollapseContent from '@Stec/CommonComponents/SectionCollapseContent';
 import Spacer from '@Stec/CommonComponents/Spacer';
@@ -83,6 +83,7 @@ const ForceLoad = ({ settingsMisc }) => {
 const TinyMceSettings = ({ settingsMisc }) => {
 
     const [enabled, setEnabled] = useState(settingsMisc.tiny_mce_enabled);
+    const [tinyMceSource, setTinyMceSource] = useState(settingsMisc.tiny_mce_src);
 
     return (
 
@@ -97,31 +98,39 @@ const TinyMceSettings = ({ settingsMisc }) => {
             />
 
             {enabled && <>
-                <Spacer />
-                <UncontrolledInputText
-                    defaultValue={settingsMisc.tiny_mce_api_key}
-                    title={__('TinyMCE API key', 'stachethemes_event_calendar_lite')}
-                    onChange={value => {
-                        settingsMisc.tiny_mce_api_key = value;
-                    }}
-                />
-
-                <FieldDescription
-                    allowHtml={true}
-                    text={sprintf(__('Get your API key from %s', 'stachethemes_event_calendar_lite'),
-                        '<a target="_blank" href="https://www.tiny.cloud/">https://www.tiny.cloud/</a>')}
-                />
 
                 <Spacer />
 
-                <UncontrolledInputText
-                    defaultValue={settingsMisc.tiny_mce_src}
+                <InputText
+                    value={tinyMceSource}
                     title={__('TinyMCE Custom Script Source', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
+                        setTinyMceSource(value);
                         settingsMisc.tiny_mce_src = value;
                     }}
-                    description={__('If you have a custom TinyMCE script, enter the source URL here', 'stachethemes_event_calendar_lite')}
+                    description={__('If you have a custom TinyMCE script, enter the source URL here or type "cdn" to load from the Tiny CDN', 'stachethemes_event_calendar_lite')}
                 />
+
+                {
+                    tinyMceSource === 'cdn' && <>
+                        <Spacer />
+
+                        <UncontrolledInputText
+                            defaultValue={settingsMisc.tiny_mce_api_key}
+                            title={__('TinyMCE API key', 'stachethemes_event_calendar_lite')}
+                            onChange={value => {
+                                settingsMisc.tiny_mce_api_key = value;
+                            }}
+                        />
+
+                        <FieldDescription
+                            allowHtml={true}
+                            text={sprintf(__('Get your API key from %s', 'stachethemes_event_calendar_lite'),
+                                '<a target="_blank" href="https://www.tiny.cloud/">https://www.tiny.cloud/</a>')}
+                        />
+                    </>
+                }
+
             </>
             }
         </>

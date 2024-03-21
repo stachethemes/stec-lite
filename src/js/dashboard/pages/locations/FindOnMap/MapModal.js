@@ -32,11 +32,11 @@ const MapModal = ({
 
                 <Spacer />
 
-                <Button className='green' label={__('Apply', 'stec')} onClick={() => {
+                <Button className='green' label={__('Apply', 'stachethemes_event_calendar_lite')} onClick={() => {
                     onChange(preappliedCoordinates);
                     onClose();
                 }} />
-                <Button className='red' style={{ marginLeft: 6 }} label={__('Cancel', 'stec')} onClick={onClose} />
+                <Button className='red' style={{ marginLeft: 6 }} label={__('Cancel', 'stachethemes_event_calendar_lite')} onClick={onClose} />
             </StecDiv>
         </Modal>
     )

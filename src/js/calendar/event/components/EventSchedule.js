@@ -104,10 +104,10 @@ const ScheduleItem = ({ schedule, offset, eventTimezone }) => {
     )
 }
 
-function EventSchedule({ event, style }) {
+function EventSchedule({ event, style, classes = '' }) {
 
     return (
-        <StecDiv className='stec-event-schedule' style={style}>
+        <StecDiv className={`stec-event-schedule ${classes}`} style={style}>
 
             {
                 event.meta.schedule.sort((scheduleA, scheduleB) => {

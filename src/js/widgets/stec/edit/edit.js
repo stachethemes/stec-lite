@@ -548,7 +548,7 @@ const Edit = (props) => {
 
                         <InputCheckbox
                             value={filter__minmax_intersect}
-                            title={__('Include events intersecting min/max date', 'stec')}
+                            title={__('Include events intersecting min/max date', 'stachethemes_event_calendar_lite')}
                             onChange={value => {
                                 setAttributes({ filter__minmax_intersect: value })
                             }}

@@ -73,6 +73,7 @@ const CalendarPreloaderFetch = ({ children }) => {
         category: filterByCategory,
         minDate: filterByMinDate,
         maxDate: filterByMaxDate,
+        minMaxIntersect: filterMinMaxIntersect,
         featured: filterByFeatured,
         readPermission: filterByReadPermission,
         author: filterByAuthor,

@@ -55,7 +55,7 @@
             margin     : 25px auto 0;
             text-align : center;
             font-weight: bold;
-            font-size  : 18px;
+            font-size  : 20px;
             color      : var(--stec-grid-title-color);
             line-height: 1.4;
         }
@@ -63,7 +63,7 @@
         .stec-grid-event-description {
             font-size  : 14px;
             color      : var(--stec-grid-text-color);
-            line-height: 1.4;
+            line-height: 1.6;
             margin-top : 10px;
             text-align : center;
 
@@ -89,26 +89,31 @@
     }
 
     .stec-grid-event-nfo {
-        width      : 100%;
-        border-top : 1px solid var(--stec-grid-border-color);
-        padding    : 15px;
-        box-sizing : border-box;
-        line-height: 1;
-        font-size  : 14px;
-        color      : var(--stec-grid-text-color);
+        width     : 100%;
+        border-top: 1px solid var(--stec-grid-border-color);
+        padding   : 16px;
+        box-sizing: border-box;
+        font-size : 14px;
+        color     : var(--stec-grid-text-color);
         .inlineFlexbox(space-between, flex-start);
+        min-height: 56px;
 
         >stec-span,
         >span {
-            width      : 100%;
-            display    : inline-block;
-            line-height: 1.2;
+            width          : 100%;
+            display        : flex;
+            align-items    : center;
+            justify-content: flex-start;
+            line-height    : 1.4;
+            position       : relative;
+            top            : 2px;
         }
 
         >i {
             min-width   : 25px;
             font-size   : 14px;
             margin-right: 2px;
+            margin-top  : 4px;
 
             text-align: center;
 
@@ -120,7 +125,7 @@
                 color           : #fafafa;
                 border-radius   : 50%;
                 margin-right    : 10px;
-                font-size       : 18px;
+                font-size       : 20px;
             }
         }
 
