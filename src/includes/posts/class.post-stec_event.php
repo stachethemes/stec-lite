@@ -15,10 +15,72 @@ class Post_Types_Stec_Event {
         add_action('init', array(__CLASS__, 'register_custom_post_status'), 5);
         add_action('init', array(__CLASS__, 'rewrite_rules'), 10);
         add_filter('rest_stec_event_item_schema', array(__CLASS__, 'register_event_context_schema'), 5);
+        add_action('wp_head', array(__CLASS__, 'add_og_tags'), 5);
         add_filter('template_include', array(__CLASS__, 'before_single_page_template'), 5);
         add_filter('the_content', array(__CLASS__, 'single_page_content'), 10);
     }
 
+    public static function add_og_tags() {
+
+        global $post;
+
+        if (!is_a($post, 'WP_Post') || 'stec_event' !== $post->post_type) {
+            return;
+        }
+
+        if (function_exists('wpseo_auto_load')) {
+            return;
+        }
+
+        $custom_og = apply_filters('stec_single_og', false, $post->ID);
+
+        if (false !== $custom_og) {
+            echo $custom_og;
+            return;
+        }
+
+        $event_id    = $post->ID;
+        $event_title = get_the_title($event_id);
+        $excerpt     = get_the_excerpt($event_id);
+        $thumbnail   = get_the_post_thumbnail_url($event_id, 'full');
+        $permalink   = get_permalink($event_id);
+        $start_date  = get_query_var('stec_event_start_date', '');
+
+        if ($start_date) {
+            $permalink .= '/' . $start_date;
+        }
+
+        // * Open Graph
+        $og_tags = array(
+            'og:title'       => $event_title,
+            'og:type'        => 'article',
+            'og:description' => $excerpt,
+            'og:image'       => $thumbnail,
+            'og:url'         => $permalink,
+        );
+
+        foreach ($og_tags as $tag => $value) {
+            echo '<meta property="' . $tag . '" content="' . esc_attr($value) . '" />' . PHP_EOL;
+        }
+
+        // * Twitter
+        $tw =  array(
+            'twitter:card'        => 'summary_large_image',
+            'twitter:title'       => $event_title,
+            'twitter:description' => $excerpt,
+            'twitter:image'       => $thumbnail,
+            'twitter:domain'      => get_bloginfo('name'),
+            'twitter:url'         => $permalink,
+        );
+
+        foreach ($tw as $tag => $value) {
+            if ($value) {
+                $type_property = array('twitter:domain', 'twitter:url');
+                $type          = in_array($tag, $type_property) ? 'name' : 'property';
+                echo '<meta "' . $type . '"="' . $tag . '" content="' . esc_attr($value) . '" />' . PHP_EOL;
+            }
+        }
+    }
 
     public static function get_slug() {
 
