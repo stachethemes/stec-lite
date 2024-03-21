@@ -105,6 +105,39 @@ function Layouts({ settings }) {
                 <Spacer />
 
                 <UncontrolledInputCheckbox
+                    title={__('Tooltip', 'stachethemes_event_calendar_lite')}
+                    defaultValue={settingsLayouts.month_week_tooltip}
+                    onChange={value => {
+                        settingsLayouts.month_week_tooltip = value;
+                    }}
+                    description={__('If checked, the event tooltip will be displayed when hovered over', 'stachethemes_event_calendar_lite')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputCheckbox
+                    title={__('Tooltip show event description', 'stachethemes_event_calendar_lite')}
+                    defaultValue={settingsLayouts.month_week_short_desc}
+                    onChange={value => {
+                        settingsLayouts.month_week_short_desc = value;
+                    }}
+                    description={__('If checked the event description will be displayed in the tooltip', 'stachethemes_event_calendar_lite')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputCheckbox
+                    title={__('Tooltip show counter', 'stachethemes_event_calendar_lite')}
+                    defaultValue={settingsLayouts.month_week_counter}
+                    onChange={value => {
+                        settingsLayouts.month_week_counter = value;
+                    }}
+                    description={__('If checked the event counter will be displayed in the tooltip', 'stachethemes_event_calendar_lite')}
+                />
+
+                <Spacer />
+
+                <UncontrolledInputCheckbox
                     title={__('Tooltip image keep aspect ratio', 'stachethemes_event_calendar_lite')}
                     defaultValue={settingsLayouts.month_week_image_auto_height}
                     onChange={value => {

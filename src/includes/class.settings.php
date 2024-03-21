@@ -106,7 +106,6 @@ class Settings {
                 return current_user_can('manage_stec_settings');
             },
         ));
-
     }
 
     public static function get_defaults() {
@@ -154,8 +153,12 @@ class Settings {
                 'boxgrid_columns'             => 3,
                 'boxgrid_limit'               => 3,
                 'boxgrid_next_button'         => true,
+                'month_week_tooltip'          => true,
+                'month_week_counter'          => true,
+                'month_week_short_desc'       => true,
                 'month_week_force_title'      => false,
                 'month_week_style'            => 'fixed',
+                'month_week_quick_open'       => true,
                 'map_zoom'                    => 10
             ),
 
