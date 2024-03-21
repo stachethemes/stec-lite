@@ -45,8 +45,14 @@ export const UncontrolledDelayedInputText = React.forwardRef((props, ref) => {
 
     }, [currentValue, props.delay, onChange, props.regex, props.wasSubmitted, touched, props.defaultValue, minLength]);
 
+    const classNameArray = ['stec-input-text-wrapper'];
+
+    if (props.className) {
+        classNameArray.push(props.className);
+    }
+
     return (
-        <StecDiv className='stec-input-text-wrapper'>
+        <StecDiv className={classNameArray.join(' ')}>
 
             <label>
 
@@ -106,8 +112,14 @@ export const UncontrolledInputText = React.forwardRef((props, ref) => {
 
     }, [currentValue, props.regex, props.wasSubmitted, touched]);
 
+    const classNameArray = ['stec-input-text-wrapper'];
+
+    if (props.className) {
+        classNameArray.push(props.className);
+    }
+
     return (
-        <StecDiv className='stec-input-text-wrapper'>
+        <StecDiv className={classNameArray.join(' ')}>
 
             <label>
 
@@ -171,9 +183,15 @@ export const InputText = React.forwardRef((props, ref) => {
 
     }, [props.regex, props.value, props.wasSubmitted, touched]);
 
+    const classNameArray = ['stec-input-text-wrapper'];
+
+    if (props.className) {
+        classNameArray.push(props.className);
+    }
+
     return (
 
-        <StecDiv className='stec-input-text-wrapper'>
+        <StecDiv className={classNameArray.join(' ')}>
 
             <label>
 
