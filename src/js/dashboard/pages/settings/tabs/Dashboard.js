@@ -43,12 +43,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_stec_cal}
-                    title={__('Manage calendars', 'stec')}
+                    title={__('Manage calendars', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_stec_cal = value;
                     }}
-                    description={__('Select user roles permitted to submit and manage calendars', 'stec')}
+                    description={__('Select user roles permitted to submit and manage calendars', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -56,12 +56,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_stec_cat}
-                    title={__('Manage categories', 'stec')}
+                    title={__('Manage categories', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_stec_cat = value;
                     }}
-                    description={__('Select user roles permitted to submit and manage categories', 'stec')}
+                    description={__('Select user roles permitted to submit and manage categories', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -69,12 +69,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_stec_loc}
-                    title={__('Manage locations', 'stec')}
+                    title={__('Manage locations', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_stec_loc = value;
                     }}
-                    description={__('Select user roles permitted to submit and manage locations', 'stec')}
+                    description={__('Select user roles permitted to submit and manage locations', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -82,12 +82,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_stec_org}
-                    title={__('Manage organizers', 'stec')}
+                    title={__('Manage organizers', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_stec_org = value;
                     }}
-                    description={__('Select user roles permitted to submit and manage organizers', 'stec')}
+                    description={__('Select user roles permitted to submit and manage organizers', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
@@ -95,12 +95,12 @@ function Dashboard({ settings }) {
                 <UncontrolledInputSelect
                     multiple={true}
                     defaultValue={settingsDashboard.manage_stec_gst}
-                    title={__('Manage guests', 'stec')}
+                    title={__('Manage guests', 'stachethemes_event_calendar_lite')}
                     options={permissionsListFiltered}
                     onChange={value => {
                         settingsDashboard.manage_stec_gst = value;
                     }}
-                    description={__('Select user roles permitted to submit and manage guests', 'stec')}
+                    description={__('Select user roles permitted to submit and manage guests', 'stachethemes_event_calendar_lite')}
                 />
 
                 <Spacer />
