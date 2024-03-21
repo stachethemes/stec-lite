@@ -52,7 +52,7 @@ const ComparisonTable = () => {
         {
             id: 'ai',
             title: __('A.I.', 'stachethemes_event_calendar_lite'),
-            desc: __('A.I. Content Enchancer.', 'stachethemes_event_calendar_lite'),
+            desc: __('A.I. Content Enhancer.', 'stachethemes_event_calendar_lite'),
             lite: false,
             pro: true
         },
