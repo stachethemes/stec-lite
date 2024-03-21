@@ -1,11 +1,11 @@
 import { faAll } from '@Stec/JS/font-awesome-icons-list';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import { StecDiv } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
 import Button from './Button';
 import FieldDescription from './FieldDescription';
 import FieldTitle from './FieldTitle';
 const { useState, useRef } = wp.element;
+import { __ } from '@wordpress/i18n';
 
 const IconPicker = ({ title, value, description, onPick }) => {
 
@@ -17,6 +17,11 @@ const IconPicker = ({ title, value, description, onPick }) => {
     const onSearchKeyPress = (input) => {
 
         const iconsArray = [];
+
+        if (input === '*') {
+            setFoundIcons(faAll);
+            return;
+        }
 
         if (input.length <= 2) {
             setFoundIcons([]);
