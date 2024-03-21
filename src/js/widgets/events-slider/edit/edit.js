@@ -24,6 +24,7 @@ const Edit = (props) => {
         min_date_custom,
         max_date,
         max_date_custom,
+        minmax_intersect,
         order,
         limit,
         gutter,
@@ -642,6 +643,16 @@ const Edit = (props) => {
 
                             </>
                         }
+
+                        <Spacer />
+
+                        <InputCheckbox
+                            value={minmax_intersect}
+                            title={__('Include events intersecting min/max date', 'stec')}
+                            onChange={value => {
+                                setAttributes({ minmax_intersect: value })
+                            }}
+                        />
 
                     </SectionCollapseContent>
 

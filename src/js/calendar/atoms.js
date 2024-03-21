@@ -14,6 +14,7 @@ export const settingsAttsList = atom({
         filter__calendar: '',
         filter__min_date: '',
         filter__max_date: '',
+        filter__minmax_intersect: '',
         filter__start_date: '',
         filter__featured: '',
         filter__events: '',

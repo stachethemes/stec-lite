@@ -61,6 +61,7 @@ const CalendarPreloaderFetch = ({ children }) => {
     const filterByEvents = useSettingsAtt('filter__events');
     const filterByMinDate = useSettingsAtt('filter__min_date');
     const filterByMaxDate = useSettingsAtt('filter__max_date');
+    const filterMinMaxIntersect = useSettingsAtt('filter__minmax_intersect');
     const filterByReadPermission = useSettingsAtt('filter__read_permission');
     const filterByAuthor = useSettingsAtt('filter__author');
 

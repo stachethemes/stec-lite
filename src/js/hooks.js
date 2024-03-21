@@ -427,6 +427,7 @@ export const usePostItemsAll = (props) => {
                 `location=${props.location}`,
                 `min_date=${props.minDate}`,
                 `max_date=${props.maxDate}`,
+                `minmax_intersect=${props.minMaxIntersect}`,
                 `featured=${props.featured}`,
                 `read_permission=${props.readPermission}`,
                 `author=${props.author}`,

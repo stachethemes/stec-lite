@@ -15,7 +15,6 @@ const { useBlockProps } = wp.blockEditor;
 const Edit = (props) => {
 
     const { attributes: {
-        title,
         stec_cal,
         stec_cat,
         stec_loc,
@@ -25,6 +24,7 @@ const Edit = (props) => {
         min_date_custom,
         max_date,
         max_date_custom,
+        minmax_intersect,
         order,
         limit,
         event_status,
@@ -587,6 +587,16 @@ const Edit = (props) => {
 
                             </>
                         }
+
+                        <Spacer />
+
+                        <InputCheckbox
+                            value={minmax_intersect}
+                            title={__('Include events intersecting min/max date', 'stec')}
+                            onChange={value => {
+                                setAttributes({ minmax_intersect: value })
+                            }}
+                        />
 
                         <Spacer />
 

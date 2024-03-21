@@ -51,6 +51,10 @@ const attributes = {
         type: 'string',
         default: ''
     },
+    filter__minmax_intersect: {
+        type: 'boolean',
+        default: false
+    },
     filter__author: {
         type: 'string',
         default: ''

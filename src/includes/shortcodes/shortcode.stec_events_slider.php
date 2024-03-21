@@ -84,25 +84,26 @@ class Shortcode_Stec_Events_Slider {
     public static function convert_aliases($atts) {
 
         $alias_array = array(
-            'filter__events'    => 'include',
-            'filter__calendar'  => 'stec_cal',
-            'filter__category'  => 'stec_cat',
-            'filter__location'  => 'stec_loc',
-            'filter__organizer' => 'stec_org',
-            'filter__featured'  => 'featured_only',
-            'featured'          => 'featured_only',
-            'calendar'          => 'stec_cal',
-            'category'          => 'stec_cat',
-            'location'          => 'stec_loc',
-            'organizer'         => 'stec_org',
-            'guest'             => 'stec_gst',
-            'cal'               => 'stec_cal',
-            'cat'               => 'stec_cat',
-            'loc'               => 'stec_loc',
-            'org'               => 'stec_org',
-            'gst'               => 'stec_gst',
-            'filter__min_date'  => 'min_date',
-            'filter__max_date'  => 'max_date'
+            'filter__events'           => 'include',
+            'filter__calendar'         => 'stec_cal',
+            'filter__category'         => 'stec_cat',
+            'filter__location'         => 'stec_loc',
+            'filter__organizer'        => 'stec_org',
+            'filter__featured'         => 'featured_only',
+            'featured'                 => 'featured_only',
+            'calendar'                 => 'stec_cal',
+            'category'                 => 'stec_cat',
+            'location'                 => 'stec_loc',
+            'organizer'                => 'stec_org',
+            'guest'                    => 'stec_gst',
+            'cal'                      => 'stec_cal',
+            'cat'                      => 'stec_cat',
+            'loc'                      => 'stec_loc',
+            'org'                      => 'stec_org',
+            'gst'                      => 'stec_gst',
+            'filter__min_date'         => 'min_date',
+            'filter__max_date'         => 'max_date',
+            'filter__minmax_intersect' => 'minmax_intersect'
         );
 
         foreach ($alias_array as $alias => $param) {
@@ -199,6 +200,7 @@ class Shortcode_Stec_Events_Slider {
 
         $defaults_from_settings = array(
             'id'                    => uniqid('stec-widget-events-slider-'),
+            'minmax_intersect'      => false,
             'min_date'              => 'start_of_this_month',
             'max_date'              => 'end_of_this_month',
             'min_date_custom'       => '',
@@ -252,7 +254,7 @@ class Shortcode_Stec_Events_Slider {
 
         printf('<div id="%s" class="stec-widget-events-slider"></div>', $shortcode_atts['id']);
 
-?>
+    ?>
 
         <script type="text/javascript">
             (function() {

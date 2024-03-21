@@ -25,6 +25,7 @@ const Edit = (props) => {
         filter__min_date_custom,
         filter__max_date,
         filter__max_date_custom,
+        filter__minmax_intersect,
         filter__start_date,
         filter__author,
         extra
@@ -540,6 +541,16 @@ const Edit = (props) => {
                             value={filter__start_date}
                             onChange={(value) => {
                                 setAttributes({ filter__start_date: value });
+                            }}
+                        />
+
+                        <Spacer />
+
+                        <InputCheckbox
+                            value={filter__minmax_intersect}
+                            title={__('Include events intersecting min/max date', 'stec')}
+                            onChange={value => {
+                                setAttributes({ filter__minmax_intersect: value })
                             }}
                         />
 

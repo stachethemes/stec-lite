@@ -278,6 +278,8 @@ export const useShouldReverseOrder = () => {
  */
 export const useLayoutEvents = (params = {}) => {
 
+    const minMaxIntersect = useSettingsAtt('filter__minmax_intersect');
+    const showInUserTimezone = useSettingsAtt('calendar__use_user_timezone');
     const dowOffset = useSettingsAtt('calendar__dow');
     const { value: calendarAtts } = useSettingsAtts();
     const { items: events } = useRecoilValue(calendarEvents);
@@ -292,6 +294,8 @@ export const useLayoutEvents = (params = {}) => {
     let startRange;
     let endRange;
 
+    params.showInUserTimezone = showInUserTimezone;
+
     switch (view) {
 
         case 'day': {
@@ -304,12 +308,15 @@ export const useLayoutEvents = (params = {}) => {
 
             const firstDayOfWeek = getFirstDayOfWeekInView(activeCalendarDate, dowOffset);
 
-            startRange = moment(firstDayOfWeek).startOf('day').utc().format(rangesFormat);
-            endRange = moment(firstDayOfWeek).endOf('day').utc().add(6, 'day').format(rangesFormat);
-
-            if (!params.sortEventsInYMDkeys) {
-                params.sortEventsInYMDkeys = true;
+            if (showInUserTimezone) {
+                startRange = moment(firstDayOfWeek).startOf('day').utc().format(rangesFormat);
+                endRange = moment(firstDayOfWeek).endOf('day').utc().add(6, 'day').format(rangesFormat);
+            } else {
+                startRange = moment.utc(firstDayOfWeek.format('YYYY-MM-DDT00:00:00')).format(rangesFormat);
+                endRange = moment.utc(firstDayOfWeek.format('YYYY-MM-DDT23:59:59')).add(6, 'day').format(rangesFormat);
             }
+
+            params.sortEventsInYMDkeys = true;
 
             break;
         }
@@ -318,44 +325,61 @@ export const useLayoutEvents = (params = {}) => {
 
             const firstDayOfmonth = getFirstDayOfMonthInView(activeCalendarDate, dowOffset);
 
-            startRange = moment(firstDayOfmonth).startOf('day').utc().format(rangesFormat);
-            endRange = moment(firstDayOfmonth).endOf('day').utc().add(41, 'day').format(rangesFormat);
-
-            if (!params.sortEventsInYMDkeys) {
-                params.sortEventsInYMDkeys = true;
+            if (showInUserTimezone) {
+                startRange = moment(firstDayOfmonth).startOf('day').utc().format(rangesFormat);
+                endRange = moment(firstDayOfmonth).endOf('day').utc().add(41, 'day').format(rangesFormat);
+            } else {
+                startRange = moment.utc(firstDayOfmonth.format('YYYY-MM-DDT00:00:00')).format(rangesFormat);
+                endRange = moment.utc(firstDayOfmonth.format('YYYY-MM-DDT23:59:59')).add(41, 'day').format(rangesFormat);
             }
+
+            params.sortEventsInYMDkeys = true;
 
             break;
         }
 
         case 'agenda': {
 
-            if (reverseOrder) {
-                startRange = moment(activeCalendarDate).startOf('month').utc().format(rangesFormat);
-                endRange = moment(activeCalendarDate).endOf('day').utc().format(rangesFormat);
+            if (showInUserTimezone) {
+
+                if (reverseOrder) {
+                    startRange = moment(activeCalendarDate).startOf('month').utc().format(rangesFormat);
+                    endRange = moment(activeCalendarDate).endOf('day').utc().format(rangesFormat);
+                } else {
+                    startRange = moment(activeCalendarDate).startOf('day').utc().format(rangesFormat);
+                    endRange = moment(activeCalendarDate).endOf('month').utc().format(rangesFormat);
+                }
+
             } else {
-                startRange = moment(activeCalendarDate).startOf('day').utc().format(rangesFormat);
-                endRange = moment(activeCalendarDate).endOf('month').utc().format(rangesFormat);
+
+                if (reverseOrder) {
+                    startRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT00:00:00')).startOf('month').format(rangesFormat);
+                    endRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT23:59:59')).endOf('day').format(rangesFormat);
+                } else {
+                    startRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT00:00:00')).startOf('day').format(rangesFormat);
+                    endRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT23:59:59')).endOf('month').format(rangesFormat);
+                }
+
             }
 
-
             break;
         }
 
-        case 'grid': {
-
-            startRange = moment(activeCalendarDate).startOf('month').utc().format(rangesFormat);
-            endRange = moment(activeCalendarDate).endOf('month').utc().format(rangesFormat);
-
-            break;
-        }
-
+        case 'grid':
         case 'boxgrid':
+        case 'map': {
 
-            startRange = moment(activeCalendarDate).startOf('month').utc().format(rangesFormat);
-            endRange = moment(activeCalendarDate).endOf('month').utc().format(rangesFormat);
+            if (showInUserTimezone) {
+                startRange = moment(activeCalendarDate).startOf('month').utc().format(rangesFormat);
+                endRange = moment(activeCalendarDate).endOf('month').utc().format(rangesFormat);
+            } else {
+                startRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT00:00:00')).startOf('month').format(rangesFormat);
+                endRange = moment.utc(activeCalendarDate.format('YYYY-MM-DDT23:59:59')).endOf('month').format(rangesFormat);
+            }
 
             break;
+        }
+
     }
 
     /**
@@ -363,15 +387,16 @@ export const useLayoutEvents = (params = {}) => {
      */
     let eventsToProcess = events;
 
+
     /**
      * WORKER QUERY FILTERS PARAMS
      */
-
     const [foundEvents, ready] = useEventsInRange({
         startRange: startRange,
         endRange: endRange,
         minDate: minDate,
         maxDate: maxDate,
+        minMaxIntersect: minMaxIntersect,
         events: eventsToProcess,
         filters: filters,
         order: reverseOrder ? 'desc' : 'asc',
@@ -402,6 +427,7 @@ export const useLayoutEvents = (params = {}) => {
  */
 export const useCustomLayoutEvents = (ranges, params, threadIndex) => {
 
+    const minMaxIntersect = useSettingsAtt('filter__minmax_intersect');
     const { value: calendarAtts } = useSettingsAtts();
     const { value: { items: filters } } = useTopFilters();
     const minDate = calendarAtts.filter__min_date || false;
@@ -426,6 +452,7 @@ export const useCustomLayoutEvents = (ranges, params, threadIndex) => {
         endRange: endRange,
         minDate: minDate,
         maxDate: maxDate,
+        minMaxIntersect: minMaxIntersect,
         events: events,
         filters: filters,
         threadIndex: threadIndex,

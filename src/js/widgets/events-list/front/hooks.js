@@ -22,6 +22,7 @@ export const useEventsPrefetch = (widgetParams) => {
                 startRange: minDate,
                 endRange: maxDate,
                 minDate: minDate,
+                minMaxIntersect: props.minmax_intersect,
                 limit: props.limit || 6,
                 order: props.order || 'asc',
                 filters: {},
@@ -48,7 +49,7 @@ export const useEventsPrefetch = (widgetParams) => {
 
         }
 
-    }, [error, props.id, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, props.order, props.prefetched_events_hash, ready]);
+    }, [error, props.id, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, props.minmax_intersect, props.order, props.prefetched_events_hash, ready]);
 
 
     return {
@@ -85,6 +86,7 @@ export const useEvents = (widgetParams) => {
     const queryParams = {
         minDate: props.min_date === 'custom' ? props.min_date_custom : props.min_date,
         maxDate: props.max_date === 'custom' ? props.max_date_custom : props.max_date,
+        minMaxIntersect: props.minmax_intersect,
         featured: props.featured_only ? 1 : 0,
         eventStatus: props.event_status,
         author: props.author,
@@ -111,6 +113,7 @@ export const useEvents = (widgetParams) => {
                 startRange: minDate,
                 endRange: maxDate,
                 minDate: minDate,
+                minMaxIntersect: props.minmax_intersect,
                 limit: props.limit || 6,
                 order: props.order || 'asc',
                 filters: {},
@@ -140,7 +143,7 @@ export const useEvents = (widgetParams) => {
             setEvents([]);
         }
 
-    }, [items, queryError, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, queryReady, props.id, props.order]);
+    }, [items, queryError, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, queryReady, props.id, props.order, props.minmax_intersect]);
 
     return {
         items: events,

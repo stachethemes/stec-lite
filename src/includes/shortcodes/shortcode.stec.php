@@ -65,9 +65,9 @@ class Shortcode_Stec {
 
         global $post;
 
-        $force = self::scripts_are_forced('stachethemes_event_calendar_lite') || $force;
+        $force = self::scripts_are_forced('stec') || $force;
 
-        if ($force || true === self::has_shortcode('stachethemes_event_calendar_lite') || true === self::has_shortcode('stachethemes_ec')) {
+        if ($force || true === self::has_shortcode('stec') || true === self::has_shortcode('stachethemes_ec')) {
             wp_enqueue_script('stec-init-js');
             wp_set_script_translations('stec-init-js', 'stachethemes_event_calendar_lite', STEC_LITE_PLUGIN_ABS_PATH . 'languages');
         }
@@ -99,6 +99,7 @@ class Shortcode_Stec {
             'filter__calendar'                        => 'atom_default',
             'filter__min_date'                        => 'atom_default',
             'filter__max_date'                        => 'atom_default',
+            'filter__minmax_intersect'                => 'atom_default',
             'filter__start_date'                      => 'atom_default',
             'filter__featured'                        => 'atom_default',
             'filter__read_permission'                 => 'atom_default',
@@ -181,33 +182,34 @@ class Shortcode_Stec {
     public static function convert_aliases($atts) {
 
         $alias_array = array(
-            'views'             => 'calendar__layouts',
-            'view'              => 'calendar__layout',
-            'layout'            => 'calendar__layout',
-            'cal'               => 'filter__calendar',
-            'cat'               => 'filter__category',
-            'loc'               => 'filter__location',
-            'org'               => 'filter__organizer',
-            'gst'               => 'filter__guest',
-            'calendar'          => 'filter__calendar',
-            'category'          => 'filter__category',
-            'location'          => 'filter__location',
-            'organizer'         => 'filter__organizer',
-            'guest'             => 'filter__guest',
-            'stec_cal'          => 'filter__calendar',
-            'stec_cat'          => 'filter__category',
-            'stec_loc'          => 'filter__location',
-            'stec_org'          => 'filter__organizer',
-            'stec_gst'          => 'filter__guest',
-            'min_date'          => 'filter__min_date',
-            'max_date'          => 'filter__max_date',
-            'start_date'        => 'filter__start_date',
-            'featured'          => 'filter__featured',
-            'author'            => 'filter__author',
-            'events'            => 'filter__events',
-            'include'           => 'filter__events',
-            'min_allowed_year'  => 'misc__min_allowed_year',
-            'max_allowed_year'  => 'misc__max_allowed_year'
+            'views'                    => 'calendar__layouts',
+            'view'                     => 'calendar__layout',
+            'layout'                   => 'calendar__layout',
+            'cal'                      => 'filter__calendar',
+            'cat'                      => 'filter__category',
+            'loc'                      => 'filter__location',
+            'org'                      => 'filter__organizer',
+            'gst'                      => 'filter__guest',
+            'calendar'                 => 'filter__calendar',
+            'category'                 => 'filter__category',
+            'location'                 => 'filter__location',
+            'organizer'                => 'filter__organizer',
+            'guest'                    => 'filter__guest',
+            'stec_cal'                 => 'filter__calendar',
+            'stec_cat'                 => 'filter__category',
+            'stec_loc'                 => 'filter__location',
+            'stec_org'                 => 'filter__organizer',
+            'stec_gst'                 => 'filter__guest',
+            'min_date'                 => 'filter__min_date',
+            'max_date'                 => 'filter__max_date',
+            'minmax_intersect'         => 'filter__minmax_intersect',
+            'start_date'               => 'filter__start_date',
+            'featured'                 => 'filter__featured',
+            'author'                   => 'filter__author',
+            'events'                   => 'filter__events',
+            'include'                  => 'filter__events',
+            'min_allowed_year'         => 'misc__min_allowed_year',
+            'max_allowed_year'         => 'misc__max_allowed_year'
         );
 
         foreach ($alias_array as $alias => $param) {
@@ -287,7 +289,7 @@ class Shortcode_Stec {
     }
 
     public static function register_shortcode($atts = array()) {
-
+        
         ob_start();
 
         if (false === is_array($atts)) {
@@ -301,7 +303,7 @@ class Shortcode_Stec {
         $shortcode_atts = shortcode_atts(
             $default_atts,
             $atts,
-            'stachethemes_event_calendar_lite'
+            'stec'
         );
 
         $shortcode_atts = apply_filters('stec_shortcode_atts', $shortcode_atts);

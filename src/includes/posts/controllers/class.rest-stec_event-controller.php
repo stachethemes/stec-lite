@@ -130,6 +130,8 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $super = get_term_meta($data['stec_cal'][0], 'author', true);
             $data['meta']['super'] = $super;
 
+            $data = self::register_featured_image($data);
+
             // Optional filter to modify the data before creating the event
             $data = apply_filters('stec_before_create_event', $data, $request);
 
@@ -261,8 +263,9 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
          * MIN/MAX DATE FILTERS
          */
         $min_max_meta_query = false;
-        $min_date = $request->get_param('min_date');
-        $max_date = $request->get_param('max_date');
+        $min_date           = $request->get_param('min_date');
+        $max_date           = $request->get_param('max_date');
+        $minmax_intersect   = (bool) $request->get_param('minmax_intersect');
 
         if ($min_date || $max_date) {
 
@@ -276,9 +279,14 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
             /**
              * Note 'start_date' key is used for back-end range filters
-             * start_date_utc is used for front-end range filters
+             * 'start_date_utc' is used for front-end range filters
              */
-            $min_max_filter_key = $request->get_param('context') === 'edit' ? 'start_date' : 'start_date_utc';
+
+            $min_max_filter_key_prefix = $minmax_intersect ? 'end' : 'start';
+
+            $min_max_filter_key = $request->get_param('context') === 'edit' ?
+                "{$min_max_filter_key_prefix}_date" :
+                "{$min_max_filter_key_prefix}_date_utc";
 
             if ($min_date && $max_date) {
 
@@ -291,6 +299,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => 'BETWEEN',
                     'type'         => 'DATETIME'
                 );
+
             } elseif ($min_date) {
 
                 $min_max_meta_query = array(
@@ -299,6 +308,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => '>=',
                     'type'         => 'DATETIME'
                 );
+
             } elseif ($max_date) {
 
                 $min_max_meta_query = array(
@@ -307,6 +317,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => '<=',
                     'type'         => 'DATETIME'
                 );
+                
             } else {
 
                 $min_max_meta_query = false;
@@ -710,7 +721,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
                 if (false === user_can($initiator, 'edit_users')) {
 
-                    $error = new \WP_Error(esc_html__("You do not have permissions change event authors','stec"));
+                    $error = new \WP_Error('stec_update_error', esc_html__('You do not have permissions change event authors','stachethemes_event_calendar_lite'));
                     $response = rest_ensure_response($error);
 
                     return $response;
@@ -742,6 +753,8 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
             $data['meta']['start_date_utc'] = Helpers::get_datetime_utc($data['meta']['start_date'], $timezone);
             $data['meta']['end_date_utc']   = Helpers::get_datetime_utc($data['meta']['end_date'], $timezone);
+
+            $data = self::register_featured_image($data);
 
             // Optional filter to modify the data before updating the event
             $data = apply_filters('stec_before_update_event', $data, $request);
@@ -1080,5 +1093,25 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
         $item = apply_filters('stec_event_controller_get_item', $item, $request);
         return $item;
+    }
+
+    /**
+     * Registers the first image from the event gallery as the featured image
+     * ? Yoast SEO doesn't pick up the og:image data from the first try; only after resaving the event
+     * ? However, the Yoast schema pick it up from the first try...
+     */
+    public function register_featured_image($data) {
+
+        if (!isset($data['meta']['images']) || !is_array($data['meta']['images']) || !$data['meta']['images']) {
+            return $data;
+        }
+
+        $image_id = $data['meta']['images'][0]['id'] ?? false;
+
+        if (wp_get_attachment_image($image_id, 'thumbnail')) {
+            $data['featured_media'] = (int) $image_id;
+        }
+
+        return $data;
     }
 }
