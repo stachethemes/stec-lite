@@ -138,20 +138,21 @@ EventsWorker.prototype._getEventOccurences = function ({
 }
 
 /**
- * * EVENTS ARE SORTED BY DATE OLDEST TO NEWEST
- * * EVENTS INCLUDE .pos PROPERTY WHICH DEFINES THE EVENTS POSITION IN THE CELL (1st, 2nd etc...)
- * * RANGES ARE EXPECTED TO BE CONVERTED IN UTC TIMEZONE
+ * EVENTS ARE SORTED BY DATE OLDEST TO NEWEST
+ * EVENTS INCLUDE .pos PROPERTY WHICH DEFINES THE EVENTS POSITION IN THE CELL (1st, 2nd etc...)
+ * RANGES ARE EXPECTED TO BE CONVERTED IN UTC TIMEZONE
  */
 EventsWorker.prototype.getEventsBetween = function () {
 
     const rangeStartMoment = moment.utc(this.params.startRange);
     const rangeEndMoment = moment.utc(this.params.endRange);
+    const inRelativeTimezone = false === this.params.showInUserTimezone ? true : false;
 
     const eventsInRange = [];
     let returnEventsData = [];
 
     /**
-     * * STEP 1: GET EVENTS FOR GIVEN RANGE AND TEST AGAINST FILTER PARAMS
+     * STEP 1: GET EVENTS FOR GIVEN RANGE AND TEST AGAINST FILTER PARAMS
      */
     for (let i in this.params.events) {
 
@@ -170,8 +171,10 @@ EventsWorker.prototype.getEventsBetween = function () {
 
             const event = eventOccurences[eoIndex];
 
-            const eventStartMoment = moment.utc(event.meta.start_date_utc);
-            const eventEndMoment = moment.utc(event.meta.end_date_utc);
+            const eventStartMomentUtc = moment.utc(event.meta.start_date_utc);
+            const eventEndMomentUtc = moment.utc(event.meta.end_date_utc);
+            const eventStartMoment = inRelativeTimezone ? moment.utc(event.meta.start_date) : moment.utc(event.meta.start_date_utc);
+            const eventEndMoment = inRelativeTimezone ? moment.utc(event.meta.end_date) : moment.utc(event.meta.end_date_utc);
 
             const eventStartUnix = eventStartMoment.unix();
             const eventEndUnix = eventEndMoment.unix();
@@ -185,6 +188,7 @@ EventsWorker.prototype.getEventsBetween = function () {
             ) {
 
                 let shouldPush = true;
+                const allowIntersections = this.params.minMaxIntersect;
 
                 // Check if minDate or maxDate are present and if so, check if event is within the range
                 // minDate and maxDate are expected to be in UTC time
@@ -194,18 +198,32 @@ EventsWorker.prototype.getEventsBetween = function () {
 
                     const minDateMoment = moment.utc(this.params.minDate);
 
-                    if (eventStartMoment.isBefore(minDateMoment)) {
-                        shouldPush = false;
+                    if (allowIntersections) {
+                        if (eventEndMomentUtc.isBefore(minDateMoment)) {
+                            shouldPush = false;
+                        }
+                    } else {
+                        if (eventStartMomentUtc.isBefore(minDateMoment)) {
+                            shouldPush = false;
+                        }
                     }
+
                 }
 
                 if (shouldPush && this.params.maxDate) {
 
                     const maxDateMoment = moment.utc(this.params.maxDate);
 
-                    if (eventStartMoment.isAfter(maxDateMoment)) {
-                        shouldPush = false;
+                    if (allowIntersections) {
+                        if (eventStartMomentUtc.isAfter(maxDateMoment)) {
+                            shouldPush = false;
+                        }
+                    } else {
+                        if (eventStartMomentUtc.isAfter(maxDateMoment)) {
+                            shouldPush = false;
+                        }
                     }
+
                 }
 
                 if (Array.isArray(this.params.filters) && this.params.filters.length > 0) {
@@ -299,7 +317,7 @@ EventsWorker.prototype.getEventsBetween = function () {
     }
 
     /**
-     * * STEP 1.1
+     * STEP 1.1
      * Retrieve all events with recurrence_id
      * and delete the original event on that date (recurrence_id date) from eventsInRange
      * since we will be using the event with the recurrence_id event instead
@@ -332,7 +350,7 @@ EventsWorker.prototype.getEventsBetween = function () {
     }
 
     /**
-     * * STEP 2: SORT EVENTS OLDEST -> NEWEST, unless order (asc/desc) param is set
+     * STEP 2: SORT EVENTS OLDEST -> NEWEST, unless order (asc/desc) param is set
      */
     const sortedEvents = eventsInRange.sort((a, b) => {
         let mA = moment.utc(a.meta.start_date_utc);
@@ -361,18 +379,20 @@ EventsWorker.prototype.getEventsBetween = function () {
     });
 
     /**
-     * * STEP 3 (CONDITIONAL)
-     * * STORE EVENTS IN MULTI-ARRAY BY YMD KEYS
+     * STEP 3 (CONDITIONAL)
+     * STORE EVENTS IN MULTI-ARRAY BY YMD KEYS
      */
     if (true === this.params.sortEventsInYMDkeys) {
+
+        const inRelativeTimezone = false === this.params.showInUserTimezone ? true : false;
 
         const eventsInDaysKeys = {};
         const dow = this.params.dow; // first day of the week 0 - 6 (Sunday to Saturday)
 
         // calculate start and end iterator dates
         // +/- 1 day is added to compensate for timezones offsets
-        const dayIterator = moment.utc(rangeStartMoment).local();
-        const iteratorEndDate = moment.utc(rangeEndMoment).local();
+        const dayIterator = inRelativeTimezone ? moment.utc(rangeStartMoment) : moment.utc(rangeStartMoment).local();
+        const iteratorEndDate = inRelativeTimezone ? moment.utc(rangeEndMoment) : moment.utc(rangeEndMoment).local();
 
         const normalizerCount = 7;
         let normalizerIterator = 0;
@@ -390,10 +410,10 @@ EventsWorker.prototype.getEventsBetween = function () {
 
             eventsInDaysKeys[key] = [];
 
-            sortedEvents.forEach((event, i) => {
+            sortedEvents.forEach(event => {
 
-                const eventMomentStart = moment.utc(event.meta.start_date_utc).local();
-                const eventMomentEnd = moment.utc(event.meta.end_date_utc).local();
+                const eventMomentStart = inRelativeTimezone ? moment.utc(event.meta.start_date) : moment.utc(event.meta.start_date_utc).local();
+                const eventMomentEnd = inRelativeTimezone ? moment.utc(event.meta.end_date) : moment.utc(event.meta.end_date_utc).local();
 
                 event.local_start = eventMomentStart.format('DD,MMM HH:mm');
                 event.local_end = eventMomentEnd.format('DD,MMM HH:mm');
@@ -506,6 +526,7 @@ EventsWorker.prototype.getEventsFilters = function () {
                             id: event.calendar.id,
                             label: event.calendar.title,
                             color: event.calendar.color,
+                            timezone: event.calendar.timezone,
                             active: true
                         });
                     }
@@ -622,6 +643,8 @@ EventsWorker.prototype.getEventsFilters = function () {
 
 /**
  * Retrieve events by search text. 
+ * Used primary for event attendance available dates
+ * WARNING:: TREAT EVERYTHING AS IN UTC TIMEZONE !!!
  */
 EventsWorker.prototype.getWorkerEventsSearchByText = function () {
 
