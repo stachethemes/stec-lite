@@ -307,11 +307,11 @@ const ComparisonTable = () => {
                     {__('Comparison Table', 'stachethemes_event_calendar_lite')}
                 </StecDiv>
                 <StecDiv className='stec-comparison-table-header-item'>
-                    <StecSpan>{__('stachethemes_event_calendar_lite', 'stachethemes_event_calendar_lite')}</StecSpan>
+                    <StecSpan>{__('STEC', 'stachethemes_event_calendar_lite')}</StecSpan>
                     <StecSpan>{__('Lite')}</StecSpan>
                 </StecDiv>
                 <StecDiv className='stec-comparison-table-header-item'>
-                    {__('stachethemes_event_calendar_lite', 'stachethemes_event_calendar_lite')}
+                    {__('STEC', 'stachethemes_event_calendar_lite')}
                 </StecDiv>
             </StecDiv>
 
