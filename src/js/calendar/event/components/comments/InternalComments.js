@@ -4,7 +4,7 @@ import { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
 import Pagination from '@Stec/CommonComponents/Pagination';
 import { newApiGet, newApiPost } from '@Stec/JS/api';
 import { useSettingsAtt } from '@Stec/JS/calendar/hooks';
-import { beautifyDate, getTzAbbr } from '@Stec/JS/helpers';
+import { beautifyDate, getUtcOffset } from '@Stec/JS/helpers';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { __ } from '@wordpress/i18n';
 import { useEffect, useRef, useState } from 'react';
@@ -141,10 +141,7 @@ const Comment = ({ replyTo, setReplyTo, theCommentForm, comment, event }) => {
 
         if (showTzOffset) {
 
-            const displayedTimezone = getTzAbbr(commentDateInEventTimezone, {
-                userTime: showInUserTimezone,
-                timezone: event.meta.timezone
-            });
+            const displayedTimezone = getUtcOffset(commentDateInEventTimezone);
             
             submitDateString = `${submitDateString} (${displayedTimezone})`;
         }

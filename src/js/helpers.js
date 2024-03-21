@@ -16,6 +16,22 @@ export const getMediaSizes = () => {
 
 }
 
+/**
+ * * Replaces getTzAbbr
+ */
+export const getUtcOffset = (momentObject) => {
+    const UTCOffset = momentObject.utcOffset() / 60;
+
+    if (UTCOffset === 0) {
+        return 'UTC';
+    }
+
+    return `UTC${UTCOffset > 0 ? '+' : ''}${UTCOffset}`;
+}
+
+/**
+ * ! Pending removal
+ */
 export const getTzAbbr = (momentObject, {
     timezone = 'UTC',
     userTime = false
@@ -249,7 +265,7 @@ export const beautifyEventTimespan = ({
     fullMonth = false,
     forceHideEnd = false,
     showInUserTimezone = false,
-    print = false // whether the date is for print mode
+    print = false, // whether the date is for print mode
 }) => {
 
     const startMoment = moment.tz(event.meta.start_date, event.meta.timezone);
@@ -330,10 +346,7 @@ export const beautifyEventTimespan = ({
 
     if (showUtcOffset) {
 
-        const displayedTimezone = getTzAbbr(startMoment, {
-            userTime: showInUserTimezone,
-            timezone: event.meta.timezone
-        });
+        const displayedTimezone = getUtcOffset(startMoment);
 
         returnDate.push(`(${displayedTimezone})`);
     }

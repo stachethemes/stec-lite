@@ -6,7 +6,7 @@ import ListManager from '@Stec/CommonComponents/ListManager';
 import Spacer from '@Stec/CommonComponents/Spacer';
 import { newApiDelete, newApiPost, newApiPut } from '@Stec/JS/api.js';
 import { useDashboardMenu } from '@Stec/JS/dashboard/hooks.js';
-import { beautifyDate, canModerateCalendar, getTzAbbr } from '@Stec/JS/helpers';
+import { beautifyDate, canModerateCalendar, getUtcOffset } from '@Stec/JS/helpers';
 import { usePostItems } from '@Stec/JS/hooks';
 import { __, _x } from '@wordpress/i18n';
 import { cloneDeep } from 'lodash';
@@ -739,10 +739,7 @@ const ManageEventsReady = (props) => {
 
         if (showTzOffset) {
 
-            const displayedTimezone = getTzAbbr(dateMoment, {
-                userTime: showInUserTimezone,
-                timezone: eventTimezone
-            });
+            const displayedTimezone = getUtcOffset(dateMoment);
 
             displayDate = `${displayDate} (${displayedTimezone})`;
         }

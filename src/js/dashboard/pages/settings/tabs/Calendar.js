@@ -285,8 +285,8 @@ function Calendar({ settings }) {
 
                 <UncontrolledInputCheckbox
                     defaultValue={settingsCalendar.show_tz_offset}
-                    title={__('Show timezone abbreviation', 'stachethemes_event_calendar_lite')}
-                    description={__(`Display timezone abbreviation next to the time`, 'stachethemes_event_calendar_lite')}
+                    title={__('Show UTC Offset', 'stec')}
+                    description={__(`Display UTC Offset next to the time`, 'stec')}
                     onChange={value => {
                         settingsCalendar.show_tz_offset = value;
                     }}

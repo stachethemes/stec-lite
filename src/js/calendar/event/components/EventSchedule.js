@@ -1,7 +1,7 @@
-import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { beautifyDate, getMonthLabel, getEventMomentWithOffset, getTzAbbr } from '@Stec/JS/helpers';
 import Thumbnail from '@Stec/CommonComponents/Thumbnail';
 import { useSettingsAtt } from '@Stec/JS/calendar/hooks';
+import { beautifyDate, getEventMomentWithOffset, getMonthLabel, getUtcOffset } from '@Stec/JS/helpers';
+import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { useState } from 'react';
 
 const ScheduleItem = ({ schedule, offset, eventTimezone }) => {
@@ -24,10 +24,7 @@ const ScheduleItem = ({ schedule, offset, eventTimezone }) => {
 
     if (showTzOffset) {
 
-        const displayedTimezone = getTzAbbr(scheduleMoment, {
-            userTime: showInUserTimezone,
-            timezone: eventTimezone
-        });
+        const displayedTimezone = getUtcOffset(scheduleMoment);
 
         dateString = `${dateString} (${displayedTimezone})`;
     }
