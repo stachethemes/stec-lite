@@ -27,7 +27,7 @@ class Admin_Menu {
         add_menu_page(
             'STEC Lite',
             'STEC Lite',
-            self::$capability,
+            apply_filters('stec_admin_menu_capability', self::$capability),
             'stec_lite',
             '',
             plugins_url('assets/images/dashicon.png', STEC_LITE_PLUGIN_FILE),
@@ -47,23 +47,23 @@ class Admin_Menu {
             'stec_lite',
             esc_html__('Settings', 'stachethemes_event_calendar_lite'),
             esc_html__('Settings', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
-            admin_url('admin.php?page=stec_dashboard#settings'),
+            'manage_stec_settings',
+            admin_url('admin.php?page=stec_dashboard#settings')
         );
 
         add_submenu_page(
             'stec_lite',
             esc_html__('Calendars', 'stachethemes_event_calendar_lite'),
             esc_html__('Calendars', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
-            admin_url('admin.php?page=stec_dashboard#calendars-list'),
+            'manage_stec_cal',
+            admin_url('admin.php?page=stec_dashboard#calendars-list')
         );
 
         add_submenu_page(
             'stec_lite',
             esc_html__('Events', 'stachethemes_event_calendar_lite'),
             esc_html__('Events', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
+            'manage_stec_event',
             admin_url('admin.php?page=stec_dashboard#events-list'),
         );
 
@@ -71,15 +71,16 @@ class Admin_Menu {
             'stec_lite',
             esc_html__('Categories', 'stachethemes_event_calendar_lite'),
             esc_html__('Categories', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
+            'manage_stec_cat',
             admin_url('admin.php?page=stec_dashboard#categories-list'),
         );
+
 
         add_submenu_page(
             'stec_lite',
             esc_html__('Organizers', 'stachethemes_event_calendar_lite'),
             esc_html__('Organizers', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
+            'manage_stec_org',
             admin_url('admin.php?page=stec_dashboard#organizers-list'),
         );
 
@@ -87,7 +88,7 @@ class Admin_Menu {
             'stec_lite',
             esc_html__('Guests', 'stachethemes_event_calendar_lite'),
             esc_html__('Guests', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
+            'manage_stec_gst',
             admin_url('admin.php?page=stec_dashboard#guests-list'),
         );
 
@@ -95,7 +96,7 @@ class Admin_Menu {
             'stec_lite',
             esc_html__('Locations', 'stachethemes_event_calendar_lite'),
             esc_html__('Locations', 'stachethemes_event_calendar_lite'),
-            apply_filters('stec_admin_menu_capability', self::$capability),
+            'manage_stec_loc',
             admin_url('admin.php?page=stec_dashboard#locations-list'),
         );
 
