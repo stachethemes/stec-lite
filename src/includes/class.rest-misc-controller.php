@@ -72,63 +72,24 @@ class Rest_Misc_Controller {
 
     public function get_dashboard_posts_count($post_type, $args = array()) {
 
-        $meta_filter = array();
-        $query_args  = array(
-            'fields'        => 'ids',
-            'post_type'     => $post_type,
-            'post_status'   => 'publish',
-            'meta_query'    => array(
-                'relation' => 'AND',
-                &$meta_filter
-            )
-        );
+        if ('stec_event' === $post_type) {
+            $result = Events::get_rest_events(
+                array(
+                    'fields'          => 'ids',
+                    'context'         => 'view',
+                    'permission_type' => 'edit_permission',
+                    'lang'            => isset($args['lang']) ? $args['lang'] : ''
+                )
+            );
 
-        if (false === Permissions::get_is_super()) {
-
-            switch ($post_type) {
-
-                case 'stec_event': {
-
-                        // When private permissions are enforced
-                        // only show events from this user
-                        if (Helpers::is_enforce_private_permission('edit_permission')) {
-
-                            $meta_filter[] = array(
-                                array(
-                                    'key'     => 'author',
-                                    'value'   => get_current_user_id(),
-                                    'compare' => '='
-                                )
-                            );
-                        } else {
-
-                            $meta_filter[] = array(
-                                'relation' => 'OR',
-                                array(
-                                    'key'     => 'edit_permission',
-                                    'value'   => Permissions::get_user_permissions_list(),
-                                    'compare' => 'IN'
-                                ),
-                                array(
-                                    'key'     => 'author',
-                                    'value'   => get_current_user_id(),
-                                    'compare' => '='
-                                )
-                            );
-                        }
-                    }
+            if (is_wp_error($result)) {
+                return 0;
             }
+
+            return count($result);
         }
 
-        $query = new \WP_Query(
-            $query_args
-        );
-
-        if (is_wp_error($query)) {
-            return 0;
-        }
-
-        return $query->found_posts;
+        return 0;
     }
 
     public function get_dashboard_terms_count($taxonomy, $args = array()) {
