@@ -277,7 +277,7 @@ class Stachethemes_Event_Calendar {
         if (!wp_style_is('font-awesome', 'registered')) {
             wp_register_style(
                 'font-awesome',
-                STEC_LITE_PLUGIN_URL . 'includes/libs/fontawesome-free-6.4.2-web/css/all.min.css',
+                STEC_LITE_PLUGIN_URL . 'includes/libs/fontawesome-free-6.5.1-web/css/all.min.css',
                 array(),
                 STEC_LITE_PLUGIN_VERSION
             );
