@@ -1035,6 +1035,18 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $items->set_data($items_data);
         }
 
+        $fields = $request->get_param('fields');
+
+        // ? @todo check for better solution if possible
+        if ($fields === 'ids') {
+            $items_data = $items->get_data();
+            $items_ids = array_map(function ($item) {
+                return $item['id'];
+            }, $items_data);
+
+            $items->set_data($items_ids);
+        }
+
         $items = apply_filters('stec_event_controller_get_items', $items, $request);
 
         return $items;
