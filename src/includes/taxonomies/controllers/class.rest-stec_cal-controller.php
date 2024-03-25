@@ -72,6 +72,10 @@ class Rest_Stec_Cal_Controller extends \WP_REST_Terms_Controller {
 
         $data = $request->get_json_params();
 
+        $old_author = get_term_meta($request->get_param('id'), 'author', true);
+        $new_author = $data['meta']['author'];
+        $is_changing_author = $old_author !== $new_author;
+
         $old_timezone = get_term_meta($request->get_param('id'), 'timezone', true);
         $new_timezone = $data['meta']['timezone'];
 
@@ -118,7 +122,30 @@ class Rest_Stec_Cal_Controller extends \WP_REST_Terms_Controller {
 
                 update_post_meta($post_id, 'start_date_utc', $event_start_date_utc);
                 update_post_meta($post_id, 'end_date_utc', $event_end_date_utc);
+            }
+        }
 
+        // if is changing author refresh events super meta
+        if ($is_changing_author) {
+
+            // get all stec_event posts ids that has super equals to $old_author
+            $events = get_posts(array(
+                'fields'         => 'ids',
+                'post_type'      => 'stec_event',
+                'posts_per_page' => -1,
+                'meta_query'      => array(
+                    array(
+                        'key'     => 'super',
+                        'value'   => $old_author,
+                        'compare' => '='
+                    )
+                )
+            ));
+
+            if (!is_wp_error($events)) {
+                foreach ($events as $events_id) {
+                    update_post_meta($events_id, 'super', $new_author);
+                }
             }
         }
 
