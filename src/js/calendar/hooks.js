@@ -12,6 +12,7 @@ import { __ } from '@wordpress/i18n';
 import { isNumber } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from "recoil";
+import { getPluginUrl } from '@Stec/JS/helpers';
 
 export const useCalendarScreenType = (ref) => {
 
@@ -784,8 +785,11 @@ export const useRequestOpenStreetMapLib = () => {
 
         if (false === exists && true !== window.STEC_FORCE_DISABLE?.open_street_map) {
 
+            const leafletJsSource = getPluginUrl('assets/js/libs/leaflet/leaflet.js');
+            const leafletCssSource = getPluginUrl('assets/js/libs/leaflet/leaflet.css');
+
             script = document.createElement('script');
-            script.src = "https://unpkg.com/leaflet@1.9.3/dist/leaflet.js";
+            script.src = leafletJsSource;
             script.async = true;
             document.body.appendChild(script);
             script.onload = () => {
@@ -794,17 +798,16 @@ export const useRequestOpenStreetMapLib = () => {
                 }
             }
 
-            style = document.createElement('link')
-            style.href = 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css'
-            style.type = 'text/css'
-            style.rel = 'stylesheet'
+            style = document.createElement('link');
+            style.href = leafletCssSource;
+            style.type = 'text/css';
+            style.rel = 'stylesheet';
             document.getElementsByTagName('head')[0].append(style);
 
             style.onload = () => {
                 setCssReady(true);
             }
         }
-
 
         return () => {
 
