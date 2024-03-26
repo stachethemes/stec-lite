@@ -38,8 +38,8 @@ class Widget_Events_Slider {
 
         add_action('wp_footer', function () use ($name, $atts) {
             echo '<script type="text/javascript">';
-            printf('if (typeof window.%1$sInstances === "undefined") { window.%1$sInstances = []; }', $name);
-            printf('window.%sInstances.push(%s);', $name, wp_json_encode($atts));
+            printf('if (typeof window.%1$sInstances === "undefined") { window.%1$sInstances = []; }', esc_attr($name));
+            printf('window.%sInstances.push(%s);', esc_attr($name), wp_json_encode($atts));
             echo '</script>';
         });
     }

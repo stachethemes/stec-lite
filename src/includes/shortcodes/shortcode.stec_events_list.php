@@ -177,8 +177,8 @@ class Shortcode_Stec_Events_List {
                 window.stecPrefetchedEvents = {};
             }
 
-            if (typeof <?php printf('window.stecPrefetchedEvents["%s"]', $request_hash) ?> === 'undefined') {
-                <?php printf('window.stecPrefetchedEvents["%s"]', $request_hash) ?> = <?php echo wp_json_encode($events); ?>;
+            if (typeof <?php printf('window.stecPrefetchedEvents["%s"]', esc_js($request_hash)) ?> === 'undefined') {
+                <?php printf('window.stecPrefetchedEvents["%s"]', esc_js($request_hash)) ?> = <?php echo wp_json_encode($events); ?>;
             }
         </script>
     <?php
@@ -245,7 +245,7 @@ class Shortcode_Stec_Events_List {
             $shortcode_atts['prefetched_events_hash'] = self::get_prefetched_events_hash($shortcode_atts);
         }
 
-        printf('<div id="%s" class="stec-widget-events-list"></div>', $shortcode_atts['id']);
+        printf('<div id="%s" class="stec-widget-events-list"></div>', esc_attr($shortcode_atts['id']));
 
     ?>
 

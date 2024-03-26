@@ -258,13 +258,13 @@ class Settings {
             'dashboard' => array(
                 'access'                 => array('stec_logged_in'),
                 'manage_settings'        => array('administrator'),
-               
+
                 'manage_stec_cal'        => array('administrator'),
                 'manage_stec_cat'        => array('administrator'),
                 'manage_stec_loc'        => array('administrator'),
                 'manage_stec_org'        => array('administrator'),
                 'manage_stec_gst'        => array('administrator'),
-                
+
                 'manage_events'          => array('administrator'),
                 'in_calendar'            => true,
                 'wpmedia'                => false,
@@ -386,6 +386,36 @@ class Settings {
         }
 
         return $safe_return;
+    }
+
+    public static function get_general_css() {
+
+        $CSS = self::get('fac');
+
+        if (array_key_exists('custom-style', $CSS)) {
+            $CUSTOM_STYLE = $CSS['custom-style'];
+            unset($CSS['custom-style']);
+        } else {
+            $CUSTOM_STYLE = '';
+        }
+
+        $CSS_ARRAY = array();
+
+        $CSS_ARRAY[] = ':root {';
+
+        foreach ($CSS as $var => $value) {
+            $CSS_ARRAY[] = sprintf('--stec-%s:%s;', $var, $value);
+        }
+
+        $CSS_ARRAY[] = '}';
+
+        if ($CUSTOM_STYLE) {
+            $CSS_ARRAY[] = $CUSTOM_STYLE;
+        }
+
+        $CSS_ARRAY_CONTENT = implode('', $CSS_ARRAY);
+
+        return $CSS_ARRAY_CONTENT;
     }
 }
 

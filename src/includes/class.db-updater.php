@@ -94,7 +94,7 @@ class Db_Updater {
         add_action('admin_notices', function () use ($install_version) {
             printf('<div class="notice notice-success is-dismissible"><p>%s</p></div>', sprintf(
                 esc_html__('Stachethemes Event Calendar database is up to date. Current version: %s', 'stachethemes_event_calendar_lite'),
-                $install_version
+                esc_attr($install_version)
             ));
         });
     }

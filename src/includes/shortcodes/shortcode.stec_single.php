@@ -37,7 +37,6 @@ class Shortcode_Stec_Single {
                 )
             );
         }
-
     }
 
     public static function load_scripts($force = false) {
@@ -176,7 +175,7 @@ class Shortcode_Stec_Single {
         $shortcode_atts = apply_filters('stec_single_shortcode_atts', $atts);
 
         ob_start();
-        printf('<div id="%s" class="stec-single-page"></div>', $shortcode_atts['id']);
+        printf('<div id="%s" class="stec-single-page"></div>', esc_attr($shortcode_atts['id']));
         self::register_single_instance($shortcode_atts);
         return ob_get_clean();
     }

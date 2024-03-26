@@ -62,7 +62,7 @@ class Stachethemes_Event_Calendar {
                     esc_html__('%1$s is already installed. Please deactivate it before activating %2$s %3$s.', 'stachethemes_event_calendar_lite'),
                     '<strong>' . esc_html__('Stachethemes Event Calendar', 'stachethemes_event_calendar_lite') . '</strong>',
                     '<strong>' . esc_html__('Stachethemes Event Calendar Lite', 'stachethemes_event_calendar_lite') . '</strong>',
-                    '<strong>' . $this->version . '</strong>'
+                    '<strong>' . esc_attr($this->version) . '</strong>'
                 ));
             });
 
@@ -75,15 +75,12 @@ class Stachethemes_Event_Calendar {
         add_filter('script_loader_tag', array($this, 'add_script_attributes'), 10, 2);
         add_filter('style_loader_tag', array($this, 'add_style_attributes'), 10, 4);
         add_action('wp_enqueue_scripts', array($this, 'register_dep_script_hooks'), 5);
-        add_action('wp_enqueue_scripts', array($this, 'register_dep_style_hooks'), 5);
         add_action('admin_enqueue_scripts', array($this, 'register_dep_script_hooks'), 5);
         add_action('wp_footer', array($this, 'register_js_constants'), 10);
         add_action('admin_footer', array($this, 'register_js_constants'), 10);
         add_action('wp_head', array($this, 'load_font_awesome'), 10);
         add_action('admin_head', array($this, 'load_font_awesome'), 10);
-
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_general_css'), 11);
-
+        add_action('wp_head', array($this, 'enqueue_general_css'), 11);
         add_action('wp_ajax_stec_rest_nonce', array($this, 'return_rest_nonce_response'));
         add_action('wp_ajax_nopriv_stec_rest_nonce', array($this, 'return_rest_nonce_response'));
 
@@ -141,13 +138,12 @@ class Stachethemes_Event_Calendar {
     }
 
     /**
-     * Enqueue general css and css variables
-     * filter stec_force_general_css can be used to force general css enqueue
+     * Insert general css and css variables
      */
     public function enqueue_general_css() {
-
         if ($this->has_calendar_entries() || apply_filters('stec_force_general_css', false)) {
-            wp_enqueue_style('stec-css-dependencies');
+            $css = Settings::get_general_css();
+            printf('<style>%s</style>', esc_js($css));
         }
     }
 
@@ -254,10 +250,6 @@ class Stachethemes_Event_Calendar {
         $constants = apply_filters('stec_js_constants', $constants);
 
         printf('<script type="text/javascript">const STEC_VARIABLES = %s;</script>', wp_json_encode($constants));
-    }
-
-    public function register_dep_style_hooks() {
-        wp_register_style('stec-css-dependencies', STEC_LITE_PLUGIN_URL . 'includes/general-css.php', array(), STEC_LITE_PLUGIN_VERSION);
     }
 
     public function register_dep_script_hooks() {

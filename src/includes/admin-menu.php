@@ -132,9 +132,10 @@ class Admin_Menu {
                 'id' => 'stec-admin-dashboard'
             );
 
-            $script = sprintf('window.stecDashboardInstances = window.stecDashboardInstances || []; window.stecDashboardInstances.push(%s);', wp_json_encode($instance));
-
-            printf('<script type="text/javascript">%s</script>', $script);
+            printf(
+                '<script type="text/javascript">%s</script>',
+                sprintf('window.stecDashboardInstances = window.stecDashboardInstances || []; window.stecDashboardInstances.push(%s);', wp_json_encode($instance))
+            );
         }
     }
 }

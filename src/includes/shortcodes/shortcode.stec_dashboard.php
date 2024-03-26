@@ -98,7 +98,7 @@ class Shortcode_Stec_Dashboard {
             }
         }
 
-        printf('<div id="%s"></div>', $shortcode_atts['id']);
+        printf('<div id="%s"></div>', esc_attr($shortcode_atts['id']));
 
 ?>
 
