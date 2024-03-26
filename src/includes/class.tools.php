@@ -8,6 +8,10 @@ if (!defined('ABSPATH')) {
 
 class Tools {
 
+    private static function _safe($value) {
+        return $value;
+    }
+
     public static function log($msg) {
 
         $PRETEXT = 'STEC LOG:: ';
@@ -17,7 +21,7 @@ class Tools {
 
             ob_start();
 
-            print_r($msg);
+            print_r(self::_safe($msg));
 
             $log = ob_get_clean();
         } else {
@@ -75,5 +79,4 @@ class Tools {
     public static function delete_settings() {
         delete_option('stec_settings');
     }
-
 }
