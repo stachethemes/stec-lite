@@ -12,7 +12,7 @@ function EventSlideBoxGrid({ event, widgetProps }) {
         eventStartMoment.local();
     }
 
-    const year = eventStartMoment.year(); 
+    const year = eventStartMoment.year();
     const date = eventStartMoment.date();
     const monthNum = eventStartMoment.month();
     const monthLabel = getMonthLabel(monthNum, 'short');
