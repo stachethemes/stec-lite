@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Helpers {
 
     public static function get_file_contents($file) {

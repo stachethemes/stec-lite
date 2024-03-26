@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 /**
  * [stec] Shortcode class
  */

@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Admin_Menu {
 
     private static $capability = 'stec_access_dashboard';

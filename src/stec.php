@@ -3,8 +3,8 @@
 namespace Stachethemes\Steclite;
 
 if (!defined('ABSPATH')) {
-    wp_die('-1');
-}
+    exit;
+};
 
 define('STEC_LITE_PLUGIN_FILE', __FILE__);
 

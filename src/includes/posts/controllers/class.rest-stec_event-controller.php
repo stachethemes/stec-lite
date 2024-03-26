@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
     use Rest_Post_Traits;

@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Taxonomy_Stec_Org {
 
     use Taxonomy_Trait_Helpers;

@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 trait Shortcode_Force_Load {
 
     public static function scripts_are_forced($shortcode) {

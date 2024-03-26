@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 /**
  * This trait includes labels that may or may not be used somewhere in WordPress
  * and includes the capabilities filter

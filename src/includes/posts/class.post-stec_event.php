@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Post_Types_Stec_Event {
 
     use Post_Trait_Helpers;

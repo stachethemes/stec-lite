@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/shortcodes/trait.attributes.php';
 include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/shortcodes/trait.force-load.php';
 include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/shortcodes/trait.helpers.php';

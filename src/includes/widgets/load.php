@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 // Gutenberg blocks
 
 include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/widgets/widget.stec.php';

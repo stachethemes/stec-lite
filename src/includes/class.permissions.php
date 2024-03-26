@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 /**
  * Permission class 
  * This class is used to determine whether the user has access to certain calendar features such as

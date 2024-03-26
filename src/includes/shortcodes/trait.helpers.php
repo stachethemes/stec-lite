@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 trait Shortcode_Helpers {
 
     public static function has_shortcode($shortcode) {

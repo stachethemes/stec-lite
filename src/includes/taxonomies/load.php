@@ -2,6 +2,9 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
 
 /**
  * Register taxonomies

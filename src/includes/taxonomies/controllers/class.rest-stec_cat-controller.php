@@ -2,6 +2,10 @@
 
 namespace Stachethemes\Steclite;
 
+if (!defined('ABSPATH')) {
+    exit;
+};
+
 class Rest_Stec_Cat_Controller extends \WP_REST_Terms_Controller {
 
     use Rest_Taxonomy_Traits;
