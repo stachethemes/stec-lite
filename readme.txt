@@ -60,7 +60,7 @@ How to display the plugin on the front-end?
 - **TinyMCE**: Used as a Text editor for the events description.
 - **Google Maps**: Map provider.
 - **OpenStreetMap**: Map provider.
-- Thanks to **Jakub Roztocil** for his RRule JavaScript library https://github.com/jkbrzt/rrule .
+- Thanks to **Jakub Roztocil** for the RRule JavaScript library https://github.com/jkbrzt/rrule .
 - Thanks to **Volodymyr Agafonkin** for the Leaflet JavaScript library https://leafletjs.com/ .
 - Thanks to the **Automatic team** for making this project possible.
 

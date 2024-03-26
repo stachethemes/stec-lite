@@ -10,13 +10,13 @@ Stachethemes Event Calendar Lite a free version of the plugin with some function
 
 ### Credits
 
-- **Font Awesome**: Used for icons throughout the plugin.
-- **TinyMCE**: Used as a Text editor for the events description.
-- **Google Maps**: Map provider.
-- **OpenStreetMap**: Map provider.
-- Thanks to **Jakub Roztocil** for his RRule JavaScript library https://github.com/jkbrzt/rrule .
-- Thanks to **Volodymyr Agafonkin** for the Leaflet JavaScript library https://leafletjs.com/ .
-- Thanks to the **Automatic team** for making this project possible.
+- [**Font Awesome**](https://fontawesome.com/): Used for icons throughout the plugin.
+- [**TinyMCE**](https://www.tiny.cloud/): Used as a Text editor for the events description.
+- [**Google Maps**](https://www.google.com/maps): Map provider.
+- [**OpenStreetMap**](https://www.openstreetmap.org/): Map provider.
+- Thanks to [**Jakub Roztocil**](https://github.com/jkbrzt/rrule) for the RRule JavaScript library https://github.com/jkbrzt/rrule .
+- Thanks to [**Volodymyr Agafonkin**](https://leafletjs.com/) for the Leaflet JavaScript library https://leafletjs.com/ .
+- Thanks to the [**Automatic team**](https://automattic.com/) for making this project possible.
 
 ## Third Party Services
 
