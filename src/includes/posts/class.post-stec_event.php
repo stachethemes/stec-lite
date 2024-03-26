@@ -47,7 +47,7 @@ class Post_Types_Stec_Event {
                     'content'  => array(),
                 ),
             );
-            
+
             echo wp_kses($custom_og, $allowed_html);
 
             return;
@@ -878,7 +878,13 @@ class Post_Types_Stec_Event {
 
         // * Call [stec_single] shortcode
         $start_date = get_query_var('stec_event_start_date', '');
-        $content    = do_shortcode(sprintf('[stec_single event_id="%s" offset_date="%s" ]', $post->ID, $start_date));
+        $content    = do_shortcode(
+            sprintf(
+                '[stec_single event_id="%s" offset_date="%s" ]',
+                absint($post->ID),
+                sanitize_text_field($start_date)
+            )
+        );
 
         return $content;
     }
