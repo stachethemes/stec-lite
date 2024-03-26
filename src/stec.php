@@ -110,7 +110,6 @@ class Stachethemes_Event_Calendar {
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/widgets/load.php';
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/admin-menu.php';
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/class.helpers.php';
-        include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/class.cache.php';
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/class.settings.php';
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/install/load.php';
         include_once STEC_LITE_PLUGIN_ABS_PATH . 'includes/class.rest-misc-controller.php';
