@@ -1,19 +1,21 @@
-import { eventHasHealthMeasures, htmlEntities } from '@Stec/JS/helpers';
+import { eventHasHealthMeasures } from '@Stec/JS/helpers';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
+import { htmlEntities } from '@Stec/JS/helpers';
 import LiveTag from './LiveTag';
+
+import { __ } from '@wordpress/i18n';
 
 /**
  * Note: cancelled events don't display extra tags like categories, featured, health measures etc.
  */
-const EventTags = ({ event, size = '', includeCategories = true, style, context = 'view' }) => {
+const EventTags = ({ event, size = '', classes = '', includeCategories = true, style, context = 'view' }) => {
 
     const tagsList = [];
     const isEventCancelled = event.meta.event_status === 'EventCancelled';
 
     if (0 === event.meta.approved) {
         tagsList.push({
-            label: __('Pending Approval', 'stachethemes_event_calendar_lite'),
+            label: __('Pending Approval', 'stec'),
             color: '#fdb813'
         });
     }
@@ -22,14 +24,14 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
 
         if (event.meta.featured) {
             tagsList.push({
-                label: [<i key='icon' className='fas fa-star' />, ' ', __('Featured', 'stachethemes_event_calendar_lite')],
+                label: [<i key='icon' className='fas fa-star' />, ' ', __('Featured', 'stec')],
                 color: '#ed1c16'
             });
         }
 
         if (true === eventHasHealthMeasures(event)) {
             tagsList.push({
-                label: [<i key={'icon'} className='fas fa-shield-virus' />, ' ', __('Health measures', 'stachethemes_event_calendar_lite')],
+                label: [<i key={'icon'} className='fas fa-shield-virus' />, ' ', __('Health measures', 'stec')],
                 color: '#0093d0'
             });
         }
@@ -39,28 +41,28 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
     switch (event.meta.event_status) {
         case 'EventPostponed':
             tagsList.push({
-                label: __('Postponed', 'stachethemes_event_calendar_lite'),
+                label: __('Postponed', 'stec'),
                 color: '#eb9534'
             });
             break;
 
         case 'EventRescheduled':
             tagsList.push({
-                label: __('Rescheduled', 'stachethemes_event_calendar_lite'),
+                label: __('Rescheduled', 'stec'),
                 color: '#eb9534'
             });
             break;
 
         case 'EventMovedOnline':
             tagsList.push({
-                label: [<i key='icon' className='fas fa-wifi' />, ' ', __('Moved Online', 'stachethemes_event_calendar_lite')],
+                label: [<i key='icon' className='fas fa-wifi' />, ' ', __('Moved Online', 'stec')],
                 color: '#32a852'
             });
             break;
 
         case 'EventCancelled':
             tagsList.push({
-                label: __('Cancelled', 'stachethemes_event_calendar_lite'),
+                label: __('Cancelled', 'stec'),
                 color: '#f40009'
             });
             break;
@@ -77,8 +79,22 @@ const EventTags = ({ event, size = '', includeCategories = true, style, context 
         });
     }
 
+    const classNameArray = ['stec-tags-list'];
+
+    if (size) {
+        classNameArray.push(size);
+    }
+
+    if (classes) {
+        classNameArray.push(classes);
+    }
+
+    if (!Array.isArray(tagsList) || tagsList.length === 0) {
+        return null;
+    }
+
     return (
-        <StecDiv className={`stec-tags-list ${size}`} style={style}>
+        <StecDiv className={classNameArray.join(' ')} style={style}>
 
             <LiveTag event={event} />
 
