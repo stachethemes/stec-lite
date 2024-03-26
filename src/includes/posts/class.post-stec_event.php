@@ -35,7 +35,17 @@ class Post_Types_Stec_Event {
         $custom_og = apply_filters('stec_single_og', false, $post->ID);
 
         if (false !== $custom_og) {
-            echo $custom_og;
+
+            $allowed_html = array(
+                'meta' => array(
+                    'name'     => array(),
+                    'property' => array(),
+                    'content'  => array(),
+                ),
+            );
+            
+            echo wp_kses($custom_og, $allowed_html);
+
             return;
         }
 
@@ -60,7 +70,7 @@ class Post_Types_Stec_Event {
         );
 
         foreach ($og_tags as $tag => $value) {
-            echo '<meta property="' . $tag . '" content="' . esc_attr($value) . '" />' . PHP_EOL;
+            printf('<meta property="%s" content="%s" />' . PHP_EOL, esc_attr($tag), esc_attr($value));
         }
 
         // * Twitter
@@ -77,7 +87,7 @@ class Post_Types_Stec_Event {
             if ($value) {
                 $type_property = array('twitter:domain', 'twitter:url');
                 $type          = in_array($tag, $type_property) ? 'name' : 'property';
-                echo '<meta "' . $type . '"="' . $tag . '" content="' . esc_attr($value) . '" />' . PHP_EOL;
+                printf('<meta %s="%s" content="%s" />' . PHP_EOL, esc_attr($type), esc_attr($tag), esc_attr($value));
             }
         }
     }

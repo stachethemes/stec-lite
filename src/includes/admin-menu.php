@@ -105,7 +105,7 @@ class Admin_Menu {
             esc_html__('Upgrade', 'stachethemes_event_calendar_lite'),
             sprintf('<span id="stec-upgrade-menu-item" style="color: #34a853">%s</span>', esc_html__('Upgrade', 'stachethemes_event_calendar_lite')),
             apply_filters('stec_admin_menu_capability', self::$capability),
-            'https://codecanyon.net/item/stachethemes-event-calendar-wordpress-events-calendar-plugin/16168229?ref=Stachethemes',
+            esc_url('https://codecanyon.net/item/stachethemes-event-calendar-wordpress-events-calendar-plugin/16168229?ref=Stachethemes'),
         );
 
         unset($submenu['stec_lite'][0]);
