@@ -10,7 +10,7 @@ define('STEC_LITE_PLUGIN_FILE', __FILE__);
 
 class Stachethemes_Event_Calendar {
 
-    public $version = '5.2.7';
+    public $version = '5.2.8';
 
     private static $instance;
 
