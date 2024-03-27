@@ -784,12 +784,12 @@ class Post_Types_Stec_Event {
     public static function register_custom_post_status() {
 
         register_post_status('stec_archived', array(
-            'label'                     => esc_html_x('Archived', 'post'),
+            'label'                     => esc_html__('Archived', 'stachethemes_event_calendar_lite'),
             'public'                    => false,
             'exclude_from_search'       => true,
             'show_in_admin_all_list'    => true,
             'show_in_admin_status_list' => true,
-            'label_count'               => _n_noop('Archived (%s)', 'Archived (%s)'),
+            'label_count'               => _n_noop('Archived (%s)', 'Archived (%s)', 'stachethemes_event_calendar_lite'),
         ));
     }
 
