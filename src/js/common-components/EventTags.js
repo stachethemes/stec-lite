@@ -24,14 +24,14 @@ const EventTags = ({ event, size = '', classes = '', includeCategories = true, s
 
         if (event.meta.featured) {
             tagsList.push({
-                label: [<i key='icon' className='fas fa-star' />, ' ', __('Featured', 'stec')],
+                label: [<i key='icon' className='fas fa-star' />, __('Featured', 'stec')],
                 color: '#ed1c16'
             });
         }
 
         if (true === eventHasHealthMeasures(event)) {
             tagsList.push({
-                label: [<i key={'icon'} className='fas fa-shield-virus' />, ' ', __('Health measures', 'stec')],
+                label: [<i key={'icon'} className='fas fa-shield-virus' />, __('Health measures', 'stec')],
                 color: '#0093d0'
             });
         }
@@ -55,7 +55,7 @@ const EventTags = ({ event, size = '', classes = '', includeCategories = true, s
 
         case 'EventMovedOnline':
             tagsList.push({
-                label: [<i key='icon' className='fas fa-wifi' />, ' ', __('Moved Online', 'stec')],
+                label: [<i key='icon' className='fas fa-wifi' />, __('Moved Online', 'stec')],
                 color: '#32a852'
             });
             break;
@@ -72,7 +72,7 @@ const EventTags = ({ event, size = '', classes = '', includeCategories = true, s
         event.categories.forEach((cat) => {
 
             tagsList.push({
-                label: cat.icon ? [<i key='icon' className={cat.icon} />, ' ', cat.title] : cat.title,
+                label: cat?.thumbnail?.icon ? [<i key='icon' className={cat.thumbnail.icon} />, cat.title] : cat.title,
                 color: cat.color
             });
 
