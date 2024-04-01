@@ -11,7 +11,7 @@ const template = typeof window.STEC_CATEGORY_TEMPLATE !== 'undefined' ? window.S
         color: '#A7C7E7',
         thumbnail: {
             type: 'icon',
-            icon: 'fa-solid fa-folder',
+            icon: '',
             image: []
         },
         read_permission: ['stec_public'],

@@ -30,7 +30,7 @@ export const UncontrolledInputThumbType = (props) => {
             displaySettings = <IconPicker
                 title={__('Select icon', 'stachethemes_event_calendar_lite')}
                 value={currentValue.icon || ''}
-                description={__('Select icon for your thumbnail', 'stachethemes_event_calendar_lite')}
+                description={__('Select icon for your thumbnail. Type * to list all icons.', 'stachethemes_event_calendar_lite')}
                 onPick={(icon) => {
                     updateCurrentValue({ ...currentValue, icon: icon });
                 }}
@@ -96,7 +96,7 @@ export const InputThumbType = (props) => {
             displaySettings = <IconPicker
                 title={__('Select icon', 'stachethemes_event_calendar_lite')}
                 value={props.value.icon || ''}
-                description={__('Select icon for your thumbnail', 'stachethemes_event_calendar_lite')}
+                description={__('Select icon for your thumbnail. Type * to list all icons.', 'stachethemes_event_calendar_lite')}
                 onPick={(icon) => {
                     updateCurrentValue({ ...props.value, icon: icon });
                 }}
