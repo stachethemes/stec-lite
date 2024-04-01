@@ -16,7 +16,6 @@ Stachethemes Event Calendar Lite a free version of the plugin with some function
 - [**OpenStreetMap**](https://www.openstreetmap.org/): Map provider.
 - Thanks to [**Jakub Roztocil**](https://github.com/jkbrzt/rrule) for the RRule JavaScript library https://github.com/jkbrzt/rrule .
 - Thanks to [**Volodymyr Agafonkin**](https://leafletjs.com/) for the Leaflet JavaScript library https://leafletjs.com/ .
-- Thanks to the [**Automatic team**](https://automattic.com/) for making this project possible.
 
 ## Third Party Services
 
@@ -50,6 +49,9 @@ Stachethemes Event Calendar Lite a free version of the plugin with some function
 
 - **Facebook comments**: Used for displaying event comments 
     This service is optional and can be replaced with the calendar's built-in comments section.
+
+  - [Terms of Use](https://www.facebook.com/legal/terms)
+  - [Privacy Policy](https://www.facebook.com/privacy/policy)
 
 
 ### More info
