@@ -151,7 +151,9 @@ class Helpers {
                 // Add the attachment ID to your $result array
                 $result[] = $attach_id;
             } else {
-                throw new Stec_Exception(esc_html__('Error uploading file: ' . $upload['error'], 'stachethemes_event_calendar_lite'));
+                throw new Stec_Exception(
+                    sprintf(esc_html__('Error uploading file: %s', 'stachethemes_event_calendar_lite'), $upload['error'])
+                );
             }
         }
 

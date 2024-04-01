@@ -29,11 +29,11 @@ class Stachethemes_Event_Calendar {
     );
 
     public function __wakeup() {
-        _doing_it_wrong(__FUNCTION__, esc_html__('Unserializing instances of this class is forbidden.', 'stachethemes_event_calendar_lite'), $this->version);
+        _doing_it_wrong(__FUNCTION__, esc_html__('Unserializing instances of this class is forbidden.', 'stachethemes_event_calendar_lite'), esc_attr($this->version));
     }
 
     public function __clone() {
-        _doing_it_wrong(__FUNCTION__, esc_html__('Cloning is forbidden.', 'stachethemes_event_calendar_lite'), $this->version);
+        _doing_it_wrong(__FUNCTION__, esc_html__('Cloning is forbidden.', 'stachethemes_event_calendar_lite'), esc_attr($this->version));
     }
 
     public static function get_instance() {

@@ -33,6 +33,7 @@ class Widget_Events_Slider {
         wp_register_style(
             'stec-widget-admin-events-slider-style',
             STEC_LITE_PLUGIN_URL . 'assets/css/widgets/events-slider/admin.css',
+            array(),
             STEC_LITE_PLUGIN_VERSION
         );
 
