@@ -151,10 +151,8 @@ class Helpers {
                 // Add the attachment ID to your $result array
                 $result[] = $attach_id;
             } else {
-                throw new Stec_Exception(
-                    // translators: %s: error message
-                    sprintf(esc_html__('Error uploading file: %s', 'stachethemes_event_calendar_lite'), esc_attr($upload['error']))
-                );
+                // translators: %s is error message
+                throw new Stec_Exception(sprintf(esc_html__('Error uploading file: %s', 'stec'), esc_html($upload['error'])));
             }
         }
 
@@ -457,5 +455,4 @@ class Helpers {
 
         return $user;
     }
-
 }
