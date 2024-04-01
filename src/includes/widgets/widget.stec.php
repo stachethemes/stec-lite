@@ -48,6 +48,7 @@ class Widget_Stec {
         wp_register_style(
             'stec-widget-admin-stec-style',
             STEC_LITE_PLUGIN_URL . 'assets/css/widgets/stec/admin.css',
+            array(),
             STEC_LITE_PLUGIN_VERSION
         );
     }

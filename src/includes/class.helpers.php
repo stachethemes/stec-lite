@@ -152,7 +152,8 @@ class Helpers {
                 $result[] = $attach_id;
             } else {
                 throw new Stec_Exception(
-                    sprintf(esc_html__('Error uploading file: %s', 'stachethemes_event_calendar_lite'), $upload['error'])
+                    // translators: %s: error message
+                    sprintf(esc_html__('Error uploading file: %s', 'stachethemes_event_calendar_lite'), esc_attr($upload['error']))
                 );
             }
         }
@@ -456,4 +457,5 @@ class Helpers {
 
         return $user;
     }
+
 }

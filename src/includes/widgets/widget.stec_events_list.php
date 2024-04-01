@@ -33,6 +33,7 @@ class Widget_Events_List {
         wp_register_style(
             'stec-widget-admin-events-list-style',
             STEC_LITE_PLUGIN_URL . 'assets/css/widgets/events-list/admin.css',
+            array(),
             STEC_LITE_PLUGIN_VERSION
         );
 

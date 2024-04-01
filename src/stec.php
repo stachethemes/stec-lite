@@ -59,6 +59,7 @@ class Stachethemes_Event_Calendar {
 
             add_action('admin_notices', function () {
                 printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', sprintf(
+                    // translators: %1$s: Premium plugin name, %2$s: Lite plugin name, %3$s: Lite plugin version
                     esc_html__('%1$s is already installed. Please deactivate it before activating %2$s %3$s.', 'stachethemes_event_calendar_lite'),
                     '<strong>' . esc_html__('Stachethemes Event Calendar', 'stachethemes_event_calendar_lite') . '</strong>',
                     '<strong>' . esc_html__('Stachethemes Event Calendar Lite', 'stachethemes_event_calendar_lite') . '</strong>',

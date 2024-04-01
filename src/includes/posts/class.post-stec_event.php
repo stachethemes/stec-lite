@@ -789,6 +789,7 @@ class Post_Types_Stec_Event {
             'exclude_from_search'       => true,
             'show_in_admin_all_list'    => true,
             'show_in_admin_status_list' => true,
+            // translators: %s: post count
             'label_count'               => _n_noop('Archived (%s)', 'Archived (%s)', 'stachethemes_event_calendar_lite'),
         ));
     }
