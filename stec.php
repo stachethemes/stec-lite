@@ -13,4 +13,8 @@
   Domain Path: /build/languages/
 */
 
+if (!defined('ABSPATH')) {
+  exit;
+};
+
 require_once 'build/stec.php';
