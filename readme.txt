@@ -1,6 +1,6 @@
 === Stachethemes Event Calendar Lite ===
 Requires at least: 6.2
-Tested up to: 6.4.3
+Tested up to: 6.5
 Stable tag: 5.2.8
 Requires PHP: 8.0
 License: GPLv2 or later
