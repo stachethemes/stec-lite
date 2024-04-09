@@ -1,4 +1,4 @@
-import { useCalendarScreenType } from '@Stec/JS/calendar/hooks';
+import { useCalendarScreenType, useCalendarScreenTypeValue } from '@Stec/JS/calendar/hooks';
 import Layout from '@Stec/JS/calendar/layout/Layout';
 import Top from '@Stec/JS/calendar/top/Top';
 import toasterOptions from '@Stec/JS/toaster-options';
@@ -8,6 +8,18 @@ import React, { useRef } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { RecoilRoot } from 'recoil';
 import CalendarSetup from './CalendarSetup';
+
+// * Wait for container width to be set
+const WithScreenTypeReady = (props) => {
+
+    const screenType = useCalendarScreenTypeValue();
+
+    if ('pending' === screenType) {
+        return null;
+    }
+
+    return props.children;
+}
 
 /**
  * The calendar container with already included recoil store
@@ -43,8 +55,10 @@ const CalendarContainer = ({ settingsAtts }) => {
             <Toaster {...toasterOptions} />
 
             <CalendarSetup settingsAtts={settingsAtts}>
-                <Top />
-                <Layout />  {/* Layout has internal suspense */}
+                <WithScreenTypeReady>
+                    <Top />
+                    <Layout />  {/* Layout has internal suspense */}
+                </WithScreenTypeReady>
             </CalendarSetup>
         </StecDiv>
     )

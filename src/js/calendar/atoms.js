@@ -217,7 +217,7 @@ export const calendarTopFilters = atom({
  */
 export const calendarScreenType = atom({
     key: 'calendarScreenType',
-    default: ''
+    default: 'pending'
 });
 
 /**
