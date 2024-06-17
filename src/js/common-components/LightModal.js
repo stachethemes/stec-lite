@@ -2,7 +2,7 @@ import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { useEffect } from 'react';
 import { Portal } from 'react-portal';
 
-function LightModal(props) {
+const DefaultComponent = (props) => {
 
     useEffect(() => {
 
@@ -61,6 +61,22 @@ function LightModal(props) {
             </StecDiv>
         </Portal>
     )
+
+}
+
+function LightModal(props) {
+
+    if (typeof window.stecOverrideLightModalComponent === 'function') {
+        return window.stecOverrideLightModalComponent({
+            componentProps: props,
+            StecDiv: StecDiv,
+            StecSpan: StecSpan,
+            Portal: Portal
+        });
+    }
+
+    return <DefaultComponent {...props} />
+
 }
 
 export default LightModal

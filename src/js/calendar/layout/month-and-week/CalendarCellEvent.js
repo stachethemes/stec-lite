@@ -4,6 +4,14 @@ import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { useRef, useState } from 'react';
 import EventTooltip from './EventTooltip';
 
+const isEndingInTheBeginningOfNextDay = (eventEndMoment, cellMoment) => {
+
+    const nextDateCellMoment = cellMoment.clone().add(1, 'day').startOf('day');
+
+    return eventEndMoment.format('YMD His') === nextDateCellMoment.format('YMD His');
+
+}
+
 const CalendarCellEventRelative = (props) => {
 
     const openEventIn = useSettingsAtt('calendar__open_events_in');
@@ -154,7 +162,8 @@ const CalendarCellEventLocal = (props) => {
         cellTitle = eventTitle;
     }
 
-    if (eventCellEndMomentLocal.isSame(props.cellMoment, 'day')) {
+    if (eventCellEndMomentLocal.isSame(props.cellMoment, 'day') ||
+        isEndingInTheBeginningOfNextDay(eventCellEndMomentLocal, props.cellMoment)) {
         classNameArray.push('stec-calendar-cell-event-is-end')
     }
 

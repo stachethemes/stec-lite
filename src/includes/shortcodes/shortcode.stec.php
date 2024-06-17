@@ -243,6 +243,7 @@ class Shortcode_Stec {
          * There are the relevant attributes for the events request query
          */
         $convert = array(
+            'filter__minmax_intersect'  => 'minmax_intersect',
             'filter__calendar'          => 'calendar',
             'filter__category'          => 'category',
             'filter__guest'             => 'guest',
@@ -251,7 +252,7 @@ class Shortcode_Stec {
             'filter__min_date'          => 'min_date',
             'filter__max_date'          => 'max_date',
             'filter__featured'          => 'featured',
-            'filter__read_permission'   => 'permission_type',
+            'filter__read_permission'   => 'read_permission',
             'filter__author'            => 'author',
             'filter__events'            => 'include'
         );
@@ -293,7 +294,7 @@ class Shortcode_Stec {
     }
 
     public static function register_shortcode($atts = array()) {
-        
+
         ob_start();
 
         if (false === is_array($atts)) {

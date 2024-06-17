@@ -162,6 +162,13 @@ const ComparisonTable = () => {
             pro: true
         },
         {
+            id: 'subscriptions',
+            title: __('Subscribe to Events', 'stachethemes_event_calendar_lite'),
+            desc: __('Allows users to subscribe to events or calendars, supporting Google Calendar, iCalendar, Outlook 365, Outlook Live, and other calendar apps.', 'stachethemes_event_calendar_lite'),
+            lite: true,
+            pro: true
+        },
+        {
             id: 'embed',
             title: __('Embed', 'stachethemes_event_calendar_lite'),
             desc: __('Embed events on other websites.', 'stachethemes_event_calendar_lite'),
@@ -252,6 +259,20 @@ const ComparisonTable = () => {
             title: __('Day Layout', 'stachethemes_event_calendar_lite'),
             desc: __('Display events in a day layout.', 'stachethemes_event_calendar_lite'),
             lite: true,
+            pro: true
+        },
+        {
+            id: 'day-hourly',
+            title: __('Hourly Layout', 'stachethemes_event_calendar_lite'),
+            desc: __('Displays events for the day in an hourly layout.', 'stachethemes_event_calendar_lite'),
+            lite: false,
+            pro: true
+        },
+        {
+            id: 'day-hourly-print',
+            title: __('Hourly Layout Print', 'stachethemes_event_calendar_lite'),
+            desc: __('Print option for hourly layout.', 'stachethemes_event_calendar_lite'),
+            lite: false,
             pro: true
         },
         {

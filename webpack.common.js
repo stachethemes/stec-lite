@@ -26,11 +26,6 @@ module.exports = {
                             "@babel/preset-react"
                         ],
                         plugins: [
-                            [
-                                "transform-react-jsx", {
-                                    "pragma": "wp.element.createElement"
-                                }
-                            ],
                             ['@babel/plugin-transform-runtime',
                                 { "regenerator": true }
                             ],
@@ -64,7 +59,7 @@ module.exports = {
     },
     plugins: [
         new I18nLoaderWebpackPlugin({
-            textdomain: 'stec',
+            textdomain: 'stachethemes_event_calendar_lite',
             target: 'plugin',
             path: i18nLoaderRelativePath(__dirname, 'build/assets'),
         }),

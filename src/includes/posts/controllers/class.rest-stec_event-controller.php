@@ -161,6 +161,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             }
 
             return $result;
+
         } catch (Stec_Exception $ex) {
 
             $error = new \WP_Error('stec_create_item_error', $ex->getMessage());
@@ -303,7 +304,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => 'BETWEEN',
                     'type'         => 'DATETIME'
                 );
-
             } elseif ($min_date) {
 
                 $min_max_meta_query = array(
@@ -312,7 +312,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => '>=',
                     'type'         => 'DATETIME'
                 );
-
             } elseif ($max_date) {
 
                 $min_max_meta_query = array(
@@ -321,7 +320,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                     'compare'      => '<=',
                     'type'         => 'DATETIME'
                 );
-                
             } else {
 
                 $min_max_meta_query = false;
@@ -399,6 +397,11 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             $prepared_args['orderby']  = array(
                 'approved_clause'       => 'ASC',
                 'start_date_utc_clause' => 'DESC'
+            );
+        } else {
+            // order by id
+            $prepared_args['orderby']  = array(
+                'ID' => 'DESC'
             );
         }
 
@@ -505,7 +508,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                 'schema' => array($this, 'get_public_item_schema'),
             )
         );
-
     }
 
     /**
@@ -725,7 +727,7 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
 
                 if (false === user_can($initiator, 'edit_users')) {
 
-                    $error = new \WP_Error('stec_update_error', esc_html__('You do not have permissions change event authors','stachethemes_event_calendar_lite'));
+                    $error = new \WP_Error('stec_update_error', esc_html__('You do not have permissions change event authors', 'stachethemes_event_calendar_lite'));
                     $response = rest_ensure_response($error);
 
                     return $response;

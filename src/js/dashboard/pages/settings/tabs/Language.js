@@ -15,7 +15,7 @@ function Language({ settings }) {
                 <UncontrolledInputCheckbox
                     defaultValue={settingsLang.i18n_translate_all}
                     title={__('Enable i18n-loader.js for en_US locale', 'stachethemes_event_calendar_lite')}
-                    description={__('Turn on this setting you want to load en_US .po files', 'stachethemes_event_calendar_lite')}
+                    description={__('Turn on this setting if you want to load en_US .po files', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsLang.i18n_translate_all = value;
                     }}

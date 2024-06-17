@@ -120,10 +120,6 @@ class Shortcode_Stec_Single {
             $start_date = get_post_meta($post->ID, 'start_date', true);
         }
 
-        if (false === Helpers::is_valid_date($start_date)) {
-            return;
-        }
-
         $defaults_from_settings = Settings::get_front_settings(array(
             'calendar',
             'layouts',
