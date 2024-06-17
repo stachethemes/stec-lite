@@ -23,6 +23,14 @@ const AgendaSliderCell = (props) => {
         }
     }
 
+    if (props?.events?.length - eventDotsLimit > 0) {
+        cellEvents.push(<StecSpan key={eventDotsLimit} className='stec-layout-agenda-slider-cell-event' style={{
+        }}>
+            <StecSpan className='stec-layout-agenda-slider-cell-event-more'>+{props.events.length - eventDotsLimit}</StecSpan>
+        </StecSpan>);
+    }
+
+
     if (props.isActive) {
         classNameArray.push('stec-layout-agenda-slider-cell-active');
     }

@@ -1,13 +1,24 @@
 .stec-layout-agenda {
 
     .stec-layout-agenda-slider {
-        width           : 100%;
-        height          : 90px;
+        width: 100%;
+        height: 90px;
         background-color: var(--stec-agenda-cell-bg);
-        border-radius   : var(--stec-corner-smoothing);
-        position        : relative;
-        overflow        : hidden;
-        margin-bottom   : 1px;
+        border-radius: var(--stec-corner-smoothing);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1px;
+
+        // ! Fix for Firefox
+        @-moz-document url-prefix() {
+            transform: translate3d(0, 0, 0);
+
+            .stec-layout-agenda-slider-cell-event-more,
+            .stec-layout-agenda-slider-cell-day,
+            .stec-layout-agenda-slider-cell-daylabel {
+                transform: translate3d(0, 0, 0);
+            }
+        }
 
         >div,
         >stec-div {
@@ -15,20 +26,20 @@
 
             >div,
             >stec-div {
-                height  : inherit;
-                width   : auto;
+                height: inherit;
+                width: auto;
                 position: absolute;
-                top     : 0;
-                left    : 0;
+                top: 0;
+                left: 0;
                 .cursorGrab;
 
                 .stec-layout-agenda-slider-cell {
-                    height          : inherit;
-                    width           : 90px;
+                    height: inherit;
+                    width: 90px;
                     background-color: var(--stec-agenda-cell-bg);
-                    float           : left;
-                    position        : relative;
-                    z-index         : 0;
+                    float: left;
+                    position: relative;
+                    z-index: 0;
 
                     &.stec-layout-agenda-slider-cell-active {
 
@@ -36,12 +47,18 @@
                             display: none;
                         }
 
+                        .transitionColors();
+
                         background-color: var(--stec-agenda-cell-bg-active);
 
+                        .stec-layout-agenda-slider-cell-event-more,
                         .stec-layout-agenda-slider-cell-daylabel,
                         .stec-layout-agenda-slider-cell-day {
+                            .transitionColors();
+
                             color: var(--stec-agenda-cell-color-active);
                         }
+
                     }
 
                     &.stec-layout-agenda-slider-cell-today {
@@ -49,6 +66,7 @@
                         &:not(.stec-layout-agenda-slider-cell-active) {
                             background-color: var(--stec-agenda-cell-today-bg);
 
+                            .stec-layout-agenda-slider-cell-event-more,
                             .stec-layout-agenda-slider-cell-daylabel,
                             .stec-layout-agenda-slider-cell-day {
                                 color: var(--stec-agenda-cell-today-color);
@@ -60,6 +78,7 @@
                     &.stec-layout-agenda-slider-cell-highlight {
                         background-color: var(--stec-agenda-month-year-bg);
 
+                        .stec-layout-agenda-slider-cell-event-more,
                         .stec-layout-agenda-slider-cell-daylabel,
                         .stec-layout-agenda-slider-cell-day {
                             color: var(--stec-agenda-month-year-color);
@@ -67,24 +86,24 @@
                     }
 
                     .stec-layout-agenda-slider-cell-daylabel {
-                        display       : inline-block;
-                        width         : 100%;
-                        margin-top    : 17px;
+                        display: inline-block;
+                        width: 100%;
+                        margin-top: 17px;
                         text-transform: uppercase;
-                        text-align    : center;
-                        font-size     : 12px;
-                        color         : var(--stec-agenda-cell-color);
+                        text-align: center;
+                        font-size: 12px;
+                        color: var(--stec-agenda-cell-color);
                     }
 
                     .stec-layout-agenda-slider-cell-day {
-                        display       : inline-block;
-                        width         : 100%;
+                        display: inline-block;
+                        width: 100%;
                         text-transform: uppercase;
-                        text-align    : center;
-                        font-size     : 24px;
-                        margin-top    : 5px;
-                        font-weight   : bold;
-                        color         : var(--stec-agenda-cell-color);
+                        text-align: center;
+                        font-size: 24px;
+                        margin-top: 5px;
+                        font-weight: bold;
+                        color: var(--stec-agenda-cell-color);
                     }
 
                     &:not(.stec-layout-agenda-slider-cell-active):not(.stec-layout-agenda-slider-cell-highlight):hover {
@@ -92,6 +111,7 @@
 
                         &:not(.stec-layout-agenda-slider-cell-today) {
 
+                            .stec-layout-agenda-slider-cell-event-more,
                             .stec-layout-agenda-slider-cell-daylabel,
                             .stec-layout-agenda-slider-cell-day {
                                 color: var(--stec-agenda-cell-color-hover);
@@ -103,30 +123,41 @@
         }
 
         .stec-layout-agenda-slider-cell-events {
-            width    : 100%;
-            max-width: 40px;
-            margin   : 6px auto;
-            height   : 10px;
+            width: 100%;
+            max-width: 54px;
+            margin: 6px auto;
+            height: 10px;
             .flexbox;
 
             .stec-layout-agenda-slider-cell-event {
-                width        : 100%;
+                width: 100%;
+                max-width: 40px;
                 border-radius: var(--stec-corner-smoothing);
-                height       : inherit;
-                cursor       : pointer;
-                margin       : 0 1px;
+                height: inherit;
+                cursor: pointer;
+                margin: 0 1px;
             }
+
+            .stec-layout-agenda-slider-cell-event-more {
+                white-space: nowrap;
+                display: block;
+                font-size: 10px;
+                line-height: 10px;
+                color: var(--stec-agenda-cell-color);
+                width: 10px;
+            }
+
         }
     }
 
     .stec-layout-agenda-list {
 
         .stec-layout-agenda-list-title {
-            color      : var(--stec-agenda-list-title-color);
-            font-size  : 14px;
+            color: var(--stec-agenda-list-title-color);
+            font-size: 14px;
             font-weight: bold;
-            margin     : 10px auto;
-            display    : inline-block;
+            margin: 10px auto;
+            display: inline-block;
         }
 
     }
@@ -139,7 +170,7 @@
             &:first-child {
 
                 .stec-event:first-child .stec-event-preview:first-child {
-                    border-top-left-radius : var(--stec-corner-smoothing);
+                    border-top-left-radius: var(--stec-corner-smoothing);
                     border-top-right-radius: var(--stec-corner-smoothing);
                 }
             }
@@ -147,7 +178,7 @@
             &:last-child {
 
                 .stec-event:last-child .stec-event-contents:last-child {
-                    border-bottom-left-radius : var(--stec-corner-smoothing);
+                    border-bottom-left-radius: var(--stec-corner-smoothing);
                     border-bottom-right-radius: var(--stec-corner-smoothing);
                 }
 
@@ -163,7 +194,7 @@
 
                         .stec-upsert-event-preloader {
                             border-bottom-right-radius: var(--stec-corner-smoothing);
-                            border-bottom-left-radius : var(--stec-corner-smoothing);
+                            border-bottom-left-radius: var(--stec-corner-smoothing);
                         }
                     }
                 }

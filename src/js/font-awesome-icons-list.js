@@ -1622,7 +1622,7 @@ const getAll = () => {
     /**
      * Filter for adding additional icons to the icon picker
      */
-    if (window.stecFilterFaIcons === 'function') {
+    if (typeof window.stecFilterFaIcons === 'function') {
         faAll = window.stecFilterFaIcons(faAll);
     }
 

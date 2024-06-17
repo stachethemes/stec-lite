@@ -58,9 +58,12 @@ EventsWorker.prototype._getDateOccurences = function ({ event, rangeEndMoment })
 
     const rruleSet = rrulestr(rruleString);
 
+    // add 1 day to compensate for timezones offsets
+    const rangeUntilMoment = moment(rangeEndMoment).add(1, 'day');
+
     // We place event.meta.start_date for range start
     // since the event.meta.start_date may be before the rangeStartMoment
-    let dateOccurences = rruleSet.between(moment.utc(event.meta.start_date).toDate(), rangeEndMoment.toDate(), true);
+    let dateOccurences = rruleSet.between(moment.utc(event.meta.start_date).toDate(), rangeUntilMoment.toDate(), true);
 
     return dateOccurences.map(date => moment.utc(date).format('YYYY-MM-DD HH:mm:ss'));
 
@@ -89,6 +92,7 @@ EventsWorker.prototype._getEventOccurences = function ({
             /**
              * Date occurences are returned in event timezone
              */
+
             const dateOccurences = this._getDateOccurences({
                 event: event,
                 rangeEndMoment: rangeEndMoment
@@ -136,6 +140,36 @@ EventsWorker.prototype._getEventOccurences = function ({
     return eventOccurences;
 
 }
+
+EventsWorker.prototype._checkEventEndingInBeginRangeStart = function (event, rangeStart) {
+
+    const theRange = rangeStart ? rangeStart : this.params.startRange;
+
+    const inRelativeTimezone = false === this.params.showInUserTimezone ? true : false;
+
+    if (inRelativeTimezone) {
+
+        const rangeStartMoment = moment.utc(theRange);
+        const eventEndMoment = moment.utc(event.meta.end_date);
+
+        if (eventEndMoment.hour() === 0 && eventEndMoment.minute() === 0) {
+            return rangeStartMoment.isSame(eventEndMoment);
+        }
+
+        return false;
+
+    }
+
+    const rangeStartMoment = moment.utc(theRange).local();
+    const eventEndMoment = moment.tz(event.meta.end_date, event.meta.timezone).local();
+
+    if (eventEndMoment.hour() === 0 && eventEndMoment.minute() === 0) {
+        return rangeStartMoment.isSame(eventEndMoment);
+    }
+
+    return false;
+}
+
 
 /**
  * EVENTS ARE SORTED BY DATE OLDEST TO NEWEST
@@ -186,9 +220,12 @@ EventsWorker.prototype.getEventsBetween = function () {
                 // Check for event date and ranges intersection
                 rangeEndUnix >= eventStartUnix && eventEndUnix >= rangeStartUnix
             ) {
-
                 let shouldPush = true;
                 const allowIntersections = this.params.minMaxIntersect;
+
+                if (true === this._checkEventEndingInBeginRangeStart(event, this.params.startRange)) {
+                    shouldPush = false;
+                }
 
                 // Check if minDate or maxDate are present and if so, check if event is within the range
                 // minDate and maxDate are expected to be in UTC time
@@ -351,8 +388,23 @@ EventsWorker.prototype.getEventsBetween = function () {
 
     /**
      * STEP 2: SORT EVENTS OLDEST -> NEWEST, unless order (asc/desc) param is set
+     * SORT EVENTS BY ID if param orderby === id
      */
     const sortedEvents = eventsInRange.sort((a, b) => {
+
+        // Sort by ID
+        // This param is used by the events list widget and the slider widget
+        if (this.params.orderby === 'id') {
+
+            if (this.params.order === 'desc') {
+                return b.id - a.id;
+            }
+
+            return a.id - b.id;
+
+        }
+
+        // Normal sort by date
         let mA = moment.utc(a.meta.start_date_utc);
         let mB = moment.utc(b.meta.start_date_utc);
 
@@ -420,7 +472,9 @@ EventsWorker.prototype.getEventsBetween = function () {
 
                 const shouldAddEvent = dayIterator.isBetween(eventMomentStart, eventMomentEnd, 'day', '[]');
 
-                if (shouldAddEvent) {
+                const isEndingInBeginRangeStart = this._checkEventEndingInBeginRangeStart(event, dayIterator);
+
+                if (shouldAddEvent && !isEndingInBeginRangeStart) {
 
                     if (normalizerIterator % normalizerCount === 0) {
                         event.pos = undefined;
@@ -469,6 +523,15 @@ EventsWorker.prototype.getEventsBetween = function () {
     } else {
 
         returnEventsData = sortedEvents;
+    }
+
+    /**
+     * STEP 3.1 (CONDITIONAL) 
+     * STORE EVENTS IN MULTI-ARRAY BY TopEvents and CellEvents keys
+     * This is for the day hourly layout
+     */
+    if (true === this.params.sortEventsForDayHourlyLayout) {
+        returnEventsData = this.__getDayEventsHourly(returnEventsData);
     }
 
     // finally check if limit param is set
@@ -573,7 +636,6 @@ EventsWorker.prototype.getEventsFilters = function () {
                         });
                     }
 
-
                     break;
                 }
 
@@ -639,6 +701,7 @@ EventsWorker.prototype.getEventsFilters = function () {
     return this.params.filters;
 
 }
+
 
 
 /**
@@ -723,6 +786,294 @@ EventsWorker.prototype.getWorkerEventsSearchByText = function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EventsWorker.prototype.__overlaps = (a, b, showInUserTimezone) => {
+
+    if (showInUserTimezone) {
+
+        const aMomentStart = moment.tz(a.meta.start_date, a.meta.timezone);
+        const aMomentEnd = moment.tz(a.meta.end_date, a.meta.timezone);
+        const bMomentStart = moment.tz(b.meta.start_date, b.meta.timezone);
+        const bMomentEnd = moment.tz(b.meta.end_date, b.meta.timezone);
+
+        return aMomentStart.isBefore(bMomentEnd) && aMomentEnd.isAfter(bMomentStart);
+
+    } else {
+        const aMomentStart = moment.utc(a.meta.start_date);
+        const aMomentEnd = moment.utc(a.meta.end_date);
+        const bMomentStart = moment.utc(b.meta.start_date);
+        const bMomentEnd = moment.utc(b.meta.end_date);
+
+        return aMomentStart.isBefore(bMomentEnd) && aMomentEnd.isAfter(bMomentStart);
+    }
+}
+
+EventsWorker.prototype.__getNotAllDayEvents = (events, args) => {
+
+    const filteredEvents = events.filter(event => {
+
+        const showInUserTimezone = args.showInUserTimezone;
+
+        if (showInUserTimezone) {
+
+            const calendarMoment = moment(args.calendarDate);
+            const eventStartMoment = moment.tz(event.meta.start_date, event.meta.timezone);
+            const eventEndMoment = moment.tz(event.meta.end_date, event.meta.timezone);
+
+            if (event.meta.all_day) {
+                eventStartMoment.startOf('day');
+                eventEndMoment.endOf('day');
+            }
+
+            eventStartMoment.local();
+            eventEndMoment.local();
+
+            const isAllDay = eventStartMoment.isSameOrBefore(calendarMoment.startOf('day')) &&
+                eventEndMoment.isSameOrAfter(calendarMoment.endOf('day'));
+
+            return !isAllDay;
+
+        } else {
+
+            const calendarMoment = moment.utc(args.calendarDate);
+            const eventStartMoment = moment.utc(event.meta.start_date);
+            const eventEndMoment = moment.utc(event.meta.end_date);
+
+            if (event.meta.all_day) {
+                eventStartMoment.startOf('day');
+                eventEndMoment.endOf('day');
+            }
+
+            const isAllDay = eventStartMoment.isSameOrBefore(calendarMoment.startOf('day')) &&
+                eventEndMoment.isSameOrAfter(calendarMoment.endOf('day'));
+
+            return !isAllDay;
+
+        }
+
+    });
+
+    return filteredEvents;
+}
+
+EventsWorker.prototype.__getEventsWithLanes = function(events, args) {
+
+    let lanes = [];
+    let sortedEvents = JSON.parse(JSON.stringify(events));
+
+    for (let event of sortedEvents) {
+        let lane;
+
+        for (let i = 0; i < lanes.length; i++) {
+            if (!lanes[i].some(e => {
+                return this.__overlaps(e, event, args.showInUserTimezone);
+            })) {
+                lane = lanes[i];
+                break;
+            }
+        }
+
+        if (!lane) {
+            lane = [];
+            lanes.push(lane);
+        }
+
+        lane.push(event);
+    }
+
+    for (let lane of lanes) {
+
+        for (let event of lane) {
+            let laneIndex = lanes.indexOf(lane);
+
+            event.calcLeft = (laneIndex / lanes.length) * 100;
+            event.calcWidth = (1 / lanes.length) * 100;
+        }
+    }
+
+    return sortedEvents;
+
+}
+
+/**
+ * * Retrieves events for the layout day hourly view
+ */
+EventsWorker.prototype.__getDayEventsHourly = function (events) {
+
+    const calendarDate = this.params.calendarDate; // expects YYYY-MM-DD string
+    const showInUserTimezone = this.params.showInUserTimezone;
+
+    const hoursArray = Array.from({ length: 24 }, (v, i) => i);
+
+    let cellEvents = [];
+
+    cellEvents = this.__getNotAllDayEvents(events, {
+        showInUserTimezone,
+        calendarDate
+    });
+    cellEvents = this.__getEventsWithLanes(cellEvents, {
+        showInUserTimezone
+    });
+
+    cellEvents = hoursArray.map(hour => {
+
+        if (showInUserTimezone) {
+
+            const hourMoment = moment(calendarDate).startOf('day').add(hour, 'hours');
+
+            return cellEvents.filter(event => {
+
+                const eventStartMoment = moment.tz(event.meta.start_date, event.meta.timezone);
+                const eventEndMoment = moment.tz(event.meta.end_date, event.meta.timezone);
+
+                if (event.meta.all_day) {
+                    eventStartMoment.startOf('day');
+                    eventEndMoment.endOf('day');
+                }
+
+                eventStartMoment.local();
+                eventEndMoment.local();
+
+                const isStartingBeforeThisDay = eventStartMoment.isBefore(hourMoment, 'day');
+                const startsInThisHour = eventStartMoment.isSame(hourMoment, 'hour');
+
+                if (hourMoment.hour() === 0) {
+                    if (hourMoment.isSameOrAfter(eventEndMoment)) {
+                        return false;
+                    }
+                }
+
+                if (startsInThisHour) {
+                    return true;
+                }
+
+                if (0 === hour && isStartingBeforeThisDay) {
+                    return true;
+                }
+
+                return false;
+            });
+
+        } else {
+
+            const hourMoment = moment.utc(calendarDate).startOf('day').add(hour, 'hours');
+
+            return cellEvents.filter(event => {
+
+                const eventStartMoment = moment.utc(event.meta.start_date,);
+                const eventEndMoment = moment.utc(event.meta.end_date);
+
+                if (event.meta.all_day) {
+                    eventStartMoment.startOf('day');
+                    eventEndMoment.endOf('day');
+                }
+
+                const isStartingBeforeThisDay = eventStartMoment.isBefore(hourMoment, 'day');
+                const startsInThisHour = eventStartMoment.isSame(hourMoment, 'hour');
+
+                if (hourMoment.hour() === 0) {
+                    if (hourMoment.isSameOrAfter(eventEndMoment)) {
+                        return false;
+                    }
+                }
+
+                if (startsInThisHour) {
+                    return true;
+                }
+
+                if (0 === hour && isStartingBeforeThisDay) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+    });
+
+    const allDayEvents = events.filter(event => {
+
+        if (showInUserTimezone) {
+
+            const calendarMomentLocal = moment(calendarDate).startOf('day');
+            const eventStartMoment = moment.tz(event.meta.start_date, event.meta.timezone);
+            const eventEndMoment = moment.tz(event.meta.end_date, event.meta.timezone);
+
+            if (event.meta.all_day) {
+                eventStartMoment.startOf('day');
+                eventEndMoment.endOf('day');
+            }
+
+            if (eventStartMoment.isSameOrBefore(calendarMomentLocal.startOf('day')) && eventEndMoment.isSameOrAfter(calendarMomentLocal.endOf('day'))) {
+                return true;
+            }
+
+            return false;
+
+        }
+
+        const calendarMomentRelative = moment.utc(calendarDate).startOf('day');
+        const eventStartMoment = moment.utc(event.meta.start_date);
+        const eventEndMoment = moment.utc(event.meta.end_date);
+
+        if (event.meta.all_day) {
+            eventStartMoment.startOf('day');
+            eventEndMoment.endOf('day');
+        }
+
+        if (
+            eventStartMoment.isSameOrBefore(calendarMomentRelative.startOf('day')) &&
+            eventEndMoment.isSameOrAfter(calendarMomentRelative.endOf('day'))) {
+            return true;
+        }
+
+        return false;
+
+    });
+
+    return {
+        TopEvents: allDayEvents,
+        CellEvents: cellEvents
+    }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 onmessage = (e) => {
 
     if (e.data.depScripts && Array.isArray(e.data.depScripts)) {
@@ -735,7 +1086,6 @@ onmessage = (e) => {
     switch (e.data.task) {
 
         case 'getEventsBetween': {
-
             const params = e.data.params;
             const task = new EventsWorker(params);
             const result = task.getEventsBetween();

@@ -314,6 +314,10 @@ function Upsert() {
             return false;
         }
 
+        // Check if comment status is set
+        if (!postData.current.comment_status) {
+            postData.current.comment_status = 'closed';
+        }
 
         return true;
     }

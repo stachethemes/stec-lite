@@ -792,6 +792,14 @@ const ManageEventsReady = (props) => {
             })
         }
 
+        if (item.meta.featured) {
+            tags.push({
+                id: 'featured',
+                label: _x('Featured','Manage events tag label', 'stec'),
+                color: '#ed1c16'
+            })
+        }
+
         if (item.meta.rrule !== '') {
             tags.push({
                 id: 'recurrent',

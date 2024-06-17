@@ -275,7 +275,7 @@ function Calendar({ settings }) {
                 <UncontrolledInputCheckbox
                     defaultValue={settingsCalendar.use_user_timezone}
                     title={__("Show dates in user's timezone", 'stachethemes_event_calendar_lite')}
-                    description={__(`Enable this option to display the event dates in the user's local timezone`, 'stachethemes_event_calendar_lite')}
+                    description={__(`Turn on this option to show event dates in the user's local time`, 'stec')}
                     onChange={value => {
                         settingsCalendar.use_user_timezone = value;
                     }}

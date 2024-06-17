@@ -37,7 +37,7 @@ module.exports = {
 		}
 		
 		// "en_US|en_GB" is the default, no translations are needed.
-		if (state.locale === 'en_US' || state.locale === 'en_GB') {
+		if (state.locale === 'en_US' ) {
 
 			if (true !== STEC_VARIABLES?.i18n_translate_all) {
 				return
