@@ -1,6 +1,6 @@
 {
     "name": "stec",
-    "version": "5.3.0",
+    "version": "5.3.1",
     "description": "Stachethemes Event Calendar Lite is a WordPress Calendar Plugin that allows you to easily create, manage and display events on your website",
     "private": true,
     "scripts": {
@@ -22,7 +22,7 @@
         "cross-env": "^7.0.3",
         "css-loader": "^6.7.3",
         "css-minimizer-webpack-plugin": "^6.0.0",
-        "eslint": "^9.5.0",
+        "eslint": "^8.56.0",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "file-loader": "^6.2.0",
@@ -65,7 +65,7 @@
         "last 2 iOS versions"
     ],
     "resolutions": {
-        "react": "18.2.0",
-        "react-dom": "18.2.0"
+        "react": "18.3.1",
+        "react-dom": "18.3.1"
     }
 }
