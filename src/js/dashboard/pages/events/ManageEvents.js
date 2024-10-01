@@ -795,7 +795,7 @@ const ManageEventsReady = (props) => {
         if (item.meta.featured) {
             tags.push({
                 id: 'featured',
-                label: _x('Featured','Manage events tag label', 'stec'),
+                label: _x('Featured','Manage events tag label', 'stachethemes_event_calendar_lite'),
                 color: '#ed1c16'
             })
         }

@@ -15,8 +15,8 @@ const InlineCategories = ({ settingsCalendar }) => {
         <>
             <InputCheckbox
                 value={settingsCalendar.top_inline_categories}
-                title={__('Inline categories list', 'stec')}
-                description={__(`Display categories inline below the top menu`, 'stec')}
+                title={__('Inline categories list', 'stachethemes_event_calendar_lite')}
+                description={__(`Display categories inline below the top menu`, 'stachethemes_event_calendar_lite')}
                 onChange={value => {
                     settingsCalendar.top_inline_categories = value;
                     setEnabled(value);
@@ -28,18 +28,18 @@ const InlineCategories = ({ settingsCalendar }) => {
 
                 <UncontrolledInputSelect
                     defaultValue={settingsCalendar.top_inline_categories_mode}
-                    title={__('Inline categories list mode', 'stec')}
+                    title={__('Inline categories list mode', 'stachethemes_event_calendar_lite')}
                     options={[
                         {
-                            label: __('Single-Select', 'stec'),
+                            label: __('Single-Select', 'stachethemes_event_calendar_lite'),
                             value: 'single'
                         },
                         {
-                            label: __('Multi-Select', 'stec'),
+                            label: __('Multi-Select', 'stachethemes_event_calendar_lite'),
                             value: 'multi'
                         },
                     ]}
-                    description={__(`Toggle between Single-Select Mode, where selecting an item automatically unchecks others, and Multi-Select Mode, which allows multiple items to be selected simultaneously.`, 'stec')}
+                    description={__(`Toggle between Single-Select Mode, where selecting an item automatically unchecks others, and Multi-Select Mode, which allows multiple items to be selected simultaneously.`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.top_inline_categories_mode = value;
                     }}
@@ -314,7 +314,7 @@ function Calendar({ settings }) {
                 <UncontrolledInputCheckbox
                     defaultValue={settingsCalendar.use_user_timezone}
                     title={__("Show dates in user's timezone", 'stachethemes_event_calendar_lite')}
-                    description={__(`Turn on this option to show event dates in the user's local time`, 'stec')}
+                    description={__(`Turn on this option to show event dates in the user's local time`, 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsCalendar.use_user_timezone = value;
                     }}

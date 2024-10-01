@@ -343,7 +343,7 @@ const ComparisonTable = () => {
                 </StecDiv>
                 <StecDiv className='stec-comparison-table-header-item'>
                     <StecSpan>{__('STEC', 'stachethemes_event_calendar_lite')}</StecSpan>
-                    <StecSpan>{__('Lite')}</StecSpan>
+                    <StecSpan>{__('Lite', 'stachethemes_event_calendar_lite')}</StecSpan>
                 </StecDiv>
                 <StecDiv className='stec-comparison-table-header-item'>
                     {__('STEC', 'stachethemes_event_calendar_lite')}
