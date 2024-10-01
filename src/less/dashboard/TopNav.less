@@ -1,28 +1,17 @@
 .stec-dashboard-top-nav {
 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
     margin-bottom: 10px;
-
-    .stec-button {
-        margin-right: 6px;
-    }
 }
 
-.mobile {
-
+@media screen and (max-width: 768px) {
     .stec-dashboard-top-nav {
         .stec-button {
-            margin-right: 0;
-            width       : 100%;
-            text-align  : left;
-
-            &:not(:last-child) {
-                margin-bottom: 6px;
-            }
-
-            i {
-                width: 15px;
-            }
+            flex: 1 1 162px;
         }
     }
-
 }

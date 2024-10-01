@@ -6,6 +6,52 @@ import Spacer from '@Stec/CommonComponents/Spacer';
 import { __ } from '@wordpress/i18n';
 import { useState } from 'react';
 
+const InlineCategories = ({ settingsCalendar }) => {
+
+    const [enabled, setEnabled] = useState(settingsCalendar.top_inline_categories);
+
+    return (
+
+        <>
+            <InputCheckbox
+                value={settingsCalendar.top_inline_categories}
+                title={__('Inline categories list', 'stec')}
+                description={__(`Display categories inline below the top menu`, 'stec')}
+                onChange={value => {
+                    settingsCalendar.top_inline_categories = value;
+                    setEnabled(value);
+                }}
+            />
+
+            {enabled && <>
+                <Spacer />
+
+                <UncontrolledInputSelect
+                    defaultValue={settingsCalendar.top_inline_categories_mode}
+                    title={__('Inline categories list mode', 'stec')}
+                    options={[
+                        {
+                            label: __('Single-Select', 'stec'),
+                            value: 'single'
+                        },
+                        {
+                            label: __('Multi-Select', 'stec'),
+                            value: 'multi'
+                        },
+                    ]}
+                    description={__(`Toggle between Single-Select Mode, where selecting an item automatically unchecks others, and Multi-Select Mode, which allows multiple items to be selected simultaneously.`, 'stec')}
+                    onChange={value => {
+                        settingsCalendar.top_inline_categories_mode = value;
+                    }}
+                />
+            </>}
+        </>
+
+    )
+
+}
+
+
 const TopMenuSection = ({ settingsCalendar }) => {
 
     const [topMenuEnabled, setTopMenuEnabled] = useState(settingsCalendar.top_enabled);
@@ -108,14 +154,7 @@ const TopMenuSection = ({ settingsCalendar }) => {
 
                     <Spacer />
 
-                    <UncontrolledInputCheckbox
-                        defaultValue={settingsCalendar.top_inline_categories}
-                        title={__('Inline categories list', 'stachethemes_event_calendar_lite')}
-                        description={__(`Display categories inline below the top menu`, 'stachethemes_event_calendar_lite')}
-                        onChange={value => {
-                            settingsCalendar.top_inline_categories = value;
-                        }}
-                    />
+                    <InlineCategories settingsCalendar={settingsCalendar} />
 
                     <Spacer />
 

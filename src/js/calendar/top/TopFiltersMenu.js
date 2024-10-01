@@ -1,9 +1,12 @@
 import { StecDiv } from '@Stec/WebComponents';
 import TopFilter from './TopFilter';
 import { useTopFilters } from '@Stec/JS/calendar/hooks';
-import { useState } from 'react';
+import { useOutsideHandler } from '@Stec/JS/hooks';
+import { useState, useRef } from 'react';
 
 const TopFiltersMenu = ({ staticMode = false }) => {
+
+    const containerRef = useRef(null);
 
     const { value: { items: filters } } = useTopFilters();
 
@@ -29,8 +32,12 @@ const TopFiltersMenu = ({ staticMode = false }) => {
         classNameArray.push('prevent-mobile');
     }
 
+    useOutsideHandler(containerRef, staticMode ? () => {
+        setActive('');
+    } : null);
+
     return (
-        <StecDiv className={classNameArray.join(' ')}>
+        <StecDiv className={classNameArray.join(' ')} ref={containerRef}>
             {
                 filtersNotEmpty.map(filter =>
 

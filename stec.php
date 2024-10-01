@@ -2,7 +2,7 @@
 
 /*
   Plugin Name: Stachethemes Event Calendar Lite
-  Version: 5.3.0
+  Version: 5.3.1
   Description: Stachethemes Event Calendar Lite is a WordPress Calendar Plugin that allows you to easily create, manage and display events on your website.
   Author: Stachethemes
   Author URI: https://www.stachethemes.com/

@@ -8,7 +8,9 @@ export const getWorkerEventsBetween = (params) => {
             WorkersList[params.threadIndex].terminate();
         }
 
-        WorkersList[params.threadIndex] = new Worker([STEC_VARIABLES.workers_url, 'events.js'].join(''));
+        const workerPath = `${STEC_VARIABLES.workers_url}events.js?ver${STEC_VARIABLES.version}`;
+
+        WorkersList[params.threadIndex] = new Worker(workerPath);
 
         if (typeof window.stecFilterGetWorkerEventsBetween === 'function') {
             params.stecFilterGetWorkerEventsBetween = `return ${window.stecFilterGetWorkerEventsBetween.toString()};`;
@@ -42,7 +44,9 @@ export const getWorkerEventsFilters = (params) => {
             WorkersList[params.threadIndex].terminate();
         }
 
-        WorkersList[params.threadIndex] = new Worker([STEC_VARIABLES.workers_url, 'events.js'].join(''));
+        const workerPath = `${STEC_VARIABLES.workers_url}events.js?ver${STEC_VARIABLES.version}`;
+
+        WorkersList[params.threadIndex] = new Worker(workerPath);
 
         WorkersList[params.threadIndex].postMessage({
             task: 'getEventsFilters',
@@ -69,7 +73,9 @@ export const getWorkerEventsSearchByText = (params) => {
             WorkersList[params.threadIndex].terminate();
         }
 
-        WorkersList[params.threadIndex] = new Worker([STEC_VARIABLES.workers_url, 'events.js'].join(''));
+        const workerPath = `${STEC_VARIABLES.workers_url}events.js?ver${STEC_VARIABLES.version}`;
+
+        WorkersList[params.threadIndex] = new Worker(workerPath);
 
         WorkersList[params.threadIndex].postMessage({
             task: 'getWorkerEventsSearchByText',

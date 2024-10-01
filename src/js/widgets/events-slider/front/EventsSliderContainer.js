@@ -21,8 +21,6 @@ function EventsSliderContainer({ events, wrapperRef, widgetProps }) {
 
     useEffect(() => {
 
-        let t;
-
         const wrapperContainer = wrapperRef.current;
 
         const getColumns = (adjustedColumns) => {
@@ -78,21 +76,15 @@ function EventsSliderContainer({ events, wrapperRef, widgetProps }) {
 
         const onResizeEnd = (entries) => {
 
-            clearTimeout(t);
+            if (entries[0] && entries[0].contentRect) {
 
-            t = setTimeout(() => {
+                const containerWidth = entries[0].contentRect.width;
 
-                if (entries[0] && entries[0].contentRect) {
+                adjustDimensions(containerWidth);
 
-                    const containerWidth = entries[0].contentRect.width;
+                eventsContainerRef.current.style.opacity = 1;
 
-                    adjustDimensions(containerWidth);
-
-                    eventsContainerRef.current.style.opacity = 1;
-
-                }
-
-            }, 100);
+            }
 
         }
 
@@ -103,8 +95,6 @@ function EventsSliderContainer({ events, wrapperRef, widgetProps }) {
         }
 
         return () => {
-
-            clearTimeout(t);
 
             if (wrapperContainer) {
                 observer.unobserve(wrapperContainer);
@@ -235,21 +225,23 @@ function EventsSliderContainer({ events, wrapperRef, widgetProps }) {
 
     return (
         <>
-            <StecDiv className='stec-widget-events-slider-container' ref={eventsContainerRef}
+            <StecDiv className='stec-widget-events-slider-container-wrapper' >
+                <StecDiv className='stec-widget-events-slider-container' ref={eventsContainerRef}
 
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}>
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}>
 
-                {
-                    events.map(event => {
+                    {
+                        events.map(event => {
 
-                        return <EventSlide key={`${event.id}-${event.meta.start_date}`} event={event} widgetProps={widgetProps} />
+                            return <EventSlide key={`${event.id}-${event.meta.start_date}`} event={event} widgetProps={widgetProps} />
 
-                    })
-                }
+                        })
+                    }
 
 
-            </StecDiv>
+                </StecDiv>
+            </StecDiv >
 
             <Controls
                 pages={pages}

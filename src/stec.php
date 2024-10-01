@@ -10,7 +10,7 @@ define('STEC_LITE_PLUGIN_FILE', __FILE__);
 
 class Stachethemes_Event_Calendar {
 
-    public $version = '5.3.0';
+    public $version = '5.3.1';
 
     private static $instance;
 
@@ -198,6 +198,7 @@ class Stachethemes_Event_Calendar {
         ));
 
         $constants = array(
+            'version'          => STEC_LITE_PLUGIN_VERSION,
             'plugin_url'       => STEC_LITE_PLUGIN_URL,
             'ajax_url'         => admin_url('admin-ajax.php'),
             'rest_url'         => get_rest_url(),

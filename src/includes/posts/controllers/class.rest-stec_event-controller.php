@@ -161,7 +161,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             }
 
             return $result;
-
         } catch (Stec_Exception $ex) {
 
             $error = new \WP_Error('stec_create_item_error', $ex->getMessage());
@@ -283,46 +282,84 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
             }
 
             /**
-             * Note 'start_date' key is used for back-end range filters
-             * 'start_date_utc' is used for front-end range filters
+             * Note 'start_date' / 'end_date' key is used for back-end range filters
+             * 'start_date_utc' / 'end_date_utc' is used for front-end range filters
              */
 
-            $min_max_filter_key_prefix = $minmax_intersect ? 'end' : 'start';
+            $min_max_filter_start_date_key = $request->get_param('context') === 'edit' ?
+                "start_date" :
+                "start_date_utc";
 
-            $min_max_filter_key = $request->get_param('context') === 'edit' ?
-                "{$min_max_filter_key_prefix}_date" :
-                "{$min_max_filter_key_prefix}_date_utc";
+            $min_max_filter_end_date_key = $request->get_param('context') === 'edit' ?
+                "end_date" :
+                "end_date_utc";
 
-            if ($min_date && $max_date) {
+            $min_max_meta_query = false;
 
-                $min_max_meta_query = array(
-                    'key'          => $min_max_filter_key,
-                    'value'        => array(
-                        $min_date,
-                        $max_date,
-                    ),
-                    'compare'      => 'BETWEEN',
-                    'type'         => 'DATETIME'
+            if ($min_date || $max_date) {
+
+                $meta_query_base = array(
+                    'relation' => 'AND',
+                    array(
+                        'relation' => 'OR',
+                        array(
+                            'key'     => $min_max_filter_start_date_key,
+                            'compare' => isset($min_date) ? ($minmax_intersect ? '<=' : '>=') : '<=',
+                            'value'   => isset($min_date) ? $min_date : $max_date,
+                            'type'    => 'DATETIME',
+                        ),
+                        array(
+                            'key'     => $min_max_filter_end_date_key,
+                            'compare' => isset($min_date) ? ($minmax_intersect ? '>=' : '>=') : '<=',
+                            'value'   => isset($min_date) ? $min_date : $max_date,
+                            'type'    => 'DATETIME',
+                        )
+                    )
                 );
-            } elseif ($min_date) {
 
-                $min_max_meta_query = array(
-                    'key'          => $min_max_filter_key,
-                    'value'        => $min_date,
-                    'compare'      => '>=',
-                    'type'         => 'DATETIME'
-                );
-            } elseif ($max_date) {
+                if ($min_date && $max_date) {
 
-                $min_max_meta_query = array(
-                    'key'          => $min_max_filter_key,
-                    'value'        => $max_date,
-                    'compare'      => '<=',
-                    'type'         => 'DATETIME'
-                );
-            } else {
-
-                $min_max_meta_query = false;
+                    if ($minmax_intersect) {
+                        // Get events intersecting with the given range
+                        $meta_query_base['relation'] = 'AND';
+                        $meta_query_base[0] = array(
+                            'relation' => 'OR',
+                            array(
+                                'key'     => $min_max_filter_start_date_key,
+                                'value'   => [$min_date, $max_date],
+                                'compare' => 'BETWEEN',
+                                'type'    => 'DATETIME',
+                            ),
+                            array(
+                                'key'     => $min_max_filter_end_date_key,
+                                'value'   => [$min_date, $max_date],
+                                'compare' => 'BETWEEN',
+                                'type'    => 'DATETIME',
+                            ),
+                            array(
+                                'key'     => $min_max_filter_start_date_key,
+                                'value'   => $min_date,
+                                'compare' => '<=',
+                                'type'    => 'DATETIME',
+                            ),
+                            array(
+                                'key'     => $min_max_filter_end_date_key,
+                                'value'   => $max_date,
+                                'compare' => '>=',
+                                'type'    => 'DATETIME',
+                            ),
+                        );
+                    } else {
+                        $min_max_meta_query = array(
+                            'key'     => $min_max_filter_start_date_key,
+                            'value'   => [$min_date, $max_date],
+                            'compare' => 'BETWEEN',
+                            'type'    => 'DATETIME',
+                        );
+                    }
+                } else {
+                    $min_max_meta_query = $meta_query_base;
+                }
             }
         }
 
@@ -337,37 +374,6 @@ class Rest_Stec_Event_Controller extends \WP_REST_Posts_Controller {
                 ),
                 $min_max_meta_query
             );
-        }
-
-        if (false === Permissions::get_is_super()) {
-
-            $unapproved_condition = array(
-                'relation' => 'OR',
-                'approved' => array(
-                    'key'          => 'approved',
-                    'value'        => '1',
-                    'compare'      => '='
-                )
-            );
-
-            if (is_user_logged_in()) {
-
-                // Allow authors to see their unapproved events
-                $unapproved_condition[] = array(
-                    'key'          => 'author',
-                    'value'        => get_current_user_id(),
-                    'compare'      => '='
-                );
-
-                // Allow super (calendar author) to see unapproved events
-                $unapproved_condition[] = array(
-                    'key'          => 'super',
-                    'value'        => get_current_user_id(),
-                    'compare'      => '='
-                );
-            }
-
-            $prepared_args['meta_query'][] = $unapproved_condition;
         }
 
         // FILTER BY READ PERMISSION

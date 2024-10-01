@@ -1,23 +1,39 @@
 .stec-top-filter-inline {
-    width                : 100%;
-    display              : grid;
-    gap                  : 5px;
+    width: 100%;
+    display: grid;
+    gap: 5px;
     grid-template-columns: repeat(auto-fit, minmax(var(--stec-top-filter-item-inline-min-width), 1fr));
-    margin-top           : 5px;
+    margin-top: 5px;
     .noselect;
 }
 
 .stec-top-filter-item-inline {
-    padding      : 0 10px;
-    font-size    : 12px;
-    color        : #fff;
+    position: relative;
+    padding: 0 10px 0 15px;
     border-radius: var(--stec-corner-smoothing);
-    white-space  : nowrap;
-    min-height   : 38px;
-    line-height  : 38px;
-    cursor       : pointer;
+    white-space: nowrap;
+    min-height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    background-color: var(--stec-top-menu-bg);
+    overflow: hidden;
 
     i {
         margin-right: 5px;
+    }
+
+    i,
+    span,
+    stec-span {
+        color: var(--stec-top-menu-color);
+        font-size: var(--stec-top-font-size);
+    }
+
+    .stec-top-filter-item-inline-bgcolor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 5px;
     }
 }

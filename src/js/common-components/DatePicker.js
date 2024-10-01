@@ -1,8 +1,8 @@
 import { StecDiv } from '@Stec/WebComponents';
+import { useEffect, useState } from 'react';
 import FieldDescription from './FieldDescription';
-import InvalidField from './InvalidField';
 import FieldTitle from './FieldTitle';
-import { useState, useEffect } from 'react';
+import InvalidField from './InvalidField';
 
 export const UncontrolledDatePicker = React.forwardRef((props, ref) => {
 
@@ -10,6 +10,11 @@ export const UncontrolledDatePicker = React.forwardRef((props, ref) => {
 
     const [touched, setTouched] = useState(false);
     const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
+
+
+    const dateTimeValue = currentValue.split('T');
+    const dateValue = dateTimeValue[0];
+    const timeValue = dateTimeValue[1] || '00:00';
 
     useEffect(() => {
 
@@ -42,9 +47,7 @@ export const UncontrolledDatePicker = React.forwardRef((props, ref) => {
 
     }, [props.required, currentValue, props.wasSubmitted, touched, props.min, props.max]);
 
-    const onChange = (e) => {
-
-        let newValue = e.target.value;
+    const onChange = (newValue) => {
 
         if (false === moment(newValue).isValid()) {
 
@@ -66,13 +69,32 @@ export const UncontrolledDatePicker = React.forwardRef((props, ref) => {
 
             <FieldTitle text={props.title} />
 
-            {props.includeTime ?
-                <input ref={ref} type="datetime-local" value={currentValue} onChange={onChange} min={props.min} max={props.max} onBlur={() => {
+
+            <StecDiv className={props.includeTime ? 'stec-datepicker-inputs' : ''}>
+
+                <input className='stec-datepicker-inputs-date' ref={ref} type="date" value={dateValue} onChange={e => {
+                    const newDateTime = e.target.value + 'T' + timeValue;
+                    onChange(newDateTime);
+                }} min={props.min} max={props.max} onBlur={() => {
                     setTouched(true);
-                }} /> :
-                <input ref={ref} type="date" value={currentValue} onChange={onChange} min={props.min} max={props.max} onBlur={() => {
-                    setTouched(true);
-                }} />}
+                }} />
+
+                {
+                    props.includeTime &&
+                    <input type='time'
+                        className='stec-datepicker-inputs-time'
+                        value={timeValue}
+                        onBlur={() => {
+                            setTouched(true);
+                        }}
+                        onChange={e => {
+                            const newDateTime = dateValue + 'T' + e.target.value;
+                            onChange(newDateTime);
+                        }}
+                    />
+
+                }
+            </StecDiv>
 
             <InvalidField floating={true} text={props.errorMessage} display={displayErrorMessage} />
 
@@ -121,15 +143,13 @@ export const DatePicker = React.forwardRef((props, ref) => {
 
     }, [props.max, props.min, props.required, props.value, props.wasSubmitted, touched]);
 
-    const onChange = (e) => {
-
-        let newValue = e.target.value;
+    const onChange = (newValue) => {
 
         if (false === moment(newValue).isValid()) {
 
             let defaultMoment = props.min ? moment(props.min) : moment();
 
-            const format = props.includeTime ? 'YYYY-MM-DDTHH:mm' : 'YYYY-MM-DD';
+            const format = props.includeTime ? 'YYYY-MM-DD\\THH:mm' : 'YYYY-MM-DD';
 
             newValue = defaultMoment.format(format);
         }
@@ -138,28 +158,47 @@ export const DatePicker = React.forwardRef((props, ref) => {
 
     }
 
+    const dateTimeValue = props.value.split('T');
+    const dateValue = dateTimeValue[0];
+    const timeValue = dateTimeValue[1] || '00:00';
+
     return (
         <StecDiv className='stec-datepicker'>
 
             <FieldTitle text={props.title} />
 
-            {props.includeTime ?
-                <input ref={ref} type="datetime-local" value={props.value} onChange={onChange} min={props.min} max={props.max} onBlur={() => {
+            <StecDiv className={props.includeTime ? 'stec-datepicker-inputs' : ''}>
+                <input ref={ref} className='stec-datepicker-inputs-date' type="date" value={dateValue} onChange={e => {
+                    const newDateTime = e.target.value + 'T' + timeValue;
+                    onChange(newDateTime);
+                }} min={props.min} max={props.max} onBlur={() => {
                     setTouched(true);
-                }} /> :
-                <input ref={ref} type="date" value={props.value} onChange={onChange} min={props.min} max={props.max} onBlur={() => {
-                    setTouched(true);
-                }} />}
+                }} />
+                {
+                    props.includeTime &&
+
+                    <input type='time'
+                        className='stec-datepicker-inputs-time'
+                        value={timeValue}
+                        onBlur={() => {
+                            setTouched(true);
+                        }}
+                        onChange={e => {
+                            const newDateTime = dateValue + 'T' + e.target.value;
+                            onChange(newDateTime);
+                        }}
+                    />
+
+                }
+            </StecDiv>
 
             <InvalidField floating={true} text={props.errorMessage} display={displayErrorMessage} />
 
             <FieldDescription text={props.description} />
 
-
         </StecDiv>
     )
 });
-
 
 DatePicker.displayName = 'DatePicker';
 

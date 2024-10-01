@@ -26,7 +26,7 @@ function List() {
 
             <StecDiv className='stec-dashboard-top-nav'>
 
-                <Button className='yellow stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
+                <Button className='stcolor stec-dashboard-home-button' label={[<i key='icon' className='fa-solid fa-house' />, __('Home', 'stachethemes_event_calendar_lite')]} onClick={() => {
                     setActiveMenu({
                         page: 'home',
                         params: {}
