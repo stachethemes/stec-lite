@@ -1,7 +1,7 @@
 === Stachethemes Event Calendar Lite ===
 Requires at least: 6.2
 Tested up to: 6.6.2
-Stable tag: 5.3.1
+Stable tag: 5.3.2
 Requires PHP: 8.0
 License: GPLv2 or later
 
@@ -115,3 +115,8 @@ Live Demo: https://stachethemes.com/calendar/full-calendar/
 Codencayon: https://codecanyon.net/item/stachethemes-event-calendar-wordpress-events-calendar-plugin/16168229
 Documentation: https://stachethemes.com/calendar/documentation/
 Support: https://stachethemes.ticksy.com/
+
+== Changelog ==
+
+= 5.3.2 =
+* Fix where Loco Translate is unable to detect the .pot file properly due to incorrect naming.
