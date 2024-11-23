@@ -4,6 +4,8 @@ import { Portal } from 'react-portal';
 
 const DefaultComponent = (props) => {
 
+    const modalId = props.id || `stec-modal-${Math.random().toString(36).substring(7)}`;
+
     useEffect(() => {
 
         const modalWindows = document.querySelectorAll('.stec-light-modal-overlay');
@@ -21,6 +23,57 @@ const DefaultComponent = (props) => {
         }
 
     }, [props.isOpen]);
+
+    useEffect(() => {
+
+        if (!modalId) {
+            return;
+        }
+
+        const getLastModalId = () => {
+            const lastModal = document.querySelectorAll('.stec-light-modal-overlay');
+            const lastAddedModal = lastModal[lastModal.length - 1];
+            return lastAddedModal?.id || null;
+        };
+
+        const handleCloseLastModal = () => {
+
+            const lastDivChildId = getLastModalId();
+
+            if (lastDivChildId === modalId) {
+                // ? Timeout prevents escape key propagation to other modal components
+                setTimeout(() => {
+
+                    const dummyEvent = {
+                        preventDefault: () => { },
+                        stopPropagation: () => { }
+                    }
+
+                    props.onClose(dummyEvent);
+                }, 0);
+            }
+        };
+
+        const handlePopState = (event) => {
+            event.preventDefault();
+            handleCloseLastModal();
+        };
+
+
+        if (props.isOpen) {
+            window.history.pushState(null, '', window.location.href);
+            window.addEventListener('popstate', handlePopState);
+        } else {
+            window.removeEventListener('popstate', handlePopState);
+        }
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+
+    // Intentionally omitting onClose from the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [modalId, props.isOpen]);
 
     if (true !== props.isOpen) {
         return null;
@@ -43,7 +96,7 @@ const DefaultComponent = (props) => {
 
     return (
         <Portal>
-            <StecDiv className={classNameArray.join(' ')} onClick={props.onClose}>
+            <StecDiv id={modalId} className={classNameArray.join(' ')} onClick={props.onClose}>
                 <StecDiv className='stec-light-modal' onClick={(e) => {
                     e.stopPropagation();
                 }}>
