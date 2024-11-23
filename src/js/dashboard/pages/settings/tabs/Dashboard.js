@@ -134,7 +134,7 @@ function Dashboard({ settings }) {
                 <UncontrolledInputCheckbox
                     defaultValue={settingsDashboard.in_calendar}
                     title={__('In calendar dashboard')}
-                    description={__('Allow access to the dashboard from the front-end calendar')}
+                    description={__('Allow access to the dashboard from the front-end calendar', 'stachethemes_event_calendar_lite')}
                     onChange={value => {
                         settingsDashboard.in_calendar = true === value;
                     }}
