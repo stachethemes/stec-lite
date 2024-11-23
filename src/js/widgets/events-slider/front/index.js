@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from '@wordpress/element';
 import LazyEventsSlider from './LazyEventsSlider';
-import AjaxNonce from '@Stec/JS/AjaxNonce.js';
+import AjaxNonce from '@Stec/JS/AjaxNonce';
 
 if (typeof window.stecEventsSliderInstances !== 'undefined' && Array.isArray(window.stecEventsSliderInstances)) {
 

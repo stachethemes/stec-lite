@@ -25,12 +25,17 @@ export const useEventsPrefetch = (widgetParams) => {
                 minMaxIntersect: props.minmax_intersect,
                 limit: props.limit || 6,
                 order: props.order || 'asc',
+                orderby: props.orderby || '',
                 filters: {},
                 threadIndex: props.id,
                 events: window.stecPrefetchedEvents[props.prefetched_events_hash]
             });
 
-            const sortedEvents = sortEventsByFeatured(events);
+            let sortedEvents = events;
+
+            if (!props.orderby) {
+                sortedEvents = sortEventsByFeatured(events);
+            }
 
             setEvents(sortedEvents);
             setReady(true);
@@ -49,7 +54,7 @@ export const useEventsPrefetch = (widgetParams) => {
 
         }
 
-    }, [error, props.id, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, props.minmax_intersect, props.order, props.prefetched_events_hash, ready]);
+    }, [error, props.id, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, props.minmax_intersect, props.order, props.orderby, props.prefetched_events_hash, ready]);
 
     return {
         items: events,
@@ -90,7 +95,7 @@ export const useEvents = (widgetParams) => {
         eventStatus: props.event_status,
         author: props.author,
         include: props.include,
-        ...taxFilters,
+        ...taxFilters
     }
 
     const { items, ready: queryReady, error: queryError } = usePostItemsAll({
@@ -115,12 +120,17 @@ export const useEvents = (widgetParams) => {
                 minDate: minDate,
                 limit: props.limit || 6,
                 order: props.order || 'asc',
+                orderby: props.orderby || '',
                 filters: {},
                 threadIndex: props.id,
                 events: items
             });
 
-            const sortedEvents = sortEventsByFeatured(events);
+            let sortedEvents = events;
+
+            if (!props.orderby) {
+                sortedEvents = sortEventsByFeatured(events);
+            }
 
             setEvents(sortedEvents);
             setReady(true);
@@ -142,7 +152,7 @@ export const useEvents = (widgetParams) => {
             setEvents([]);
         }
 
-    }, [items, queryError, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, queryReady, props.id, props.order, props.minmax_intersect]);
+    }, [items, queryError, props.limit, props.max_date, props.max_date_custom, props.min_date, props.min_date_custom, queryReady, props.id, props.order, props.minmax_intersect, props.orderby]);
 
     return {
         items: events,

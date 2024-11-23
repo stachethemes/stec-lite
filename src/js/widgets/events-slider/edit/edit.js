@@ -229,7 +229,7 @@ const Edit = (props) => {
                         <QtySelector
                             title={__('Auto slide', 'stachethemes_event_calendar_lite')}
                             description={__('Auto slide delay in seconds. Set to 0 to turn off', 'stachethemes_event_calendar_lite')}
-                            min={1}
+                            min={0}
                             max={10}
                             value={auto_slide}
                             onChange={value => {

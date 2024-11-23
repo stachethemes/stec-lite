@@ -6,6 +6,7 @@
     width           : inherit;
     cursor          : pointer;
     overflow        : hidden;
+    z-index         : 0;
 
     .stec-slide-boxgrid-container {
         position: absolute;
@@ -49,13 +50,17 @@
             }
 
             .stec-slide-boxgrid-event-date-month-and-year {
+                position      : relative;
+                top           : -1px;
+                margin-left   : 4px;
                 vertical-align: text-bottom;
-                margin-left: 4px;
 
                 .stec-slide-boxgrid-event-date-month {
                     font-size     : 12px;
                     font-weight   : bold;
                     text-transform: uppercase;
+                    position      : relative;
+                    top           : -1px;
                 }
 
                 .stec-slide-boxgrid-event-date-year {
@@ -66,7 +71,10 @@
             }
 
             .stec-slide-boxgrid-event-date-daylabel {
-                font-size: 12px;
+                font-size     : 10px;
+                text-transform: uppercase;
+                position      : relative;
+                top           : -4px;
             }
 
         }
@@ -82,12 +90,12 @@
         padding   : 10px;
 
         .stec-slide-boxgrid-event-title {
-            width      : 100%;
-            font-size  : 24px;
-            margin     : 10px 0;
-            color      : var(--stec-boxgrid-title-color);
-            line-height: 1.2;
-            display    : inline-block;
+            width        : 100%;
+            font-size    : 24px;
+            margin-bottom: 10px;
+            color        : var(--stec-boxgrid-title-color);
+            line-height  : 1.2;
+            display      : inline-block;
         }
 
         .stec-slide-boxgrid-event-description {
@@ -95,7 +103,7 @@
             width      : 100%;
             font-size  : 14px;
             color      : var(--stec-boxgrid-text-color);
-            line-height: 1.5;
+            line-height: 1.6;
 
             p {
                 font-size: 14px;
@@ -103,7 +111,6 @@
             }
         }
     }
-
 
     .stec-slide-boxgrid-background-image {
         height             : 100%;
@@ -119,7 +126,7 @@
 
         &:after {
             .box(100%);
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
             content         : '';
             position        : absolute;
             left            : 0;
