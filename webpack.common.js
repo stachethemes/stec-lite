@@ -26,9 +26,7 @@ module.exports = {
                             "@babel/preset-react"
                         ],
                         plugins: [
-                            ['@babel/plugin-transform-runtime',
-                                { "regenerator": true }
-                            ],
+                            ['@babel/plugin-transform-runtime', { "regenerator": true }],
                             '@automattic/babel-plugin-preserve-i18n'
                         ]
                     }
@@ -109,7 +107,6 @@ module.exports = {
         '@wordpress/element': ['window', 'wp', 'element'],
         '@wordpress/jp-i18n-loader': ['window', 'wp', 'jpI18nLoader'],
         'lodash': ['window', 'lodash'],
-        'react': ['window', 'React'],
-        'react-dom': ['window', 'ReactDOM']
+        'react': ['window', 'React']
     }
 }

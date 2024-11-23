@@ -3,6 +3,6 @@ module.exports = {
     mode: 'development',
     optimization: {
         concatenateModules: false,
-        minimize: false
-    }
+        minimize: false,
+    },
 }

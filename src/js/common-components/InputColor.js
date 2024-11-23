@@ -1,4 +1,4 @@
-import { ChromePicker } from 'react-color';
+import ChromePicker from './colorpicker/components/chrome/Chrome';
 import { useState, useRef } from 'react';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import FieldTitle from './FieldTitle';
