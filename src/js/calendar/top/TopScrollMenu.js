@@ -1,6 +1,7 @@
-import { centerScrollElement } from '@Stec/JS/helpers';
+import { isMobile } from '@Stec/JS/helpers';
 import { StecDiv } from '@Stec/WebComponents';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useOutsideHandler } from '@Stec/JS/hooks';
 import TopButton from './TopButton';
 
 const scrollList = (direction, scrollWrapperRef) => {
@@ -20,8 +21,11 @@ const scrollList = (direction, scrollWrapperRef) => {
 
 const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
 
-    const activeElementRef = useRef(0);
-    const scrollWrapperRef = useRef(0);
+    const isMobileDevice = isMobile();
+    const activeElementRef = useRef(null);
+    const scrollWrapperRef = useRef(null);
+    const containerRef = useRef(null);
+    const [active, setActive] = useState(false);
 
     let classNameArray = ['stec-top-scroll-menu'];
 
@@ -29,19 +33,44 @@ const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
         classNameArray.push('stec-top-scroll-menu-month');
     }
 
+    if (active) {
+        classNameArray.push('active');
+    }
+
     const selectedObject = optionsArray.filter((opt) => {
         return opt.value === selected;
     });
 
+    const controllers = {};
+
+    if (isMobileDevice) {
+        controllers.onClick = () => {
+            setActive(!active);
+        }
+    } else {
+        controllers.onMouseEnter = () => {
+            setActive(true);
+        }
+        controllers.onMouseLeave = () => {
+            setActive(false);
+        }
+    }
+
+    useOutsideHandler(containerRef, isMobileDevice ? () => {
+        setActive(false);
+    } : false);
+
     return (
-        <StecDiv className={classNameArray.join(' ')} onMouseEnter={() => {
-            centerScrollElement(scrollWrapperRef, activeElementRef)
-        }}>
+        <StecDiv ref={containerRef} className={classNameArray.join(' ')} {...controllers}>
             <TopButton label={selectedObject[0].label} />
 
             <StecDiv className='stec-top-scroll-menu-dropdown'>
                 <StecDiv className='stec-top-scroll-menu-control stec-top-scroll-menu-control-up'
-                    onClick={() => scrollList('up', scrollWrapperRef)}>
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        scrollList('up', scrollWrapperRef);
+                    }}>
                     <i className='fa-solid fa-caret-up' />
                 </StecDiv>
 
@@ -71,7 +100,11 @@ const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
 
                 <StecDiv
                     className='stec-top-scroll-menu-control stec-top-scroll-menu-control-down'
-                    onClick={() => scrollList('down', scrollWrapperRef)}>
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        scrollList('down', scrollWrapperRef);
+                    }}>
                     <i className='fa-solid fa-caret-down' />
                 </StecDiv>
             </StecDiv>
