@@ -75,11 +75,18 @@ export const useOutsideHandler = (ref, action) => {
     }, [ref, action]);
 
     useEffect(() => {
+
+        if (typeof action !== 'function') {
+            return;
+        }
+
         document.addEventListener('mousedown', handleClickOutside);
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [handleClickOutside]);
+
+    }, [action, handleClickOutside]);
 };
 
 /**
