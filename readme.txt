@@ -118,5 +118,11 @@ Support: https://stachethemes.ticksy.com/
 
 == Changelog ==
 
+= 5.3.3 =
+* Redesigned Media Carousel: Added support for mousewheel slide, drag slide, keyboard navigation, zoom, and looping.
+* Modal Windows: Now close when the phone's "back" button is pressed.
+* Updated Events Slider: Now supports mousewheel slide, keyboard navigation, and drag slide.
+* Fixed Translation Issue: "Allow access to the dashboard from the front-end calendar" is now translatable.
+
 = 5.3.2 =
 * Fix where Loco Translate is unable to detect the .pot file properly due to incorrect naming.
