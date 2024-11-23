@@ -2,7 +2,7 @@ import { useAvailableLayouts, useCurrentLayout } from '@Stec/JS/calendar/hooks';
 import { isMobile } from '@Stec/JS/helpers';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import { StecDiv } from '@Stec/WebComponents';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import TopButton from './TopButton';
 
 const TopLayoutDropdownMenu = () => {
@@ -11,6 +11,7 @@ const TopLayoutDropdownMenu = () => {
     const containerRef = useRef(null);
     const { value: activeLayout, setValue: setActiveLayout } = useCurrentLayout();
     const availableLayouts = useAvailableLayouts();
+    const [active, setActive] = useState(false);
 
     useOutsideHandler(containerRef, isMobileDevice ? () => {
         setActive(false);
