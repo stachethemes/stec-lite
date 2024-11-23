@@ -6,9 +6,7 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack --watch",
-        "do-pot": "wp i18n make-pot build build/languages/stec.pot",
-        "do-json": "wp i18n make-json build/languages/translations",
-        "test": "jest"
+        "do-pot": "wp i18n make-pot . build/languages/stachethemes_event_calendar_lite.pot --include=build --exclude=src --skip-audit"
     },
     "author": "Stachethemes",
     "license": "GPL2",
