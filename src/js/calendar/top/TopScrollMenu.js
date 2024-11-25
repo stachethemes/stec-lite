@@ -1,6 +1,6 @@
-import { isMobile } from '@Stec/JS/helpers';
+import { isMobile, centerScrollElement } from '@Stec/JS/helpers';
 import { StecDiv } from '@Stec/WebComponents';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useOutsideHandler } from '@Stec/JS/hooks';
 import TopButton from './TopButton';
 
@@ -60,6 +60,12 @@ const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
         setActive(false);
     } : false);
 
+    useEffect(() => {
+        if (active) {
+            centerScrollElement(scrollWrapperRef, activeElementRef);
+        }
+    }, [active]);
+
     return (
         <StecDiv ref={containerRef} className={classNameArray.join(' ')} {...controllers}>
             <TopButton label={selectedObject[0].label} />
@@ -94,7 +100,7 @@ const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
                             className={classNameArray.join(' ')}
                             onClick={() => onClick(value, type)}>
                             {label}
-                        </StecDiv>;
+                        </StecDiv>
                     })}
                 </StecDiv>
 
