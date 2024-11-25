@@ -55,17 +55,24 @@
     }
 
     .swiper-button-prev {
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
+        border-top-right-radius: var(--stec-corner-smoothing);
+        border-bottom-right-radius: var(--stec-corner-smoothing);
     }
 
     .swiper-button-next {
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
+        border-top-left-radius: var(--stec-corner-smoothing);
+        border-bottom-left-radius: var(--stec-corner-smoothing);
     }
 
     .swiper-button-disabled {
         opacity: 0 !important;
+    }
+
+    .swiper-pagination-bullet {
+        background: #fff;
+    }
+    .swiper-pagination-bullet-active {
+        background: #fff;
     }
 
     &:hover {
@@ -117,6 +124,12 @@
                 opacity: 1;
             }
         }
+    }
+}
+
+.stec.mobile {
+    .stec-media-carousel-thumbs-wrapper {
+        display: none;
     }
 }
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Navigation, Thumbs } from 'swiper/modules';
+import { Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import ModalMediaCarousel from './ModalMediaCarousel';
 import { StecDiv } from '@Stec/WebComponents';
+import { useCalendarScreenTypeValue } from '@Stec/JS/calendar/hooks';
 
 const ImageItem = ({ src }) => {
 
@@ -31,7 +33,7 @@ const ImageItem = ({ src }) => {
 }
 
 const MediaCarousel = ({ images, classes, style }) => {
-
+    const screenSize = useCalendarScreenTypeValue();
     const [active, setActive] = useState(false);
 
     const classNameArray = ['stec-media-carousel'];
@@ -81,8 +83,11 @@ const MediaCarousel = ({ images, classes, style }) => {
                     spaceBetween={10}
                     slidesPerView={1}
                     navigation={true}
+                    pagination={screenSize === 'mobile' ? {
+                        dynamicBullets: true,
+                    } : false}
                     loop={uniqueImages.length > 1}
-                    modules={[Thumbs, Navigation]}
+                    modules={[Thumbs, Navigation, Pagination]}
                     thumbs={{ swiper: thumbsSwiper }}>
                     {uniqueImages.map(item => {
                         return (
