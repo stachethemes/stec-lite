@@ -410,10 +410,10 @@ export function UpsertForm(props) {
 
             <UncontrolledInputText
                 ref={(ref) => focusFieldsRef.current['name'] = ref}
-                title={__('Name')}
+                title={__('Name', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.name}
                 placeholder={__('Guest name', 'stachethemes_event_calendar_lite')}
-                description={__('Guest display name')}
+                description={__('Guest display name', 'stachethemes_event_calendar_lite')}
                 required={true}
                 regex={getRegexByType('title')}
                 errorMessage={__('The guest must have a name', 'stachethemes_event_calendar_lite')}
@@ -427,10 +427,10 @@ export function UpsertForm(props) {
 
             <UncontrolledInputText
                 ref={(ref) => focusFieldsRef.current['slug'] = ref}
-                title={__('Slug')}
+                title={__('Slug', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.slug}
                 placeholder={__('Guest slug', 'stachethemes_event_calendar_lite')}
-                description={__('Leave empty to auto-generate')}
+                description={__('Leave empty to auto-generate', 'stachethemes_event_calendar_lite')}
                 required={false}
                 regex={getRegexByType('slug')}
                 errorMessage={__('The guest must have a valid slug', 'stachethemes_event_calendar_lite')}

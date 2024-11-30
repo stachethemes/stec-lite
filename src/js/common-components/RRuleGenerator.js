@@ -184,7 +184,7 @@ const RRuleGenerator = ({
         { value: 18, label: __('Every 18th month', 'stachethemes_event_calendar_lite') },
         { value: 24, label: __('Every 24th month', 'stachethemes_event_calendar_lite') },
         { value: 36, label: __('Every 36th month', 'stachethemes_event_calendar_lite') },
-        { value: 48, label: __('Every 48th week', 'stachethemes_event_calendar_lite') }
+        { value: 48, label: __('Every 48th month', 'stachethemes_event_calendar_lite') }
     ];
 
     const monthlyAndYearlyByDayOptions = [
@@ -668,7 +668,7 @@ const RRuleGenerator = ({
             <Spacer />
             <InputText
                 readOnly={true}
-                title={__('RRULE')}
+                title={__('RRULE','stachethemes_event_calendar_lite')}
                 value={rrule}
                 description={__('Generated RRULE String', 'stachethemes_event_calendar_lite')}
             /></>
@@ -683,7 +683,7 @@ const RRuleGenerator = ({
         return <>
             <Spacer />
             <InputText
-                title={__('RRULE')}
+                title={__('RRULE', 'stachethemes_event_calendar_lite')}
                 value={rrule}
                 placeholder={__('Enter your custom RRULE string', 'stachethemes_event_calendar_lite')}
                 description={__('The recurrence rule (RRULE) is used in computing the recurrence set.', 'stachethemes_event_calendar_lite')}
