@@ -1,9 +1,10 @@
 === Stachethemes Event Calendar Lite ===
 Requires at least: 6.2
 Tested up to: 6.7
-Stable tag: 5.3.3
+Stable tag: 5.3.8
 Requires PHP: 8.0
 License: GPLv2 or later
+Tags: calendar, event calendar, events, event manager
 
 Stachethemes Event Calendar Lite is a WordPress Calendar Plugin that allows you to easily create, manage and display events on your website.
 
@@ -118,11 +119,17 @@ Support: https://stachethemes.ticksy.com/
 
 == Changelog ==
 
+= 5.3.8
+* Added a new option: "Keep top menu in a single line" in Top Menu settings. When enabled, the top menu stays in a single line on mobile layouts, and the date picker menu is converted into a dropdown.
+* Added a new option: "Display Labels" in Top Menu settings. This option displays labels for the Today, Search, Filters, and Print buttons in the top menu.
+* Improved the quick search field results in the admin panel, making it easier to find options.
+* Fixed typos in the admin repeater selector.
+* Fixed missing translation strings.
+* Fixed an issue where scripts were not loading when the plugin shortcode was within another shortcode (nested shortcodes).
+* Other minor css fixes.
+
 = 5.3.3 =
 * Redesigned Media Carousel: Added support for mousewheel slide, drag slide, keyboard navigation, zoom, and looping.
 * Modal Windows: Now close when the phone's "back" button is pressed.
 * Updated Events Slider: Now supports mousewheel slide, keyboard navigation, and drag slide.
 * Fixed Translation Issue: "Allow access to the dashboard from the front-end calendar" is now translatable.
-
-= 5.3.2 =
-* Fix where Loco Translate is unable to detect the .pot file properly due to incorrect naming.
