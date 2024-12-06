@@ -448,7 +448,7 @@ const EventDateTimeComponent = (props) => {
             <Spacer />
 
             <InputCheckbox
-                title={__('All day', 'stec ')}
+                title={__('All day', 'stachethemes_event_calendar_lite')}
                 description={__('Check if your event spans throughout the day', 'stachethemes_event_calendar_lite')}
                 value={allDay}
                 onChange={checked => {
@@ -483,7 +483,7 @@ const EventDateTimeComponent = (props) => {
             <Spacer />
 
             <InputCheckbox
-                title={__('Hide end date', 'stec ')}
+                title={__('Hide end date', 'stachethemes_event_calendar_lite')}
                 description={__(`Check if you don't want to show the event end date on the front-end`, 'stachethemes_event_calendar_lite')}
                 value={hideEnd}
                 onChange={checked => {

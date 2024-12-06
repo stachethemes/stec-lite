@@ -4,8 +4,8 @@ import { __ } from '@wordpress/i18n';
 function Pagination({
     pages,
     currentPage,
-    onClick, prevLabel = __('Previous', 'stachethemes_event_calendar_lite'),
-    nextLabel = __('Next', 'steec')
+    onClick, prevLabel = __('Previous', 'stachethemes_event_calendar_lite', 'stachethemes_event_calendar_lite'),
+    nextLabel = __('Next', 'stachethemes_event_calendar_lite')
 }) {
 
     if (pages <= 1) {
@@ -37,7 +37,7 @@ function Pagination({
             })}
             {
 
-                currentPage !== pages && 
+                currentPage !== pages &&
 
                 <StecSpan onClick={() => {
 
