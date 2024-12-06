@@ -49,12 +49,11 @@ trait Shortcode_Force_Load {
             wp_enqueue_style('font-awesome');
         }
 
-        if (!wp_style_is('stec-css-dependencies', 'enqueued')) {
-            $late_load_detected = true;
-            wp_enqueue_style('stec-css-dependencies');
-        }
-
         if ($late_load_detected) {
+
+            $css = Settings::get_general_css();
+            printf('<style>%s</style>', esc_js($css));
+            
             ?>
             <script>
                 console.warn('STEC: Shortcode not detected, scripts loaded in the footer');
