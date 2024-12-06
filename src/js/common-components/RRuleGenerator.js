@@ -145,15 +145,16 @@ const RRuleGenerator = ({
         { value: 12, label: __('Every 12th week', 'stachethemes_event_calendar_lite') },
         { value: 13, label: __('Every 13th week', 'stachethemes_event_calendar_lite') },
         { value: 14, label: __('Every 14th week', 'stachethemes_event_calendar_lite') },
-        { value: 16, label: __('Every 15th week', 'stachethemes_event_calendar_lite') },
-        { value: 17, label: __('Every 16th week', 'stachethemes_event_calendar_lite') },
-        { value: 18, label: __('Every 17th week', 'stachethemes_event_calendar_lite') },
-        { value: 19, label: __('Every 18th week', 'stachethemes_event_calendar_lite') },
-        { value: 20, label: __('Every 19th week', 'stachethemes_event_calendar_lite') },
-        { value: 21, label: __('Every 20th week', 'stachethemes_event_calendar_lite') },
-        { value: 22, label: __('Every 21st week', 'stachethemes_event_calendar_lite') },
-        { value: 23, label: __('Every 22nd week', 'stachethemes_event_calendar_lite') },
-        { value: 24, label: __('Every 23rd week', 'stachethemes_event_calendar_lite') },
+        { value: 15, label: __('Every 15th week', 'stachethemes_event_calendar_lite') },
+        { value: 16, label: __('Every 16th week', 'stachethemes_event_calendar_lite') },
+        { value: 17, label: __('Every 17th week', 'stachethemes_event_calendar_lite') },
+        { value: 18, label: __('Every 18th week', 'stachethemes_event_calendar_lite') },
+        { value: 19, label: __('Every 19th week', 'stachethemes_event_calendar_lite') },
+        { value: 20, label: __('Every 20th week', 'stachethemes_event_calendar_lite') },
+        { value: 21, label: __('Every 21st week', 'stachethemes_event_calendar_lite') },
+        { value: 22, label: __('Every 22nd week', 'stachethemes_event_calendar_lite') },
+        { value: 23, label: __('Every 23rd week', 'stachethemes_event_calendar_lite') },
+        { value: 24, label: __('Every 24th week', 'stachethemes_event_calendar_lite') },
         { value: 25, label: __('Every 25th week', 'stachethemes_event_calendar_lite') },
         { value: 26, label: __('Every 26th week', 'stachethemes_event_calendar_lite') }
     ];
@@ -668,7 +669,7 @@ const RRuleGenerator = ({
             <Spacer />
             <InputText
                 readOnly={true}
-                title={__('RRULE','stachethemes_event_calendar_lite')}
+                title={__('RRULE', 'stachethemes_event_calendar_lite')}
                 value={rrule}
                 description={__('Generated RRULE String', 'stachethemes_event_calendar_lite')}
             /></>
