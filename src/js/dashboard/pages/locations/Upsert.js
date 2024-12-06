@@ -570,8 +570,8 @@ export function UpsertForm(props) {
                 ref={(ref) => focusFieldsRef.current['name'] = ref}
                 title={__('Name', 'stachethemes_event_calendar_lite')}
                 defaultValue={postData.current.name}
-                placeholder={__('Location name', 'stachethemes_event_calendar_lite')}
-                description={__('Location name', 'stachethemes_event_calendar_lite')}
+                placeholder={__('Display name', 'stachethemes_event_calendar_lite')}
+                description={__('Display name', 'stachethemes_event_calendar_lite')}
                 required={true}
                 regex={getRegexByType('title')}
                 errorMessage={__('The location must have a name', 'stachethemes_event_calendar_lite')}
