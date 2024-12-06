@@ -29,7 +29,7 @@
 @import './layout/map/MapElements.less';
 
 .stec {
-    width      : 100%;
+    width: 100%;
     font-family: var(--stec-font-general);
 
     i {
@@ -37,12 +37,12 @@
     }
 
     .stec-skeleton {
-        opacity                  : 0;
-        animation-name           : stec-show-skeleton-anim;
-        animation-duration       : .250s;
-        animation-delay          : 1s;
+        opacity: 0;
+        animation-name: stec-show-skeleton-anim;
+        animation-duration: .250s;
+        animation-delay: 1s;
         animation-timing-function: ease-out;
-        animation-fill-mode      : forwards;
+        animation-fill-mode: forwards;
 
         &.no-delay {
             animation-delay: 0s;
@@ -52,12 +52,17 @@
 }
 
 .stec-no-events-found-text {
-    color      : var(--stec-agenda-list-title-color);
-    font-size  : 14px;
+    color: var(--stec-agenda-list-title-color);
+    font-size: 14px;
     font-weight: bold;
-    margin     : 10px 0;
-    display    : inline-block;
-    width      : 100%;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+
+    i {
+        margin-right: 6px;
+        font-size: 14px;
+    }
 }
 
 @keyframes stec-show-skeleton-anim {

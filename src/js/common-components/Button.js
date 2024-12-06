@@ -1,6 +1,6 @@
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 
-const Button = (props) => {
+const Button = React.forwardRef((props, ref) => {
 
     const classNameArray = ['stec-button'];
 
@@ -18,11 +18,13 @@ const Button = (props) => {
         return (
             <a
                 {...props.extra}
+                ref={ref}
                 style={props.style}
                 target={props.target ? props.target : '_SELF'}
                 href={props.href}
                 className={classNameArray.join(' ')}
-                onClick={props.onClick}>{
+                onClick={props.onClick}>
+                {
                     Array.isArray(props.label) ?
                         props.label.map((item, i) => <StecSpan key={i}>{item}</StecSpan>) :
                         props.label
@@ -33,13 +35,23 @@ const Button = (props) => {
         return (
             <StecDiv
                 {...props.extra}
+                ref={ref}
                 style={props.style}
                 className={classNameArray.join(' ')}
-                onClick={props.onClick}>{Array.isArray(props.label) ? props.label.map((item, i) => {
-                    return <StecSpan key={i}>{item}</StecSpan>;
-                }) : props.label}</StecDiv>
+                onClick={props.onClick}>
+                {
+                    Array.isArray(props.label) ?
+                        props.label.map((item, i) => {
+                            return <StecSpan key={i}>{item}</StecSpan>;
+                        }) :
+                        props.label
+                }
+            </StecDiv>
         )
     }
-}
+});
+
+Button.displayName = 'Button';
+
 
 export default Button
