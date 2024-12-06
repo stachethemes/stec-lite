@@ -3,13 +3,15 @@ import { isMobile } from '@Stec/JS/helpers';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { _nx, sprintf } from '@wordpress/i18n';
 import CalendarCellEvent from './CalendarCellEvent';
+import { getCellColor} from '@Stec/JS/helpers';
 
 const CalendarCellEvents = (props) => {
 
     const isMobileDevice = isMobile()
     const forceDisplayTitle = useSettingsAtt('layouts__month_week_force_title');
     const cellStyleVariant = useSettingsAtt('layouts__month_week_style');
-
+    const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
+    
     const maybeHasEvents = [];
     const hiddenEvents = [];
     const screenType = useCalendarScreenTypeValue();
@@ -99,7 +101,9 @@ const CalendarCellEvents = (props) => {
             </StecSpan>
         } else {
             displayMoreType = <StecSpan className='stec-calendar-cell-events-more-icon' style={{
-                backgroundColor: props.eventsInCell[0].meta.color
+                backgroundColor: getCellColor(props.eventsInCell[0], thumbnailSource)
+            }} onClick={e => {
+                e.stopPropagation();
             }}>
                 <StecSpan className='stec-calendar-cell-events-more-icon-text'>{added}</StecSpan>
             </StecSpan>

@@ -165,7 +165,7 @@ const ComparisonTable = () => {
             id: 'subscriptions',
             title: __('Subscribe to Events', 'stachethemes_event_calendar_lite'),
             desc: __('Allows users to subscribe to events or calendars, supporting Google Calendar, iCalendar, Outlook 365, Outlook Live, and other calendar apps.', 'stachethemes_event_calendar_lite'),
-            lite: true,
+            lite: false,
             pro: true
         },
         {

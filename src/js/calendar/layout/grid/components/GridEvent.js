@@ -1,11 +1,11 @@
 import EventTags from '@Stec/CommonComponents/EventTags';
 import VerifiedBadgeTag from '@Stec/CommonComponents/VerifiedBadgeTag';
 import EventCounterSmall from '@Stec/JS/calendar/common/EventCounterSmall';
-import { useSettingsAtt } from '@Stec/JS/calendar/hooks';
+import { useCalendarScreenTypeValue, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { beautifyEventTimespan, getEventPermalink, getEventSortedImages, getEventThumbnailByType } from '@Stec/JS/helpers';
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
 import { _x } from '@wordpress/i18n';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const WithWrapper = (props) => {
 
@@ -24,13 +24,11 @@ const WithWrapper = (props) => {
                 getEventPermalink(props.event);
             }
 
-
             return (
                 <a className={props.classNameArray.join(' ')} href={href} target={hrefTarget}>
                     {props.children}
                 </a>
             )
-
         }
 
         case 'single': {
@@ -51,11 +49,11 @@ const WithWrapper = (props) => {
                 </StecDiv>
             )
     }
-
 }
 
-const GridEvent = ({ event, onActive }) => {
+const GridEventDefault = ({ event, onActive }) => {
 
+    const screenType = useCalendarScreenTypeValue();
     const showInUserTimezone = useSettingsAtt('calendar__use_user_timezone');
     const displayCounter = useSettingsAtt('layouts__grid_counter');
     const openEventsIn = useSettingsAtt('calendar__open_events_in');
@@ -80,14 +78,14 @@ const GridEvent = ({ event, onActive }) => {
         if (!gridImageAutoHeight || !hasDimensionsData) {
             return (
                 {
-                    backgroundImage: `url(${image.sizes.medium})`
+                    backgroundImage: `url(${image.sizes.large})`
                 }
             )
         }
 
         return (
             {
-                backgroundImage: `url(${image.sizes.medium})`,
+                backgroundImage: `url(${image.sizes.large})`,
                 height: 0,
                 paddingTop: 100 / image.dimensions.medium.ar + '%'
             }
@@ -131,8 +129,9 @@ const GridEvent = ({ event, onActive }) => {
         nfoArray.push({
             prefix: prefix,
             content: organizerContent,
-            style: { alignItems: 'center', paddingTop: '9px', paddingBottom: '9px' }
+            style: { alignItems: 'center', paddingTop: '10px', paddingBottom: '10px' }
         });
+
     }
 
     nfoArray.push({
@@ -142,7 +141,8 @@ const GridEvent = ({ event, onActive }) => {
             dateFormat: dateFormat,
             timeFormat: timeFormat,
             showUtcOffset: dateShowTzOffset,
-            showInUserTimezone: showInUserTimezone
+            showInUserTimezone: showInUserTimezone,
+            fullMonth: screenType !== 'mobile'
         })
     });
 
@@ -213,19 +213,41 @@ const GridEvent = ({ event, onActive }) => {
 
                 {
                     nfoArray.map((item, i) => {
-                        /* @since 5.1.1 changed item?.style to item.style */
                         return <StecDiv style={item.style} className='stec-grid-event-nfo' key={i}>
                             {item.prefix}
                             <StecSpan>{item.content}</StecSpan>
                         </StecDiv>
                     })
                 }
+
             </StecDiv>
 
-            <StecDiv className='stec-grid-event-aside-buttons'>
-            </StecDiv>
 
         </WithWrapper>
+    )
+}
+
+const GridEvent = (props) => {
+
+    if (typeof window.stecOverrideGridEventComponent === 'function') {
+        return window.stecOverrideGridEventComponent({
+            componentProps: props,
+            EventTags,
+            VerifiedBadgeTag,
+            EventCounterSmall,
+            useCalendarScreenTypeValue,
+            useSettingsAtt,
+            beautifyEventTimespan,
+            getEventPermalink,
+            getEventSortedImages,
+            getEventThumbnailByType,
+            StecDiv,
+            StecSpan
+        });
+    }
+
+    return (
+        <GridEventDefault {...props} />
     )
 }
 

@@ -1,110 +1,110 @@
 .stec-calendar-cell-events {
     margin-top: 34px;
-    width     : 100%;
+    width: 100%;
     min-height: 22px;
-    height    : ~'calc(100% - 34px)';
+    height: ~'calc(100% - 34px)';
 }
 
 .stec-layout-week-fixed-style,
 .stec-layout-month-fixed-style {
 
     .stec-calendar-cell-events {
-        position  : absolute;
+        position: absolute;
         margin-top: 0;
-        top       : 34px;
-        left      : 0;
-        width     : 100%;
-        height    : ~'calc(100% - 34px)';
+        top: 34px;
+        left: 0;
+        width: 100%;
+        height: ~'calc(100% - 34px)';
     }
 
 }
 
 .stec-calendar-cell-events-more {
     position: absolute;
-    bottom  : 5px;
-    left    : 0;
-    width   : 100%;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
 
     &:hover {
         z-index: 1;
     }
 
     .stec-calendar-cell-events-more-text {
-        font-size     : 10px;
+        font-size: 10px;
         text-transform: uppercase;
-        margin-left   : 4px;
-        color         : var(--stec-layout-month-week-cell-more-txtcolor);
-        position      : relative;
+        margin-left: 4px;
+        color: var(--stec-mw-cell-more-color);
+        position: relative;
 
         &:after {
-            display   : none;
-            content   : '';
-            width     : 20px;
-            height    : 20px;
-            position  : absolute;
+            display: none;
+            content: '';
+            width: 20px;
+            height: 20px;
+            position: absolute;
             background: #545454;
-            transform : rotate(45deg);
-            bottom    : -23px;
-            left      : 10px;
+            transform: rotate(45deg);
+            bottom: -23px;
+            left: 10px;
         }
     }
 
     .stec-calendar-cell-events-more-icon {
-        font-size             : 14px;
-        position              : absolute;
-        right                 : 0;
-        bottom                : -5px;
-        width                 : 22px;
-        height                : 22px;
+        font-size: 14px;
+        position: absolute;
+        right: 0;
+        bottom: -5px;
+        width: 22px;
+        height: 22px;
         border-top-left-radius: var(--stec-corner-smoothing);
 
         &:after {
-            display   : none;
-            content   : '';
-            width     : 20px;
-            height    : 20px;
-            position  : absolute;
+            display: none;
+            content: '';
+            width: 20px;
+            height: 20px;
+            position: absolute;
             background: #545454;
-            transform : rotate(45deg);
-            bottom    : -20px;
-            right     : 0px;
+            transform: rotate(45deg);
+            bottom: -20px;
+            right: 0px;
         }
     }
 
     .stec-calendar-cell-events-more-icon-text {
-        color      : #fff;
-        font-size  : 14px;
+        color: #fff;
+        font-size: 14px;
         font-weight: bold;
         line-height: 22px;
-        width      : 22px;
-        text-align : center;
-        display    : block;
+        width: 22px;
+        text-align: center;
+        display: block;
     }
 }
 
 .stec-calendar-cell-events-more-events {
-    display    : none;
-    position   : absolute;
-    width      : 100%;
-    left       : 0;
-    min-width  : 136px;
-    box-sizing : border-box;
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    min-width: 136px;
+    box-sizing: border-box;
     padding-top: 10px;
-    z-index    : 1;
-    @bg        : #545454;
+    z-index: 1;
+    @bg : #545454;
 
     &:after {
-        z-index         : -1;
+        z-index: -1;
         background-color: @bg;
-        content         : '';
-        position        : absolute;
-        top             : 5px;
-        left            : 0;
-        width           : 100%;
-        height          : ~'calc(100% - 10px)';
-        border-radius   : var(--stec-corner-smoothing);
-        padding         : 4px 0;
-        box-sizing      : content-box;
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        height: ~'calc(100% - 10px)';
+        border-radius: var(--stec-corner-smoothing);
+        padding: 4px 0;
+        box-sizing: content-box;
     }
 }
 
@@ -113,15 +113,14 @@
 
         &:before {
             right: 7px;
-            left : unset;
+            left: unset;
         }
     }
 }
 
 .stec-calendar-cell-events-more {
 
-    // don't show when screen is mobile and the device is mobile
-    &:not(.no-hover):hover {
+    &:hover {
         .stec-calendar-cell-events-more-events {
             display: block;
         }

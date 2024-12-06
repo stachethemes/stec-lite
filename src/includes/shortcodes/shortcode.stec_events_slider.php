@@ -276,6 +276,9 @@ class Shortcode_Stec_Events_Slider {
 
 <?php
 
+        self::check_late_scripts_load('stec-widget-events-slider');
+
+
         return ob_get_clean();
     }
 }

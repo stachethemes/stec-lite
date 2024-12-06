@@ -901,3 +901,36 @@ export const getEventMomentWithOffset = (dateString, offset, eventTimezone) => {
     const eventMomentDate = moment.tz(offsetDateString, eventTimezone);
     return eventMomentDate;
 }
+
+export const calculateMasonryColumns = ({
+	gridContainerWidth,
+	columnsCount,
+	minWidth,
+	gutter
+}) => {
+
+	if ('init' === gridContainerWidth) {
+		return columnsCount;
+	}
+
+	let gapBetweenColumns = gutter; // Default gap between columns in px
+
+	// Calculate the number of masonry columns considering the gap between them
+	let masonryColumns = Math.max(1, Math.floor((gridContainerWidth + gapBetweenColumns) / (minWidth + gapBetweenColumns)));
+
+	// Ensure the number of masonry columns does not exceed the columns count
+	if (masonryColumns > columnsCount) {
+		masonryColumns = columnsCount;
+	}
+
+	// Recalculate the gap if there's remaining space
+	const totalColumnsWidth = masonryColumns * minWidth;
+	const totalGapsWidth = (masonryColumns - 1) * gapBetweenColumns;
+	const remainingWidth = gridContainerWidth - (totalColumnsWidth + totalGapsWidth);
+
+	if (remainingWidth > 0) {
+		gapBetweenColumns += Math.floor(remainingWidth / (masonryColumns - 1));
+	}
+
+	return masonryColumns;
+}

@@ -123,6 +123,8 @@ class Shortcode_Stec {
             'calendar__top_layouts_menu'              => 'atom_default',
             'calendar__top_inline_categories'         => 'atom_default',
             'calendar__top_categories_start_inactive' => 'atom_default',
+            'calendar__top_labels'                    => 'atom_default',
+            'calendar__top_single_line'               => 'atom_default',
             'calendar__layouts'                       => 'atom_default',
             'calendar__layout'                        => 'atom_default',
             'calendar__open_events_in'                => 'atom_default',
@@ -136,6 +138,7 @@ class Shortcode_Stec {
             'layouts__grid_image_auto_height'         => 'atom_default',
             'layouts__grid_gutter'                    => 'atom_default',
             'layouts__grid_columns'                   => 'atom_default',
+            'layouts__grid_breakpoint'                => 'atom_default',
             'layouts__grid_limit'                     => 'atom_default',
             'layouts__grid_more_button'               => 'atom_default',
             'layouts__grid_next_button'               => 'atom_default',
@@ -143,12 +146,12 @@ class Shortcode_Stec {
             'layouts__boxgrid_gutter'                 => 'atom_default',
             'layouts__boxgrid_columns'                => 'atom_default',
             'layouts__boxgrid_limit'                  => 'atom_default',
+            'layouts__boxgrid_breakpoint'             => 'atom_default',
             'layouts__boxgrid_more_button'            => 'atom_default',
             'layouts__boxgrid_next_button'            => 'atom_default',
             'layouts__boxgrid_reverse_order'          => 'atom_default',
             'layouts__month_week_image_auto_height'   => 'atom_default',
             'layouts__month_week_force_title'         => 'atom_default',
-            'layouts__month_week_es_form_on_top'      => 'atom_default',
             'layouts__month_week_style'               => 'atom_default',
             'layouts__month_week_quick_open'          => 'atom_default',
             'layouts__month_week_tooltip'             => 'atom_default',
@@ -339,6 +342,8 @@ class Shortcode_Stec {
 
 <?php
 
+        self::check_late_scripts_load('stec-init-js');
+        
         return ob_get_clean();
     }
 }

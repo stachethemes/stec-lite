@@ -8,7 +8,6 @@ import CalendarCell from './CalendarCell';
 function CellsContainer({ layoutType }) {
 
     const [activeEventKey, setActiveEventKey] = useState(false);
-    const shouldIncludeSubmitForm = true !== useSettingsAtt('layouts__month_week_es_form_on_top');
     const dowOffset = useSettingsAtt('calendar__dow');
     const { safeValue: calendarMomentSafe } = useCalendarMoment();
     const cacheResetKey = calendarMomentSafe.format('YMD');
@@ -84,7 +83,6 @@ function CellsContainer({ layoutType }) {
                     <PreviewEvents
                         key={`events-preview-container-${activeCellDate}`}
                         events={activeCellEvents}
-                        includeSubmitForm={shouldIncludeSubmitForm}
                         activeDate={moment(activeCellDate).format('YYYY-MM-DD')}
                         sortByFeatured={true}
                     />

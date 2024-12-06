@@ -32,4 +32,34 @@ trait Shortcode_Force_Load {
 
         return in_array($post_id, $force_load_ids);
     }
+
+    // If the scripts aren't enqueued at this point then it appears the shortcode is not detected
+    // so we load the scripts in the footer
+    public static function check_late_scripts_load($shortcode_hook) {
+
+        $late_load_detected = false;
+
+        if (!wp_script_is($shortcode_hook, 'enqueued')) {
+            wp_enqueue_script($shortcode_hook);
+            $late_load_detected = true;
+        }
+
+        if (Settings::get('misc', 'font_awesome') && !wp_style_is('font-awesome', 'enqueued')) {
+            $late_load_detected = true;
+            wp_enqueue_style('font-awesome');
+        }
+
+        if (!wp_style_is('stec-css-dependencies', 'enqueued')) {
+            $late_load_detected = true;
+            wp_enqueue_style('stec-css-dependencies');
+        }
+
+        if ($late_load_detected) {
+            ?>
+            <script>
+                console.warn('STEC: Shortcode not detected, scripts loaded in the footer');
+            </script>
+            <?php
+        }
+    }
 }

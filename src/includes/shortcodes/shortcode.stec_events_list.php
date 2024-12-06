@@ -269,6 +269,9 @@ class Shortcode_Stec_Events_List {
 
 <?php
 
+        self::check_late_scripts_load('stec-widget-events-list');
+
+
         return ob_get_clean();
     }
 }

@@ -1,12 +1,12 @@
 import Button from '@Stec/CommonComponents/Button';
 import { DatePicker } from '@Stec/CommonComponents/DatePicker';
+import Flexbox from '@Stec/CommonComponents/Flexbox';
 import { InputCheckbox, UncontrolledInputCheckbox } from '@Stec/CommonComponents/InputCheckbox';
 import { UncontrolledInputColor } from '@Stec/CommonComponents/InputColor';
 import { UncontrolledInputSelect } from '@Stec/CommonComponents/InputSelect';
 import InputText, { UncontrolledInputText } from '@Stec/CommonComponents/InputText';
 import { UncontrolledInputThumbType } from '@Stec/CommonComponents/InputThumbType';
 import Modal from '@Stec/CommonComponents/Modal';
-import Flexbox from '@Stec/CommonComponents/Flexbox';
 import RRuleGenerator from '@Stec/CommonComponents/RRuleGenerator';
 import Section from '@Stec/CommonComponents/Section';
 import Spacer from '@Stec/CommonComponents/Spacer';
@@ -14,11 +14,13 @@ import { flushApiCache } from '@Stec/JS/api';
 import { UpsertForm as CalendarsUpsertForm } from '@Stec/JS/dashboard/pages/calendars/Upsert';
 import { UpsertForm as CategoriesUpsertForm } from '@Stec/JS/dashboard/pages/categories/Upsert';
 import { getRegexByType } from '@Stec/JS/helpers';
-import { WithMaybeDisplayPermissions, usePermissions, useTaxonomyItemsAll } from '@Stec/JS/hooks';
+import { usePermissions, useTaxonomyItemsAll, WithMaybeDisplayPermissions } from '@Stec/JS/hooks';
 import timezonesList from '@Stec/JS/timezones-list';
 import { __ } from '@wordpress/i18n';
 import { uniqueId } from 'lodash';
 import React, { useEffect, useState } from 'react';
+import MaybeFilter from '../../../../MaybeFilter';
+import { getPropsKeywords } from '../filterMap';
 
 const RecurrenceOverride = (props) => {
 
@@ -54,6 +56,8 @@ const RecurrenceOverride = (props) => {
 
 const PermissionsList = (props) => {
 
+    const { searchValue } = props;
+
     const { wasSubmitted, focusFieldsRef, postData } = props;
 
     const { items: permissionsList, ready: permissionsListReady, error: permissionsListError } = usePermissions();
@@ -66,48 +70,55 @@ const PermissionsList = (props) => {
         <>
             <WithMaybeDisplayPermissions type='read_permission'>
 
-                <Spacer />
+                <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'read_permission')}>
 
-                <UncontrolledInputSelect
-                    ref={(ref) => focusFieldsRef.current['read_permission'] = ref}
-                    multiple={true}
-                    defaultValue={postData.current.meta.read_permission}
-                    title={__('Read permission', 'stachethemes_event_calendar_lite')}
-                    options={permissionsList.filter((item) => {
-                        return item;
-                    })}
-                    onChange={value => {
-                        postData.current.meta.read_permission = value;
-                    }}
-                    description={__('Who can view this event', 'stachethemes_event_calendar_lite')}
-                    required={true}
-                    wasSubmitted={wasSubmitted}
-                    errorMessage={__('The read permission cannot be empty', 'stachethemes_event_calendar_lite')}
-                />
+                    <Spacer />
+
+                    <UncontrolledInputSelect
+                        ref={(ref) => focusFieldsRef.current['read_permission'] = ref}
+                        multiple={true}
+                        defaultValue={postData.current.meta.read_permission}
+                        title={__('Read permission', 'stachethemes_event_calendar_lite')}
+                        options={permissionsList.filter((item) => {
+                            return item;
+                        })}
+                        onChange={value => {
+                            postData.current.meta.read_permission = value;
+                        }}
+                        description={__('Who can view this event', 'stachethemes_event_calendar_lite')}
+                        required={true}
+                        wasSubmitted={wasSubmitted}
+                        errorMessage={__('The read permission cannot be empty', 'stachethemes_event_calendar_lite')}
+                    />
+
+                </MaybeFilter>
 
             </WithMaybeDisplayPermissions>
 
             <WithMaybeDisplayPermissions type='edit_permission'>
 
-                <Spacer />
+                <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'edit_permission')}>
 
-                <UncontrolledInputSelect
-                    ref={(ref) => focusFieldsRef.current['edit_permission'] = ref}
-                    multiple={true}
-                    defaultValue={postData.current.meta.edit_permission}
-                    title={__('Edit permission', 'stachethemes_event_calendar_lite')}
-                    options={permissionsList.filter((item) => {
-                        return item.value !== 'stec_public'
-                    })}
-                    onChange={value => {
-                        postData.current.meta.edit_permission = value;
-                    }}
-                    description={__('Who can edit this event', 'stachethemes_event_calendar_lite')}
-                    required={true}
-                    wasSubmitted={wasSubmitted}
-                    errorMessage={__('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')}
-                />
+                    <Spacer />
 
+                    <UncontrolledInputSelect
+                        ref={(ref) => focusFieldsRef.current['edit_permission'] = ref}
+                        multiple={true}
+                        defaultValue={postData.current.meta.edit_permission}
+                        title={__('Edit permission', 'stachethemes_event_calendar_lite')}
+                        options={permissionsList.filter((item) => {
+                            return item.value !== 'stec_public'
+                        })}
+                        onChange={value => {
+                            postData.current.meta.edit_permission = value;
+                        }}
+                        description={__('Who can edit this event', 'stachethemes_event_calendar_lite')}
+                        required={true}
+                        wasSubmitted={wasSubmitted}
+                        errorMessage={__('The edit permission cannot be empty', 'stachethemes_event_calendar_lite')}
+                    />
+
+                </MaybeFilter>
             </WithMaybeDisplayPermissions>
 
         </>
@@ -116,7 +127,7 @@ const PermissionsList = (props) => {
 
 }
 
-const SelectCategoriesList = ({ postData, focusFieldsRef, wasSubmitted }) => {
+const SelectCategoriesList = ({ postData }) => {
 
     const { items: categories, ready: categoriesReady, error: categoriesError } = useTaxonomyItemsAll({
         perPage: 100,
@@ -312,7 +323,7 @@ const SelectCalendar = ({ postData, focusFieldsRef, wasSubmitted, onCalendarChan
                     refreshList();
                 }}
 
-                onCalendarDeleted={(item) => {
+                onCalendarDeleted={() => {
                     postData.current.stec_cal = '';
                     refreshList();
                 }}
@@ -351,6 +362,7 @@ const EventDateTimeComponent = (props) => {
 
     const postData = props.postData;
     const wasSubmitted = props.wasSubmitted;
+    const searchValue = props.searchValue;
 
     const [startDate, setStartDate] = useState(postData.current.meta.start_date);
     const [endDate, setEndDate] = useState(postData.current.meta.end_date);
@@ -385,113 +397,127 @@ const EventDateTimeComponent = (props) => {
     return (
         <React.Fragment key='EventDateTimeComponent'>
 
-            <RecurrenceOverride postData={props.postData} />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'rroverride')}>
+                <RecurrenceOverride postData={props.postData} />
+            </MaybeFilter>
 
-            <DatePicker
-                ref={(ref) => props.focusFieldsRef.current['start_date'] = ref}
-                title={__('Start date', 'stachethemes_event_calendar_lite')}
-                description={__('Event initial start date', 'stachethemes_event_calendar_lite')}
-                includeTime={!allDay}
-                value={startDateString}
-                onChange={(value) => {
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'start')}>
+                <DatePicker
+                    ref={(ref) => props.focusFieldsRef.current['start_date'] = ref}
+                    title={__('Start date', 'stachethemes_event_calendar_lite')}
+                    description={__('Event initial start date', 'stachethemes_event_calendar_lite')}
+                    includeTime={!allDay}
+                    value={startDateString}
+                    onChange={(value) => {
 
-                    const newStartMoment = moment(value);
+                        const newStartMoment = moment(value);
 
-                    if (allDay) {
-                        newStartMoment.set({
-                            hours: 0,
-                            minutes: 0,
-                            seconds: 0
-                        });
-                    }
+                        if (allDay) {
+                            newStartMoment.set({
+                                hours: 0,
+                                minutes: 0,
+                                seconds: 0
+                            });
+                        }
 
-                    const newDateString = newStartMoment.format('YYYY-MM-DD\\THH:mm');
+                        const newDateString = newStartMoment.format('YYYY-MM-DD\\THH:mm');
 
-                    setStartDate(newDateString);
+                        setStartDate(newDateString);
 
-                }}
-                required={true}
-                errorMessage={__('Event must have a start date', 'stachethemes_event_calendar_lite')}
-                wasSubmitted={wasSubmitted}
-            />
+                    }}
+                    required={true}
+                    errorMessage={__('Event must have a start date', 'stachethemes_event_calendar_lite')}
+                    wasSubmitted={wasSubmitted}
+                />
+                <Spacer />
+            </MaybeFilter>
 
-            <Spacer />
 
-            <DatePicker
-                ref={(ref) => props.focusFieldsRef.current['end_date'] = ref}
-                title={__('End date', 'stachethemes_event_calendar_lite')}
-                description={__('Event initial end date', 'stachethemes_event_calendar_lite')}
-                includeTime={!allDay}
-                value={endDateString}
-                onChange={(value) => {
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'end')}>
+                <DatePicker
+                    ref={(ref) => props.focusFieldsRef.current['end_date'] = ref}
+                    title={__('End date', 'stachethemes_event_calendar_lite')}
+                    description={__('Event initial end date', 'stachethemes_event_calendar_lite')}
+                    includeTime={!allDay}
+                    value={endDateString}
+                    onChange={(value) => {
 
-                    const newEndMoment = moment(value);
+                        const newEndMoment = moment(value);
 
-                    if (allDay) {
-                        newEndMoment.set({
-                            hours: 23,
-                            minutes: 59,
-                            seconds: 59
-                        });
-                    }
+                        if (allDay) {
+                            newEndMoment.set({
+                                hours: 23,
+                                minutes: 59,
+                                seconds: 59
+                            });
+                        }
 
-                    const newDateString = newEndMoment.format('YYYY-MM-DD\\THH:mm');
+                        const newDateString = newEndMoment.format('YYYY-MM-DD\\THH:mm');
 
-                    setEndDate(newDateString);
+                        setEndDate(newDateString);
 
-                }}
-                required={true}
-                errorMessage={__('Event must have an end date', 'stachethemes_event_calendar_lite')}
-                wasSubmitted={wasSubmitted}
-            />
+                    }}
+                    required={true}
+                    errorMessage={__('Event must have an end date', 'stachethemes_event_calendar_lite')}
+                    wasSubmitted={wasSubmitted}
+                />
 
-            <Spacer />
+                <Spacer />
+            </MaybeFilter>
 
-            <InputCheckbox
-                title={__('All day', 'stachethemes_event_calendar_lite')}
-                description={__('Check if your event spans throughout the day', 'stachethemes_event_calendar_lite')}
-                value={allDay}
-                onChange={checked => {
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'all_day')}>
 
-                    if (checked) {
+                <InputCheckbox
+                    title={__('All day', 'stachethemes_event_calendar_lite')}
+                    description={__('Check if your event spans throughout the day', 'stachethemes_event_calendar_lite')}
+                    value={allDay}
+                    onChange={checked => {
 
-                        startDateMoment.set({
-                            hours: 0,
-                            minutes: 0,
-                            seconds: 0
-                        });
+                        if (checked) {
 
-                        endDateMoment.set({
-                            hours: 23,
-                            minutes: 59,
-                            seconds: 59
-                        });
+                            startDateMoment.set({
+                                hours: 0,
+                                minutes: 0,
+                                seconds: 0
+                            });
 
-                        const startDateValue = startDateMoment.format('YYYY-MM-DD\\THH:mm');
-                        const endDateValue = endDateMoment.format('YYYY-MM-DD\\THH:mm');
+                            endDateMoment.set({
+                                hours: 23,
+                                minutes: 59,
+                                seconds: 59
+                            });
 
-                        setStartDate(startDateValue);
-                        setEndDate(endDateValue);
+                            const startDateValue = startDateMoment.format('YYYY-MM-DD\\THH:mm');
+                            const endDateValue = endDateMoment.format('YYYY-MM-DD\\THH:mm');
 
-                    }
+                            setStartDate(startDateValue);
+                            setEndDate(endDateValue);
 
-                    setAllDay(checked);
+                        }
 
-                }}
-            />
+                        setAllDay(checked);
 
-            <Spacer />
+                    }}
+                />
 
-            <InputCheckbox
-                title={__('Hide end date', 'stachethemes_event_calendar_lite')}
-                description={__(`Check if you don't want to show the event end date on the front-end`, 'stachethemes_event_calendar_lite')}
-                value={hideEnd}
-                onChange={checked => {
-                    setHideEnd(checked);
-                }}
-            />
+                <Spacer />
+            </MaybeFilter>
 
-            {displayRepeater && <>
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'hide_end')}>
+
+                <InputCheckbox
+                    title={__('Hide end date', 'stachethemes_event_calendar_lite')}
+                    description={__(`Check if you don't want to show the event end date on the front-end`, 'stachethemes_event_calendar_lite')}
+                    value={hideEnd}
+                    onChange={checked => {
+                        setHideEnd(checked);
+                    }}
+                />
+
+            </MaybeFilter>
+
+            {displayRepeater && <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'rrule')}>
+
                 <Spacer />
 
                 <RRuleGenerator
@@ -514,13 +540,13 @@ const EventDateTimeComponent = (props) => {
                         setExdate(exdates);
                     }}
                 />
-            </>}
+            </MaybeFilter>}
         </React.Fragment>
     )
 
 }
 
-const SelectCalendarThumbAndColor = ({ postData, focusFieldsRef, wasSubmitted, onCalendarChange }) => {
+const SelectCalendarThumbAndColor = ({ postData, focusFieldsRef, wasSubmitted, onCalendarChange, searchValue }) => {
 
     const [state, setState] = useState(uniqueId());
 
@@ -528,40 +554,47 @@ const SelectCalendarThumbAndColor = ({ postData, focusFieldsRef, wasSubmitted, o
 
         <React.Fragment key={state}>
 
-            <SelectCalendar
-                postData={postData}
-                focusFieldsRef={focusFieldsRef}
-                wasSubmitted={wasSubmitted}
-                onCalendarChange={() => {
-                    if (onCalendarChange) {
-                        onCalendarChange();
-                        setState(uniqueId());
-                    }
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'calendar')}>
+                <SelectCalendar
+                    postData={postData}
+                    focusFieldsRef={focusFieldsRef}
+                    wasSubmitted={wasSubmitted}
+                    onCalendarChange={() => {
+                        if (onCalendarChange) {
+                            onCalendarChange();
+                            setState(uniqueId());
+                        }
 
-                }}
-            />
+                    }}
+                />
 
-            <Spacer />
+                <Spacer />
+            </MaybeFilter>
 
-            <UncontrolledInputColor
-                title={__('Event Color', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.meta.color}
-                description={__('Select color for your event', 'stachethemes_event_calendar_lite')}
-                onChange={(value) => {
-                    postData.current.meta.color = value;
-                }}
-            />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'color')}>
+                <UncontrolledInputColor
+                    title={__('Event Color', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.meta.color}
+                    description={__('Select color for your event', 'stachethemes_event_calendar_lite')}
+                    onChange={(value) => {
+                        postData.current.meta.color = value;
+                    }}
+                />
 
-            <Spacer />
+                <Spacer />
+            </MaybeFilter>
 
-            <UncontrolledInputThumbType
-                title={__('Thumbnail type', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.meta.thumbnail}
-                description={__('Event thumbnail', 'stachethemes_event_calendar_lite')}
-                onChange={value => {
-                    postData.current.meta.thumbnail = value;
-                }}
-            />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'thumbnail')}>
+                <UncontrolledInputThumbType
+                    title={__('Thumbnail type', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.meta.thumbnail}
+                    description={__('Event thumbnail', 'stachethemes_event_calendar_lite')}
+                    onChange={value => {
+                        postData.current.meta.thumbnail = value;
+                    }}
+                />
+                <Spacer />
+            </MaybeFilter>
 
         </React.Fragment>
     )
@@ -573,100 +606,112 @@ function General(props) {
     const postData = props.postData;
     const wasSubmitted = props.wasSubmitted;
     const focusFieldsRef = props.focusFieldsRef;
+    const searchValue = props.searchValue;
 
     return (
         <Section title={__('General', 'stachethemes_event_calendar_lite')}>
 
-{
+            {
                 postData.current.link &&
-                <Flexbox className='stec-dashboard-edit-event-permalink'>
+                <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'permalink')}>
+                    <Flexbox className='stec-dashboard-edit-event-permalink'>
 
-                    <InputText
-                        readOnly={true}
-                        title={__('Permalink', 'stachethemes_event_calendar_lite')}
-                        value={postData.current.link}
-                        description={__('The event current permalink', 'stachethemes_event_calendar_lite')}
-                        onChange={() => {
-                            // do nothing
-                        }}
-                    />
+                        <InputText
+                            readOnly={true}
+                            title={__('Permalink', 'stachethemes_event_calendar_lite')}
+                            value={postData.current.link}
+                            description={__('The event current permalink', 'stachethemes_event_calendar_lite')}
+                            onChange={() => {
+                                // do nothing
+                            }}
+                        />
 
-                    <Button
-                        extra={{
-                            title: __('View event', 'stachethemes_event_calendar_lite')
-                        }}
-                        className='blue'
-                        label={__('View', 'stachethemes_event_calendar_lite')} href={postData.current.link} target={'_blank'} />
-                </Flexbox>
+                        <Button
+                            extra={{
+                                title: __('View event', 'stachethemes_event_calendar_lite')
+                            }}
+                            className='blue'
+                            label={__('View', 'stachethemes_event_calendar_lite')} href={postData.current.link} target={'_blank'} />
+                    </Flexbox>
+                </MaybeFilter>
             }
 
-            <UncontrolledInputText
-                ref={(ref) => focusFieldsRef.current['title'] = ref}
-                title={__('Title', 'stachethemes_event_calendar_lite')}
-                description={__('The event title', 'stachethemes_event_calendar_lite')}
-                placeholder={__('Title', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.title.raw}
-                onChange={value => {
-                    postData.current.title.raw = value;
-                }}
-                regex={getRegexByType('title')}
-                errorMessage={__('The event must have a title', 'stachethemes_event_calendar_lite')}
-                wasSubmitted={wasSubmitted}
-            />
-
             <Spacer />
 
-            <UncontrolledInputText
-                ref={(ref) => focusFieldsRef.current['slug'] = ref}
-                title={__('Slug', 'stachethemes_event_calendar_lite')}
-                placeholder={__('Slug', 'stachethemes_event_calendar_lite')}
-                description={__('The event title slug. Leave empty to auto-generate', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.slug}
-                onChange={value => {
-                    postData.current.slug = value;
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'title')}>
+                <UncontrolledInputText
+                    ref={(ref) => focusFieldsRef.current['title'] = ref}
+                    title={__('Title', 'stachethemes_event_calendar_lite')}
+                    description={__('The event title', 'stachethemes_event_calendar_lite')}
+                    placeholder={__('Title', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.title.raw}
+                    onChange={value => {
+                        postData.current.title.raw = value;
+                    }}
+                    regex={getRegexByType('title')}
+                    errorMessage={__('The event must have a title', 'stachethemes_event_calendar_lite')}
+                    wasSubmitted={wasSubmitted}
+                />
 
-                }}
-                regex={getRegexByType('slug')}
-                errorMessage={__('The event must have a valid slug', 'stachethemes_event_calendar_lite')}
-                wasSubmitted={wasSubmitted}
-            />
+                <Spacer />
+            </MaybeFilter>
 
-            <Spacer />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'slug')}>
+                <UncontrolledInputText
+                    ref={(ref) => focusFieldsRef.current['slug'] = ref}
+                    title={__('Slug', 'stachethemes_event_calendar_lite')}
+                    className='stec-input-slug'
+                    placeholder={__('Slug', 'stachethemes_event_calendar_lite')}
+                    description={__('The event title slug. Leave empty to auto-generate', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.slug}
+                    onChange={value => {
+                        postData.current.slug = value;
+
+                    }}
+                    regex={getRegexByType('slug')}
+                    errorMessage={__('The event must have a valid slug', 'stachethemes_event_calendar_lite')}
+                    wasSubmitted={wasSubmitted}
+                />
+
+                <Spacer />
+            </MaybeFilter>
 
             <SelectCalendarThumbAndColor
+                searchValue={searchValue}
                 postData={postData}
                 focusFieldsRef={focusFieldsRef}
                 wasSubmitted={wasSubmitted}
                 onCalendarChange={props.onCalendarChange}
             />
 
-            <Spacer />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'timezone')}>
+                <UncontrolledInputSelect
+                    ref={(ref) => focusFieldsRef.current['timezone'] = ref}
+                    title={__('Timezone', 'stachethemes_event_calendar_lite')}
+                    options={[{
+                        label: __('Use calendar timezone', 'stachethemes_event_calendar_lite'),
+                        value: 'stec_cal_default'
+                    }, ...timezonesList.map(tz => {
+                        return {
+                            value: tz.value,
+                            label: tz.label
+                        }
+                    })]}
+                    defaultValue={postData.current.meta.timezone}
+                    required={true}
+                    onChange={value => {
+                        postData.current.meta.timezone = value;
+                    }}
+                    description={__('Event timezone', 'stachethemes_event_calendar_lite')}
+                    errorMessage={__('The event must have a timezone', 'stachethemes_event_calendar_lite')}
+                    wasSubmitted={wasSubmitted}
+                />
 
-            <UncontrolledInputSelect
-                ref={(ref) => focusFieldsRef.current['timezone'] = ref}
-                title={__('Timezone', 'stachethemes_event_calendar_lite')}
-                options={[{
-                    label: __('Use calendar timezone', 'stachethemes_event_calendar_lite'),
-                    value: 'stec_cal_default'
-                }, ...timezonesList.map(tz => {
-                    return {
-                        value: tz.value,
-                        label: tz.label
-                    }
-                })]}
-                defaultValue={postData.current.meta.timezone}
-                required={true}
-                onChange={value => {
-                    postData.current.meta.timezone = value;
-                }}
-                description={__('Event timezone', 'stachethemes_event_calendar_lite')}
-                errorMessage={__('The event must have a timezone', 'stachethemes_event_calendar_lite')}
-                wasSubmitted={wasSubmitted}
-            />
-
-            <Spacer />
+                <Spacer />
+            </MaybeFilter>
 
             <EventDateTimeComponent
+                searchValue={searchValue}
                 postData={postData}
                 wasSubmitted={wasSubmitted}
                 focusFieldsRef={focusFieldsRef}
@@ -684,48 +729,55 @@ function General(props) {
 
             <Spacer />
 
-            <SelectCategories postData={postData} focusFieldsRef={focusFieldsRef} wasSubmitted={wasSubmitted} />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'categories')}>
+                <SelectCategories postData={postData} focusFieldsRef={focusFieldsRef} wasSubmitted={wasSubmitted} />
+                <Spacer />
+            </MaybeFilter>
 
-            <Spacer />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'status')}>
+                <UncontrolledInputSelect
+                    title={__('Event Status', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.meta.event_status}
+                    options={[
+                        { value: 'EventScheduled', label: __('Scheduled', 'stachethemes_event_calendar_lite') },
+                        { value: 'EventMovedOnline', label: __('Moved Online', 'stachethemes_event_calendar_lite') },
+                        { value: 'EventPostponed', label: __('Postponed', 'stachethemes_event_calendar_lite') },
+                        { value: 'EventRescheduled', label: __('Rescheduled', 'stachethemes_event_calendar_lite') },
+                        { value: 'EventCancelled', label: __('Cancelled', 'stachethemes_event_calendar_lite') },
+                    ]}
+                    description={__('Set event status', 'stachethemes_event_calendar_lite')}
+                    onChange={(value) => {
+                        postData.current.meta.event_status = value;
+                    }}
+                />
 
-            <UncontrolledInputSelect
-                title={__('Event Status', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.meta.event_status}
-                options={[
-                    { value: 'EventScheduled', label: __('Scheduled', 'stachethemes_event_calendar_lite') },
-                    { value: 'EventMovedOnline', label: __('Moved Online', 'stachethemes_event_calendar_lite') },
-                    { value: 'EventPostponed', label: __('Postponed', 'stachethemes_event_calendar_lite') },
-                    { value: 'EventRescheduled', label: __('Rescheduled', 'stachethemes_event_calendar_lite') },
-                    { value: 'EventCancelled', label: __('Cancelled', 'stachethemes_event_calendar_lite') },
-                ]}
-                description={__('Set event status', 'stachethemes_event_calendar_lite')}
-                onChange={(value) => {
-                    postData.current.meta.event_status = value;
-                }}
-            />
+                <Spacer />
+            </MaybeFilter>
 
-            <Spacer />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'featured')}>
+                <UncontrolledInputCheckbox
+                    title={__('Set as Featured', 'stachethemes_event_calendar_lite')} description={__('Mark event as featured', 'stachethemes_event_calendar_lite')}
+                    defaultValue={postData.current.meta.featured}
+                    onChange={checked => {
+                        postData.current.meta.featured = checked;
+                    }}
+                />
 
-            <UncontrolledInputCheckbox
-                title={__('Set as Featured', 'stachethemes_event_calendar_lite')} description={__('Mark event as featured', 'stachethemes_event_calendar_lite')}
-                defaultValue={postData.current.meta.featured}
-                onChange={checked => {
-                    postData.current.meta.featured = checked;
-                }}
-            />
+                <Spacer />
+            </MaybeFilter>
 
-            <Spacer />
+            <MaybeFilter searchValue={searchValue} keywords={getPropsKeywords('general', 'general', 'comments')}>
+                <UncontrolledInputCheckbox
+                    title={__('Allow comments', 'stachethemes_event_calendar_lite')}
+                    defaultValue={'open' === postData.current.comment_status}
+                    description={__('Allow comments for this event', 'stachethemes_event_calendar_lite')}
+                    onChange={checked => {
+                        postData.current.comment_status = true === checked ? 'open' : 'closed';
+                    }}
+                />
+            </MaybeFilter>
 
-            <UncontrolledInputCheckbox
-                title={__('Allow comments', 'stachethemes_event_calendar_lite')}
-                defaultValue={'open' === postData.current.comment_status}
-                description={__('Allow comments for this event', 'stachethemes_event_calendar_lite')}
-                onChange={checked => {
-                    postData.current.comment_status = true === checked ? 'open' : 'closed';
-                }}
-            />
-
-            <PermissionsList postData={postData} focusFieldsRef={focusFieldsRef} wasSubmitted={wasSubmitted} />
+            <PermissionsList searchValue={searchValue} postData={postData} focusFieldsRef={focusFieldsRef} wasSubmitted={wasSubmitted} />
 
         </Section>
     );

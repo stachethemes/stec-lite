@@ -29,9 +29,7 @@ const TopScrollMenu = ({ type, selected, optionsArray, onClick }) => {
 
     let classNameArray = ['stec-top-scroll-menu'];
 
-    if (type === 'month') {
-        classNameArray.push('stec-top-scroll-menu-month');
-    }
+    classNameArray.push(`stec-top-scroll-menu-${type}`);
 
     if (active) {
         classNameArray.push('active');

@@ -74,6 +74,7 @@ const UpsertContent = (props) => {
 
     const initialTtabsList = cloneDeep(tabsList);
 
+    const [searchValue, setSearchValue] = useState('');
     const [tabs, setTabs] = useState(initialTtabsList);
 
     const componentId = tabs.filter(item => item.active === true)[0].id;
@@ -81,11 +82,17 @@ const UpsertContent = (props) => {
     return (
         <StecDiv className='stec-dashboard-upsert-event-wrapper'>
 
-            <SideNavigation items={tabs} setItems={setTabs} />
+            <SideNavigation
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                items={tabs}
+                setItems={setTabs}
+            />
 
             <StecDiv className='stec-dashboard-upsert-event-component-container'>
                 <CurrentTabComponent
                     id={componentId}
+                    searchValue={searchValue}
                     wasSubmitted={props.wasSubmitted}
                     postData={props.postData}
                     focusFieldsRef={props.focusFieldsRef}
@@ -464,7 +471,7 @@ function Upsert() {
                 formButtons={() => {
                     return (
                         <>
-                            <Button style={{marginRight: 5}} label={isEdit ? (moderateCalendar && postData.current.meta.approved === 0 ? __('Approve', 'stachethemes_event_calendar_lite') : __('Update', 'stachethemes_event_calendar_lite', 0)) : __('Create', 'stachethemes_event_calendar_lite', 1)} className='green' onClick={onUpsertEvent} />
+                            <Button style={{ marginRight: 5 }} label={isEdit ? (moderateCalendar && postData.current.meta.approved === 0 ? __('Approve', 'stachethemes_event_calendar_lite') : __('Update', 'stachethemes_event_calendar_lite', 0)) : __('Create', 'stachethemes_event_calendar_lite', 1)} className='green' onClick={onUpsertEvent} />
                             <Button label={__('Reset form', 'stachethemes_event_calendar_lite')} className='yellow' style={{ marginRight: 5 }} onClick={resetForm} />
                             {postData.current.id && <ConfirmButton label={__('Delete', 'stachethemes_event_calendar_lite')} className='red' style={{ marginRight: 5 }} onClick={deleteEvent} />}
                             <Button label={__('Back', 'stachethemes_event_calendar_lite')} className='blue' onClick={goToManageList} />

@@ -1,8 +1,6 @@
-import { useCurrentLayout, useAvailableLayouts } from '@Stec/JS/calendar/hooks';
+import { useAvailableLayouts, useCurrentLayout } from '@Stec/JS/calendar/hooks';
 import { StecDiv } from '@Stec/WebComponents';
 import TopButton from './TopButton';
-
-import { __ } from '@wordpress/i18n';
 
 const TopLayoutMenu = () => {
 

@@ -124,13 +124,7 @@ class Shortcode_Stec_Single {
             'calendar',
             'layouts',
             'map',
-            'submit_form',
-            'attendance',
-            'reminders',
-            'forecast',
-            'captcha',
             'comments',
-            'builder',
             'dashboard'
         ));
 

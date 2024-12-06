@@ -1,12 +1,15 @@
 import { StecDiv } from '@Stec/WebComponents';
+import { useSettingsAtt } from '@Stec/JS/calendar/hooks';
 
 const AccordeonItem = (props) => {
 
+    const noAnimation = useSettingsAtt('misc__noanim', false);
+
     /**
-     * * window.stecFilterAccordeonAnimationDisabled = true
-     * * filter to disable animation on accordeon items
+     * window.stecFilterAccordeonAnimationDisabled = true
+     * filter to disable animation on accordeon items
      */
-    const style = window.stecFilterAccordeonAnimationDisabled ? { animationDuration: `0s`, animationDelay: `0s` } : { animationDelay: `${props.animationDelay}s` };
+    const style = noAnimation || window.stecFilterAccordeonAnimationDisabled ? { animationDuration: `0s`, animationDelay: `0s` } : { animationDelay: `${props.animationDelay}s` };
 
     return (
         <StecDiv style={{

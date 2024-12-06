@@ -1,12 +1,10 @@
 import { StecDiv, StecSpan } from '@Stec/WebComponents';
-import { __ } from '@wordpress/i18n';
 import { cloneDeep } from 'lodash';
-import { useState } from 'react';
 import { UncontrolledDelayedInputText } from './InputText';
+import { __ } from '@wordpress/i18n';
+import { useEffect } from 'react';
 
 function SideNavigation(props) {
-
-    const [searchFilter, setSearchFilter] = useState('');
 
     const updateState = (activeId) => {
 
@@ -20,65 +18,80 @@ function SideNavigation(props) {
 
     }
 
-    /**
-     * A function that tries to match the searchFilter with the keywords of the items
-     * should return items with the most matches
-     * 
-     * searchFilter global variable
-     */
     const filterByKeyword = (items) => {
 
         // searchFilter value is empty
-        if (!searchFilter) {
+        if (!props.searchValue) {
             return items;
         }
 
         const selectedItems = [];
-        let searchFilterKeywords = searchFilter.split(' ').filter(keyword => keyword);
 
-        // unique searchFilterKeywords
-        searchFilterKeywords = searchFilterKeywords.filter((keyword, index) => searchFilterKeywords.indexOf(keyword) === index);
 
-        items.forEach(item => {
-            if (false === Array.isArray(item.keywords)) {
-                return;
+        items.forEach((item) => {
+
+            const keywords = item.keywords;
+
+            let found = false;
+
+            keywords.forEach((keyword) => {
+                if (keyword.toLowerCase().includes(props.searchValue.toLowerCase())) {
+                    found = true;
+                }
+            });
+
+            if (found) {
+                selectedItems.push(item);
             }
 
-            const itemKeywords = item.keywords;
-
-            const matchedKeywordCount = itemKeywords.filter(keyword => {
-                const transformedKeyword = keyword.trim().toLowerCase();
-                return searchFilterKeywords.includes(transformedKeyword);
-            }).length;
-
-            const searchFilterKeywordCount = searchFilterKeywords.length;
-            const percentageMatched = (matchedKeywordCount / searchFilterKeywordCount) * 100;
-
-            if (percentageMatched >= 95) {
-                selectedItems.push({ item, matchedKeywordCount });
-            }
         });
 
-        // Sort selectedItems by the number of matched keywords in descending order
-        selectedItems.sort((a, b) => b.matchedKeywordCount - a.matchedKeywordCount);
+        return selectedItems;
+        
 
-        // Return the items sorted by the number of matched keywords
-        return selectedItems.map(selectedItem => selectedItem.item);
     };
 
     const filteredItems = filterByKeyword(props.items);
+
+    // Navigation to the tab where items are found ( if tab result is 1 )
+    useEffect(()=>{
+
+        if (!props.searchValue || filteredItems.length === 0) {
+            return;
+        }
+
+        if (filteredItems.filter(item => item.active).length) {
+            return;
+        }
+
+        const firstItem = filteredItems[0];
+
+        if (firstItem.active) {
+            return;
+        }
+
+        const cloneItems = cloneDeep(props.items);
+
+        cloneItems.forEach((itemLoop) => {
+            itemLoop.active = itemLoop.id === firstItem.id
+        });
+
+        props.setItems(cloneItems);
+
+    }, [filteredItems, props]);
+    
 
     return (
         <StecDiv className='stec-side-navigation'>
             
             <UncontrolledDelayedInputText
+                delay={50}
                 minLength={0}
                 placeholder={__('Search option or feature', 'stachethemes_event_calendar_lite')}
-                defaultValue={searchFilter}
+                defaultValue={props.searchValue}
                 onChange={value => {
-                    setSearchFilter(value);
+                    props.setSearchValue(value);
                 }}
-                delay={200}
             />
 
             {filteredItems.map(item => {

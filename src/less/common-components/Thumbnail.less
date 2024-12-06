@@ -73,3 +73,34 @@
         }
     }
 }
+
+
+.mobile {
+    .stec-event-preview {
+        &:not(.stec-event-preview-keep-thumbnail) {
+            @width: 8px;
+
+            display: grid;
+            grid-template-columns: @width 1fr;
+            gap: 10px;
+
+            .stec-event-preview-content {
+                margin: 0;
+            }
+
+            .stec-thumbnail {
+
+                .stec-thumbnail-date,
+                .stec-thumbnail-icon,
+                .stec-thumbnail-image {
+                    display: none;
+                }
+
+                min-width: @width;
+                max-width: @width;
+                width: @width;
+                height: 100%;
+            }
+        }
+    }
+}

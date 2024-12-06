@@ -1,9 +1,9 @@
-import { useAgendaSliderKey, useCalendarMoment, useCalendarScreenTypeValue, useAvailableLayouts, useCurrentLayout, useSettingsAtt } from '@Stec/JS/calendar/hooks';
+import { useAgendaSliderKey, useCalendarMoment, useCalendarScreenTypeValue, useCurrentLayout, useSettingsAtt } from '@Stec/JS/calendar/hooks';
 import { getMonthLabels } from '@Stec/JS/helpers';
 import { useMemo } from 'react';
+import { useShouldReverseOrder } from '../hooks';
 import TopButton from './TopButton';
 import TopScrollMenu from './TopScrollMenu';
-import { useShouldReverseOrder } from '../hooks';
 
 const TopDatePicker = ({ forceFullLabels = false }) => {
 

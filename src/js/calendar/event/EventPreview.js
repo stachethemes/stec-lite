@@ -52,6 +52,8 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
     const containerRef = useRef(null);
     const screenType = useCalendarScreenTypeValue();
     const thumbnailSource = useSettingsAtt('calendar__thumbnail_source');
+    const showDescription = useSettingsAtt('calendar__ep_short_desc');
+    const keepThumbnailOnMobile = useSettingsAtt('calendar__ep_keep_thumbnail');
     const hrefTarget = useSettingsAtt('calendar__links_target');
     const dateShowTzOffset = useSettingsAtt('calendar__show_tz_offset');
     const dateFormat = useSettingsAtt('calendar__date_format');
@@ -69,6 +71,10 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
 
     if (isEventCancelled) {
         classNameArray.push('stec-event-preview-cancelled');
+    }
+
+    if (keepThumbnailOnMobile) {
+        classNameArray.push('stec-event-preview-keep-thumbnail');
     }
 
     useEffect(() => {
@@ -132,7 +138,7 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
                             }
 
                             {
-                                event.short_description &&
+                                (showDescription && event.short_description) &&
                                 <StecSpan dangerouslySetInnerHTML={{ __html: event.short_description }} />
                             }
 
@@ -191,9 +197,9 @@ const EventPreview = ({ event, forceActive, active, onToggle, href = false }) =>
                                 {event.location.title}
                             </StecSpan>
                         }
-
+                        
                         {
-                            event.short_description &&
+                            (showDescription && event.short_description) &&
                             <StecSpan dangerouslySetInnerHTML={{ __html: event.short_description }} />
                         }
 

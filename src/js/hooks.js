@@ -3,6 +3,48 @@ import { getMediaSizes } from '@Stec/JS/helpers';
 import { getWorkerEventsBetween } from '@Stec/JS/workers/WorkerTask';
 import { useCallback, useEffect, useState } from 'react';
 
+export const useElementWidth = (ref) => {
+
+    const [value, setValue] = useState('init');
+
+    useEffect(() => {
+
+        const container = ref.current;
+        let t;
+
+        const setScreenType = (containerWidth) => {
+
+            setValue(containerWidth);
+
+        }
+
+        const observer = new ResizeObserver(entries => {
+
+            if (entries[0] && entries[0].contentRect) {
+                const containerWidth = entries[0].contentRect.width;
+                setScreenType(containerWidth);
+            }
+
+        });
+
+        if (container) {
+            observer.observe(container);
+        }
+
+        return () => {
+
+            clearTimeout(t);
+
+            if (container) {
+                observer.unobserve(container);
+            }
+        }
+
+    }, [ref, setValue]);
+
+    return value;
+}
+
 export const useResponsiveClass = (ref) => {
 
     useEffect(() => {

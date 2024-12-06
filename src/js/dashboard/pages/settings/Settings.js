@@ -35,7 +35,7 @@ const FatalError = ({ resetSettings }) => {
 
             <Spacer />
 
-            <Button className='yellow' label={__('Reset to defaults', 'stachethemes_event_calendar_lite')} onClick={()=>{
+            <Button className='yellow' label={__('Reset to defaults', 'stachethemes_event_calendar_lite')} onClick={() => {
                 resetSettings('');
             }} />
 
@@ -48,41 +48,41 @@ const CurrentTabComponent = (props) => {
     switch (props.id) {
 
         case 'calendar': {
-            return <Calendar settings={props.settings} />
+            return <Calendar settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'layouts': {
-            return <Layouts settings={props.settings} />
+            return <Layouts settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'map': {
-            return <Map settings={props.settings} />
+            return <Map settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'comments': {
-            return <Comments settings={props.settings} />
+            return <Comments settings={props.settings} searchValue={props.searchValue} />
         }
 
         // fonts_and_colors
         case 'fac': {
-            return <FontsAndColors settings={props.settings} />
+            return <FontsAndColors settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'dashboard': {
-            return <Dashboard settings={props.settings} />
+            return <Dashboard settings={props.settings} searchValue={props.searchValue} />
         }
 
         // language
-        case 'lang': {
-            return <Language settings={props.settings} />
+        case 'language': {
+            return <Language settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'pages': {
-            return <Pages settings={props.settings} />
+            return <Pages settings={props.settings} searchValue={props.searchValue} />
         }
 
         case 'misc': {
-            return <Misc settings={props.settings} />
+            return <Misc settings={props.settings} searchValue={props.searchValue} />
         }
 
         default: {
@@ -94,6 +94,8 @@ const CurrentTabComponent = (props) => {
 
 const SettingsRender = ({ settings, tabs, setTabs, onSave, onReset }) => {
 
+    const [searchValue, setSearchValue] = useState('');
+    
     const { setActiveMenu } = useDashboardMenu();
 
     // component id is equal to the setting key in the php settings file
@@ -119,13 +121,18 @@ const SettingsRender = ({ settings, tabs, setTabs, onSave, onReset }) => {
 
             <StecDiv className='stec-dashboard-settings-wrapper'>
 
-                <SideNavigation items={tabs} setItems={setTabs} />
+                <SideNavigation
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                    items={tabs}
+                    setItems={setTabs}
+                />
 
                 <StecDiv className='stec-dashboard-settings-component-container'>
 
                     <ErrorBoundary errorComponent={<FatalError resetSettings={onReset} />}>
 
-                        <CurrentTabComponent id={componentId} settings={settings} />
+                        <CurrentTabComponent id={componentId} settings={settings} searchValue={searchValue} />
 
                         <Spacer />
 

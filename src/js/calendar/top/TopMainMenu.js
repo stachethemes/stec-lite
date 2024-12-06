@@ -4,21 +4,34 @@ import { __ } from '@wordpress/i18n';
 import { uniqueId } from 'lodash';
 import TopButton from './TopButton';
 import TopDatePicker from './TopDatePicker';
+import TopDatePickerDropMenu from './TopDatePickerDropMenu';
 import TopFilters from './TopFilters';
 import TopSearch from './TopSearch';
 
 const TopMainMenuToday = () => {
 
+    const topSingleLine = useSettingsAtt('calendar__top_single_line');
+    const topLabels = useSettingsAtt('calendar__top_labels');
+    const isMobileScreen = useCalendarScreenTypeValue() === 'mobile';
+
+    const hideLabels = !topLabels || (topSingleLine && isMobileScreen);
+
     const { setValue: setCalendarMoment } = useCalendarMoment();
     const { setValue: setAgendaSliderKey } = useAgendaSliderKey();
 
+    const label = [
+        <i key='icon' className='stec-top-menu-today-icon fa-solid fa-calendar-check' />
+    ];
+
+    if (!hideLabels) {
+        label.push(
+            <span key='text' className='stec-top-menu-today-label'>{__('Today', 'stachethemes_event_calendar_lite')}</span>
+        );
+    }
+
     return <TopButton
-        label={
-            [
-                <i key='icon' className='stec-top-menu-today-icon fa-solid fa-calendar-check' />,
-                <span key='text' className='stec-top-menu-today-label'>{__('Today', 'stachethemes_event_calendar_lite')}</span>
-            ]
-        }
+        extraClass={'stec-top-menu-today-button'}
+        label={label}
         onClick={() => {
             setCalendarMoment(moment());
             setAgendaSliderKey(uniqueId());
@@ -40,6 +53,11 @@ function TopMainMenu() {
                 {searchButtonEnabled && <TopSearch />}
                 {1 === topFilterMode && <TopFilters />}
 
+                { // todo conditional check
+                    screenType === 'mobile' &&
+                    <TopDatePickerDropMenu />
+                }
+
             </StecDiv>
 
             {
@@ -48,6 +66,7 @@ function TopMainMenu() {
                     <TopDatePicker />
                 </StecDiv>
             }
+
 
         </StecDiv>
     )
