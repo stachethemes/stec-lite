@@ -28,7 +28,7 @@ const Slider = (props) => {
 
         let desiredSlidesPerView = props.widgetProps.columns;
 
-        let newSlidesPerView = Math.min(props.events.length, desiredSlidesPerView, Math.floor(swiper.width / breakPoint));
+        let newSlidesPerView = Math.max(1, Math.min(props.events.length, desiredSlidesPerView, Math.floor(swiper.width / breakPoint)));
 
         swiper.params.slidesPerView = newSlidesPerView;
 
